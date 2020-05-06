@@ -17,6 +17,10 @@ const StyledHeader = styled.header`
   align-items: center;
 `;
 
+const HeaderInner = styled.div`
+  padding: 0 32px;
+`;
+
 const HeaderLogo = styled.img`
   display: block;
   margin: 0;
@@ -27,12 +31,14 @@ const Header = () => {
   return (
     <StyledHeader>
       <Container>
-        <Flex align="center" justify="space-between">
-          <Link to="/">
-            <HeaderLogo src={logo_src} alt="Helios Logo" />
-          </Link>
-          <Nav />
-        </Flex>
+        <HeaderInner>
+          <Flex align="center" justify="space-between">
+            <Link to="/">
+              <HeaderLogo src={logo_src} alt="Helios Logo" />
+            </Link>
+            <Nav />
+          </Flex>
+        </HeaderInner>
       </Container>
     </StyledHeader>
   );

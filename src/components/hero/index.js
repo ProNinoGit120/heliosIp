@@ -56,6 +56,7 @@ const HeroDescription = styled.p`
 `;
 
 const LinkButton = styled(Link)`
+  display: inline-block;
   padding: 8px 16px;
   border-radius: 6px;
   color: ${Colors.blue};

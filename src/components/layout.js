@@ -8,7 +8,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 // import { useStaticQuery, graphql } from "gatsby";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Colors from "../utils/colors";
 import Header from "./header";
 
@@ -77,6 +77,10 @@ const GlobalStyles = createGlobalStyle`
 
 `;
 
+const Main = styled.main`
+  overflow-x: hidden;
+`;
+
 const Layout = ({ children }) => {
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
@@ -92,7 +96,7 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyles />
       <Header />
-      {children}
+      <Main>{children}</Main>
     </>
   );
 };

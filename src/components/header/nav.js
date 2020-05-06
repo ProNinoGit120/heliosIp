@@ -28,6 +28,9 @@ const NavItem = styled.li`
              -2px -2px 10px #ff8d53; */
     transition: all 300ms ease;
   }
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -71,7 +74,6 @@ export default () => (
       <NavLink to="/">
         <NavItem>Resources</NavItem>
       </NavLink>
-
       <NavLink to="/">
         <NavItem>Contact</NavItem>
       </NavLink>
