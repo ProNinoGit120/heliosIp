@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Helios | Managed IP Services`,
+    title: `Helios IPM | Managed IP Services`,
     description: `Increase quality, improve efficiency, reduce costs. Turnkey services, from docketing through portfolio management. Expert IP support delivered through innovative technology.`,
     author: `@jakeschroeder`,
   },

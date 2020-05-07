@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import Colors from "../../utils/colors";
-import { Container, Col, Flex } from "../../utils/elements";
-import Card from "../card";
+import { Container, Col, Flex, ButtonLink } from "../../utils/elements";
+import CalculateExpense from "../cards/calculateExpense";
 import herobg_src from "../../images/hero-bg.svg";
 import {
   StyledForm,
@@ -114,77 +114,12 @@ export default ({ bgImg, title, subtitle, description, link, linkText }) => {
               <HeroTitle>{title}</HeroTitle>
 
               <HeroDescription>{description}</HeroDescription>
-              {link ? <LinkButton to={link}>{linkText}</LinkButton> : null}
+              <ButtonLink to="/" className="gray">
+                Learn More
+              </ButtonLink>
             </Col>
             <Col width="55%">
-              <Card title="Calculate Your IP Expense" buttonText="Next">
-                <StyledForm>
-                  <Flex justify="space-around">
-                    <StyledInputWrapper padding="0 16px 0 0">
-                      <StyledLabel hidden htmlFor="firstName">
-                        First Name
-                      </StyledLabel>
-                      <StyledInput
-                        placeholder="First Name"
-                        name="firstName"
-                        id="firstName"
-                      />
-                    </StyledInputWrapper>
-                    <StyledInputWrapper padding="0 0 0 16px">
-                      <StyledLabel hidden htmlFor="lastName">
-                        Last Name
-                      </StyledLabel>
-                      <StyledInput
-                        placeholder="Last Name"
-                        name="lastName"
-                        id="lastName"
-                      />
-                    </StyledInputWrapper>
-                  </Flex>
-                  <StyledInputWrapper padding="32px 0 0 0">
-                    <StyledLabel hidden htmlFor="email">
-                      Email
-                    </StyledLabel>
-                    <StyledInput
-                      placeholder="Email Address"
-                      name="email"
-                      id="email"
-                    />
-                  </StyledInputWrapper>
-                  <StyledInputWrapper padding="32px 0 0 0">
-                    <StyledLabel hidden htmlFor="company">
-                      Company Name
-                    </StyledLabel>
-                    <StyledInput
-                      placeholder="Company Name"
-                      name="company"
-                      id="company"
-                    />
-                  </StyledInputWrapper>
-                  <Flex justify="space-around">
-                    <StyledInputWrapper padding="32px 16px 0 0">
-                      <StyledLabel hidden htmlFor="companyType">
-                        Company Type
-                      </StyledLabel>
-                      <StyledInput
-                        placeholder="Company Type"
-                        name="companyType"
-                        id="companyType"
-                      />
-                    </StyledInputWrapper>
-                    <StyledInputWrapper padding="32px 0 0 16px">
-                      <StyledLabel hidden htmlFor="patentProfile">
-                        Patent Profile
-                      </StyledLabel>
-                      <StyledInput
-                        placeholder="Patent Profile"
-                        name="patentProfile"
-                        id="patentProfile"
-                      />
-                    </StyledInputWrapper>
-                  </Flex>
-                </StyledForm>
-              </Card>
+              <CalculateExpense />
             </Col>
           </Flex>
         </Container>

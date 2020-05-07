@@ -5,10 +5,11 @@ import SEO from "../components/seo";
 import Hero from "../components/hero";
 import styled from "styled-components";
 import Colors from "../utils/colors";
-import { Container, Flex, Col, Button } from "../utils/elements";
+import { Container, Flex, Col, Button, ButtonLink } from "../utils/elements";
 import { platform, network, sun, arrow, support } from "../utils/icons";
 import { StickyContainer, Sticky } from "react-sticky";
 import system_src from "../images/system-white.svg";
+import women_src from "../images/ready-women.png";
 
 const Intro = styled.section`
   overflow: hidden;
@@ -88,7 +89,11 @@ const TimelineIntro = styled.div`
 `;
 
 const TitleMedium = styled.h2`
-  color: white;
+  color: ${({ color }) => color};
+`;
+
+const TitleSmall = styled.h3`
+  color: ${({ color }) => color};
 `;
 
 const TimelineDesc = styled.p`
@@ -222,7 +227,9 @@ const BreakdownInner = styled.div`
   padding-top: 120px;
 `;
 
-const BreakdwonDesc = styled.p``;
+const BreakdwonDesc = styled.p`
+  margin-bottom: 16px;
+`;
 
 const BreakdownDiagram = styled.div`
   position: relative;
@@ -317,6 +324,85 @@ const DiagramCTA = styled(Link)`
   }
 `;
 
+const Ready = styled.section`
+  padding: 164px 0;
+`;
+
+const ReadyInner = styled.div`
+  padding-top: 32px;
+`;
+
+// const ReadyItemWrapper = styled.div``;
+
+const ReadyItem = styled.div`
+  background: ${({ bg }) => bg};
+  padding: 64px;
+  position: relative;
+
+  &.left {
+    display: flex;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+  }
+
+  &.right {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    color: white;
+    text-align: center;
+  }
+`;
+
+const ReadyItemImg = styled.img`
+  display: block;
+`;
+
+const ReadyItemText = styled.div`
+  position: relative;
+  z-index: 2;
+`;
+
+const ReadyItemDesc = styled.p`
+  padding-bottom: 16px;
+`;
+
+// const ReadyCTA = styled(Link)`
+//   margin-top: 32px;
+//   display: inline-block;
+//   padding: 8px 16px;
+//   border-radius: 6px;
+
+//   border: 2px solid transparent;
+//   transition: all 300ms ease;
+//   font-size: inherit;
+
+//   &.left {
+//     color: ${Colors.blue};
+//     background: ${Colors.gray};
+//     box-shadow: 5px 5px 10px #cdcdcd, -5px -5px 10px #ffffff;
+//     border: 2px solid white;
+//   }
+
+//   &.right {
+//     color: white;
+//     background: ${Colors.blue};
+//     box-shadow: 5px 5px 16px #000014, -5px -5px 16px #000050;
+//     border: 2px solid #000050;
+//   }
+
+//   /* &:hover {
+//     border: 2px solid rgba(255, 255, 255, 0.3);
+//     transition: all 300ms ease;
+//   } */
+// `;
+
 const IndexPage = () => {
   // const [scrollBtm, setScrollBtm] = useState(null);
   // // let timelineItems = [];
@@ -370,7 +456,7 @@ const IndexPage = () => {
               <Col width="35%">
                 <TimelineControl>
                   <TimelineIntro>
-                    <TitleMedium>How it works...</TitleMedium>
+                    <TitleMedium color="white">How it works...</TitleMedium>
                     <TimelineDesc>
                       Our customers have been able to complete new hire
                       onboarding in under 10 minutes.
@@ -419,7 +505,7 @@ const IndexPage = () => {
               <Col width="65%">
                 <TimelineImgWrapper>
                   <TimelineImgInner>
-                    <Sticky topOffset={-340}>
+                    {/* <Sticky topOffset={-340}>
                       {({
                         style,
                         isSticky,
@@ -430,21 +516,14 @@ const IndexPage = () => {
                           console.log(style);
                         }
 
-                        return (
-                          <TimelineImgItem
-                            style={{
-                              ...style,
-                              top: `${isSticky ? `340px` : `${style.top}`}`,
-                            }}
-                          >
-                            <TimelineImg
-                              src={system_src}
-                              alt="helios system image"
-                            />
-                          </TimelineImgItem>
-                        );
+                        return ( */}
+
+                    {/* );
                       }}
-                    </Sticky>
+                    </Sticky> */}
+                    <TimelineImgItem>
+                      <TimelineImg src={system_src} alt="helios system image" />
+                    </TimelineImgItem>
                   </TimelineImgInner>
                 </TimelineImgWrapper>
               </Col>
@@ -502,12 +581,54 @@ const IndexPage = () => {
                   justo duo dolores et ea rebum. Stet clita kasd gubergren, no
                   sea takimata sanctus est Lorem ipsum dolor
                 </BreakdwonDesc>
-                <DiagramCTA to="/">Why Helios</DiagramCTA>
+                <ButtonLink className="gray" to="/">
+                  Why Helios
+                </ButtonLink>
               </Col>
             </Flex>
           </Container>
         </BreakdownInner>
       </Breakdown>
+      <Ready>
+        <Container>
+          <TitleLarge align="center">Ready?</TitleLarge>
+          <ReadyInner>
+            <Flex align="center" justify="space-between">
+              <Col width="50%" noP>
+                <ReadyItem bg={Colors.gray} className="left">
+                  <Flex align="center" justify="flex-end">
+                    <ReadyItemImg src={women_src} />
+                    <ReadyItemText>
+                      <TitleSmall color={Colors.blue}>Questions?</TitleSmall>
+                      <ReadyItemDesc>
+                        Ask us anything, or schedule a call.
+                      </ReadyItemDesc>
+                      <ButtonLink className="gray" to="/">
+                        Lets talk
+                      </ButtonLink>
+                    </ReadyItemText>
+                  </Flex>
+                </ReadyItem>
+              </Col>
+              <Col width="50%" noP>
+                <ReadyItem bg={Colors.blue} className="right">
+                  <Flex justify="center">
+                    <ReadyItemText>
+                      <TitleSmall color="white">Interactive Demo</TitleSmall>
+                      <ReadyItemDesc>
+                        Explore your very own demo account.
+                      </ReadyItemDesc>
+                      <ButtonLink className="blue" to="/">
+                        Sign up
+                      </ButtonLink>
+                    </ReadyItemText>
+                  </Flex>
+                </ReadyItem>
+              </Col>
+            </Flex>
+          </ReadyInner>
+        </Container>
+      </Ready>
     </Layout>
   );
 };

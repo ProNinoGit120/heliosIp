@@ -9,8 +9,9 @@ import React from "react";
 import PropTypes from "prop-types";
 // import { useStaticQuery, graphql } from "gatsby";
 import styled, { createGlobalStyle } from "styled-components";
-import Colors from "../utils/colors";
+import Colors from "../../utils/colors";
 import Header from "./header";
+import Footer from "./footer";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -97,12 +98,13 @@ const Layout = ({ children }) => {
       <GlobalStyles />
       <Header />
       <Main>{children}</Main>
+      <Footer />
     </>
   );
 };
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+// Layout.propTypes = {
+//   children: PropTypes.node.isRequired,
+// };
 
 export default Layout;

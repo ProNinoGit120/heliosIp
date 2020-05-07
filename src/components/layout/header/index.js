@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import Colors from "../../utils/colors";
-import { Container, Flex } from "../../utils/elements";
-import logo_src from "../../images/logo.svg";
+import Colors from "../../../utils/colors";
+import { Container, Flex } from "../../../utils/elements";
+import logo_src from "../../../images/logo.svg";
 import Nav from "./nav";
 
 const StyledHeader = styled.header`
@@ -15,6 +15,7 @@ const StyledHeader = styled.header`
   background: ${Colors.orange_gradient};
   display: flex;
   align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 `;
 
 const HeaderInner = styled.div`

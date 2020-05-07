@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "gatsby";
 import Size from "./size";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Colors from "./colors";
-import { arrow } from "./icons";
 
 const StyledContainer = styled.div`
   max-width: ${Size.max}px;
@@ -30,49 +30,98 @@ export const Flex = ({ children, align, justify, direction, responsive }) => (
 
 const StyledCol = styled.div`
   width: ${({ width }) => width};
-  padding: 0 32px;
+  padding: ${({ noP }) => (noP ? `0` : `0 32px`)};
 `;
 
-export const Col = ({ children, width }) => (
-  <StyledCol width={width}>{children}</StyledCol>
+export const Col = ({ children, width, noP }) => (
+  <StyledCol noP={noP} width={width}>
+    {children}
+  </StyledCol>
 );
 
-const StyledButton = styled.button`
+const StyledButton = css`
   cursor: pointer;
   outline: none;
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
-  background: ${({ bg }) => bg};
   padding: 8px 16px;
   border-radius: 6px;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  border: 2px solid transparent;
+
   transition: all 300ms ease;
   font-size: inherit;
-  box-shadow: 5px 5px 10px #cdcdcd, -5px -5px 10px #ffffff;
+  color: white;
+`;
+
+const StyledButtonLink = styled(Link)`
+  ${StyledButton};
+  /* min-height: 38px; */
 
   &:hover {
-    border: 2px solid white;
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
     transition: all 300ms ease;
   }
-`;
-const StyledArrow = styled.span`
-  margin-left: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  & svg {
-    fill: white;
-    width: 24px;
+
+  &.orange {
+    background: ${Colors.orange};
+    box-shadow: 5px 5px 10px #db5a1f, -5px -5px 10px #ff6c25;
+  }
+
+  &.blue {
+    background: ${Colors.blue};
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 5px 5px 5px #00002c, -5px -5px 5px #000039;
+  }
+
+  &.blue:hover {
+    box-shadow: 5px 5px 5px #000025, -5px -5px 5px #000043;
+  }
+
+  /* &.blue:hover {
+    box-shadow: 5px 5px 4px #000025, -5px -5px 4px ##000040;
+  } */
+
+  &.gray {
+    background: ${Colors.gray};
+    color: ${Colors.blue};
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 10px 10px 16px #e7e7e7, -10px -10px 16px #fbfbfb;
+  }
+
+  &.gray:hover {
+    /* box-shadow: 10px 10px 16px #b2b2b2, -10px -10px 16px #ffffff; */
+    box-shadow: 10px 10px 10px #d9d9d9, -10px -10px 10px #fbfbfb;
   }
 `;
 
-export const Button = ({ children, withArrow, width, height, bg }) => (
-  <StyledButton width={width} height={height} bg={bg}>
+export const ButtonLink = ({ className, children, to }) => (
+  <StyledButtonLink className={className} to={to}>
     {children}
-    {withArrow ? <StyledArrow>{arrow}</StyledArrow> : null}
-  </StyledButton>
+  </StyledButtonLink>
 );
+
+export const StyledForm = styled.form`
+  margin: 0;
+  padding: 0;
+  width: 100%;
+`;
+export const StyledInputWrapper = styled.div`
+  width: 100%;
+  padding: ${({ padding }) => padding};
+`;
+export const StyledLabel = styled.label`
+  margin-bottom: 8px;
+`;
+export const StyledInput = styled.input`
+  border-radius: ${Size.radius}px;
+  width: 100%;
+  outline: 0;
+  height: 48px;
+  border: 1px solid ${Colors.border};
+  padding: 0 16px;
+  &:focus {
+    border-color: ${Colors.blue};
+  }
+`;
+export const StyledTextArea = styled.textarea``;
+export const StyledFormButton = styled.button``;
