@@ -5,208 +5,24 @@ import SEO from "../components/seo";
 import Hero from "../components/hero";
 import styled from "styled-components";
 import Colors from "../utils/colors";
-import { Container, Flex, Col, Button, ButtonLink } from "../utils/elements";
-import { platform, network, sun, arrow, support } from "../utils/icons";
-import { StickyContainer, Sticky } from "react-sticky";
+import Ready from "../components/ready";
+import {
+  Container,
+  Flex,
+  Col,
+  Button,
+  ButtonLink,
+  TitleLarge,
+  TitleMedium,
+  TitleSmall,
+  Sun,
+} from "../utils/elements";
+import { platform, network, arrow, support } from "../utils/icons";
+import Timeline from "../components/timeline";
 import system_src from "../images/system-white.svg";
-import women_src from "../images/ready-women.png";
-
-const Intro = styled.section`
-  overflow: hidden;
-  padding-bottom: 370px;
-  position: relative;
-
-  &:before {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150%;
-    height: 100%;
-    background: ${Colors.blue_gradient};
-    transform: rotate(-9.5deg);
-    z-index: -1;
-    transform-origin: left bottom;
-  }
-`;
-
-const IntroInner = styled.div`
-  padding: 120px 0;
-`;
-
-const TitleLarge = styled.h1`
-  color: ${({ color }) => color};
-  text-align: ${({ align }) => align};
-`;
-
-const IntroDescription = styled.p`
-  color: white;
-  max-width: 650px;
-  margin: 0 auto;
-`;
-
-const IntroLogo = styled.div`
-  margin: 0 auto 32px auto;
-  border-radius: 50%;
-  width: 164px;
-  height: 164px;
-  background: linear-gradient(35deg, ${Colors.lightBlue}, ${Colors.blue});
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  & svg {
-    width: 128px;
-  }
-`;
-
-const LinkButton = styled(Link)`
-  padding: 8px 16px;
-  border-radius: 6px;
-  border: 0;
-  color: ${Colors.blue};
-  background: ${Colors.gray};
-  box-shadow: 5px 5px 10px #cdcdcd, -5px -5px 10px #ffffff;
-  border: 1px solid transparent;
-  transition: all 300ms ease;
-  font-size: inherit;
-  &:hover {
-    border: 1px solid white;
-    transition: all 300ms ease;
-  }
-`;
-
-const Timeline = styled.div`
-  margin-top: -370px;
-`;
-
-const TimelineControl = styled.div``;
-
-const TimelineIntro = styled.div`
-  min-height: 370px;
-  margin-bottom: 64px;
-`;
-
-const TitleMedium = styled.h2`
-  color: ${({ color }) => color};
-`;
-
-const TitleSmall = styled.h3`
-  color: ${({ color }) => color};
-`;
-
-const TimelineDesc = styled.p`
-  color: white;
-`;
-
-const TimelineImgWrapper = styled.div`
-  position: relative;
-  flex: 1 1 auto;
-`;
-
-const TimelineImgInner = styled.div`
-  position: relative;
-  /* padding-top: 70%; */
-  padding-bottom: 164px;
-`;
-
-const TimelineImgItem = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  text-align: right;
-`;
-
-const TimelineImg = styled.img`
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  margin-bottom: 0;
-  padding-bottom: 120px;
-  /*     
-    transition: opacity 200ms ease-in-out; */
-  opacity: 1;
-
-  /* box-shadow: 0 24px 48px 0 rgba(174, 174, 186, 0.32); */
-`;
-
-const TimelineItem = styled.div`
-  position: relative;
-  padding-top: 4px;
-  padding-left: 50px;
-  padding-bottom: 164px;
-  color: rgba(0, 0, 0, 0.33);
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 8px;
-    left: 12px;
-    z-index: -10;
-    bottom: -8px;
-    width: 2px;
-    background: #e7e8ed;
-  }
-
-  &:last-child:before {
-    display: none;
-  }
-
-  &:after {
-    z-index: -10;
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    background: #e7e8ed;
-    border-radius: 50%;
-    transform: scale(0.66);
-    transform-origin: center;
-  }
-
-  &.active h3 {
-    color: ${Colors.blue};
-  }
-
-  &.active p {
-    color: ${Colors.text};
-  }
-
-  &.active:after {
-    transform: scale(1);
-    border: 6px solid #fff;
-    background: ${Colors.orange};
-    -webkit-box-shadow: 0 2px 4px 0 rgba(174, 174, 186, 0.48),
-      0 8px 24px 0 rgba(174, 174, 186, 0.24);
-    box-shadow: 0 2px 4px 0 rgba(174, 174, 186, 0.48),
-      0 8px 24px 0 rgba(174, 174, 186, 0.24);
-  }
-`;
-
-const TimelineItemContent = styled.div``;
-
-const TimelineItemTitle = styled.h3`
-  color: inherit;
-`;
-
-const TimelineItemDesc = styled.p`
-  color: inherit;
-`;
-
-const StyledSun = styled(sun)`
-  & path {
-    fill: ${({ color }) => color};
-  }
-`;
 
 const Breakdown = styled.section`
-  padding-bottom: 370px;
+  padding-bottom: 340px;
   position: relative;
   &:before {
     content: " ";
@@ -224,7 +40,7 @@ const Breakdown = styled.section`
 `;
 
 const BreakdownInner = styled.div`
-  padding-top: 120px;
+  /* padding-top: 60px; */
 `;
 
 const BreakdwonDesc = styled.p`
@@ -307,124 +123,7 @@ const DiagramIcon = styled.div`
   }
 `;
 
-const DiagramCTA = styled(Link)`
-  margin-top: 32px;
-  display: inline-block;
-  padding: 8px 16px;
-  border-radius: 6px;
-  color: ${Colors.blue};
-  background: ${Colors.gray};
-  box-shadow: 5px 5px 10px #cdcdcd, -5px -5px 10px #ffffff;
-  border: 2px solid transparent;
-  transition: all 300ms ease;
-  font-size: inherit;
-  &:hover {
-    border: 2px solid white;
-    transition: all 300ms ease;
-  }
-`;
-
-const Ready = styled.section`
-  padding: 164px 0;
-`;
-
-const ReadyInner = styled.div`
-  padding-top: 32px;
-`;
-
-// const ReadyItemWrapper = styled.div``;
-
-const ReadyItem = styled.div`
-  background: ${({ bg }) => bg};
-  padding: 64px;
-  position: relative;
-
-  &.left {
-    display: flex;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-    }
-  }
-
-  &.right {
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    color: white;
-    text-align: center;
-  }
-`;
-
-const ReadyItemImg = styled.img`
-  display: block;
-`;
-
-const ReadyItemText = styled.div`
-  position: relative;
-  z-index: 2;
-`;
-
-const ReadyItemDesc = styled.p`
-  padding-bottom: 16px;
-`;
-
-// const ReadyCTA = styled(Link)`
-//   margin-top: 32px;
-//   display: inline-block;
-//   padding: 8px 16px;
-//   border-radius: 6px;
-
-//   border: 2px solid transparent;
-//   transition: all 300ms ease;
-//   font-size: inherit;
-
-//   &.left {
-//     color: ${Colors.blue};
-//     background: ${Colors.gray};
-//     box-shadow: 5px 5px 10px #cdcdcd, -5px -5px 10px #ffffff;
-//     border: 2px solid white;
-//   }
-
-//   &.right {
-//     color: white;
-//     background: ${Colors.blue};
-//     box-shadow: 5px 5px 16px #000014, -5px -5px 16px #000050;
-//     border: 2px solid #000050;
-//   }
-
-//   /* &:hover {
-//     border: 2px solid rgba(255, 255, 255, 0.3);
-//     transition: all 300ms ease;
-//   } */
-// `;
-
 const IndexPage = () => {
-  // const [scrollBtm, setScrollBtm] = useState(null);
-  // // let timelineItems = [];
-  // // let timelineItemsY = {};
-  // useEffect(() => {
-  //   timelineItems = Array.from(document.getElementsByClassName("timelineItem"));
-  //   // console.log(timelineItems);
-  //   timelineItems.map((item, index) => {
-  //     timelineItemsY[index] = item.offsetTop;
-  //   });
-  //   // timelineItems.map((item, index) => {
-  //   //   timelineItemsY[index] = item.offsetTop;
-  //   // });
-  // }, []);
-
-  // useEffect(() => {
-  //   if (timelineItemsY[1] >= scrollBtm) {
-  //     console.log("IDK");
-  //   }
-  //   console.log(scrollBtm);
-  // }, [scrollBtm]);
-
   return (
     <Layout>
       <SEO title="Home" />
@@ -436,102 +135,7 @@ const IndexPage = () => {
         link="/"
         linkText="Learn More"
       />
-      <Intro>
-        <IntroInner>
-          <Container>
-            <IntroLogo>
-              <StyledSun color={"white"} />
-            </IntroLogo>
-            <TitleLarge color="white" align="center">
-              A Brighter Way to Manage IP
-            </TitleLarge>
-          </Container>
-        </IntroInner>
-      </Intro>
-
-      <Timeline>
-        <Container>
-          <StickyContainer>
-            <Flex align="flex-start">
-              <Col width="35%">
-                <TimelineControl>
-                  <TimelineIntro>
-                    <TitleMedium color="white">How it works...</TitleMedium>
-                    <TimelineDesc>
-                      Our customers have been able to complete new hire
-                      onboarding in under 10 minutes.
-                    </TimelineDesc>
-                  </TimelineIntro>
-                  <TimelineItem className="timelineItem active">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>Onboard</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        We import your portfolio, verify data, and get you setup
-                        with all your users, PTO integration, and centralized
-                        mailbox
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>Monitor</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        We monitor your dockets, filing deadlines, payment due
-                        dates and all incoming/out correspondences
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>Execute</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        We pay all annuities, file applications, coordinate
-                        foreign associates, and keep your system up to date and
-                        accurate
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>Report</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        We provide you dockets, confirmations, filing receipts,
-                        portfolio reports, and financials accessible 24x7
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                </TimelineControl>
-              </Col>
-              <Col width="65%">
-                <TimelineImgWrapper>
-                  <TimelineImgInner>
-                    {/* <Sticky topOffset={-340}>
-                      {({
-                        style,
-                        isSticky,
-                        distanceFromBottom,
-                        distanceFromTop,
-                      }) => {
-                        if (isSticky) {
-                          console.log(style);
-                        }
-
-                        return ( */}
-
-                    {/* );
-                      }}
-                    </Sticky> */}
-                    <TimelineImgItem>
-                      <TimelineImg src={system_src} alt="helios system image" />
-                    </TimelineImgItem>
-                  </TimelineImgInner>
-                </TimelineImgWrapper>
-              </Col>
-            </Flex>
-          </StickyContainer>
-        </Container>
-      </Timeline>
-
+      <Timeline className="blue" />
       <Breakdown>
         <BreakdownInner>
           <Container>
@@ -565,7 +169,7 @@ const IndexPage = () => {
                       {platform}
                     </DiagramIcon>
                     <DiagramLogo>
-                      <StyledSun color={Colors.blue} />
+                      <Sun color={Colors.blue} />
                     </DiagramLogo>
                   </DiagramInner>
                 </BreakdownDiagram>
@@ -589,46 +193,7 @@ const IndexPage = () => {
           </Container>
         </BreakdownInner>
       </Breakdown>
-      <Ready>
-        <Container>
-          <TitleLarge align="center">Ready?</TitleLarge>
-          <ReadyInner>
-            <Flex align="center" justify="space-between">
-              <Col width="50%" noP>
-                <ReadyItem bg={Colors.gray} className="left">
-                  <Flex align="center" justify="flex-end">
-                    <ReadyItemImg src={women_src} />
-                    <ReadyItemText>
-                      <TitleSmall color={Colors.blue}>Questions?</TitleSmall>
-                      <ReadyItemDesc>
-                        Ask us anything, or schedule a call.
-                      </ReadyItemDesc>
-                      <ButtonLink className="gray" to="/">
-                        Lets talk
-                      </ButtonLink>
-                    </ReadyItemText>
-                  </Flex>
-                </ReadyItem>
-              </Col>
-              <Col width="50%" noP>
-                <ReadyItem bg={Colors.blue} className="right">
-                  <Flex justify="center">
-                    <ReadyItemText>
-                      <TitleSmall color="white">Interactive Demo</TitleSmall>
-                      <ReadyItemDesc>
-                        Explore your very own demo account.
-                      </ReadyItemDesc>
-                      <ButtonLink className="blue" to="/">
-                        Sign up
-                      </ButtonLink>
-                    </ReadyItemText>
-                  </Flex>
-                </ReadyItem>
-              </Col>
-            </Flex>
-          </ReadyInner>
-        </Container>
-      </Ready>
+      <Ready />
     </Layout>
   );
 };

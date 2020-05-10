@@ -4,13 +4,7 @@ import styled from "styled-components";
 import Colors from "../../utils/colors";
 import { Container, Col, Flex, ButtonLink } from "../../utils/elements";
 import CalculateExpense from "../cards/calculateExpense";
-import herobg_src from "../../images/hero-bg.svg";
-import {
-  StyledForm,
-  StyledInputWrapper,
-  StyledInput,
-  StyledLabel,
-} from "../forms/elements";
+// import herobg_src from "../../images/hero-bg.svg";
 
 const StyledHero = styled.section`
   height: 100%;
@@ -27,6 +21,7 @@ const HeroBG = styled.div`
   bottom: 0;
   width: 100%;
   height: 100%;
+  z-index: -2;
 `;
 
 const HeroWrapper = styled.div`
@@ -34,19 +29,7 @@ const HeroWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url(${herobg_src});
-  background-position-y: 40%;
-  background-position-x: right;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  /* @media (min-width: 1000px) {
-    background-position-y: center;
-  }
-
-  @media (max-width: 768px) {
-    background-position-y: bottom;
-  }  */
+  z-index: 0;
 `;
 
 const HeroTitle = styled.h1``;
@@ -89,6 +72,7 @@ export default ({ bgImg, title, subtitle, description, link, linkText }) => {
         {/* <HeroBG>
           <svg
             xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             width="100%"
             height="100%"
             viewBox="0 0 1366 768"
@@ -97,15 +81,20 @@ export default ({ bgImg, title, subtitle, description, link, linkText }) => {
             <path
               d="M255.11,764.82C375.83,530.22,680.53,363.7,1037.35,363.7c115.66,0,225.84,17.5,326.05,49.14"
               fill="none"
+              strokeWidth="2"
               stroke="#e0e0e0"
-            />
-            <circle cx="408.98" cy="575.09" r="5.27" fill="#e0e0e0" />
+              id="wire1"
+            ></path>
+            <circle cx="408.98" cy="575.09" r="5.27" fill="#e0e0e0">
+           
+            </circle>
             <path
               d="M0,109.08A1815,1815,0,0,1,274,88.53c522.49,0,962,217.8,1090,513.36"
               fill="none"
               stroke="#e0e0e0"
+              strokeWidth="2"
             />
-            <circle cx="508.08" cy="103.81" r="5.27" fill="#e0e0e0" />
+            <circle cx="508.08" cy="103.81" r="5.27" fill="#e0e0e0"></circle>
           </svg>
         </HeroBG> */}
         <Container>

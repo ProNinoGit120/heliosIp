@@ -49,7 +49,7 @@ export default () => (
       <NavLink to="/why">
         <NavItem>Why Helios</NavItem>
       </NavLink>
-      <NavLink to="/">
+      <NavLink to="/platform">
         <NavItem>Platform</NavItem>
       </NavLink>
       <NavLink to="/">

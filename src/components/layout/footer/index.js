@@ -14,6 +14,7 @@ const StyledFooter = styled.footer`
 const FooterLogo = styled.img`
   margin-bottom: 0;
   margin-top: -20px;
+  width: 150px;
 `;
 
 const FooterListTitle = styled.h3`
@@ -61,8 +62,8 @@ const Footer = () => {
               </FooterListItem> */}
               <FooterListItem>
                 <Flex>
-                  <SocialItem>{twitter}</SocialItem>
-                  <SocialItem>{linkedin}</SocialItem>
+                  <SocialItem to="/">{twitter}</SocialItem>
+                  <SocialItem to="/">{linkedin}</SocialItem>
                 </Flex>
               </FooterListItem>
             </FooterList>
@@ -71,13 +72,13 @@ const Footer = () => {
             <FooterListTitle>Platform</FooterListTitle>
             <FooterList>
               <FooterListItem>
-                <StyledLink>Why Helios</StyledLink>
+                <StyledLink to="/">Why Helios</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink>HeliosComplete™</StyledLink>
+                <StyledLink to="/">HeliosComplete™</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink>Docketing Module</StyledLink>
+                <StyledLink to="/">Docketing Module</StyledLink>
               </FooterListItem>
             </FooterList>
           </Col>
@@ -85,13 +86,13 @@ const Footer = () => {
             <FooterListTitle>Services</FooterListTitle>
             <FooterList>
               <FooterListItem>
-                <StyledLink>Support & Operations</StyledLink>
+                <StyledLink to="/">Support & Operations</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink>IP Legal Services</StyledLink>
+                <StyledLink to="/">IP Legal Services</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink>Consulting</StyledLink>
+                <StyledLink to="/">Consulting</StyledLink>
               </FooterListItem>
             </FooterList>
           </Col>
@@ -99,16 +100,16 @@ const Footer = () => {
             <FooterListTitle>Resources</FooterListTitle>
             <FooterList>
               <FooterListItem>
-                <StyledLink>About</StyledLink>
+                <StyledLink to="/">About</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink>Pricing</StyledLink>
+                <StyledLink to="/">Pricing</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink>HIP Directory</StyledLink>
+                <StyledLink to="/">HIP Directory</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink>Privacy</StyledLink>
+                <StyledLink to="/">Privacy</StyledLink>
               </FooterListItem>
             </FooterList>
           </Col>
@@ -116,10 +117,10 @@ const Footer = () => {
             <FooterListTitle>Get Started</FooterListTitle>
             <FooterList>
               <FooterListItem>
-                <StyledLink>Sign up</StyledLink>
+                <StyledLink to="/">Sign up</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink>Talk to advisor</StyledLink>
+                <StyledLink to="/">Talk to advisor</StyledLink>
               </FooterListItem>
             </FooterList>
           </Col>

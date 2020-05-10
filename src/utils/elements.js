@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import Size from "./size";
 import styled, { css } from "styled-components";
 import Colors from "./colors";
+import { sun, play } from "./icons";
 
 const StyledContainer = styled.div`
   max-width: ${Size.max}px;
@@ -27,6 +28,31 @@ export const Flex = ({ children, align, justify, direction, responsive }) => (
     {children}
   </div>
 );
+
+export const TitleLarge = styled.h1`
+  color: ${({ color }) => color};
+  text-align: ${({ align }) => align};
+`;
+
+export const TitleMedium = styled.h2`
+  color: ${({ color }) => color};
+  text-align: ${({ align }) => align};
+`;
+
+export const TitleSmall = styled.h3`
+  color: ${({ color }) => color};
+  text-align: ${({ align }) => align};
+`;
+
+export const TextBody = styled.p`
+  text-align: ${({ align }) => align};
+  color: ${({ color }) => color};
+  margin-bottom: ${({ mb }) => mb}px;
+`;
+
+export const StyledSection = styled.section`
+  padding: 120px 0;
+`;
 
 const StyledCol = styled.div`
   width: ${({ width }) => width};
@@ -92,6 +118,17 @@ const StyledButtonLink = styled(Link)`
     /* box-shadow: 10px 10px 16px #b2b2b2, -10px -10px 16px #ffffff; */
     box-shadow: 10px 10px 10px #d9d9d9, -10px -10px 10px #fbfbfb;
   }
+
+  &.white {
+    background: white;
+    color: ${Colors.blue};
+    border: 1px solid rgba(0, 0, 00, 0.03);
+    box-shadow: 5px 5px 19px #f2f2f2, -5px -5px 19px #ffffff;
+  }
+
+  &.white:hover {
+    box-shadow: 5px 5px 19px #e0e0e0, -5px -5px 19px #ffffff;
+  }
 `;
 
 export const ButtonLink = ({ className, children, to }) => (
@@ -125,3 +162,37 @@ export const StyledInput = styled.input`
 `;
 export const StyledTextArea = styled.textarea``;
 export const StyledFormButton = styled.button``;
+
+export const Sun = styled(sun)`
+  & path {
+    fill: ${({ color }) => color};
+  }
+`;
+
+const PlayIcon = styled.div`
+  svg {
+    width: 100%;
+    fill: ${({ color }) => color};
+  }
+`;
+
+const VideoCTA = styled.p`
+  font-family: "Montserrat", sans-serif;
+  color: ${({ color }) => color};
+  display: block;
+  margin-left: 8px;
+`;
+
+export const WatchVideo = ({ color }) => (
+  <Flex justify="center">
+    <PlayIcon color={color}>{play}</PlayIcon>
+    <VideoCTA
+      color={color}
+      // onClick={() => {
+      //   setPlaying(true);
+      // }}
+    >
+      Watch Video
+    </VideoCTA>
+  </Flex>
+);
