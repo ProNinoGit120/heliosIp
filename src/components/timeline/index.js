@@ -39,7 +39,7 @@ const Intro = styled.section`
 `;
 
 const IntroInner = styled.div`
-  padding: 120px 0 164px 0;
+  padding: 120px 0;
   text-align: center;
 `;
 
@@ -221,10 +221,13 @@ const Timeline = ({ withCTA }) => {
       <Intro>
         <IntroInner>
           <Container>
-            {withCTA ? <TimelineCTA>Version 2.0 Released</TimelineCTA> : null}
-            {/* <IntroLogo>
-              <Sun color="white" />
-            </IntroLogo> */}
+            {withCTA ? (
+              <TimelineCTA>Version 2.0 Released</TimelineCTA>
+            ) : (
+              <IntroLogo>
+                <Sun color="white" />
+              </IntroLogo>
+            )}
 
             {withCTA ? (
               <TitleLarge color="white" align="center">

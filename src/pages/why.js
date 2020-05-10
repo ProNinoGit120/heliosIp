@@ -161,12 +161,6 @@ const ArrowIcon = styled.div`
 `;
 
 const Why = () => {
-  // let video = null;
-  // useEffect(() => {
-  //   video = document.getElementsByTagName("video")[0];
-  //   console.log(video);
-  // }, []);
-
   const videoRef = useRef(null);
   const [isPlaying, setPlaying] = useState(false);
 

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SEO from "../components/seo";
 import Layout from "../components/layout";
 import Timeline from "../components/timeline";
 import { TitleLarge } from "../utils/elements";
@@ -58,6 +59,7 @@ const Platform = () => {
   const logos = logos_src.map(logo => <PartnerLogo src={logo} />);
   return (
     <Layout>
+      <SEO title="Platform" />
       <Timeline withCTA />
       <Partners>
         <MicroLogo src={microsoft_src} />

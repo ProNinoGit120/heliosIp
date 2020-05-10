@@ -52,11 +52,11 @@ export default () => (
       <NavLink to="/platform">
         <NavItem>Platform</NavItem>
       </NavLink>
-      <NavLink to="/">
+      <NavLink to="/services">
         <NavItem>Services</NavItem>
       </NavLink>
 
-      <NavLink to="/">
+      <NavLink to="/pricing">
         <NavItem>Pricing</NavItem>
       </NavLink>
       <NavLink to="/">

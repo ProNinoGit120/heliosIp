@@ -29,6 +29,13 @@ export const Flex = ({ children, align, justify, direction, responsive }) => (
   </div>
 );
 
+export const TitleXLarge = styled.h1`
+  font-size: 72px;
+  margin-bottom: 0;
+  color: ${({ color }) => color};
+  text-align: ${({ align }) => align};
+`;
+
 export const TitleLarge = styled.h1`
   color: ${({ color }) => color};
   text-align: ${({ align }) => align};
@@ -47,6 +54,7 @@ export const TitleSmall = styled.h3`
 export const TextBody = styled.p`
   text-align: ${({ align }) => align};
   color: ${({ color }) => color};
+  margin-left: ${({ ml }) => ml}px;
   margin-bottom: ${({ mb }) => mb}px;
 `;
 
