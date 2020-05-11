@@ -18,7 +18,7 @@ const HeroCard = styled.div`
   box-shadow: 30px 30px 60px #dedede, -30px -30px 60px #ffffff;
   background: ${Colors.gray};
   /* width: 100%; */
-  border-radius: ${Size.radius}px;
+  border-radius: ${Size.radius * 2}px;
   border: 1px solid white;
 `;
 
@@ -54,13 +54,12 @@ const PricingItem = styled.li`
 `;
 
 const CardButton = styled.button`
-  border: 3px solid white;
+
   outline: 0;
   cursor: pointer;
   height: 70px;
   background: ${Colors.blue};
   width: 100%;
-  border-radius: ${Size.radius}px;
   color: white;
   border-radius: ${Size.radius}px;
   display: flex;

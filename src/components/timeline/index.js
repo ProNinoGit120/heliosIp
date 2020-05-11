@@ -164,7 +164,7 @@ const TimelineItem = styled.div`
   &.active:after {
     transform: scale(1);
     border: 6px solid #fff;
-    background: ${Colors.orange};
+    background: ${Colors.orange_sun};
     -webkit-box-shadow: 0 2px 4px 0 rgba(174, 174, 186, 0.48),
       0 8px 24px 0 rgba(174, 174, 186, 0.24);
     box-shadow: 0 2px 4px 0 rgba(174, 174, 186, 0.48),

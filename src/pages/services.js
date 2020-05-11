@@ -176,7 +176,7 @@ const Services = () => {
             </ServiceTablist>
 
             <TabPanel>
-              <Flex align="center">
+              <Flex align="flex-start">
                 <Col width="50%">
                   <TitleMedium>Patent & Trademark Docketing</TitleMedium>
                   <TextBody>
@@ -195,7 +195,7 @@ const Services = () => {
               </Flex>
             </TabPanel>
             <TabPanel>
-              <Flex align="center">
+              <Flex align="flex-start">
                 <Col width="50%">
                   <TitleMedium>Information Disclosure Statements</TitleMedium>
                   <TextBody>
@@ -213,7 +213,7 @@ const Services = () => {
             </TabPanel>
 
             <TabPanel>
-              <Flex align="center">
+              <Flex align="flex-start">
                 <Col width="50%">
                   <TitleMedium>
                     Foreign Filing, EP Validations and National Stage Entry
@@ -233,7 +233,7 @@ const Services = () => {
               </Flex>
             </TabPanel>
             <TabPanel>
-              <Flex align="center">
+              <Flex align="flex-start">
                 <Col width="50%">
                   <TitleMedium>
                     Patent Annuities and Trademark Renewals
@@ -255,7 +255,7 @@ const Services = () => {
             </TabPanel>
 
             <TabPanel>
-              <Flex align="center">
+              <Flex align="flex-start">
                 <Col width="50%">
                   <TitleMedium>Reporting and Portfolio Analysis</TitleMedium>
                   <TextBody>

@@ -84,7 +84,7 @@ const DiagramIcon = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: ${Colors.orange};
+  background: ${Colors.orange_sun};
   display: flex;
   align-items: center;
   justify-content: center;
