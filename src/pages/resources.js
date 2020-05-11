@@ -34,25 +34,12 @@ const Intro = styled.section`
     position: absolute;
     top: 0;
     left: 0;
-    width: 150%;
+    width: 100%;
     height: 100%;
     background: url(${people_src}), ${Colors.gray};
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    /* transform: rotate(-9.5deg); */
-    z-index: -2;
-    transform-origin: left bottom;
-  }
-
-  &:after {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.11);
+    background-size: cover;
     /* transform: rotate(-9.5deg); */
     z-index: -2;
   }
