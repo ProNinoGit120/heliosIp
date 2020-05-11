@@ -256,71 +256,124 @@ const Timeline = ({ withCTA }) => {
                     {withCTA ? `How we integrate` : ` How it works`}
                   </TitleMedium>
                   <TextBody color="white">
-                    Our customers have been able to complete new hire onboarding
-                    in under 10 minutes.
+                    {withCTA
+                      ? `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore`
+                      : ` Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor`}
                   </TextBody>
                 </TimelineIntro>
-                <TimelineItem className="timelineItem active">
-                  <TimelineItemContent>
-                    <TimelineItemTitle>All Your Matters</TimelineItemTitle>
-                    <TimelineItemDesc>
-                      Patents, Trademarks & Designs—In a Unified System
-                    </TimelineItemDesc>
-                  </TimelineItemContent>
-                </TimelineItem>
-                <TimelineItem className="timelineItem">
-                  <TimelineItemContent>
-                    <TimelineItemTitle>DocketHub™ </TimelineItemTitle>
-                    <TimelineItemDesc>
-                      Centralized Intake for All PTO, Law Firm, and Foreign
-                      Associate Correspondences
-                    </TimelineItemDesc>
-                  </TimelineItemContent>
-                </TimelineItem>
-                <TimelineItem className="timelineItem">
-                  <TimelineItemContent>
-                    <TimelineItemTitle>DocketEngine™</TimelineItemTitle>
-                    <TimelineItemDesc>
-                      The Industry’s Most Advanced Global Docketing Rules
-                    </TimelineItemDesc>
-                  </TimelineItemContent>
-                </TimelineItem>
-                <TimelineItem className="timelineItem">
-                  <TimelineItemContent>
-                    <TimelineItemTitle>Renewal Payments</TimelineItemTitle>
-                    <TimelineItemDesc>
-                      Manage Maintenance Fees and Renewals Process with
-                      Budgeting and Workflow Automation
-                    </TimelineItemDesc>
-                  </TimelineItemContent>
-                </TimelineItem>
-                <TimelineItem className="timelineItem">
-                  <TimelineItemContent>
-                    <TimelineItemTitle>Application Filing</TimelineItemTitle>
-                    <TimelineItemDesc>
-                      U.S. and Foreign Filing Managed in Structured Families for
-                      Efficient Administration and Reporting
-                    </TimelineItemDesc>
-                  </TimelineItemContent>
-                </TimelineItem>
-                <TimelineItem className="timelineItem">
-                  <TimelineItemContent>
-                    <TimelineItemTitle>Document Management</TimelineItemTitle>
-                    <TimelineItemDesc>
-                      All Documents Stored in a Centralized Repository powered
-                      by Microsoft Office 365™
-                    </TimelineItemDesc>
-                  </TimelineItemContent>
-                </TimelineItem>
-                <TimelineItem className="timelineItem">
-                  <TimelineItemContent>
-                    <TimelineItemTitle>Business Intelligence</TimelineItemTitle>
-                    <TimelineItemDesc>
-                      Gain Deep Insights with Intuitive Reports and Beautiful
-                      Analytics
-                    </TimelineItemDesc>
-                  </TimelineItemContent>
-                </TimelineItem>
+                {withCTA ? (
+                  <>
+                    <TimelineItem className="timelineItem active">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>All Your Matters</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          Patents, Trademarks & Designs—In a Unified System
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>DocketHub™ </TimelineItemTitle>
+                        <TimelineItemDesc>
+                          Centralized Intake for All PTO, Law Firm, and Foreign
+                          Associate Correspondences
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>DocketEngine™</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          The Industry’s Most Advanced Global Docketing Rules
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>Renewal Payments</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          Manage Maintenance Fees and Renewals Process with
+                          Budgeting and Workflow Automation
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>
+                          Application Filing
+                        </TimelineItemTitle>
+                        <TimelineItemDesc>
+                          U.S. and Foreign Filing Managed in Structured Families
+                          for Efficient Administration and Reporting
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>
+                          Document Management
+                        </TimelineItemTitle>
+                        <TimelineItemDesc>
+                          All Documents Stored in a Centralized Repository
+                          powered by Microsoft Office 365™
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>
+                          Business Intelligence
+                        </TimelineItemTitle>
+                        <TimelineItemDesc>
+                          Gain Deep Insights with Intuitive Reports and
+                          Beautiful Analytics
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                  </>
+                ) : (
+                  <>
+                    <TimelineItem className="timelineItem active">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>Onboard</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          We import your portfolio, verify data, and get you
+                          setup with all your users, PTO integration, and
+                          centralized mailbox
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>Monitor</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          We monitor your dockets, filing deadlines, payment due
+                          dates and all incoming/out correspondences
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>Execute</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          We pay all annuities, file applications, coordinate
+                          foreign associates, and keep your system up to date
+                          and accurate
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>Report</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          We provide you dockets, confirmations, filing
+                          receipts, portfolio reports, and financials accessible
+                          24x7
+                        </TimelineItemDesc>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                  </>
+                )}
               </TimelineControl>
             </Col>
             <Col width="65%">

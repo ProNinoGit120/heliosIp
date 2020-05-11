@@ -170,6 +170,20 @@ export const StyledInput = styled.input`
     border-color: ${Colors.blue};
   }
 `;
+export const StyledSelect = styled.select`
+  border-radius: ${Size.radius}px;
+  width: 100%;
+  outline: 0;
+  height: 48px;
+  border: 1px solid ${Colors.border};
+  text-indent: 8px;
+
+  color: rgba(0, 0, 0, 0.55);
+
+  &:focus {
+    border-color: ${Colors.blue};
+  }
+`;
 export const StyledTextArea = styled.textarea``;
 export const StyledFormButton = styled.button``;
 

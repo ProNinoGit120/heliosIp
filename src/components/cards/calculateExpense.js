@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Size from "../../utils/size";
 import { arrow } from "../../utils/icons";
 import styled from "styled-components";
@@ -13,6 +13,9 @@ import {
   StyledInputWrapper,
   StyledLabel,
 } from "../../utils/elements";
+import useInput from "../../hooks/useInput";
+import useSelect from "../../hooks/useSelect";
+import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 
 const HeroCard = styled.div`
   box-shadow: 30px 30px 60px #dedede, -30px -30px 60px #ffffff;
@@ -29,7 +32,7 @@ const CardHeader = styled.div`
 `;
 
 const CardFooter = styled.div`
-  padding: 0 64px 32px 64px;
+  padding: 0 64px 16px 64px;
 `;
 
 const CardTitle = styled.h3`
@@ -37,12 +40,16 @@ const CardTitle = styled.h3`
   margin: 0;
 `;
 
-const CardBody = styled.div`
-  padding: 32px 64px;
-  display: flex;
+const CardBody = styled(TabPanel)`
+  padding: 32px 64px 16px 64px;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  &.react-tabs__tab-panel--selected {
+    display: flex;
+  }
 `;
 
 const PricingList = styled.ul``;
@@ -56,15 +63,32 @@ const PricingItem = styled.li`
 const CardButton = styled.button`
 
   outline: 0;
-  cursor: pointer;
+  cursor: inherit;
   height: 70px;
   background: ${Colors.blue};
   width: 100%;
-  color: white;
+  color: rgba(255,255,255,.33);
   border-radius: ${Size.radius}px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${({ disabled }) =>
+    disabled
+      ? `  & path {
+            fill: rgba(255,255,255,.33);
+          }
+          cursor: not-allowed;
+        `
+      : `color: white;
+          & path {
+            fill: white;
+          }
+          cursor: pointer;
+    `}
+
+
+
 
   /* &:hover {
     box-shadow: 10px 10px 10px white, -10, -10, 10px ${Colors.text};
@@ -77,112 +101,196 @@ const CardButton = styled.button`
   }
 `;
 
-const FormNavigation = styled.div`
-  padding-top: 12px;
+const FormNavigation = styled(TabList)`
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-const NavigationControl = styled.div`
+const NavigationControl = styled(Tab)`
   cursor: pointer;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border: 1px solid transparent;
   background: ${Colors.border};
   border-radius: 50%;
   margin-right: 4px;
 
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &.active {
+  &.react-tabs__tab--selected {
     border: 1px solid ${Colors.border};
     background: white;
+  }
+
+  &:last-child {
+    margin-right: 0;
   }
 `;
 
 export default () => {
+  const [tabIndex, setTabIndex] = useState(0);
+
+  const [firstName, firstNameInput] = useInput({
+    type: "text",
+    placeholder: "First Name",
+  });
+  const [lastName, lastNameInput] = useInput({
+    type: "text",
+    placeholder: "Last Name",
+  });
+  const [organization, organizationInput] = useInput({
+    type: "text",
+    placeholder: "Organization",
+  });
+  const [email, emailInput] = useInput({
+    type: "email",
+    placeholder: "Email Address",
+  });
+  const [phone, phoneInput] = useInput({
+    type: "text",
+    placeholder: "Phone Number",
+  });
+  const [practice, practiceSelect] = useSelect({
+    placeholder: "Practice Type",
+    options: ["Law Firm", "Corporate"],
+  });
+
   return (
-    <HeroCard>
-      <CardHeader>
-        <CardTitle>Calculate Your IP Expense</CardTitle>
-      </CardHeader>
-      <CardBody>
-        {" "}
+    <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
+      <HeroCard>
+        <CardHeader>
+          <CardTitle>Calculate Your IP Expense</CardTitle>
+        </CardHeader>
         <StyledForm>
-          <Flex justify="space-around">
-            <StyledInputWrapper padding="0 16px 0 0">
-              <StyledLabel hidden htmlFor="firstName">
-                First Name
+          <CardBody>
+            <Flex justify="space-around">
+              <StyledInputWrapper padding="0 16px 0 0">
+                <StyledLabel hidden htmlFor="firstName">
+                  First Name
+                </StyledLabel>
+                {firstNameInput}
+              </StyledInputWrapper>
+              <StyledInputWrapper padding="0 0 0 16px">
+                <StyledLabel hidden htmlFor="lastName">
+                  Last Name
+                </StyledLabel>
+                {lastNameInput}
+              </StyledInputWrapper>
+            </Flex>
+            <StyledInputWrapper padding="32px 0 0 0">
+              <StyledLabel hidden htmlFor="organization">
+                Organization
+              </StyledLabel>
+              {organizationInput}
+            </StyledInputWrapper>
+            <StyledInputWrapper padding="32px 0 0 0">
+              <StyledLabel hidden htmlFor="email">
+                Email
+              </StyledLabel>
+              {emailInput}
+            </StyledInputWrapper>
+
+            <StyledInputWrapper padding="32px 0 32px 0">
+              <StyledLabel hidden htmlFor="phone">
+                Phone
+              </StyledLabel>
+              {phoneInput}
+            </StyledInputWrapper>
+            <CardButton
+              disabled={
+                !firstName || !lastName || !organization || !email || !phone
+              }
+              type="button"
+              onClick={() => {
+                setTabIndex(1);
+              }}
+            >
+              Next{arrow}
+            </CardButton>
+          </CardBody>
+          <CardBody>
+            <Flex justify="space-around">
+              <StyledInputWrapper padding="0 16px 0 0">
+                <StyledLabel hidden htmlFor="companyType">
+                  Practice Type
+                </StyledLabel>
+                {practiceSelect}
+              </StyledInputWrapper>
+              <StyledInputWrapper padding="0 0 0 16px">
+                <StyledLabel hidden htmlFor="patentProfile">
+                  Patent Profile
+                </StyledLabel>
+                <StyledInput
+                  placeholder="Patent Profile"
+                  name="patentProfile"
+                  id="patentProfile"
+                />
+              </StyledInputWrapper>
+            </Flex>
+            <StyledInputWrapper padding="32px 0 0 0">
+              <StyledLabel hidden htmlFor="email">
+                Email
               </StyledLabel>
               <StyledInput
-                placeholder="First Name"
-                name="firstName"
-                id="firstName"
+                placeholder="Email Address"
+                name="email"
+                id="email"
               />
             </StyledInputWrapper>
-            <StyledInputWrapper padding="0 0 0 16px">
-              <StyledLabel hidden htmlFor="lastName">
-                Last Name
+            <StyledInputWrapper padding="32px 0 0 0">
+              <StyledLabel hidden htmlFor="company">
+                Company Name
               </StyledLabel>
               <StyledInput
-                placeholder="Last Name"
-                name="lastName"
-                id="lastName"
+                placeholder="Company Name"
+                name="company"
+                id="company"
               />
             </StyledInputWrapper>
-          </Flex>
-          <StyledInputWrapper padding="32px 0 0 0">
-            <StyledLabel hidden htmlFor="email">
-              Email
-            </StyledLabel>
-            <StyledInput placeholder="Email Address" name="email" id="email" />
-          </StyledInputWrapper>
-          <StyledInputWrapper padding="32px 0 0 0">
-            <StyledLabel hidden htmlFor="company">
-              Company Name
-            </StyledLabel>
-            <StyledInput
-              placeholder="Company Name"
-              name="company"
-              id="company"
-            />
-          </StyledInputWrapper>
-          <Flex justify="space-around">
-            <StyledInputWrapper padding="32px 16px 0 0">
-              <StyledLabel hidden htmlFor="companyType">
-                Company Type
-              </StyledLabel>
-              <StyledInput
-                placeholder="Company Type"
-                name="companyType"
-                id="companyType"
-              />
-            </StyledInputWrapper>
-            <StyledInputWrapper padding="32px 0 0 16px">
-              <StyledLabel hidden htmlFor="patentProfile">
-                Patent Profile
-              </StyledLabel>
-              <StyledInput
-                placeholder="Patent Profile"
-                name="patentProfile"
-                id="patentProfile"
-              />
-            </StyledInputWrapper>
-          </Flex>
+            <Flex justify="space-around">
+              <StyledInputWrapper padding="32px 16px 0 0">
+                <StyledLabel hidden htmlFor="companyType">
+                  Company Type
+                </StyledLabel>
+                <StyledInput
+                  placeholder="Company Type"
+                  name="companyType"
+                  id="companyType"
+                />
+              </StyledInputWrapper>
+              <StyledInputWrapper padding="32px 0 32px 16px">
+                <StyledLabel hidden htmlFor="patentProfile">
+                  Patent Profile
+                </StyledLabel>
+                <StyledInput
+                  placeholder="Patent Profile"
+                  name="patentProfile"
+                  id="patentProfile"
+                />
+              </StyledInputWrapper>
+            </Flex>
+            <CardButton
+              disabled={
+                !firstName || !lastName || !organization || !email || !phone
+              }
+              type="submit"
+            >
+              Submit
+            </CardButton>
+          </CardBody>
         </StyledForm>
-      </CardBody>
-      <CardFooter>
-        <Flex direction="column" align="center" justify="center">
-          <CardButton>Next{arrow}</CardButton>
-          <FormNavigation>
-            <NavigationControl className="active"></NavigationControl>
-            <NavigationControl></NavigationControl>
-          </FormNavigation>
-        </Flex>
-      </CardFooter>
-    </HeroCard>
+        <CardFooter>
+          <Flex direction="column" align="center" justify="center">
+            <FormNavigation>
+              <NavigationControl></NavigationControl>
+              <NavigationControl
+                disabled={
+                  !firstName || !lastName || !organization || !email || !phone
+                }
+              ></NavigationControl>
+            </FormNavigation>
+          </Flex>
+        </CardFooter>
+      </HeroCard>
+    </Tabs>
   );
 };
