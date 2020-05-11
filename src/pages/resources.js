@@ -18,7 +18,7 @@ import {
 import { checkmark, plus, people, filing, money, ids } from "../utils/icons";
 import Ready from "../components/ready";
 
-import people_src from "../images/resource-people.jpg";
+import people_src from "../images/resources-people.png";
 import paralegals_src from "../images/resources-paralegals.png";
 import tech_src from "../images/resources-tech.png";
 import op_src from "../images/resources-operations.png";
@@ -37,6 +37,8 @@ const Intro = styled.section`
     width: 150%;
     height: 100%;
     background: url(${people_src}), ${Colors.gray};
+    background-repeat: no-repeat;
+    background-size: contain;
     /* transform: rotate(-9.5deg); */
     z-index: -2;
     transform-origin: left bottom;
