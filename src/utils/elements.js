@@ -39,6 +39,7 @@ export const TitleXLarge = styled.h1`
 export const TitleLarge = styled.h1`
   color: ${({ color }) => color};
   text-align: ${({ align }) => align};
+  margin-bottom: ${({ mb }) => mb}px;
 `;
 
 export const TitleMedium = styled.h2`
@@ -49,6 +50,7 @@ export const TitleMedium = styled.h2`
 export const TitleSmall = styled.h3`
   color: ${({ color }) => color};
   text-align: ${({ align }) => align};
+  margin-bottom: ${({ mb }) => mb}px;
 `;
 
 export const TextBody = styled.p`

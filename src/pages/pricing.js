@@ -13,12 +13,14 @@ import {
   TitleMedium,
   TextBody,
   Sun,
+  TitleSmall,
 } from "../utils/elements";
-import { checkmark, plus } from "../utils/icons";
+import { checkmark, plus, filing, money, ids } from "../utils/icons";
+import Ready from "../components/ready";
 
 const Intro = styled.section`
   overflow-x: hidden;
-  padding-bottom: 370px;
+  padding-bottom: 400px;
   position: relative;
   z-index: -2;
 
@@ -65,12 +67,12 @@ const IntroLogo = styled.div`
 `;
 
 const PricingCardsWrapper = styled.div`
-  margin-top: -370px;
+  margin-top: -420px;
 `;
 
 const PricingCard = styled.div`
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2),
-    -10px -10px 30px rgba(0, 0, 0, 0.11);
+    -10px -10px 30px rgba(0, 0, 0, 0.05);
   background: white;
   /* width: 100%; */
   border-radius: ${Size.radius * 2}px;
@@ -79,7 +81,9 @@ const PricingCard = styled.div`
 
 const CardHeader = styled.div`
   padding: 32px;
-
+  background: ${Colors.gray};
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   border-bottom: 1px solid ${Colors.border};
 `;
 
@@ -102,7 +106,7 @@ const CardBody = styled.div`
 
 const CardSubHeader = styled.div`
   padding: 32px 64px;
-  border-bottom: 1px solid ${Colors.border};
+  border-bottom: 1px solid ${Colors.gray};
 `;
 
 const CardButton = styled.button`
@@ -141,6 +145,10 @@ const PricingItem = styled.li`
   align-items: center;
   margin-bottom: 24px;
 
+  &.orange {
+    color: ${Colors.orange};
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -156,6 +164,52 @@ const PricingItemIcon = styled.div`
   border: 1px solid ${Colors.border};
   svg {
     width: 24px;
+  }
+`;
+
+const SupportWrapper = styled.section`
+  padding: 164px 0;
+`;
+
+const SupportIntro = styled.div`
+  padding-left: 32px;
+`;
+
+const SupportCards = styled.div``;
+
+const SupportCard = styled.div`
+  border: 1px solid ${Colors.gray};
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 41px 41px 82px #d9d9d9, -41px -41px 82px #ffffff;
+`;
+
+const SupportCardTitle = styled.div``;
+
+const SupportInfo = styled.div`
+  border: 1px solid ${Colors.text};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  font-weight: bold;
+`;
+
+const SupportIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: ${Colors.orange_sun};
+  margin-bottom: 16px;
+  & svg {
+    width: 100%;
   }
 `;
 
@@ -228,41 +282,49 @@ const Pricing = () => {
             <Col width="50%">
               <PricingCard>
                 <CardHeader>
-                  <CardTitle>Value Portfolio</CardTitle>
+                  <CardTitle>Global Portfolio</CardTitle>
                 </CardHeader>
 
                 <CardSubHeader>
                   <Flex direction="column" align="center">
                     <Flex align="center" justify="center">
-                      <TitleXLarge>$1</TitleXLarge>
+                      <TitleXLarge>$2</TitleXLarge>
                       <TextBody mb={-8} ml={8}>
                         Per Month <br /> Per Pending Record
                       </TextBody>
                     </Flex>
-                    <TextBody>+ $500/Month Platform Fee</TextBody>
+                    <TextBody>+ $1500/Month Platform Fee</TextBody>
                   </Flex>
                 </CardSubHeader>
                 <CardBody>
                   <PricingList>
-                    <PricingItem>
+                    <PricingItem className="orange">
                       <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      HeliosComplete™ Portal
+                      Includes All Value Features
                     </PricingItem>
                     <PricingItem>
-                      <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      Patents & Trademarks Modules
+                      <PricingItemIcon>{plus}</PricingItemIcon>
+                      HeliosComplete™ Enterprise
                     </PricingItem>
                     <PricingItem>
-                      <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      Core Docketing
+                      <PricingItemIcon>{plus}</PricingItemIcon>
+                      Designs, Utility Models Modules
                     </PricingItem>
                     <PricingItem>
-                      <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      U.S. Annuities & Renewals
+                      <PricingItemIcon>{plus}</PricingItemIcon>
+                      E-PTO Data Integration
                     </PricingItem>
                     <PricingItem>
-                      <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      Monitoring & Reminders
+                      <PricingItemIcon>{plus}</PricingItemIcon>
+                      Global Docketing
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{plus}</PricingItemIcon>
+                      Reference Citations Management
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{plus}</PricingItemIcon>
+                      Portfolio Dashboards
                     </PricingItem>
                   </PricingList>
                 </CardBody>
@@ -274,6 +336,69 @@ const Pricing = () => {
           </Flex>
         </Container>
       </PricingCardsWrapper>
+      <SupportWrapper>
+        <Container>
+          <SupportIntro>
+            <TitleLarge mb={8}>Added Support Services</TitleLarge>
+            <TextBody mb={64}>
+              Enhance any base plan with these add‑ons.
+            </TextBody>
+          </SupportIntro>
+          <SupportCards>
+            <Flex>
+              <Col width={`calc(100% / 3)`}>
+                <SupportCard>
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{filing}</SupportIcon>
+                    <SupportInfo>i</SupportInfo>
+                  </Flex>
+                  <TitleSmall mb={12}>Filings</TitleSmall>
+                  <TextBody mb={16}>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut
+                  </TextBody>
+                  <TextBody color={`rgba(0,0,0,.33)`}>
+                    Starting at <strong>$75</strong> / Filings
+                  </TextBody>
+                </SupportCard>
+              </Col>
+              <Col width={`calc(100% / 3)`}>
+                <SupportCard>
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{money}</SupportIcon>
+                    <SupportInfo>i</SupportInfo>
+                  </Flex>
+                  <TitleSmall mb={12}>Renewals</TitleSmall>
+                  <TextBody mb={16}>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut
+                  </TextBody>
+                  <TextBody color={`rgba(0,0,0,.33)`}>
+                    Starting at <strong>$75</strong> / Filings
+                  </TextBody>
+                </SupportCard>
+              </Col>
+              <Col width={`calc(100% / 3)`}>
+                <SupportCard>
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{ids}</SupportIcon>
+                    <SupportInfo>i</SupportInfo>
+                  </Flex>
+                  <TitleSmall mb={12}>IDS Filing</TitleSmall>
+                  <TextBody mb={16}>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut
+                  </TextBody>
+                  <TextBody color={`rgba(0,0,0,.33)`}>
+                    Starting at <strong>$75</strong> / Filings
+                  </TextBody>
+                </SupportCard>
+              </Col>
+            </Flex>
+          </SupportCards>
+        </Container>
+      </SupportWrapper>
+      <Ready />
     </Layout>
   );
 };
