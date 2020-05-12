@@ -177,8 +177,9 @@ export const StyledSelect = styled.select`
   height: 48px;
   border: 1px solid ${Colors.border};
   text-indent: 8px;
-
-  color: rgba(0, 0, 0, 0.55);
+  background: white;
+  color: ${({ selected }) =>
+    selected ? `${Colors.title}` : `rgba(0, 0, 0, 0.44)`};
 
   &:focus {
     border-color: ${Colors.blue};

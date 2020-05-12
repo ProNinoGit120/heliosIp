@@ -5,6 +5,9 @@ import { StyledInput } from "../utils/elements";
 
 const useInput = ({ type, placeholder }) => {
   const [value, setValue] = useState("");
+  function clear() {
+    setValue("");
+  }
   const input = (
     <StyledInput
       value={value}
@@ -15,7 +18,7 @@ const useInput = ({ type, placeholder }) => {
       placeholder={placeholder}
     />
   );
-  return [value, input];
+  return [value, input, clear];
 };
 
 export default useInput;

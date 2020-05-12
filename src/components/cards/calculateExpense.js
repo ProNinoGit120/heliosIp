@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Size from "../../utils/size";
 import { arrow } from "../../utils/icons";
 import styled from "styled-components";
 import Colors from "../../utils/colors";
+
 import {
   Container,
   Col,
@@ -16,6 +18,7 @@ import {
 import useInput from "../../hooks/useInput";
 import useSelect from "../../hooks/useSelect";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
+import encode from "../../utils/dataEncoder";
 
 const HeroCard = styled.div`
   box-shadow: 30px 30px 60px #dedede, -30px -30px 60px #ffffff;
@@ -128,31 +131,95 @@ const NavigationControl = styled(Tab)`
 
 export default () => {
   const [tabIndex, setTabIndex] = useState(0);
-
-  const [firstName, firstNameInput] = useInput({
+  const [firstName, firstNameInput, clearFirstName] = useInput({
     type: "text",
     placeholder: "First Name",
   });
-  const [lastName, lastNameInput] = useInput({
+  const [lastName, lastNameInput, clearLastName] = useInput({
     type: "text",
     placeholder: "Last Name",
   });
-  const [organization, organizationInput] = useInput({
+  const [organization, organizationInput, clearOrganization] = useInput({
     type: "text",
     placeholder: "Organization",
   });
-  const [email, emailInput] = useInput({
+  const [email, emailInput, clearEmail] = useInput({
     type: "email",
     placeholder: "Email Address",
   });
-  const [phone, phoneInput] = useInput({
-    type: "text",
+  const [phone, phoneInput, clearPhone] = useInput({
+    type: "number",
     placeholder: "Phone Number",
   });
-  const [practice, practiceSelect] = useSelect({
+  const [practice, practiceSelect, clearPractice] = useSelect({
     placeholder: "Practice Type",
     options: ["Law Firm", "Corporate"],
   });
+  const [patents, patentsInput, clearPatents] = useInput({
+    type: "number",
+    placeholder: "Number of Pending Records",
+  });
+  const [team, teamInput, clearTeam] = useInput({
+    type: "number",
+    placeholder: "Number of Users",
+  });
+  // const [pending, pendingSelect] = useSelect({
+  //   placeholder: "Number of Pending Records",
+  //   options: ["Law Firm", "Corporate"],
+
+  // });
+  const [system, systemSelect, clearSystem] = useSelect({
+    placeholder: "Current Docketing System",
+    options: [
+      "AltLegal",
+      "AppColl",
+      "Anaqua",
+      "CPA Global",
+      "CPI",
+      "Dennemeyer",
+      "IPfolio",
+      "Other",
+    ],
+  });
+
+  const handleSubmit = () => {
+    const formData = {
+      firstName: firstName,
+      lastName: lastName,
+      organization: organization,
+      email: email,
+      phone: phone,
+      practice: practice,
+      patents: patents,
+      team: team,
+      system: system,
+    };
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "calculateExpense", formData }),
+    })
+      .then(() => {
+        alert("Success!");
+        setTabIndex(0);
+      })
+      .catch(error => alert(error));
+
+    clearFirstName();
+    clearLastName();
+    clearOrganization();
+    clearEmail();
+    clearPhone();
+    clearPractice();
+    clearPatents();
+    clearTeam();
+    clearSystem();
+  };
+
+  // useEffect(() => {
+
+  // }, []);
 
   return (
     <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
@@ -160,7 +227,12 @@ export default () => {
         <CardHeader>
           <CardTitle>Calculate Your IP Expense</CardTitle>
         </CardHeader>
-        <StyledForm>
+        <StyledForm
+          onSubmit={e => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
           <CardBody>
             <Flex justify="space-around">
               <StyledInputWrapper padding="0 16px 0 0">
@@ -208,66 +280,32 @@ export default () => {
             </CardButton>
           </CardBody>
           <CardBody>
-            <Flex justify="space-around">
-              <StyledInputWrapper padding="0 16px 0 0">
-                <StyledLabel hidden htmlFor="companyType">
-                  Practice Type
-                </StyledLabel>
-                {practiceSelect}
-              </StyledInputWrapper>
-              <StyledInputWrapper padding="0 0 0 16px">
-                <StyledLabel hidden htmlFor="patentProfile">
-                  Patent Profile
-                </StyledLabel>
-                <StyledInput
-                  placeholder="Patent Profile"
-                  name="patentProfile"
-                  id="patentProfile"
-                />
-              </StyledInputWrapper>
-            </Flex>
+            <StyledInputWrapper padding="0 0 16px 0">
+              <StyledLabel hidden htmlFor="companyType">
+                Practice Type
+              </StyledLabel>
+              {practiceSelect}
+            </StyledInputWrapper>
+            <StyledInputWrapper padding="16px 0 0 0">
+              <StyledLabel hidden htmlFor="patentProfile">
+                Team Members
+              </StyledLabel>
+              {teamInput}
+            </StyledInputWrapper>
+
             <StyledInputWrapper padding="32px 0 0 0">
               <StyledLabel hidden htmlFor="email">
-                Email
+                Number of Pending Records
               </StyledLabel>
-              <StyledInput
-                placeholder="Email Address"
-                name="email"
-                id="email"
-              />
+              {patentsInput}
             </StyledInputWrapper>
-            <StyledInputWrapper padding="32px 0 0 0">
+            <StyledInputWrapper padding="32px 0 32px 0">
               <StyledLabel hidden htmlFor="company">
-                Company Name
+                Current Docketing System
               </StyledLabel>
-              <StyledInput
-                placeholder="Company Name"
-                name="company"
-                id="company"
-              />
+              {systemSelect}
             </StyledInputWrapper>
-            <Flex justify="space-around">
-              <StyledInputWrapper padding="32px 16px 0 0">
-                <StyledLabel hidden htmlFor="companyType">
-                  Company Type
-                </StyledLabel>
-                <StyledInput
-                  placeholder="Company Type"
-                  name="companyType"
-                  id="companyType"
-                />
-              </StyledInputWrapper>
-              <StyledInputWrapper padding="32px 0 32px 16px">
-                <StyledLabel hidden htmlFor="patentProfile">
-                  Patent Profile
-                </StyledLabel>
-                <StyledInput
-                  placeholder="Patent Profile"
-                  name="patentProfile"
-                  id="patentProfile"
-                />
-              </StyledInputWrapper>
-            </Flex>
+
             <CardButton
               disabled={
                 !firstName || !lastName || !organization || !email || !phone
