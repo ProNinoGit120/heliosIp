@@ -159,23 +159,19 @@ export default () => {
   const [practice, practiceSelect, clearPractice] = useSelect({
     placeholder: "Practice Type",
     options: ["Law Firm", "Corporate"],
-    id: "practiceType",
+    id: "practice-type",
   });
   const [patents, patentsInput, clearPatents] = useInput({
     type: "number",
     placeholder: "Number of Pending Records",
-    id: "patentRecords",
+    id: "patent-records",
   });
   const [team, teamInput, clearTeam] = useInput({
     type: "number",
     placeholder: "Number of Users",
-    id: "teamMembers",
+    id: "team-members",
   });
-  // const [pending, pendingSelect] = useSelect({
-  //   placeholder: "Number of Pending Records",
-  //   options: ["Law Firm", "Corporate"],
 
-  // });
   const [system, systemSelect, clearSystem] = useSelect({
     placeholder: "Current Docketing System",
     options: [
@@ -188,7 +184,7 @@ export default () => {
       "IPfolio",
       "Other",
     ],
-    id: "system",
+    id: "system-type",
   });
 
   const { honeypot, honeypotInput } = useInput({
@@ -211,7 +207,7 @@ export default () => {
       system: system,
     };
 
-    //console.log(encode({ "form-name": "calculateExpense", ...formData }));
+    console.log(encode({ "form-name": "calculateExpense", ...formData }));
 
     fetch("/", {
       method: "POST",

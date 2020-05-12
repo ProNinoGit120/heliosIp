@@ -11,12 +11,12 @@ const useInput = ({ type, placeholder, id }) => {
   const input = (
     <StyledInput
       id={id}
+      name={id}
       value={value}
       onChange={e => {
         setValue(e.target.value);
       }}
       type={type}
-      name={id}
       placeholder={placeholder}
     />
   );
