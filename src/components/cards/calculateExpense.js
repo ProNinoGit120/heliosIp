@@ -237,7 +237,11 @@ export default () => {
   // }, []);
 
   return (
-    <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
+    <Tabs
+      selectedIndex={tabIndex}
+      onSelect={index => setTabIndex(index)}
+      forceRenderTabPanel
+    >
       <HeroCard>
         <CardHeader>
           <CardTitle>Calculate Your IP Expense</CardTitle>
