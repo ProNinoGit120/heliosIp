@@ -290,9 +290,9 @@ export default () => {
                 {phoneInput}
               </StyledInputWrapper>
               <CardButton
-                disabled={
-                  !firstName || !lastName || !organization || !email || !phone
-                }
+                // disabled={
+                //   !firstName || !lastName || !organization || !email || !phone
+                // }
                 type="button"
                 onClick={() => {
                   setTabIndex(1);
