@@ -331,11 +331,7 @@ export default () => {
           <Flex direction="column" align="center" justify="center">
             <FormNavigation>
               <NavigationControl></NavigationControl>
-              <NavigationControl
-                disabled={
-                  !firstName || !lastName || !organization || !email || !phone
-                }
-              ></NavigationControl>
+              <NavigationControl></NavigationControl>
             </FormNavigation>
           </Flex>
         </CardFooter>
