@@ -244,6 +244,7 @@ export default () => {
         <input type="number" name="patentRecords" />
         <select name="system"></select>
       </form> */}
+
       <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
         <HeroCard>
           <CardHeader>
@@ -328,9 +329,7 @@ export default () => {
               </StyledInputWrapper>
 
               <CardButton
-                disabled={
-                  !firstName || !lastName || !organization || !email || !phone
-                }
+                disabled={!practice || !patents || !team || !system}
                 type="submit"
               >
                 Submit
