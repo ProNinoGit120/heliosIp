@@ -24,9 +24,11 @@ const useInput = ({ placeholder, options, id }) => {
       }}
       selected={isSelected}
     >
-      <option selected>{placeholder}</option>
+      <option defaultValue={placeholder}>{placeholder}</option>
       {options.map(option => (
-        <option value={option}>{option}</option>
+        <option value={option} key={option}>
+          {option}
+        </option>
       ))}
     </StyledSelect>
   );

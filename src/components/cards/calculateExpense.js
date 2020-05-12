@@ -191,7 +191,7 @@ export default () => {
     id: "system",
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
     const formData = {
       firstName: firstName,
       lastName: lastName,
@@ -224,6 +224,8 @@ export default () => {
     clearPatents();
     clearTeam();
     clearSystem();
+
+    e.preventDefault();
   };
 
   // useEffect(() => {
@@ -232,7 +234,7 @@ export default () => {
 
   return (
     <>
-      <form name="calculateExpense" netlify netlify-honeypot="bot-field" hidden>
+      {/* <form name="calculateExpense" netlify netlify-honeypot="bot-field" hidden>
         <input type="text" name="firstName" />
         <input type="text" name="lastName" />
         <input type="email" name="email" />
@@ -241,7 +243,7 @@ export default () => {
         <input type="number" name="teamMembers" />
         <input type="number" name="patentRecords" />
         <select name="system"></select>
-      </form>
+      </form> */}
       <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
         <HeroCard>
           <CardHeader>
@@ -249,8 +251,7 @@ export default () => {
           </CardHeader>
           <StyledForm
             onSubmit={e => {
-              e.preventDefault();
-              handleSubmit();
+              handleSubmit(e);
             }}
           >
             <CardBody>
