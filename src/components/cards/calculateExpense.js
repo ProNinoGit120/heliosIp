@@ -301,26 +301,26 @@ export default () => {
           </CardBody>
           <CardBody>
             <StyledInputWrapper padding="0 0 16px 0">
-              <StyledLabel hidden htmlFor="practiceType">
+              <StyledLabel hidden htmlFor="practice-type">
                 Practice Type
               </StyledLabel>
               {practiceSelect}
             </StyledInputWrapper>
             <StyledInputWrapper padding="16px 0 0 0">
-              <StyledLabel hidden htmlFor="teamMembers">
+              <StyledLabel hidden htmlFor="team-members">
                 Team Members
               </StyledLabel>
               {teamInput}
             </StyledInputWrapper>
 
             <StyledInputWrapper padding="32px 0 0 0">
-              <StyledLabel hidden htmlFor="patentRecords">
+              <StyledLabel hidden htmlFor="patent-records">
                 Number of Pending Records
               </StyledLabel>
               {patentsInput}
             </StyledInputWrapper>
             <StyledInputWrapper padding="32px 0 32px 0">
-              <StyledLabel hidden htmlFor="system">
+              <StyledLabel hidden htmlFor="system-type">
                 Current Docketing System
               </StyledLabel>
               {systemSelect}
