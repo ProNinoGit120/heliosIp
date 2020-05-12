@@ -159,17 +159,17 @@ export default () => {
   const [practice, practiceSelect, clearPractice] = useSelect({
     placeholder: "Practice Type",
     options: ["Law Firm", "Corporate"],
-    id: "practice-type",
+    id: "practice",
   });
   const [patents, patentsInput, clearPatents] = useInput({
     type: "number",
     placeholder: "Number of Pending Records",
-    id: "patent-records",
+    id: "patents",
   });
   const [team, teamInput, clearTeam] = useInput({
     type: "number",
     placeholder: "Number of Users",
-    id: "team-members",
+    id: "team",
   });
 
   const [system, systemSelect, clearSystem] = useSelect({
@@ -184,7 +184,7 @@ export default () => {
       "IPfolio",
       "Other",
     ],
-    id: "system-type",
+    id: "system",
   });
 
   const { honeypot, honeypotInput } = useInput({
