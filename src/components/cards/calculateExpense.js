@@ -192,6 +192,7 @@ export default () => {
   });
 
   const handleSubmit = e => {
+    e.preventDefault();
     const formData = {
       firstName: firstName,
       lastName: lastName,
@@ -227,8 +228,6 @@ export default () => {
     clearPatents();
     clearTeam();
     clearSystem();
-
-    e.preventDefault();
   };
 
   // useEffect(() => {
@@ -242,10 +241,20 @@ export default () => {
           <CardTitle>Calculate Your IP Expense</CardTitle>
         </CardHeader>
         <StyledForm
+          name="calculateExpense"
+          method="post"
           onSubmit={e => {
             handleSubmit(e);
           }}
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
         >
+          <input type="hidden" name="form-name" value="calculateExpense" />
+          <p hidden>
+            <label>
+              Don’t fill this out: <input name="bot-field" />
+            </label>
+          </p>
           <CardBody>
             <Flex justify="space-around">
               <StyledInputWrapper padding="0 16px 0 0">
@@ -331,7 +340,11 @@ export default () => {
           <Flex direction="column" align="center" justify="center">
             <FormNavigation>
               <NavigationControl></NavigationControl>
-              <NavigationControl></NavigationControl>
+              <NavigationControl
+                disabled={
+                  !firstName || !lastName || !organization || !email || !phone
+                }
+              ></NavigationControl>
             </FormNavigation>
           </Flex>
         </CardFooter>
