@@ -191,6 +191,12 @@ export default () => {
     id: "system",
   });
 
+  const { honeypot, honeypotInput } = useInput({
+    placeholder: "First Name",
+    type: "text",
+    id: "bot-field",
+  });
+
   const handleSubmit = e => {
     e.preventDefault();
     const formData = {
@@ -250,11 +256,7 @@ export default () => {
           data-netlify-honeypot="bot-field"
         >
           <input type="hidden" name="form-name" value="calculateExpense" />
-          <p hidden>
-            <label>
-              Don’t fill this out: <input name="bot-field" />
-            </label>
-          </p>
+          <p hidden>{honeypotInput}</p>
           <CardBody>
             <Flex justify="space-around">
               <StyledInputWrapper padding="0 16px 0 0">

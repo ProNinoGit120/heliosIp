@@ -16,6 +16,7 @@ const useInput = ({ type, placeholder, id }) => {
         setValue(e.target.value);
       }}
       type={type}
+      name={id}
       placeholder={placeholder}
     />
   );

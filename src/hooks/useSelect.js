@@ -13,6 +13,7 @@ const useInput = ({ placeholder, options, id }) => {
   const input = (
     <StyledSelect
       id={id}
+      name={id}
       value={value}
       onChange={e => {
         setValue(e.target.value);
