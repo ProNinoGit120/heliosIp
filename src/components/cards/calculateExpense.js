@@ -205,12 +205,12 @@ export default () => {
       system: system,
     };
 
-    console.log(formData);
+    //console.log(encode({ "form-name": "calculateExpense", ...formData }));
 
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "calculateExpense", formData }),
+      body: encode({ "form-name": "calculateExpense", ...formData }),
     })
       .then(res => {
         alert("Success!");
