@@ -134,34 +134,42 @@ export default () => {
   const [firstName, firstNameInput, clearFirstName] = useInput({
     type: "text",
     placeholder: "First Name",
+    id: "firstName",
   });
   const [lastName, lastNameInput, clearLastName] = useInput({
     type: "text",
     placeholder: "Last Name",
+    id: "lastName",
   });
   const [organization, organizationInput, clearOrganization] = useInput({
     type: "text",
     placeholder: "Organization",
+    id: "organization",
   });
   const [email, emailInput, clearEmail] = useInput({
     type: "email",
     placeholder: "Email Address",
+    id: "email",
   });
   const [phone, phoneInput, clearPhone] = useInput({
     type: "number",
     placeholder: "Phone Number",
+    id: "phone",
   });
   const [practice, practiceSelect, clearPractice] = useSelect({
     placeholder: "Practice Type",
     options: ["Law Firm", "Corporate"],
+    id: "practiceType",
   });
   const [patents, patentsInput, clearPatents] = useInput({
     type: "number",
     placeholder: "Number of Pending Records",
+    id: "patentRecords",
   });
   const [team, teamInput, clearTeam] = useInput({
     type: "number",
     placeholder: "Number of Users",
+    id: "teamMembers",
   });
   // const [pending, pendingSelect] = useSelect({
   //   placeholder: "Number of Pending Records",
@@ -180,6 +188,7 @@ export default () => {
       "IPfolio",
       "Other",
     ],
+    id: "system",
   });
 
   const handleSubmit = () => {
@@ -222,113 +231,125 @@ export default () => {
   // }, []);
 
   return (
-    <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
-      <HeroCard>
-        <CardHeader>
-          <CardTitle>Calculate Your IP Expense</CardTitle>
-        </CardHeader>
-        <StyledForm
-          onSubmit={e => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-        >
-          <CardBody>
-            <Flex justify="space-around">
-              <StyledInputWrapper padding="0 16px 0 0">
-                <StyledLabel hidden htmlFor="firstName">
-                  First Name
+    <>
+      <form name="calculateExpense" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="firstName" />
+        <input type="text" name="lastName" />
+        <input type="email" name="email" />
+        <input type="number" name="phone" />
+        <select name="practiceType"></select>
+        <input type="number" name="teamMembers" />
+        <input type="number" name="patentRecords" />
+        <select name="system"></select>
+      </form>
+      <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
+        <HeroCard>
+          <CardHeader>
+            <CardTitle>Calculate Your IP Expense</CardTitle>
+          </CardHeader>
+          <StyledForm
+            onSubmit={e => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+          >
+            <CardBody>
+              <Flex justify="space-around">
+                <StyledInputWrapper padding="0 16px 0 0">
+                  <StyledLabel hidden htmlFor="firstName">
+                    First Name
+                  </StyledLabel>
+                  {firstNameInput}
+                </StyledInputWrapper>
+                <StyledInputWrapper padding="0 0 0 16px">
+                  <StyledLabel hidden htmlFor="lastName">
+                    Last Name
+                  </StyledLabel>
+                  {lastNameInput}
+                </StyledInputWrapper>
+              </Flex>
+              <StyledInputWrapper padding="32px 0 0 0">
+                <StyledLabel hidden htmlFor="organization">
+                  Organization
                 </StyledLabel>
-                {firstNameInput}
+                {organizationInput}
               </StyledInputWrapper>
-              <StyledInputWrapper padding="0 0 0 16px">
-                <StyledLabel hidden htmlFor="lastName">
-                  Last Name
+              <StyledInputWrapper padding="32px 0 0 0">
+                <StyledLabel hidden htmlFor="email">
+                  Email
                 </StyledLabel>
-                {lastNameInput}
+                {emailInput}
               </StyledInputWrapper>
-            </Flex>
-            <StyledInputWrapper padding="32px 0 0 0">
-              <StyledLabel hidden htmlFor="organization">
-                Organization
-              </StyledLabel>
-              {organizationInput}
-            </StyledInputWrapper>
-            <StyledInputWrapper padding="32px 0 0 0">
-              <StyledLabel hidden htmlFor="email">
-                Email
-              </StyledLabel>
-              {emailInput}
-            </StyledInputWrapper>
 
-            <StyledInputWrapper padding="32px 0 32px 0">
-              <StyledLabel hidden htmlFor="phone">
-                Phone
-              </StyledLabel>
-              {phoneInput}
-            </StyledInputWrapper>
-            <CardButton
-              disabled={
-                !firstName || !lastName || !organization || !email || !phone
-              }
-              type="button"
-              onClick={() => {
-                setTabIndex(1);
-              }}
-            >
-              Next{arrow}
-            </CardButton>
-          </CardBody>
-          <CardBody>
-            <StyledInputWrapper padding="0 0 16px 0">
-              <StyledLabel hidden htmlFor="companyType">
-                Practice Type
-              </StyledLabel>
-              {practiceSelect}
-            </StyledInputWrapper>
-            <StyledInputWrapper padding="16px 0 0 0">
-              <StyledLabel hidden htmlFor="patentProfile">
-                Team Members
-              </StyledLabel>
-              {teamInput}
-            </StyledInputWrapper>
-
-            <StyledInputWrapper padding="32px 0 0 0">
-              <StyledLabel hidden htmlFor="email">
-                Number of Pending Records
-              </StyledLabel>
-              {patentsInput}
-            </StyledInputWrapper>
-            <StyledInputWrapper padding="32px 0 32px 0">
-              <StyledLabel hidden htmlFor="company">
-                Current Docketing System
-              </StyledLabel>
-              {systemSelect}
-            </StyledInputWrapper>
-
-            <CardButton
-              disabled={
-                !firstName || !lastName || !organization || !email || !phone
-              }
-              type="submit"
-            >
-              Submit
-            </CardButton>
-          </CardBody>
-        </StyledForm>
-        <CardFooter>
-          <Flex direction="column" align="center" justify="center">
-            <FormNavigation>
-              <NavigationControl></NavigationControl>
-              <NavigationControl
+              <StyledInputWrapper padding="32px 0 32px 0">
+                <StyledLabel hidden htmlFor="phone">
+                  Phone
+                </StyledLabel>
+                {phoneInput}
+              </StyledInputWrapper>
+              <CardButton
                 disabled={
                   !firstName || !lastName || !organization || !email || !phone
                 }
-              ></NavigationControl>
-            </FormNavigation>
-          </Flex>
-        </CardFooter>
-      </HeroCard>
-    </Tabs>
+                type="button"
+                onClick={() => {
+                  setTabIndex(1);
+                }}
+              >
+                Next{arrow}
+              </CardButton>
+            </CardBody>
+            <CardBody>
+              <StyledInputWrapper padding="0 0 16px 0">
+                <StyledLabel hidden htmlFor="practiceType">
+                  Practice Type
+                </StyledLabel>
+                {practiceSelect}
+              </StyledInputWrapper>
+              <StyledInputWrapper padding="16px 0 0 0">
+                <StyledLabel hidden htmlFor="teamMembers">
+                  Team Members
+                </StyledLabel>
+                {teamInput}
+              </StyledInputWrapper>
+
+              <StyledInputWrapper padding="32px 0 0 0">
+                <StyledLabel hidden htmlFor="patentRecords">
+                  Number of Pending Records
+                </StyledLabel>
+                {patentsInput}
+              </StyledInputWrapper>
+              <StyledInputWrapper padding="32px 0 32px 0">
+                <StyledLabel hidden htmlFor="system">
+                  Current Docketing System
+                </StyledLabel>
+                {systemSelect}
+              </StyledInputWrapper>
+
+              <CardButton
+                disabled={
+                  !firstName || !lastName || !organization || !email || !phone
+                }
+                type="submit"
+              >
+                Submit
+              </CardButton>
+            </CardBody>
+          </StyledForm>
+          <CardFooter>
+            <Flex direction="column" align="center" justify="center">
+              <FormNavigation>
+                <NavigationControl></NavigationControl>
+                <NavigationControl
+                  disabled={
+                    !firstName || !lastName || !organization || !email || !phone
+                  }
+                ></NavigationControl>
+              </FormNavigation>
+            </Flex>
+          </CardFooter>
+        </HeroCard>
+      </Tabs>
+    </>
   );
 };

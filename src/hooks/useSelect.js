@@ -3,7 +3,7 @@ import styled from "styled-components";
 // import { Colors } from "../utils";
 import { StyledSelect } from "../utils/elements";
 
-const useInput = ({ placeholder, options }) => {
+const useInput = ({ placeholder, options, id }) => {
   const [value, setValue] = useState("");
   const [isSelected, setSelected] = useState(false);
   function clear() {
@@ -12,6 +12,7 @@ const useInput = ({ placeholder, options }) => {
   }
   const input = (
     <StyledSelect
+      id={id}
       value={value}
       onChange={e => {
         setValue(e.target.value);
