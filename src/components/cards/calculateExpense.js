@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Size from "../../utils/size";
-import { arrow } from "../../utils/icons";
+import { arrow, checkmark } from "../../utils/icons";
 import styled from "styled-components";
 import Colors from "../../utils/colors";
 
@@ -26,6 +26,7 @@ const HeroCard = styled.div`
   /* width: 100%; */
   border-radius: ${Size.radius * 2}px;
   border: 1px solid white;
+  position: relative;
 `;
 
 const CardHeader = styled.div`
@@ -129,8 +130,27 @@ const NavigationControl = styled(Tab)`
   }
 `;
 
+const SuccessIcon = styled.div`
+  border-radius: 50%;
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  width: 48px;
+  height: 48px;
+  background: ${Colors.blue};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & path {
+    stroke: white;
+  }
+`;
+
 export default () => {
   const [tabIndex, setTabIndex] = useState(0);
+  const [formSuccess, setFormSuccess] = useState(false);
+  const [formError, setFormError] = useState(false);
   const [firstName, firstNameInput, clearFirstName] = useInput({
     type: "text",
     placeholder: "First Name",
@@ -215,11 +235,12 @@ export default () => {
       body: encode({ "form-name": "calculateExpense", ...formData }),
     })
       .then(res => {
-        alert("Success!");
-        console.log(res);
         setTabIndex(0);
+        setFormSuccess(true);
       })
-      .catch(error => alert(error));
+      .catch(error => {
+        setFormError(true);
+      });
 
     clearFirstName();
     clearLastName();
@@ -243,8 +264,14 @@ export default () => {
       forceRenderTabPanel
     >
       <HeroCard>
+        {formSuccess ? <SuccessIcon>{checkmark}</SuccessIcon> : null}
+
         <CardHeader>
-          <CardTitle>Calculate Your IP Expense</CardTitle>
+          <CardTitle>
+            {formSuccess
+              ? `Sucess, Check Your Email`
+              : `Calculate Your IP Expense`}
+          </CardTitle>
         </CardHeader>
         <StyledForm
           name="calculateExpense"
