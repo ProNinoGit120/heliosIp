@@ -67,10 +67,14 @@ export const StyledSection = styled.section`
 const StyledCol = styled.div`
   width: ${({ width }) => width};
   padding: ${({ noP }) => (noP ? `0` : `0 32px`)};
+
+  &.flex {
+    display: flex;
+  }
 `;
 
-export const Col = ({ children, width, noP }) => (
-  <StyledCol noP={noP} width={width}>
+export const Col = ({ children, width, noP, className }) => (
+  <StyledCol noP={noP} width={width} className={className}>
     {children}
   </StyledCol>
 );

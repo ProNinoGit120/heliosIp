@@ -22,6 +22,7 @@ import Timeline from "../components/timeline";
 import system_src from "../images/system-white.svg";
 
 const Breakdown = styled.section`
+  margin-top: 120px;
   padding-bottom: 340px;
   position: relative;
   &:before {

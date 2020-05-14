@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Colors from "../../utils/colors";
 import {
@@ -82,15 +82,18 @@ const TimelineDesc = styled.p`
 `;
 
 const TimelineImgWrapper = styled.div`
-  position: relative;
+  /* position: relative;
   z-index: 10;
+  flex: 1 1 auto; */
   flex: 1 1 auto;
+
+  position: relative;
 `;
 
 const TimelineImgInner = styled.div`
   position: relative;
-  /* padding-top: 70%; */
-  padding-bottom: 164px;
+  padding-top: 70%;
+  z-index: 10;
 `;
 
 const TimelineImgItem = styled.div`
@@ -108,7 +111,6 @@ const TimelineImg = styled.img`
   width: auto;
   height: auto;
   margin-bottom: 0;
-  padding-bottom: 120px;
   /*     
     transition: opacity 200ms ease-in-out; */
   opacity: 1;
@@ -216,6 +218,92 @@ const TimelineCTA = styled.div`
 `;
 
 const Timeline = ({ withCTA }) => {
+  const [scrollY, setScrollY] = useState(0);
+  const [timelineItems, setTimelineItems] = useState(null);
+
+  const [timelineWrapper, setTimelineWrapper] = useState({});
+  const [timelineInner, setTimelineInner] = useState(null);
+  const [timelineInnerBtm, setTimelineInnerBtm] = useState(null);
+  const [timelineImg, setTimelineImg] = useState(null);
+
+  // const [appear, setAppear] = useState(false);
+  useEffect(() => {
+    const items = Array.from(document.getElementsByClassName("timelineItem"));
+    let temp = [];
+    items.map(item => {
+      temp.push({
+        item: item,
+        top: item.getBoundingClientRect().top,
+        bottom: item.getBoundingClientRect().bottom,
+      });
+    });
+    setTimelineItems(temp);
+    const wrapper = document.getElementsByClassName("timelineWrapper")[0];
+    const inner = document.getElementsByClassName("timelineInner")[0];
+    const img = document.getElementsByClassName("timelineImg")[0];
+    setTimelineWrapper({
+      top: wrapper.getBoundingClientRect().top - 300,
+      bottom: wrapper.getBoundingClientRect().bottom,
+    });
+    setTimelineInner(inner);
+    setTimelineInnerBtm(inner.getBoundingClientRect().height);
+    setTimelineImg(img);
+  }, []);
+
+  // useEffect(() => {
+  //   console.log(timelineItems);
+  // }, [timelineItems]);
+
+  function logit() {
+    setScrollY(window.pageYOffset);
+
+    if (timelineWrapper.top <= scrollY) {
+      timelineInner.style = `
+          position: fixed;
+          top: 300px;
+          width: 716px;
+        `;
+
+      timelineItems.map(item => {
+        if (item.top <= scrollY + timelineInnerBtm) {
+          // console.log(scrollY + timelineInner.getBoundingClientRect().bottom);
+          console.log("in Range");
+          // console.log("Item Top: " + item.top);
+          // console.log("Item Bottom: " + item.bottom);
+          item.item.classList.add("active");
+          if (item.bottom <= scrollY + timelineInnerBtm) {
+            console.log("out range");
+            item.item.classList.remove("active");
+          }
+        }
+      });
+
+      if (timelineWrapper.bottom <= scrollY + timelineInnerBtm + 300) {
+        timelineInner.style = `
+              position: absolute; 
+              top: auto;
+              width: 716px;
+              bottom: 0px;
+            `;
+      }
+    } else {
+      timelineInner.style = ``;
+    }
+    console.log("Scroll Y: " + scrollY);
+  }
+
+  useEffect(() => {
+    function watchScroll() {
+      window.addEventListener("scroll", logit);
+    }
+    watchScroll();
+    return () => {
+      window.removeEventListener("scroll", logit);
+    };
+  });
+
+  // useEffect(() => {},[document.sc])
+
   return (
     <>
       <Intro>
@@ -248,7 +336,7 @@ const Timeline = ({ withCTA }) => {
 
       <StyledTimeline>
         <Container>
-          <Flex align="flex-start">
+          <Flex>
             <Col width="35%">
               <TimelineControl>
                 <TimelineIntro>
@@ -333,7 +421,7 @@ const Timeline = ({ withCTA }) => {
                   </>
                 ) : (
                   <>
-                    <TimelineItem className="timelineItem active">
+                    <TimelineItem className="timelineItem">
                       <TimelineItemContent>
                         <TimelineItemTitle>Onboard</TimelineItemTitle>
                         <TimelineItemDesc>
@@ -376,13 +464,25 @@ const Timeline = ({ withCTA }) => {
                 )}
               </TimelineControl>
             </Col>
-            <Col width="65%">
-              <TimelineImgWrapper>
-                <TimelineImgInner>
-                  <TimelineImgItem>
+            <Col width="65%" className="flex">
+              <TimelineImgWrapper className="timelineWrapper">
+                <TimelineImgInner className="timelineInner">
+                  <TimelineImgItem className="timelineImg">
                     <TimelineImg src={system_src} alt="helios system image" />
                   </TimelineImgItem>
                 </TimelineImgInner>
+                {/* {appear ? (
+                  <div
+                    style={{
+                      position: "relative",
+                      width: "652.875px",
+                      height: "457px",
+                      display: "block",
+                      verticalAlign: "baseline",
+                      float: "none",
+                    }}
+                  ></div>
+                ) : null} */}
               </TimelineImgWrapper>
             </Col>
           </Flex>
