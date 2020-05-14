@@ -80,7 +80,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const Main = styled.main`
-  overflow-x: hidden;
+  display: block;
 `;
 
 const Layout = ({ children }) => {
