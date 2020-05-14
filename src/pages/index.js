@@ -132,7 +132,7 @@ const IndexPage = () => {
         title="Create Better
       IP Assets, For Less"
         subtitle=""
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu scelerisque velit. Nullam lobortis pharetra finibus. Phasellus a aliquam enim, eget consectetur ipsum."
+        description="Increase quality, improve efficiency, reduce costs. Industry leading SaaS platform integrated to expert global IP support services. Docketing, filing, maintenance and portfolio analytics in a monthly subscription.​"
         link="/"
         linkText="Learn More"
       />
@@ -177,14 +177,14 @@ const IndexPage = () => {
               </Col>
               <Col width="50%">
                 <TitleLarge color={Colors.blue} align="left">
-                  A truly integrated <br /> IP system
+                  Get the right tools and services for your business and your
+                  team.​
                 </TitleLarge>
                 <BreakdwonDesc>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                  sea takimata sanctus est Lorem ipsum dolor
+                  Whether supporting your existing IP team, or introducing new
+                  systems and support services, HeliosComplete™ offers a
+                  flexible approach to augment and improve your current
+                  operations.​
                 </BreakdwonDesc>
                 <ButtonLink className="gray" to="/">
                   Why Helios

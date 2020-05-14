@@ -25,7 +25,7 @@ const ReadyInner = styled.div`
 
 const ReadyItem = styled.div`
   background: ${({ bg }) => bg};
-  padding: 64px;
+  padding: 120px;
   position: relative;
 
   &.left {
@@ -65,7 +65,7 @@ const ReadyItemDesc = styled.p`
 const Ready = () => {
   return (
     <StyledReady>
-      <Container>
+      <Container maxWidth={1440}>
         <TitleLarge align="center">Ready?</TitleLarge>
         <ReadyInner>
           <Flex align="center" justify="space-between">

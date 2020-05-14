@@ -108,7 +108,7 @@ const ServiceTab = styled.div`
   background: ${Colors.blue_sun};
   margin-bottom: 8px;
   & path {
-    fill: rgba(255, 255, 255, 0.66);
+    fill: rgba(255, 255, 255, 0.15);
     width: 40px;
   }
 `;

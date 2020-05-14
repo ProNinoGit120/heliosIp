@@ -136,10 +136,11 @@ const Resources = () => {
             Expert IP Professionals
           </TitleLarge>
           <IntroDesc align="center" mb={16}>
-            Our partner programs are designed for brokers, insurance carriers,
-            affiliates, and technology providers who want to connect their
-            networks with our modern HR solution. Find the program that works
-            best for you
+            Trusted support resources with the knowledge and experience to
+            plug-in to your IP operations without missing a beat. Our staff have
+            worked at large firms, boutique firms, large IP companies and
+            startups. We understand what it takes to meet your needs across the
+            range of IP activities.​
           </IntroDesc>
         </IntroInner>
       </Intro>
@@ -162,13 +163,12 @@ const Resources = () => {
                   Specialists
                 </TitleMedium>
                 <TextBody>
-                  We manage all incoming and outgoing prosecution activities
-                  including PTO, law firm, and foreign associate
-                  correspondences. Information is fully validated and checked
-                  against official records and our proprietary DocketEngine™
-                  global prosecution procedures. We provide full docketing, or
-                  augment your internal resources to improve resource
-                  utilization and productivity.
+                  Across the full range of IP support activities, our team has
+                  the capabilities to work as an extension of your team. Unlike
+                  outsourcing, our managed services approach provides committed
+                  resources assigned to work with you on a day-to-day basis. We
+                  develop a close working knowledge of your processes, becoming
+                  an integral part of your operations.​
                 </TextBody>
               </Col>
             </Flex>
@@ -184,13 +184,13 @@ const Resources = () => {
                   Technologists
                 </TitleMedium>
                 <TextBody>
-                  We manage all incoming and outgoing prosecution activities
-                  including PTO, law firm, and foreign associate
-                  correspondences. Information is fully validated and checked
-                  against official records and our proprietary DocketEngine™
-                  global prosecution procedures. We provide full docketing, or
-                  augment your internal resources to improve resource
-                  utilization and productivity.
+                  Technology is the cornerstone of our solution approach
+                  enabling you to improve how you create, manage and exploit
+                  your IP assets. Combining hands-on knowledge of IP operations
+                  with leading edge technology, our development team is driving
+                  innovation in the IP industry. From PTO data integration to
+                  workflow automation and emerging AI/ML, we’re at the forefront
+                  of applying technology to IP operations management.​
                 </TextBody>
               </Col>
               <Col width="50%">
@@ -220,13 +220,11 @@ const Resources = () => {
                   Managers
                 </TitleMedium>
                 <TextBody>
-                  We manage all incoming and outgoing prosecution activities
-                  including PTO, law firm, and foreign associate
-                  correspondences. Information is fully validated and checked
-                  against official records and our proprietary DocketEngine™
-                  global prosecution procedures. We provide full docketing, or
-                  augment your internal resources to improve resource
-                  utilization and productivity.
+                  Process management is critical to ensuring accurate,
+                  cost-effective IP operations. Our team brings hands-on process
+                  management expertise with SOPs, document support methods, and
+                  analysis tools that enable smart resource allocation, time
+                  management and financial controls. ​
                 </TextBody>
               </Col>
             </Flex>

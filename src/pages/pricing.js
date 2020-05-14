@@ -236,7 +236,7 @@ const Pricing = () => {
             <Col width="50%">
               <PricingCard>
                 <CardHeader>
-                  <CardTitle>Value Portfolio</CardTitle>
+                  <CardTitle>SMB Portfolio​</CardTitle>
                 </CardHeader>
 
                 <CardSubHeader>
@@ -308,23 +308,23 @@ const Pricing = () => {
                     </PricingItem>
                     <PricingItem>
                       <PricingItemIcon>{plus}</PricingItemIcon>
-                      Designs, Utility Models Modules
+                      Full Suite of IP Modules​
                     </PricingItem>
                     <PricingItem>
                       <PricingItemIcon>{plus}</PricingItemIcon>
-                      E-PTO Data Integration
+                      Electronic PTO Data Integration​
                     </PricingItem>
                     <PricingItem>
                       <PricingItemIcon>{plus}</PricingItemIcon>
-                      Global Docketing
+                      Global DocketEngine™ Ruleset​
                     </PricingItem>
                     <PricingItem>
                       <PricingItemIcon>{plus}</PricingItemIcon>
-                      Reference Citations Management
+                      Microsoft® 365 Integration
                     </PricingItem>
                     <PricingItem>
                       <PricingItemIcon>{plus}</PricingItemIcon>
-                      Portfolio Dashboards
+                      Power BI Dashboards​
                     </PricingItem>
                   </PricingList>
                 </CardBody>
@@ -341,7 +341,8 @@ const Pricing = () => {
           <SupportIntro>
             <TitleLarge mb={8}>Added Support Services</TitleLarge>
             <TextBody mb={64}>
-              Enhance any base plan with these add‑ons.
+              Optional transactional support services monitored and executed on
+              your instructions​
             </TextBody>
           </SupportIntro>
           <SupportCards>
@@ -352,13 +353,17 @@ const Pricing = () => {
                     <SupportIcon>{filing}</SupportIcon>
                     <SupportInfo>i</SupportInfo>
                   </Flex>
-                  <TitleSmall mb={12}>Filings</TitleSmall>
+                  <TitleSmall mb={12}>U.S. Filing​</TitleSmall>
                   <TextBody mb={16}>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut
+                    For U.S. applications, manage all steps in the filing
+                    process including: preparation of ADS; POA and inventor
+                    declarations; assignments; organize electronic filing
+                    package; upload to EFS system; pay and invoice official
+                    fees; save documents and confirmation receipts; docket all
+                    actions/tasks​
                   </TextBody>
                   <TextBody color={`rgba(0,0,0,.33)`}>
-                    Starting at <strong>$75</strong> / Filings
+                    Starting at <strong>$75</strong> / filing
                   </TextBody>
                 </SupportCard>
               </Col>
@@ -370,11 +375,14 @@ const Pricing = () => {
                   </Flex>
                   <TitleSmall mb={12}>Renewals</TitleSmall>
                   <TextBody mb={16}>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut
+                    Monitor due dates; manage foreign associate instructions;
+                    pay and invoice official fees and agent fees; save documents
+                    and confirmation receipts; docket actions/tasks. For
+                    trademarks prepare and file SOU’s and other required
+                    formalities.
                   </TextBody>
                   <TextBody color={`rgba(0,0,0,.33)`}>
-                    Starting at <strong>$75</strong> / Filings
+                    Starting at <strong>$35</strong> per payment​
                   </TextBody>
                 </SupportCard>
               </Col>
@@ -386,11 +394,76 @@ const Pricing = () => {
                   </Flex>
                   <TitleSmall mb={12}>IDS Filing</TitleSmall>
                   <TextBody mb={16}>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut
+                    Prepare and file Information Disclosure Statement based on
+                    references provided by client including: preparation of form
+                    SB08; collect and organize included reference materials;
+                    prepare electronic filing documentation; pay and invoice
+                    official fees and agents costs; save documents and
+                    confirmation receipts; docket all actions/tasks​
                   </TextBody>
                   <TextBody color={`rgba(0,0,0,.33)`}>
-                    Starting at <strong>$75</strong> / Filings
+                    Starting at <strong>$75</strong> per IDS​
+                  </TextBody>
+                </SupportCard>
+              </Col>
+            </Flex>
+            <Flex>
+              <Col width={`calc(100% / 3)`}>
+                <SupportCard>
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{filing}</SupportIcon>
+                    <SupportInfo>i</SupportInfo>
+                  </Flex>
+                  <TitleSmall mb={12}>Office Actions​</TitleSmall>
+                  <TextBody mb={16}>
+                    Manage office action response filings including: receive and
+                    coordinate foreign counsel reporting; monitor and coordinate
+                    response due dates; manage foreign associate instructions;
+                    prepare filing documentation including formalities; pay and
+                    invoice official fees and agents costs; save documents and
+                    confirmation receipts; docket all actions/tasks​
+                  </TextBody>
+                  <TextBody color={`rgba(0,0,0,.33)`}>
+                    Starting at <strong>$75</strong> / filing
+                  </TextBody>
+                </SupportCard>
+              </Col>
+              <Col width={`calc(100% / 3)`}>
+                <SupportCard>
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{money}</SupportIcon>
+                    <SupportInfo>i</SupportInfo>
+                  </Flex>
+                  <TitleSmall mb={12}>Foreign Filing​</TitleSmall>
+                  <TextBody mb={16}>
+                    Monitor and coordinate filing deadlines; manage foreign
+                    associate instructions; prepare filing documentation
+                    including formalities and translations; pay and invoice
+                    official fees and agents costs; save documents and
+                    confirmation receipts; docket all actions/tasks
+                  </TextBody>
+                  <TextBody color={`rgba(0,0,0,.33)`}>
+                    ​ Flat rate per country
+                  </TextBody>
+                </SupportCard>
+              </Col>
+              <Col width={`calc(100% / 3)`}>
+                <SupportCard>
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{ids}</SupportIcon>
+                    <SupportInfo>i</SupportInfo>
+                  </Flex>
+                  <TitleSmall mb={12}>Formalities​</TitleSmall>
+                  <TextBody mb={16}>
+                    Prepare and file formalities documents(s) including:
+                    preparation of assignment, correction of inventorships: POA
+                    forms; coordinate signatures; manage foreign associate
+                    instructions; pay and invoice official fees and agent costs;
+                    save documents and confirmation receipts; docket all
+                    actions/tasks​
+                  </TextBody>
+                  <TextBody color={`rgba(0,0,0,.33)`}>
+                    Starting at <strong>$75</strong> per IDS​
                   </TextBody>
                 </SupportCard>
               </Col>

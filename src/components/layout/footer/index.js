@@ -12,8 +12,8 @@ const StyledFooter = styled.footer`
 `;
 
 const FooterLogo = styled.img`
-  margin-bottom: 0;
-  margin-top: -20px;
+  margin-bottom: 2px;
+  margin-top: -12px;
   width: 150px;
 `;
 
@@ -78,7 +78,10 @@ const Footer = () => {
                 <StyledLink to="/">HeliosComplete™</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink to="/">Docketing Module</StyledLink>
+                <StyledLink to="/">DocketEngine™​</StyledLink>
+              </FooterListItem>
+              <FooterListItem>
+                <StyledLink to="/">DocketHub™​​</StyledLink>
               </FooterListItem>
             </FooterList>
           </Col>
@@ -89,11 +92,11 @@ const Footer = () => {
                 <StyledLink to="/">Support & Operations</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink to="/">IP Legal Services</StyledLink>
+                <StyledLink to="/">Helios IP Network​</StyledLink>
               </FooterListItem>
-              <FooterListItem>
+              {/* <FooterListItem>
                 <StyledLink to="/">Consulting</StyledLink>
-              </FooterListItem>
+              </FooterListItem> */}
             </FooterList>
           </Col>
           <Col width="20%">

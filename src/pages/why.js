@@ -184,8 +184,8 @@ const Why = () => {
             Level Up Your IP Operations
           </TitleLarge>
           <TextBody align="center" mb={16}>
-            Our fully integrated, easy-to-use system makes payroll pain a thing
-            of the past.
+            Our fully integrated, easy-to-use platform makes IP operations
+            painless
           </TextBody>
           <WatchVideo color={Colors.orange} />
         </IntroInner>
@@ -242,11 +242,12 @@ const Why = () => {
                     Leading Platform
                   </TitleMedium>
                   <DifferenceDesc>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                    sea takimata sanctus est Lorem ipsum dolor
+                    Manage all your information in the industry’s most complete
+                    IP system. Full lifecycle management for patents, trademarks
+                    and designs, with global country rules, document management,
+                    advanced analytics, and PTO integration. Built on the
+                    Microsoft® platform, with enterprise-class performance and
+                    integrated to O365, Outlook, Sharepoint and Teams.​
                   </DifferenceDesc>
                   <ButtonLink className="white" to="/">
                     Platform
@@ -263,14 +264,15 @@ const Why = () => {
               <Flex align="center" justify="space-between">
                 <Col width="50%">
                   <TitleMedium color={Colors.blue} align="left">
-                    Managed Services
+                    Support Services
                   </TitleMedium>
                   <DifferenceDesc>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                    sea takimata sanctus est Lorem ipsum dolor
+                    Manage all your information in the industry’s most complete
+                    IP system. Full lifecycle management for patents, trademarks
+                    and designs, with global country rules, document management,
+                    advanced analytics, and PTO integration. Built on the
+                    Microsoft® platform, with enterprise-class performance and
+                    integrated to O365, Outlook, Sharepoint and Teams.​
                   </DifferenceDesc>
                   <ButtonLink className="gray" to="/">
                     Services
@@ -296,11 +298,14 @@ const Why = () => {
                     Global Network
                   </TitleMedium>
                   <DifferenceDesc>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                    sea takimata sanctus est Lorem ipsum dolor
+                    The Helios IP Network (HIPN) provides US law firms and IP
+                    departments simple, easy-to-use access to our preferred
+                    foreign associates and agents, at pre-negotiated, most
+                    favored rates. Clients work directly with foreign
+                    associates, while Helios coordinates docketing, documents,
+                    office actions, POA’s and other support activities. Helios
+                    also manages foreign associate invoicing to ensure financial
+                    accuracy and accountability.​
                   </DifferenceDesc>
                   <ButtonLink className="white" to="/">
                     Network
@@ -320,11 +325,12 @@ const Why = () => {
                     Flexible Budget
                   </TitleMedium>
                   <DifferenceDesc>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                    sea takimata sanctus est Lorem ipsum dolor
+                    The HeliosComplete™ subscription pricing provides
+                    transparency and predictability in setting your operational
+                    budget. Our base platform subscription provides a
+                    cost-effective foundation on which to build the support
+                    activities you need today, with the flexibility to adapt as
+                    your requirements change. ​
                   </DifferenceDesc>
                   <ButtonLink className="gray" to="/">
                     Pricing

@@ -31,7 +31,7 @@ const HeaderLogo = styled.img`
 const Header = () => {
   return (
     <StyledHeader>
-      <Container>
+      <Container maxWidth={1440}>
         <HeaderInner>
           <Flex align="center" justify="space-between">
             <Link to="/">

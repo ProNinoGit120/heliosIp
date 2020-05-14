@@ -6,13 +6,14 @@ import Colors from "./colors";
 import { sun, play } from "./icons";
 
 const StyledContainer = styled.div`
-  max-width: ${Size.max}px;
+  max-width: ${({ maxWidth }) =>
+    maxWidth ? `${maxWidth}px` : `${Size.max}px`};
   width: 100%;
   margin: 0 auto;
 `;
 
-export const Container = ({ children }) => (
-  <StyledContainer>{children}</StyledContainer>
+export const Container = ({ children, maxWidth }) => (
+  <StyledContainer maxWidth={maxWidth}>{children}</StyledContainer>
 );
 
 export const Flex = ({ children, align, justify, direction, responsive }) => (
