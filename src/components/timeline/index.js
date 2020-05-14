@@ -18,7 +18,6 @@ import { platform, network, sun, arrow, support } from "../../utils/icons";
 import system_src from "../../images/system-white.svg";
 
 const Intro = styled.section`
-  overflow: hidden;
   padding-bottom: 370px;
   position: relative;
   z-index: -2;
@@ -81,41 +80,9 @@ const TimelineDesc = styled.p`
   color: white;
 `;
 
-const TimelineImgWrapper = styled.div`
-  /* position: relative;
-  z-index: 10;
-  flex: 1 1 auto; */
-  flex: 1 1 auto;
-
-  position: relative;
-`;
-
-const TimelineImgInner = styled.div`
-  position: relative;
-  padding-top: 70%;
-  z-index: 10;
-`;
-
-const TimelineImgItem = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  text-align: right;
-`;
-
 const TimelineImg = styled.img`
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  margin-bottom: 0;
-  /*     
-    transition: opacity 200ms ease-in-out; */
-  opacity: 1;
-
-  /* box-shadow: 0 24px 48px 0 rgba(174, 174, 186, 0.32); */
+  position: sticky;
+  top: 30%;
 `;
 
 const TimelineItem = styled.div`
@@ -153,6 +120,11 @@ const TimelineItem = styled.div`
     border-radius: 50%;
     transform: scale(0.66);
     transform-origin: center;
+    transition: all 0.5s ease-out;
+  }
+
+  h3, p {
+    transition: all 0.5s ease-out;
   }
 
   &.active h3 {
@@ -218,91 +190,53 @@ const TimelineCTA = styled.div`
 `;
 
 const Timeline = ({ withCTA }) => {
-  const [scrollY, setScrollY] = useState(0);
-  const [timelineItems, setTimelineItems] = useState(null);
-
-  const [timelineWrapper, setTimelineWrapper] = useState({});
-  const [timelineInner, setTimelineInner] = useState(null);
-  const [timelineInnerBtm, setTimelineInnerBtm] = useState(null);
-  const [timelineImg, setTimelineImg] = useState(null);
-
-  // const [appear, setAppear] = useState(false);
-  useEffect(() => {
-    const items = Array.from(document.getElementsByClassName("timelineItem"));
-    let temp = [];
-    items.map(item => {
-      temp.push({
-        item: item,
-        top: item.getBoundingClientRect().top,
-        bottom: item.getBoundingClientRect().bottom,
-      });
-    });
-    setTimelineItems(temp);
-    const wrapper = document.getElementsByClassName("timelineWrapper")[0];
-    const inner = document.getElementsByClassName("timelineInner")[0];
-    const img = document.getElementsByClassName("timelineImg")[0];
-    setTimelineWrapper({
-      top: wrapper.getBoundingClientRect().top - 300,
-      bottom: wrapper.getBoundingClientRect().bottom,
-    });
-    setTimelineInner(inner);
-    setTimelineInnerBtm(inner.getBoundingClientRect().height);
-    setTimelineImg(img);
-  }, []);
-
-  // useEffect(() => {
-  //   console.log(timelineItems);
-  // }, [timelineItems]);
-
-  function logit() {
-    setScrollY(window.pageYOffset);
-
-    if (timelineWrapper.top <= scrollY) {
-      timelineInner.style = `
-          position: fixed;
-          top: 300px;
-          width: 716px;
-        `;
-
-      timelineItems.map(item => {
-        if (item.top <= scrollY + timelineInnerBtm) {
-          // console.log(scrollY + timelineInner.getBoundingClientRect().bottom);
-          console.log("in Range");
-          // console.log("Item Top: " + item.top);
-          // console.log("Item Bottom: " + item.bottom);
-          item.item.classList.add("active");
-          if (item.bottom <= scrollY + timelineInnerBtm) {
-            console.log("out range");
-            item.item.classList.remove("active");
-          }
-        }
-      });
-
-      if (timelineWrapper.bottom <= scrollY + timelineInnerBtm + 300) {
-        timelineInner.style = `
-              position: absolute; 
-              top: auto;
-              width: 716px;
-              bottom: 0px;
-            `;
-      }
-    } else {
-      timelineInner.style = ``;
-    }
-    console.log("Scroll Y: " + scrollY);
-  }
+  const [timelineActiveIndex, setTimelineActiveIndex] = useState(-1);
 
   useEffect(() => {
-    function watchScroll() {
-      window.addEventListener("scroll", logit);
-    }
-    watchScroll();
+    window.addEventListener("scroll", onScroll);
+  });
+
+  useEffect(() => {
     return () => {
-      window.removeEventListener("scroll", logit);
+      window.removeEventListener("scroll", onScroll);
     };
   });
 
-  // useEffect(() => {},[document.sc])
+  const onScroll = () => {
+    // calc position y of timeline image
+    const timelineImageElement = document.getElementsByClassName("timelineImg")[0];
+    const timelineImageBoundingRect = timelineImageElement.getBoundingClientRect();
+    const timelineImagePosY = (timelineImageBoundingRect.top + timelineImageBoundingRect.bottom) / 2;
+    
+    // get nearest timeline item index
+    let nearestIndex = 0, nearestDistance = -1;
+    const timelineItems = Array.from(document.getElementsByClassName("timelineItem"));
+    timelineItems.forEach((timelineItem, index) => {
+      // calc distance to timeline image
+      const timelineItemBoundingRect = timelineItem.getBoundingClientRect();
+      const timelineItemPosY = (timelineItemBoundingRect.top + timelineItemBoundingRect.bottom) / 2;
+      const distance = Math.abs(timelineItemPosY - timelineImagePosY);
+      if (nearestDistance < 0 || distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestIndex = index;
+      }
+    });
+
+    // update active status if nearest one was changed
+    if (timelineActiveIndex !== nearestIndex) {
+      timelineItems.forEach((timelineItem, index) => {
+        if (nearestIndex === index) {
+          timelineItem.classList.add("active");
+        }
+        if (timelineActiveIndex === index) {
+          timelineItem.classList.remove("active");
+        }
+      });
+
+      // update active index
+      setTimelineActiveIndex(nearestIndex);
+    }
+  }
 
   return (
     <>
@@ -464,26 +398,8 @@ const Timeline = ({ withCTA }) => {
                 )}
               </TimelineControl>
             </Col>
-            <Col width="65%" className="flex">
-              <TimelineImgWrapper className="timelineWrapper">
-                <TimelineImgInner className="timelineInner">
-                  <TimelineImgItem className="timelineImg">
-                    <TimelineImg src={system_src} alt="helios system image" />
-                  </TimelineImgItem>
-                </TimelineImgInner>
-                {/* {appear ? (
-                  <div
-                    style={{
-                      position: "relative",
-                      width: "652.875px",
-                      height: "457px",
-                      display: "block",
-                      verticalAlign: "baseline",
-                      float: "none",
-                    }}
-                  ></div>
-                ) : null} */}
-              </TimelineImgWrapper>
+            <Col width="65%">
+              <TimelineImg className="timelineImg" src={system_src} alt="helios system image" />
             </Col>
           </Flex>
         </Container>
