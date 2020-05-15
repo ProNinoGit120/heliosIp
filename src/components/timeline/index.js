@@ -123,7 +123,8 @@ const TimelineItem = styled.div`
     transition: all 0.5s ease-out;
   }
 
-  h3, p {
+  h3,
+  p {
     transition: all 0.5s ease-out;
   }
 
@@ -204,17 +205,24 @@ const Timeline = ({ withCTA }) => {
 
   const onScroll = () => {
     // calc position y of timeline image
-    const timelineImageElement = document.getElementsByClassName("timelineImg")[0];
+    const timelineImageElement = document.getElementsByClassName(
+      "timelineImg"
+    )[0];
     const timelineImageBoundingRect = timelineImageElement.getBoundingClientRect();
-    const timelineImagePosY = (timelineImageBoundingRect.top + timelineImageBoundingRect.bottom) / 2;
-    
+    const timelineImagePosY =
+      (timelineImageBoundingRect.top + timelineImageBoundingRect.bottom) / 2;
+
     // get nearest timeline item index
-    let nearestIndex = 0, nearestDistance = -1;
-    const timelineItems = Array.from(document.getElementsByClassName("timelineItem"));
+    let nearestIndex = 0,
+      nearestDistance = -1;
+    const timelineItems = Array.from(
+      document.getElementsByClassName("timelineItem")
+    );
     timelineItems.forEach((timelineItem, index) => {
       // calc distance to timeline image
       const timelineItemBoundingRect = timelineItem.getBoundingClientRect();
-      const timelineItemPosY = (timelineItemBoundingRect.top + timelineItemBoundingRect.bottom) / 2;
+      const timelineItemPosY =
+        (timelineItemBoundingRect.top + timelineItemBoundingRect.bottom) / 2;
       const distance = Math.abs(timelineItemPosY - timelineImagePosY);
       if (nearestDistance < 0 || distance < nearestDistance) {
         nearestDistance = distance;
@@ -236,7 +244,7 @@ const Timeline = ({ withCTA }) => {
       // update active index
       setTimelineActiveIndex(nearestIndex);
     }
-  }
+  };
 
   return (
     <>
@@ -271,7 +279,7 @@ const Timeline = ({ withCTA }) => {
       <StyledTimeline>
         <Container>
           <Flex>
-            <Col width="35%">
+            <Col width="40%">
               <TimelineControl>
                 <TimelineIntro>
                   <TitleMedium color="white">
@@ -421,8 +429,12 @@ const Timeline = ({ withCTA }) => {
                 )}
               </TimelineControl>
             </Col>
-            <Col width="65%">
-              <TimelineImg className="timelineImg" src={system_src} alt="helios system image" />
+            <Col width="60%">
+              <TimelineImg
+                className="timelineImg"
+                src={system_src}
+                alt="helios system image"
+              />
             </Col>
           </Flex>
         </Container>

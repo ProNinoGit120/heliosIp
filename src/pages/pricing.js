@@ -138,6 +138,10 @@ const PricingList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  &.card {
+    padding: 16px 0;
+  }
 `;
 
 const PricingItem = styled.li`
@@ -354,14 +358,22 @@ const Pricing = () => {
                     <SupportInfo>i</SupportInfo>
                   </Flex>
                   <TitleSmall mb={12}>U.S. Filing​</TitleSmall>
+                  {/* <PricingList className="card">
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      HeliosComplete™ Portal
+                    </PricingItem>
+                  </PricingList> */}
+
                   <TextBody mb={16}>
                     For U.S. applications, manage all steps in the filing
-                    process including: preparation of ADS; POA and inventor
+                    process including: preparation of ADS;
+                  </TextBody>
+                  {/* POA and inventor
                     declarations; assignments; organize electronic filing
                     package; upload to EFS system; pay and invoice official
                     fees; save documents and confirmation receipts; docket all
-                    actions/tasks​
-                  </TextBody>
+                    actions/tasks​  */}
                   <TextBody color={`rgba(0,0,0,.33)`}>
                     Starting at <strong>$75</strong> / filing
                   </TextBody>
