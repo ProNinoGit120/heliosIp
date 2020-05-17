@@ -19,7 +19,6 @@ import {
 } from "../utils/elements";
 import { platform, network, arrow, support } from "../utils/icons";
 import Timeline from "../components/timeline";
-import system_src from "../images/system-white.svg";
 
 const ArrowIcon = styled.div`
   margin-left: 8px;

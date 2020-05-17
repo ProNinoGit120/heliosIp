@@ -16,7 +16,7 @@ import {
   WatchVideo,
 } from "../../utils/elements";
 import { platform, network, sun, arrow, support } from "../../utils/icons";
-import system_src from "../../images/system-white.svg";
+import { TIMELINE_ONBOARD, TIMELINE_MONITOR, TIMELINE_EXECUTE, TIMELINE_REPORT} from '../../constants';
 
 const Intro = styled.section`
   padding-bottom: 370px;
@@ -228,6 +228,7 @@ const Timeline = ({ withCTA }) => {
     const timelineImageBoundingRect = timelineImageElement.getBoundingClientRect();
     const timelineImagePosY =
       (timelineImageBoundingRect.top + timelineImageBoundingRect.bottom) / 2;
+    const timelineImageHeight = Math.abs(timelineImageBoundingRect.top - timelineImageBoundingRect.bottom);
 
     // get nearest timeline item index
     let nearestIndex = 0,
@@ -238,14 +239,21 @@ const Timeline = ({ withCTA }) => {
     timelineItems.forEach((timelineItem, index) => {
       // calc distance to timeline image
       const timelineItemBoundingRect = timelineItem.getBoundingClientRect();
-      const timelineItemPosY =
-        (timelineItemBoundingRect.top + timelineItemBoundingRect.bottom) / 2;
+      const timelineItemPosY =  timelineItemBoundingRect.top;
       const distance = Math.abs(timelineItemPosY - timelineImagePosY);
       if (nearestDistance < 0 || distance < nearestDistance) {
         nearestDistance = distance;
         nearestIndex = index;
       }
     });
+
+    // display start image
+    if (
+      (timelineActiveIndex < 0 && nearestDistance > timelineImageHeight / 3) ||
+      (timelineActiveIndex === 0 && timelineItems[0].getBoundingClientRect().top - timelineImagePosY > timelineImageHeight / 3)
+    ) {
+      nearestIndex = -1;
+    }
 
     // update active status if nearest one was changed
     if (timelineActiveIndex !== nearestIndex) {
@@ -262,6 +270,30 @@ const Timeline = ({ withCTA }) => {
       setTimelineActiveIndex(nearestIndex);
     }
   };
+
+  const getTimelineImage = () => {
+    let timelineSVG = '';
+    switch(timelineActiveIndex) {
+      case TIMELINE_ONBOARD:
+        timelineSVG = 'oboard';
+        break;
+      case TIMELINE_MONITOR:
+        timelineSVG = 'monitor';
+        break;
+      case TIMELINE_EXECUTE:
+        timelineSVG = 'execute';
+        break;
+      case TIMELINE_REPORT:
+        timelineSVG = 'report';
+        break;
+      default:
+        timelineSVG = 'start'
+    }
+
+    console.log('#timelineSVG', timelineSVG)
+
+    return require(`../../images/timeline/${timelineSVG}.svg`);
+  }
 
   return (
     <>
@@ -464,7 +496,7 @@ const Timeline = ({ withCTA }) => {
             <Col width="60%">
               <TimelineImg
                 className="timelineImg"
-                src={system_src}
+                src={getTimelineImage()}
                 alt="helios system image"
               />
             </Col>
