@@ -21,22 +21,41 @@ import { platform, network, arrow, support } from "../utils/icons";
 import Timeline from "../components/timeline";
 import system_src from "../images/system-white.svg";
 
+const ArrowIcon = styled.div`
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  & svg {
+    width: 24px;
+    fill: ${Colors.blue};
+  }
+`;
+
 const Breakdown = styled.section`
-  margin-top: 120px;
-  padding-bottom: 340px;
+  padding-top: 300px;
+  padding-bottom: 250px;
   position: relative;
-  &:before {
-    content: " ";
-    display: block;
-    position: absolute;
+  z-index: 1;
+  background: ${Colors.gray};
+
+  &:after {
     top: 0;
     left: 0;
-    width: 150%;
-    height: 100%;
-    background: ${Colors.gray};
-    transform: rotate(-9.5deg);
+    border-right: 100vw solid transparent;
+    border-top: 15.625rem solid #fff;
+    content: "";
+    position: absolute;
     z-index: -1;
-    transform-origin: left bottom;
+  }
+
+  &:before {
+    bottom: 0;
+    right: 0;
+    border-left: 100vw solid transparent;
+    border-bottom: 15.625rem solid #fff;
+    content: "";
+    position: absolute;
+    z-index: -1;
   }
 `;
 
@@ -129,11 +148,9 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <Hero
-        title="Create Better
-      IP Assets, For Less"
         subtitle=""
         description="Increase quality, improve efficiency, reduce costs. Industry leading SaaS platform integrated to expert global IP support services. Docketing, filing, maintenance and portfolio analytics in a monthly subscription.​"
-        link="/"
+        link="/why"
         linkText="Learn More"
       />
       <Timeline className="blue" />
@@ -177,8 +194,10 @@ const IndexPage = () => {
               </Col>
               <Col width="50%">
                 <TitleLarge color={Colors.blue} align="left">
-                  Get the right tools and services for your business and your
-                  team.​
+                  All Inclusive <br />
+                  Monthly Subscription
+                  {/* Get the right tools and services for your business and your
+                  team.​ */}
                 </TitleLarge>
                 <BreakdwonDesc>
                   Whether supporting your existing IP team, or introducing new
@@ -186,15 +205,16 @@ const IndexPage = () => {
                   flexible approach to augment and improve your current
                   operations.​
                 </BreakdwonDesc>
-                <ButtonLink className="gray" to="/">
-                  Why Helios
+                <ButtonLink className="gray" to="/pricing">
+                  Pricing
+                  <ArrowIcon>{arrow}</ArrowIcon>
                 </ButtonLink>
               </Col>
             </Flex>
           </Container>
         </BreakdownInner>
       </Breakdown>
-      <Ready />
+      <Ready title="Ready?" />
     </Layout>
   );
 };

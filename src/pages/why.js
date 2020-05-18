@@ -44,6 +44,10 @@ const IntroInner = styled.div`
   padding: 120px 0;
 `;
 
+const IntroDesc = styled(TextBody)`
+  font-size: 24px;
+`;
+
 const Video = styled.div`
   margin-top: -490px;
 `;
@@ -111,6 +115,7 @@ const VideoSrc = styled.video`
 
 const Difference = styled.section`
   padding: 120px 0;
+  margin-bottom: -120px;
 `;
 
 const DifferenceIntro = styled.div`
@@ -118,9 +123,10 @@ const DifferenceIntro = styled.div`
 `;
 
 const DifferenceItem = styled.section`
-  padding-bottom: 340px;
   position: relative;
-  &.slant {
+  z-index: 1;
+  
+  /* &.slant {
     &:before {
       content: " ";
       display: block;
@@ -134,6 +140,34 @@ const DifferenceItem = styled.section`
       z-index: -1;
       transform-origin: left bottom;
     }
+  } */
+  &.slant {
+    background: ${Colors.blue};
+    padding-top: 300px;
+    padding-bottom: 250px;
+    color: white;
+  }
+
+  &:after {
+    
+    top: 0;
+    left: 0;
+    border-right: 100vw solid transparent;
+    border-top: 15.625rem solid #fff;
+    content: '';
+    position: absolute;
+    z-index: -1;
+  }
+
+  &:before {
+    
+    bottom: 0;
+    right: 0;
+    border-left: 100vw solid transparent;
+    border-bottom: 15.625rem solid #fff;
+    content: '';
+    position: absolute;
+    z-index: -1;
   }
 `;
 
@@ -144,10 +178,12 @@ const DifferenceInner = styled.div`
 const DifferenceImg = styled.img`
   display: block;
   width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 `;
 
 const DifferenceDesc = styled.p`
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 `;
 
 const ArrowIcon = styled.div`
@@ -156,7 +192,7 @@ const ArrowIcon = styled.div`
   align-items: center;
   & svg {
     width: 24px;
-    fill: ${Colors.orange};
+    fill: ${({ color }) => (color ? `${color}` : `${Colors.blue}`)};
   }
 `;
 
@@ -183,10 +219,10 @@ const Why = () => {
           <TitleLarge align="center" color={Colors.blue}>
             Level Up Your IP Operations
           </TitleLarge>
-          <TextBody align="center" mb={16}>
+          <IntroDesc align="center" mb={16} large>
             Our fully integrated, easy-to-use platform makes IP operations
             painless
-          </TextBody>
+          </IntroDesc>
           <WatchVideo color={Colors.orange} />
         </IntroInner>
       </Intro>
@@ -249,7 +285,7 @@ const Why = () => {
                     Microsoft® platform, with enterprise-class performance and
                     integrated to O365, Outlook, Sharepoint and Teams.​
                   </DifferenceDesc>
-                  <ButtonLink className="white" to="/">
+                  <ButtonLink className="white" to="/platform">
                     Platform
                     <ArrowIcon>{arrow}</ArrowIcon>
                   </ButtonLink>
@@ -263,7 +299,7 @@ const Why = () => {
             <Container>
               <Flex align="center" justify="space-between">
                 <Col width="50%">
-                  <TitleMedium color={Colors.blue} align="left">
+                  <TitleMedium color="white" align="left">
                     Support Services
                   </TitleMedium>
                   <DifferenceDesc>
@@ -274,9 +310,9 @@ const Why = () => {
                     Microsoft® platform, with enterprise-class performance and
                     integrated to O365, Outlook, Sharepoint and Teams.​
                   </DifferenceDesc>
-                  <ButtonLink className="gray" to="/">
+                  <ButtonLink className="blue" to="/services">
                     Services
-                    <ArrowIcon>{arrow}</ArrowIcon>
+                    <ArrowIcon color="white">{arrow}</ArrowIcon>
                   </ButtonLink>
                 </Col>
                 <Col width="50%">
@@ -321,7 +357,7 @@ const Why = () => {
             <Container>
               <Flex align="center" justify="space-between">
                 <Col width="50%">
-                  <TitleMedium color={Colors.blue} align="left">
+                  <TitleMedium color="white" align="left">
                     Flexible Budget
                   </TitleMedium>
                   <DifferenceDesc>
@@ -332,9 +368,9 @@ const Why = () => {
                     activities you need today, with the flexibility to adapt as
                     your requirements change. ​
                   </DifferenceDesc>
-                  <ButtonLink className="gray" to="/">
+                  <ButtonLink className="blue" to="/pricing">
                     Pricing
-                    <ArrowIcon>{arrow}</ArrowIcon>
+                    <ArrowIcon color="white">{arrow}</ArrowIcon>
                   </ButtonLink>
                 </Col>
                 <Col width="50%">
@@ -345,7 +381,7 @@ const Why = () => {
           </DifferenceInner>
         </DifferenceItem>
       </Difference>
-      <Ready />
+      <Ready title="Get Tangible Results" />
     </Layout>
   );
 };

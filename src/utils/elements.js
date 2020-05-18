@@ -35,6 +35,7 @@ export const TitleXLarge = styled.h1`
   margin-bottom: 0;
   color: ${({ color }) => color};
   text-align: ${({ align }) => align};
+  margin-bottom: ${({ mb }) => mb}px;
 `;
 
 export const TitleLarge = styled.h1`

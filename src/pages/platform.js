@@ -5,28 +5,39 @@ import Layout from "../components/layout";
 import Timeline from "../components/timeline";
 import { TitleLarge } from "../utils/elements";
 import Colors from "../utils/colors";
-import microsoft_src from "../images/partner-logos/microsoft.png";
-import logo1 from "../images/partner-logos/partner1.png";
-import logo2 from "../images/partner-logos/partner2.png";
-import logo3 from "../images/partner-logos/partner3.png";
-import logo4 from "../images/partner-logos/partner4.png";
+import microsoft_src from "../images/partner-logos/microsoft.svg";
+import logo1 from "../images/partner-logos/azure.svg";
+import logo2 from "../images/partner-logos/office.svg";
+import logo3 from "../images/partner-logos/outlook.svg";
+import logo4 from "../images/partner-logos/sharepoint.svg";
+import logo5 from "../images/partner-logos/teams.svg";
+import logo6 from "../images/partner-logos/powerbi.svg";
 import Ready from "../components/ready";
 const Partners = styled.section`
+  padding-top: 300px;
+  padding-bottom: 250px;
   position: relative;
-  padding-bottom: 370px;
+  z-index: 1;
+  background: ${Colors.gray};
 
-  &:before {
-    content: " ";
-    display: block;
-    position: absolute;
+  &:after {
     top: 0;
     left: 0;
-    width: 150%;
-    height: 100%;
-    background: ${Colors.gray};
-    transform: rotate(-9.5deg);
+    border-right: 100vw solid transparent;
+    border-top: 15.625rem solid #fff;
+    content: "";
+    position: absolute;
     z-index: -1;
-    transform-origin: left bottom;
+  }
+
+  &:before {
+    bottom: 0;
+    right: 0;
+    border-left: 100vw solid transparent;
+    border-bottom: 15.625rem solid #fff;
+    content: "";
+    position: absolute;
+    z-index: -1;
   }
 `;
 
@@ -43,18 +54,18 @@ const PartnerLogos = styled.div`
 const MicroLogo = styled.img`
   margin: 0 auto;
   display: block;
-  width: 300px;
+  width: 400px;
   margin-bottom: 32px;
 `;
 
 const PartnerLogo = styled.img`
   display: block;
-
+  max-width: 100px;
   margin: 0 16px;
 `;
 
 const Platform = () => {
-  const logos_src = [logo1, logo2, logo3, logo4];
+  const logos_src = [logo1, logo2, logo3, logo4, logo5, logo6];
 
   const logos = logos_src.map(logo => <PartnerLogo src={logo} />);
   return (
@@ -63,7 +74,9 @@ const Platform = () => {
       <Timeline withCTA />
       <Partners>
         <MicroLogo src={microsoft_src} />
-        <TitleLarge align="center">A Microsoft Development Partner</TitleLarge>
+        <TitleLarge align="center" mb={32}>
+          A Microsoft Development Partner
+        </TitleLarge>
         <PartnerLogos>{logos}</PartnerLogos>
       </Partners>
       <Ready />

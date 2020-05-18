@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "gatsby";
 import styled from "styled-components";
 import Colors from "../../utils/colors";
 import {
@@ -30,7 +31,7 @@ const Intro = styled.section`
     left: 0;
     width: 150%;
     height: 100%;
-    background: ${Colors.blue_gradient};
+    background: ${Colors.blue_sun};
     transform: rotate(-9.5deg);
     z-index: -1;
     transform-origin: left bottom;
@@ -87,11 +88,11 @@ const TimelineImg = styled.img`
 
 const TimelineItem = styled.div`
   position: relative;
-  margin-left: 12px;
   padding-top: 4px;
   padding-left: 50px;
   padding-bottom: 164px;
-  color: rgba(0, 0, 0, 0.33);
+  /* color: rgba(0, 0, 0, 0.33); */
+
 
   &:before {
     content: "";
@@ -125,16 +126,26 @@ const TimelineItem = styled.div`
 
   h3,
   p {
+    
+  }
+
+  & > div {
+    opacity: .33;
     transition: all 0.5s ease-out;
   }
 
-  &.active h3 {
+  &.active > div {
+    opacity: 1;
+    transition: all 0.5s ease-out;
+  }
+
+  /* &.active h3 {
     color: ${Colors.blue};
   }
 
   &.active p {
     color: ${Colors.text};
-  }
+  } */
 
   &.active:after {
     transform: scale(1);
@@ -151,7 +162,6 @@ const TimelineItemContent = styled.div``;
 
 const TimelineItemTitle = styled.h3`
   white-space: nowrap;
-  color: inherit;
 `;
 
 const TimelineItemDesc = styled.p`
@@ -188,6 +198,13 @@ const TimelineCTA = styled.div`
   } */
 
   /* border: 1px solid white; */
+`;
+
+const StyledLink = styled(Link)`
+  margin-top: 16px;
+  display: block;
+  font-family: "Roboto", sans-serif;
+  color: ${Colors.orange};
 `;
 
 const Timeline = ({ withCTA }) => {
@@ -284,8 +301,8 @@ const Timeline = ({ withCTA }) => {
                 <TimelineIntro>
                   <TitleMedium color="white">
                     {withCTA
-                      ? `At Last— A Real​ IP operations​ SaaS Solution​`
-                      : ` How it works`}
+                      ? `At Last— A Real​ IP Operations​ SaaS Solution​`
+                      : ` How It Works`}
                   </TitleMedium>
                   <TextBody color="white">
                     {withCTA
@@ -299,7 +316,9 @@ const Timeline = ({ withCTA }) => {
                       <TimelineItemContent>
                         <TimelineItemTitle>All Your Matters</TimelineItemTitle>
                         <TimelineItemDesc>
-                          Patents, Trademarks & Designs—In a Unified System
+                          Patents, Trademarks & Designs, with full bibliographic
+                          information plus priorities, family tree, references,
+                          inventors, assignments, contacts, and categories
                         </TimelineItemDesc>
                       </TimelineItemContent>
                     </TimelineItem>
@@ -307,8 +326,9 @@ const Timeline = ({ withCTA }) => {
                       <TimelineItemContent>
                         <TimelineItemTitle>DocketHub™ </TimelineItemTitle>
                         <TimelineItemDesc>
-                          Centralized Intake for All PTO, Law Firm, and Foreign
-                          Associate Correspondences
+                          Centralized Intake for all PTO, law firm, and foreign
+                          associate correspondences, with electronic interfaces
+                          to ensure accuracy and timeliness of data transfer​
                         </TimelineItemDesc>
                       </TimelineItemContent>
                     </TimelineItem>
@@ -316,7 +336,9 @@ const Timeline = ({ withCTA }) => {
                       <TimelineItemContent>
                         <TimelineItemTitle>DocketEngine™</TimelineItemTitle>
                         <TimelineItemDesc>
-                          The Industry’s Most Advanced Global Docketing Rules
+                          The Industry’s most advanced global docketing rules
+                          covering 275 jurisdictions, 4,000 rules and 80,000
+                          outcomes, with integration to PTO prosecution data​
                         </TimelineItemDesc>
                       </TimelineItemContent>
                     </TimelineItem>
@@ -324,8 +346,9 @@ const Timeline = ({ withCTA }) => {
                       <TimelineItemContent>
                         <TimelineItemTitle>Renewal Payments</TimelineItemTitle>
                         <TimelineItemDesc>
-                          Manage Maintenance Fees and Renewals Process with
-                          Budgeting and Workflow Automation
+                          Manage maintenance fees and renewals process with
+                          budgeting and workflow automation that works
+                          seamlessly with Helios IP support services​
                         </TimelineItemDesc>
                       </TimelineItemContent>
                     </TimelineItem>
@@ -335,8 +358,10 @@ const Timeline = ({ withCTA }) => {
                           Application Filing
                         </TimelineItemTitle>
                         <TimelineItemDesc>
-                          U.S. and Foreign Filing Managed in Structured Families
-                          for Efficient Administration and Reporting
+                          U.S. and Foreign Filing to monitor due dates, track
+                          instructions and manage filing process with cost
+                          forecasting, workflow automation and document
+                          management ​
                         </TimelineItemDesc>
                       </TimelineItemContent>
                     </TimelineItem>
@@ -346,8 +371,9 @@ const Timeline = ({ withCTA }) => {
                           Document Management
                         </TimelineItemTitle>
                         <TimelineItemDesc>
-                          All Documents Stored in a Centralized Repository
-                          powered by Microsoft Office 365™
+                          All documents stored in a centralized repository
+                          powered by Microsoft Sharepoint™ with sharing,
+                          collaboration automation and archive storage ​
                         </TimelineItemDesc>
                       </TimelineItemContent>
                     </TimelineItem>
@@ -371,13 +397,14 @@ const Timeline = ({ withCTA }) => {
                         <TimelineItemDesc>
                           We start by importing your portfolio and verifying
                           data accuracy through online databases and by
-                          human-review by our team of IP specialists. Your data
-                          includes all bibliographic information, priorities,
+                          human-review by our team of IP specialists.
+                          {/* Your data includes all bibliographic information, priorities,
                           family relationships, assignments and other key
                           information. We ensure your users’s access, connect to
                           your PTO accounts, and setup your centralized
-                          DocketHub™ intake process.​
+                          DocketHub™ intake process.​ */}
                         </TimelineItemDesc>
+                        <StyledLink to="/platform">Explore Features</StyledLink>
                       </TimelineItemContent>
                     </TimelineItem>
                     <TimelineItem className="timelineItem">
@@ -387,13 +414,15 @@ const Timeline = ({ withCTA }) => {
                           With your portfolio loaded, we ensure all information
                           is up to date and accurate by docketing, cross
                           checking PTO data, and uploading documents as we
-                          receive them. Actions and tasks are automated with our
+                          receive them.
+                          {/* Actions and tasks are automated with our
                           industry leading DocketEngine™ global country law
                           ruleset. Based on your preferences, we actively
                           monitor and report on your due dates, filing
                           deadlines, payment due dates and all incoming/out
-                          correspondences​
+                          correspondences​ */}
                         </TimelineItemDesc>
+                        <StyledLink to="/platform">Explore Features</StyledLink>
                       </TimelineItemContent>
                     </TimelineItem>
                     <TimelineItem className="timelineItem">
@@ -402,13 +431,14 @@ const Timeline = ({ withCTA }) => {
                         <TimelineItemDesc>
                           As events come due, we proceed with your support
                           services including prosecution responses, foreign
-                          filing, maintenance payments and formalities. While
-                          you work directly with your attorneys and foreign
+                          filing, maintenance payments and formalities.
+                          {/* While you work directly with your attorneys and foreign
                           counsel, we coordinate information sharing to ensure
                           all information is captured, fully supported by the
                           HeliosComplete™ platform including task completion,
-                          documents and receipts.
+                          documents and receipts. */}
                         </TimelineItemDesc>
+                        <StyledLink to="/platform">Explore Features</StyledLink>
                       </TimelineItemContent>
                     </TimelineItem>
                     <TimelineItem className="timelineItem">
@@ -418,11 +448,13 @@ const Timeline = ({ withCTA }) => {
                           As your operations progress, we provide you docket
                           reports, reminders, confirmations, filing receipts,
                           portfolio reports, and financials, all accessible 24x7
-                          through the platform. And with Microsoft’s Power BI
+                          through the platform.
+                          {/* And with Microsoft’s Power BI
                           we’re able to provide advanced operations and
                           portfolio analytics that help your decision making and
-                          focus resources on your highest value opportunities.
+                          focus resources on your highest value opportunities. */}
                         </TimelineItemDesc>
+                        <StyledLink to="/platform">Explore Features</StyledLink>
                       </TimelineItemContent>
                     </TimelineItem>
                   </>

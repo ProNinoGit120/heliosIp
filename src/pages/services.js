@@ -9,11 +9,14 @@ import {
   Col,
   TitleLarge,
   TitleMedium,
+  TitleSmall,
   TextBody,
+  TitleXLarge,
+  ButtonLink,
 } from "../utils/elements";
 import { calendar, ids, filing, money, reporting } from "../utils/icons";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-
+import services_src from "../images/services.svg";
 import patent_src from "../images/services-patent.svg";
 import ids_src from "../images/services-ids.svg";
 import filing_src from "../images/services-filing.svg";
@@ -24,7 +27,7 @@ import Ready from "../components/ready";
 
 const Intro = styled.section`
   overflow-x: hidden;
-  padding-bottom: 120px;
+  /* padding-bottom: 120px; */
   position: relative;
 
   &:before {
@@ -42,13 +45,23 @@ const Intro = styled.section`
   }
 `;
 
+const IntroTop = styled.div`
+  padding-bottom: 120px;
+`;
+
+const IntroImg = styled.img`
+  display: block;
+  width: 90%;
+`;
+
 const IntroInner = styled.div`
-  padding: 120px 0;
+  padding: 120px 0 240px 0;
 `;
 
 const IntroDesc = styled(TextBody)`
+  font-size: 24px;
   margin: 0 auto;
-  max-width: 600px;
+  padding-bottom: 16px;
 `;
 
 const ServiceTabs = styled.section`
@@ -124,23 +137,156 @@ const ServiceTabImg = styled.img`
   width: 100%;
 `;
 
+const SupportCards = styled.div`
+  padding-bottom: 120px;
+`;
+
+const SupportCard = styled.div`
+  border: 1px solid ${Colors.gray};
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 41px 41px 82px #d9d9d9, -41px -41px 82px #ffffff;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const SupportCardTitle = styled.div``;
+
+const SupportInfo = styled.div`
+  border: 1px solid ${Colors.text};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  font-weight: bold;
+`;
+
+const SupportIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: ${Colors.orange_sun};
+  margin-bottom: 16px;
+`;
+
 const Services = () => {
   return (
     <Layout>
       <SEO title="Services" />
       <Intro>
         <IntroInner>
-          <TitleLarge align="center" color={Colors.blue}>
-            Create Better IP Assets
-          </TitleLarge>
-          <IntroDesc align="center" mb={16}>
-            Our partner programs are designed for brokers, insurance carriers,
-            affiliates, and technology providers who want to connect their
-            networks with our modern HR solution. Find the program that works
-            best for you
-          </IntroDesc>
+          {/* <IntroTop>
+            <TitleLarge align="center" color={Colors.blue}>
+              Create Better IP Assets
+            </TitleLarge>
+            <IntroDesc align="center" mb={16}>
+              Get dedicated support from our team of paralegals and IP
+              specialists.
+            </IntroDesc>
+          </IntroTop> */}
+          <Container>
+            <Flex align="center">
+              <Col width="50%">
+                <IntroImg src={patent_src} />
+              </Col>
+              <Col width="50%">
+                <TitleLarge>
+                  An on-demand
+                  <br />
+                  IP team
+                </TitleLarge>
+                <IntroDesc mb={16}>
+                  Get dedicated support from our team of paralegals and IP
+                  specialists.
+                </IntroDesc>
+                <ButtonLink className="gray" to="/">
+                  Get Started
+                </ButtonLink>
+              </Col>
+            </Flex>
+          </Container>
         </IntroInner>
       </Intro>
+      <SupportCards>
+        <Container>
+          <Flex>
+            <Col width={`calc(100% / 3)`}>
+              <SupportCard>
+                <Flex
+                  align="flex-start"
+                  justify="center"
+                  align="center"
+                  direction="column"
+                >
+                  <TitleXLarge mb={16}>+ 80%</TitleXLarge>
+                  <TitleSmall mb={12}>Improve Productivity​</TitleSmall>
+                </Flex>
+
+                {/* <PricingList className="card">
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      HeliosComplete™ Portal
+                    </PricingItem>
+                  </PricingList> */}
+
+                <TextBody mb={16}>
+                  For U.S. applications, manage all steps in the filing process
+                  including: preparation of ADS;
+                </TextBody>
+                {/* POA and inventor
+                    declarations; assignments; organize electronic filing
+                    package; upload to EFS system; pay and invoice official
+                    fees; save documents and confirmation receipts; docket all
+                    actions/tasks​  */}
+              </SupportCard>
+            </Col>
+            <Col width={`calc(100% / 3)`}>
+              <SupportCard>
+                <Flex
+                  align="flex-start"
+                  justify="center"
+                  align="center"
+                  direction="column"
+                >
+                  <TitleXLarge mb={16}>- $750</TitleXLarge>
+                  <TitleSmall mb={12}>Reduce Matter Cost</TitleSmall>
+                </Flex>
+
+                <TextBody mb={16}>
+                  For U.S. applications, manage all steps in the filing process
+                  including: preparation of ADS;
+                </TextBody>
+              </SupportCard>
+            </Col>
+            <Col width={`calc(100% / 3)`}>
+              <SupportCard>
+                <Flex
+                  align="flex-start"
+                  justify="center"
+                  align="center"
+                  direction="column"
+                >
+                  <TitleXLarge mb={16}>+ 30%</TitleXLarge>
+                  <TitleSmall mb={16}>Increased Filings</TitleSmall>
+                </Flex>
+
+                <TextBody mb={16}>
+                  For U.S. applications, manage all steps in the filing process
+                  including: preparation of ADS;
+                </TextBody>
+              </SupportCard>
+            </Col>
+          </Flex>
+        </Container>
+      </SupportCards>
       <ServiceTabs>
         <Container>
           <Tabs>

@@ -33,8 +33,10 @@ const StyledLink = styled(Link)`
   color: white;
 `;
 
-const SocialItem = styled(Link)`
+const SocialItem = styled.a`
   display: inline-block;
+  white-space: nowrap;
+  font-family: "Roboto", sans-serif;
   margin-right: 16px;
 `;
 
@@ -62,8 +64,20 @@ const Footer = () => {
               </FooterListItem> */}
               <FooterListItem>
                 <Flex>
-                  <SocialItem to="/">{twitter}</SocialItem>
-                  <SocialItem to="/">{linkedin}</SocialItem>
+                  <SocialItem
+                    href="https://twitter.com/heliosip"
+                    noFollow
+                    target="_blank"
+                  >
+                    {twitter}
+                  </SocialItem>
+                  <SocialItem
+                    href="https://www.linkedin.com/company/helios-intellectual-property/"
+                    noFollow
+                    target="_blank"
+                  >
+                    {linkedin}
+                  </SocialItem>
                 </Flex>
               </FooterListItem>
             </FooterList>
@@ -72,27 +86,33 @@ const Footer = () => {
             <FooterListTitle>Platform</FooterListTitle>
             <FooterList>
               <FooterListItem>
-                <StyledLink to="/">Why Helios</StyledLink>
+                <StyledLink to="/why">Why Helios</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink to="/">HeliosComplete™</StyledLink>
+                <StyledLink to="/platform">HeliosComplete™</StyledLink>
               </FooterListItem>
-              <FooterListItem>
+              {/* <FooterListItem>
                 <StyledLink to="/">DocketEngine™​</StyledLink>
               </FooterListItem>
               <FooterListItem>
                 <StyledLink to="/">DocketHub™​​</StyledLink>
-              </FooterListItem>
+              </FooterListItem> */}
             </FooterList>
           </Col>
           <Col width="20%">
             <FooterListTitle>Services</FooterListTitle>
             <FooterList>
               <FooterListItem>
-                <StyledLink to="/">Support & Operations</StyledLink>
+                <StyledLink to="/services">Support & Operations</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink to="/">Helios IP Network​</StyledLink>
+                <SocialItem
+                  href="https://helioscentral.com/"
+                  noFollow
+                  target="_blank"
+                >
+                  Helios IP Network​
+                </SocialItem>
               </FooterListItem>
               {/* <FooterListItem>
                 <StyledLink to="/">Consulting</StyledLink>
@@ -103,16 +123,14 @@ const Footer = () => {
             <FooterListTitle>Resources</FooterListTitle>
             <FooterList>
               <FooterListItem>
-                <StyledLink to="/">About</StyledLink>
+                <StyledLink to="/resources">About</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink to="/">Pricing</StyledLink>
+                <StyledLink to="/pricing">Pricing</StyledLink>
               </FooterListItem>
+
               <FooterListItem>
-                <StyledLink to="/">HIP Directory</StyledLink>
-              </FooterListItem>
-              <FooterListItem>
-                <StyledLink to="/">Privacy</StyledLink>
+                <StyledLink to="/privacy">Privacy</StyledLink>
               </FooterListItem>
             </FooterList>
           </Col>
@@ -123,7 +141,7 @@ const Footer = () => {
                 <StyledLink to="/">Sign up</StyledLink>
               </FooterListItem>
               <FooterListItem>
-                <StyledLink to="/">Talk to advisor</StyledLink>
+                <StyledLink to="/">Talk to Advisor</StyledLink>
               </FooterListItem>
             </FooterList>
           </Col>

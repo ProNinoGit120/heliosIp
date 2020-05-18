@@ -31,8 +31,9 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     width: 100%;
     height: 100%;
-    padding-top: 100px;
+    padding-top: 80px;
     color: ${Colors.text};
+  
   }
 
   h1,h2,h3,h4 {

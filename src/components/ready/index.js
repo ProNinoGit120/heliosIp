@@ -62,11 +62,11 @@ const ReadyItemDesc = styled.p`
   padding-bottom: 16px;
 `;
 
-const Ready = () => {
+const Ready = ({ title }) => {
   return (
     <StyledReady>
       <Container maxWidth={1440}>
-        <TitleLarge align="center">Ready?</TitleLarge>
+        <TitleLarge align="center">{title}</TitleLarge>
         <ReadyInner>
           <Flex align="center" justify="space-between">
             <Col width="50%" noP>
@@ -91,7 +91,7 @@ const Ready = () => {
                   <ReadyItemText>
                     <TitleSmall color="white">Interactive Demo</TitleSmall>
                     <ReadyItemDesc>
-                      Explore your very own demo account.
+                      Schedule a demo of the platform.
                     </ReadyItemDesc>
                     <ButtonLink className="blue" to="/">
                       Sign up

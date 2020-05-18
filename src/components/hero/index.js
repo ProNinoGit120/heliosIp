@@ -100,10 +100,14 @@ export default ({ bgImg, title, subtitle, description, link, linkText }) => {
         <Container>
           <Flex align="center">
             <Col width="45%">
-              <HeroTitle>{title}</HeroTitle>
+              <HeroTitle>
+                Get Back to
+                <br />
+                Being a Lawyer{" "}
+              </HeroTitle>
 
               <HeroDescription>{description}</HeroDescription>
-              <ButtonLink to="/" className="gray">
+              <ButtonLink to={link} className="gray">
                 Learn More
               </ButtonLink>
             </Col>

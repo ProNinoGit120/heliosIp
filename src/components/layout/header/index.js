@@ -16,6 +16,7 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  height: 80px;
 `;
 
 const HeaderInner = styled.div`
@@ -23,9 +24,9 @@ const HeaderInner = styled.div`
 `;
 
 const HeaderLogo = styled.img`
-  display: block;
-  margin: 0;
+  margin: -4px 80px 0 0;
   width: 150px;
+  vertical-align: middle;
 `;
 
 const Header = () => {
@@ -33,7 +34,7 @@ const Header = () => {
     <StyledHeader>
       <Container maxWidth={1440}>
         <HeaderInner>
-          <Flex align="center" justify="space-between">
+          <Flex align="center" justify="flex-start">
             <Link to="/">
               <HeaderLogo src={logo_src} alt="Helios Logo" />
             </Link>

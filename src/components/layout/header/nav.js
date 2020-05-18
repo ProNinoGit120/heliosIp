@@ -1,13 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import { Flex } from "../../../utils/elements";
 import Colors from "../../../utils/colors";
 import Size from "../../../utils/size";
-const StyledNav = styled.nav``;
+const StyledNav = styled.nav`
+  width: 100%;
+`;
 
 const NavList = styled.ul`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const NavItem = styled.li`
@@ -55,32 +60,38 @@ const NavItem = styled.li`
 `;
 
 const NavLink = styled(Link)`
-  width: 100%;
   display: block;
 `;
 
 export default () => (
   <StyledNav>
     <NavList>
-      <NavLink to="/why">
-        <NavItem>Why Helios</NavItem>
-      </NavLink>
-      <NavLink to="/platform">
-        <NavItem>Platform</NavItem>
-      </NavLink>
-      <NavLink to="/services">
-        <NavItem>Services</NavItem>
-      </NavLink>
+      <Flex align="center">
+        <NavLink to="/why">
+          <NavItem>Why Helios</NavItem>
+        </NavLink>
+        <NavLink to="/platform">
+          <NavItem>Platform</NavItem>
+        </NavLink>
+        <NavLink to="/services">
+          <NavItem>Services</NavItem>
+        </NavLink>
 
-      <NavLink to="/pricing">
-        <NavItem>Pricing</NavItem>
-      </NavLink>
-      <NavLink to="/resources">
-        <NavItem>Resources</NavItem>
-      </NavLink>
-      <NavLink to="/">
-        <NavItem className="contact">Contact</NavItem>
-      </NavLink>
+        <NavLink to="/pricing">
+          <NavItem>Pricing</NavItem>
+        </NavLink>
+        <NavLink to="/resources">
+          <NavItem>Resources</NavItem>
+        </NavLink>
+      </Flex>
+      <Flex align="center" justify="flex-end">
+        <NavLink to="/resources">
+          <NavItem>Contact</NavItem>
+        </NavLink>
+        <NavLink to="/">
+          <NavItem className="contact">Get Started</NavItem>
+        </NavLink>
+      </Flex>
     </NavList>
   </StyledNav>
 );
