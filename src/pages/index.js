@@ -149,7 +149,7 @@ const IndexPage = () => {
       <SEO title="Home" />
       <Hero
         subtitle=""
-        description="Increase quality, improve efficiency, reduce costs. Industry leading SaaS platform integrated to expert global IP support services. Docketing, filing, maintenance and portfolio analytics in a monthly subscription.​"
+        description="Increase quality, improve efficiency, reduce costs. Industry leading SaaS platform integrated with expert global IP support services. Docketing, filing, maintenance and portfolio analytics in a monthly subscription.​"
         link="/why"
         linkText="Learn More"
       />

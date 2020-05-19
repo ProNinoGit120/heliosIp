@@ -270,7 +270,7 @@ export default () => {
           <CardTitle>
             {formSuccess
               ? `Sucess, Check Your Email`
-              : `Calculate Your IP Expense`}
+              : `Get Back to Being a Lawyer`}
           </CardTitle>
         </CardHeader>
         <StyledForm
