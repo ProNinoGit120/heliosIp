@@ -182,7 +182,7 @@ const PricingItemIcon = styled.div`
 `;
 
 const SupportWrapper = styled.section`
-  padding-top: 120px;
+  padding: 225px 0;
 `;
 
 const SupportIntro = styled.div`

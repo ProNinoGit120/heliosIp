@@ -13,7 +13,6 @@ import {
 import women_src from "../../images/ready-women.png";
 
 const StyledReady = styled.section`
-  padding-top: 60px;
   padding-bottom: 164px;
 `;
 

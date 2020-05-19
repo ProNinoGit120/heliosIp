@@ -14,7 +14,15 @@ import {
   TitleXLarge,
   ButtonLink,
 } from "../utils/elements";
-import { calendar, ids, filing, money, reporting } from "../utils/icons";
+import {
+  calendar,
+  ids,
+  filing,
+  money,
+  reporting,
+  checkmark,
+  arrow,
+} from "../utils/icons";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import services_src from "../images/services.svg";
 import patent_src from "../images/services-patent.svg";
@@ -135,6 +143,7 @@ const ServiceTabText = styled.p`
 const ServiceTabImg = styled.img`
   display: block;
   width: 100%;
+  padding-left: 64px;
 `;
 
 const SupportCards = styled.div`
@@ -175,6 +184,140 @@ const SupportIcon = styled.div`
   border-radius: 50%;
   background: ${Colors.orange_sun};
   margin-bottom: 16px;
+`;
+
+const SlideCardList = styled.ul``;
+
+const SlideCardItem = styled.li`
+  color: white;
+  display: flex;
+  align-items: center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const SlideCardItemIcon = styled.div`
+margin-right: 8px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  /* border: 1px solid ${Colors.border}; */
+  svg {
+    width: 24px;
+    & path {stroke: white;}
+  }
+`;
+
+const SupportSlider = styled.div`
+  padding-top: 200px;
+`;
+
+const SupportSlideWrapper = styled.div`
+  display: flex;
+  padding-bottom: 164px;
+`;
+
+const SupportSlideLeft = styled.div`
+  border-radius: 12px;
+  padding: 32px;
+  background: ${Colors.blue_sun};
+  width: 33%;
+  position: relative;
+  z-index: 10;
+  margin-top: -64px;
+`;
+
+const SupportSlideContent = styled.div`
+  width: 100%;
+  box-shadow: 41px 41px 60px #d9d9d9, -41px -41px 60px #ffffff;
+  padding: 80px 64px;
+  border-radius: 12px;
+  position: relative;
+  z-index: -1;
+  border: 1px solid ${Colors.gray};
+  margin-left: -64px;
+  margin-bottom: -64px;
+`;
+
+const SupportSlide = styled.div`
+  position: relative;
+  display: flex;
+  padding: 0 32px;
+`;
+
+const SlideCardIcon = styled.div`
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: ${Colors.blue};
+  margin-bottom: 16px;
+  & svg {
+    width: 100%;
+  }
+`;
+
+const CardButton = styled.button`
+
+  outline: 0;
+  cursor: pointer;
+  height: 70px;
+  background: ${Colors.blue};
+  width: 100%;
+  color: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* &:hover {
+    box-shadow: 10px 10px 10px white, -10, -10, 10px ${Colors.text};
+  } */
+
+  & svg {
+    margin-left: 8px;
+    fill: white;
+    width: 24px;
+  }
+`;
+
+const SliderControl = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  position: absolute;
+  top: -64px;
+  right: 32px;
+`;
+
+const Control = styled.div`
+  display: flex;
+  align-items: center;
+
+  & svg {
+    width: 40px;
+    fill: ${Colors.border};
+  }
+
+  &:first-child svg {
+    margin-right: 16px;
+    transform: rotate(-180deg);
+  }
+
+  &.active {
+    & svg {
+      fill: ${Colors.orange};
+    }
+  }
 `;
 
 const Services = () => {
@@ -287,7 +430,61 @@ const Services = () => {
           </Flex>
         </Container>
       </SupportCards>
-      <ServiceTabs>
+      <SupportSlider>
+        <Container maxWidth={1440}>
+          <TitleLarge mb={120} align="center">
+            IP Support Services
+          </TitleLarge>
+
+          <SupportSlideWrapper>
+            <SupportSlide>
+              <SupportSlideLeft>
+                <SlideCardIcon>{calendar}</SlideCardIcon>
+                <TitleSmall color="white">Patent & Trademark</TitleSmall>
+                <SlideCardList>
+                  <SlideCardItem>
+                    <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                    HeliosComplete™ Portal
+                  </SlideCardItem>
+                  <SlideCardItem>
+                    <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                    HeliosComplete™ Portal
+                  </SlideCardItem>
+                  <SlideCardItem>
+                    <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                    HeliosComplete™ Portal
+                  </SlideCardItem>
+                </SlideCardList>
+
+                {/* <CardButton>Get Started</CardButton> */}
+              </SupportSlideLeft>
+
+              <SliderControl>
+                <Control>{arrow}</Control>
+                <Control className="active">{arrow}</Control>
+              </SliderControl>
+              <SupportSlideContent>
+                <Flex align="flex-start" align="center">
+                  <Col noP width="40%">
+                    <ServiceTabImg src={patent_src} />
+                  </Col>
+                  <Col width="60%">
+                    <TitleMedium>Patent & Trademark Docketing</TitleMedium>
+                    <TextBody>
+                      We manage all incoming and outgoing prosecution activities
+                      including PTO, law firm, and foreign associate
+                      correspondences. Information is fully validated and
+                      checked against official records and our proprietary
+                      DocketEngine™ global prosecution procedures.
+                    </TextBody>
+                  </Col>
+                </Flex>
+              </SupportSlideContent>
+            </SupportSlide>
+          </SupportSlideWrapper>
+        </Container>
+      </SupportSlider>
+      {/* <ServiceTabs>
         <Container>
           <Tabs>
             <ServiceTablist>
@@ -419,8 +616,8 @@ const Services = () => {
             </TabPanel>
           </Tabs>
         </Container>
-      </ServiceTabs>
-      <Ready />
+      </ServiceTabs> */}
+      {/* <Ready title="Ready to Get Support?" /> */}
     </Layout>
   );
 };

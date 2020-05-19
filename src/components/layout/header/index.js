@@ -24,7 +24,7 @@ const HeaderInner = styled.div`
 `;
 
 const HeaderLogo = styled.img`
-  margin: -4px 80px 0 0;
+  margin: -4px 116px 0 0;
   width: 150px;
   vertical-align: middle;
 `;

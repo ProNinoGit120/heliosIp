@@ -21,6 +21,7 @@ const NavItem = styled.li`
   color: white;
   padding: 6px 12px;
   margin-right: 12px;
+  margin-left: 12px;
   border-radius: ${Size.radius}px;
   display: flex;
   /* background: ${Colors.orange}; */
