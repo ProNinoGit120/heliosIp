@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Size from "../../utils/size";
-import { arrow, checkmark } from "../../utils/icons";
+import { arrow, checkmark, close } from "../../utils/icons";
 import styled from "styled-components";
 import Colors from "../../utils/colors";
-
 import {
   Container,
   Col,
@@ -19,6 +18,8 @@ import useInput from "../../hooks/useInput";
 import useSelect from "../../hooks/useSelect";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import encode from "../../utils/dataEncoder";
+import PhoneInput from "react-phone-number-input/input";
+import { isPossiblePhoneNumber } from "react-phone-number-input";
 
 const HeroCard = styled.div`
   box-shadow: 30px 30px 60px #dedede, -30px -30px 60px #ffffff;
@@ -147,52 +148,90 @@ const SuccessIcon = styled.div`
   }
 `;
 
+const ErrorIcon = styled.div`
+  border-radius: 50%;
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  width: 48px;
+  height: 48px;
+  background: ${Colors.orange_sun};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & path {
+    fill: white;
+  }
+`;
+
+const StyledPhoneInput = styled(PhoneInput)`
+  display: flex;
+  border-radius: ${Size.radius}px;
+  width: 100%;
+  outline: 0;
+  height: 48px;
+  border: 1px solid;
+  border-color: ${({ hasError }) =>
+    hasError ? `${Colors.orange}` : `${Colors.border}`};
+  padding: 0 16px;
+  &:focus {
+    border-color: ${({ hasError }) =>
+      hasError ? `${Colors.orange}` : `${Colors.text}`};
+  }
+`;
+
 export default () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [formSuccess, setFormSuccess] = useState(false);
   const [formError, setFormError] = useState(false);
-  const [firstName, firstNameInput, clearFirstName] = useInput({
+  const [firstName, firstNameInput, clearFirstName, firstNameError] = useInput({
     type: "text",
     placeholder: "First Name",
     id: "firstName",
   });
-  const [lastName, lastNameInput, clearLastName] = useInput({
+  const [lastName, lastNameInput, clearLastName, lastNameError] = useInput({
     type: "text",
     placeholder: "Last Name",
     id: "lastName",
   });
-  const [organization, organizationInput, clearOrganization] = useInput({
+  const [
+    organization,
+    organizationInput,
+    clearOrganization,
+    orgError,
+  ] = useInput({
     type: "text",
     placeholder: "Organization",
     id: "organization",
   });
-  const [email, emailInput, clearEmail] = useInput({
+  const [email, emailInput, clearEmail, emailError] = useInput({
     type: "email",
     placeholder: "Email Address",
     id: "email",
   });
-  const [phone, phoneInput, clearPhone] = useInput({
-    type: "number",
-    placeholder: "Phone Number",
-    id: "phone",
-  });
-  const [practice, practiceSelect, clearPractice] = useSelect({
+  // const [phone, phoneInput, clearPhone, phoneError] = useInput({
+  //   type: "tel",
+  //   placeholder: "Phone Number",
+  //   id: "phone",
+  // });
+  const [practice, practiceSelect, clearPractice, practiceError] = useSelect({
     placeholder: "Practice Type",
     options: ["Law Firm", "Corporate"],
     id: "practice",
   });
-  const [patents, patentsInput, clearPatents] = useInput({
+  const [patents, patentsInput, clearPatents, patentError] = useInput({
     type: "number",
     placeholder: "Number of Pending Records",
     id: "patents",
   });
-  const [team, teamInput, clearTeam] = useInput({
+  const [team, teamInput, clearTeam, teamError] = useInput({
     type: "number",
     placeholder: "Number of Users",
     id: "team",
   });
 
-  const [system, systemSelect, clearSystem] = useSelect({
+  const [system, systemSelect, clearSystem, systemError] = useSelect({
     placeholder: "Current Docketing System",
     options: [
       "AltLegal",
@@ -220,7 +259,7 @@ export default () => {
       lastName: lastName,
       organization: organization,
       email: email,
-      phone: phone,
+      phone: phoneValue,
       practice: practice,
       patents: patents,
       team: team,
@@ -235,27 +274,40 @@ export default () => {
       body: encode({ "form-name": "calculateExpense", ...formData }),
     })
       .then(res => {
-        setTabIndex(0);
         setFormSuccess(true);
+        setTabIndex(0);
       })
       .catch(error => {
         setFormError(true);
+        setTabIndex(0);
       });
 
     clearFirstName();
     clearLastName();
     clearOrganization();
     clearEmail();
-    clearPhone();
+    setPhoneValue("");
     clearPractice();
     clearPatents();
     clearTeam();
     clearSystem();
   };
 
+  const [phoneValue, setPhoneValue] = useState("");
+  const [phoneError, setPhoneError] = useState(false);
   // useEffect(() => {
+  //   if (phoneError) {
+  //     validatePhoneNumber();
+  //   }
+  // }, [phoneValue]);
 
-  // }, []);
+  // const validatePhoneNumber = () => {
+  //   if () {
+  //     setPhoneError(true);
+  //   } else {
+  //     setPhoneError(false);
+  //   }
+  // };
 
   return (
     <Tabs
@@ -264,12 +316,18 @@ export default () => {
       forceRenderTabPanel
     >
       <HeroCard>
-        {formSuccess ? <SuccessIcon>{checkmark}</SuccessIcon> : null}
+        {formSuccess ? (
+          <SuccessIcon>{checkmark}</SuccessIcon>
+        ) : formError ? (
+          <ErrorIcon>{close}</ErrorIcon>
+        ) : null}
 
         <CardHeader>
           <CardTitle>
             {formSuccess
               ? `Sucess, Check Your Email`
+              : formError
+              ? `Something Happened, Try Again`
               : `Get Back to Being a Lawyer`}
           </CardTitle>
         </CardHeader>
@@ -287,40 +345,58 @@ export default () => {
           <CardBody>
             <Flex justify="space-around">
               <StyledInputWrapper padding="0 16px 0 0">
-                <StyledLabel hidden htmlFor="firstName">
-                  First Name
+                <StyledLabel htmlFor="firstName" hasError={firstNameError}>
+                  {firstNameInput}
                 </StyledLabel>
-                {firstNameInput}
               </StyledInputWrapper>
               <StyledInputWrapper padding="0 0 0 16px">
-                <StyledLabel hidden htmlFor="lastName">
-                  Last Name
+                <StyledLabel htmlFor="lastName" hasError={lastNameError}>
+                  {lastNameInput}
                 </StyledLabel>
-                {lastNameInput}
               </StyledInputWrapper>
             </Flex>
             <StyledInputWrapper padding="32px 0 0 0">
-              <StyledLabel hidden htmlFor="organization">
-                Organization
+              <StyledLabel htmlFor="organization" hasError={orgError}>
+                {organizationInput}
               </StyledLabel>
-              {organizationInput}
             </StyledInputWrapper>
             <StyledInputWrapper padding="32px 0 0 0">
-              <StyledLabel hidden htmlFor="email">
-                Email
+              <StyledLabel htmlFor="email" hasError={emailError}>
+                {emailInput}
               </StyledLabel>
-              {emailInput}
             </StyledInputWrapper>
 
             <StyledInputWrapper padding="32px 0 32px 0">
-              <StyledLabel hidden htmlFor="phone">
-                Phone
+              <StyledLabel htmlFor="phone" hasError={phoneError}>
+                <StyledPhoneInput
+                  name="phone"
+                  id="phone"
+                  value={phoneValue}
+                  onChange={e => {
+                    setPhoneValue(e);
+                    setPhoneError(!isPossiblePhoneNumber(e));
+                    return e;
+                  }}
+                  onBlur={() =>
+                    setPhoneError(!isPossiblePhoneNumber(phoneValue))
+                  }
+                  placeholder="Phone"
+                  hasError={phoneError}
+                />
               </StyledLabel>
-              {phoneInput}
             </StyledInputWrapper>
             <CardButton
               disabled={
-                !firstName || !lastName || !organization || !email || !phone
+                !firstName ||
+                firstNameError ||
+                !lastName ||
+                lastNameError ||
+                !organization ||
+                orgError ||
+                !email ||
+                emailError ||
+                !phoneValue ||
+                phoneError
               }
               type="button"
               onClick={() => {
@@ -332,33 +408,38 @@ export default () => {
           </CardBody>
           <CardBody>
             <StyledInputWrapper padding="0 0 16px 0">
-              <StyledLabel hidden htmlFor="practice-type">
-                Practice Type
+              <StyledLabel htmlFor="practice-type" hasError={practiceError}>
+                {practiceSelect}
               </StyledLabel>
-              {practiceSelect}
             </StyledInputWrapper>
             <StyledInputWrapper padding="16px 0 0 0">
-              <StyledLabel hidden htmlFor="team-members">
-                Team Members
+              <StyledLabel htmlFor="team-members" hasError={teamError}>
+                {teamInput}
               </StyledLabel>
-              {teamInput}
             </StyledInputWrapper>
 
             <StyledInputWrapper padding="32px 0 0 0">
-              <StyledLabel hidden htmlFor="patent-records">
-                Number of Pending Records
+              <StyledLabel htmlFor="patent-records" hasError={patentError}>
+                {patentsInput}
               </StyledLabel>
-              {patentsInput}
             </StyledInputWrapper>
             <StyledInputWrapper padding="32px 0 32px 0">
-              <StyledLabel hidden htmlFor="system-type">
-                Current Docketing System
+              <StyledLabel htmlFor="system-type" hasError={systemError}>
+                {systemSelect}
               </StyledLabel>
-              {systemSelect}
             </StyledInputWrapper>
 
             <CardButton
-              disabled={!practice || !patents || !team || !system}
+              disabled={
+                !practice ||
+                practiceError ||
+                !patents ||
+                patentError ||
+                !team ||
+                teamError ||
+                !system ||
+                systemError
+              }
               type="submit"
             >
               Submit
@@ -371,7 +452,16 @@ export default () => {
               <NavigationControl></NavigationControl>
               <NavigationControl
                 disabled={
-                  !firstName || !lastName || !organization || !email || !phone
+                  !firstName ||
+                  firstNameError ||
+                  !lastName ||
+                  lastNameError ||
+                  !organization ||
+                  orgError ||
+                  !email ||
+                  emailError ||
+                  !phoneValue ||
+                  phoneError
                 }
               ></NavigationControl>
             </FormNavigation>

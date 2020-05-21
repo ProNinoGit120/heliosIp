@@ -163,17 +163,36 @@ export const StyledInputWrapper = styled.div`
   padding: ${({ padding }) => padding};
 `;
 export const StyledLabel = styled.label`
-  margin-bottom: 8px;
+  display: flex;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    bottom: 0px;
+    width: 5px;
+    background: ${({ hasError }) =>
+      hasError ? `${Colors.orange}` : `transparent`};
+  }
 `;
 export const StyledInput = styled.input`
+  display: flex;
   border-radius: ${Size.radius}px;
   width: 100%;
   outline: 0;
   height: 48px;
-  border: 1px solid ${Colors.border};
+  border: 1px solid;
+  border-color: ${({ hasError }) =>
+    hasError ? `${Colors.orange}` : `${Colors.border}`};
   padding: 0 16px;
   &:focus {
-    border-color: ${Colors.blue};
+    border-color: ${({ hasError }) =>
+      hasError ? `${Colors.orange}` : `${Colors.text}`};
   }
 `;
 export const StyledSelect = styled.select`
@@ -181,14 +200,17 @@ export const StyledSelect = styled.select`
   width: 100%;
   outline: 0;
   height: 48px;
-  border: 1px solid ${Colors.border};
+  border: 1px solid;
+  border-color: ${({ hasError }) =>
+    hasError ? `${Colors.orange}` : `${Colors.border}`};
   text-indent: 8px;
   background: white;
   color: ${({ selected }) =>
-    selected ? `${Colors.title}` : `rgba(0, 0, 0, 0.44)`};
+    selected ? `${Colors.title}` : `rgba(0, 0, 0, 0.55)`};
 
   &:focus {
-    border-color: ${Colors.blue};
+    border-color: ${({ hasError }) =>
+      hasError ? `${Colors.orange}` : `${Colors.text}`};
   }
 `;
 export const StyledTextArea = styled.textarea``;
