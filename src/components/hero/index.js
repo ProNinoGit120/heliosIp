@@ -61,7 +61,7 @@ const HeroWrapper = styled.div`
 
 const HeroTitle = styled.h1`
 @media(max-width:767px){
-  font-size:32px;
+  font-size:36px;
 }
 `;
 const HeroSubTitle = styled.h3``;

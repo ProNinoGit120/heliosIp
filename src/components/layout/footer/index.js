@@ -8,12 +8,10 @@ import logo_src from "../../../images/logo.svg";
 
 const StyledFooter = styled.footer`
   background: ${Colors.orange_gradient};
-  padding: 164px 0;
-  @media(max-width:767px){
-    padding:75px 0;
-  }
+  padding-top:126px;
+  padding-bottom:50px;
   @media(max-width:991px){
-    padding:75px 0;
+    padding:100px 10px !important;
   }
 `;
 
@@ -21,6 +19,9 @@ const FooterLogo = styled.img`
   margin-bottom: 2px;
   margin-top: -12px;
   width: 150px;
+  @media(max-width: 767px) {
+    width: 100px;
+  }
 `;
 
 const FooterListTitle = styled.h3`
@@ -29,13 +30,13 @@ const FooterListTitle = styled.h3`
     font-size:20px
   }
   @media(max-width:480px){
-    font-size:24px
+    font-size:20px
   }
 `;
 
 const FooterList = styled.ul`
   @media(max-width:480px){
-    font-size:22px
+    font-size:18px;
   }
 `;
 
@@ -62,13 +63,21 @@ const GlobalStylFooter = createGlobalStyle `
     @media(max-width:767px){
       width:100% !important;
       flex-direction:column !important;
-
+      display: block !important;
     }
+  }
+  .footer_container{
+    padding-top:126px !important;
   }
 
   .Block_footer{
     @media(max-width:767px){
-      width:100% !important;
+      width: 50% !important;
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 0 20px;
+      padding-left:40px;
+
     }
   }
  
@@ -84,7 +93,7 @@ const Footer = () => {
     <>
     <GlobalStylFooter/>
     <StyledFooter>
-      <Container>
+      <Container className="footer_container">
         <Flex className="footer_flex">
           <Col width = "20%" className ="Block_footer">
             <FooterList>

@@ -130,7 +130,13 @@ export const play = (
 );
 
 export const hamburger = (
-  <svg className="menu-icon-open" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/1999/xlink">
+  <svg className = "menu-icon-open" 
+  width = "24px"
+  height = "24px"
+  viewBox = "0 0 24 24"
+  version = "1.1"
+  xmlns = "http://www.w3.org/2000/svg"
+  xmlns = "http://www.w3.org/1999/xlink" >
       <g id="General-/-menu" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <path d="M5,8 L5,6 L20,6 L20,8 L5,8 Z M5,13 L5,11 L20,11 L20,13 L5,13 Z M5,18 L5,16 L20,16 L20,18 L5,18 Z" id="Combined-Shape" fill="#FFFFFF"></path>
       </g>

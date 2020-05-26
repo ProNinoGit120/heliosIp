@@ -50,6 +50,10 @@ const Intro = styled.section`
 `;
  const GlobalStyleTimeline = createGlobalStyle`
     @media(max-width: 991px) {
+      .slideImage img {
+        width: 90%;
+        margin: 0 auto 1.66rem; 
+      }
       .slick-dots {
         list-style: none;
         padding: 0 16px;
@@ -99,17 +103,24 @@ const Intro = styled.section`
 
     .timelineItem {
       @media(max-width: 991px) {
-        display: none;
+        height: 0;
+        overflow: hidden;
+        transition: height 2s ease-in !important;
         &.active {
-          display: inline-block;
+         height: auto;
         }
       }
     }
-
+    .timeline_medium .body{
+      @media(max-width:767px){
+          color:black !important;
+          font-size:18px !important;
+        }
+    }
     .titleLarge_timeline{
       @media(max-width:991px){
         font-size:28px !important;
-        padding:0 auto;
+        padding: 0 14px !important;
       }
     }
 
@@ -137,7 +148,6 @@ const Intro = styled.section`
       @media(max-width:767px){
         color:black !important;
         padding:0 10px !important;
-        font-size:32px;
       }
     }
 
@@ -197,7 +207,7 @@ const TimelineIntro = styled.div`
   margin-bottom: 64px;
   @media(max-width:480px){
     margin-top:15px !important;
-   
+    
   }
   @media(max-width:991px){
     min-height: 150px;
@@ -217,6 +227,13 @@ const TimelineImg = styled.img`
   top: 30%;
 `;
 
+const TimeLineItemWrapper = styled.div`
+  position: relative;
+  @media(max-width: 991px) {
+    padding: 50px 0 20px;
+  }
+`;
+
 const TimelineItem = styled.div`
   position: relative;
   padding-top: 4px;
@@ -225,7 +242,7 @@ const TimelineItem = styled.div`
   /* color: rgba(0, 0, 0, 0.33); */
 
   @media(max-width: 991px) {
-    padding: 50px 0 0;
+    padding: 0;
   }
 
   &:before {
@@ -371,17 +388,17 @@ const Timeline = ({ withCTA }) => {
     autoplay: true,
     autoplaySpeed: 4000,
     arrows:false,
-    beforeChange: (current, next) =>{
+    afterChange: (current) =>{
+      console.log('current', current);
       let timelineItem = Array.from(document.getElementsByClassName("timelineItem"))
       timelineItem.forEach((timelineItem, index) =>{
-        if (next === index) {
-          timelineItem.classList.add("active");
-        } 
+        timelineItem.classList.remove("active");
         if (current === index) {
-          timelineItem.classList.remove("active");
+          timelineItem.classList.add("active");
         }
       })
-      setTimelineActiveIndex(next);
+      setTimelineActiveIndex(current);
+     
     }
   };
 
@@ -402,6 +419,7 @@ const Timeline = ({ withCTA }) => {
         const timelineItems = Array.from(
           document.getElementsByClassName("timelineItem")
         );
+        console.log(timelineItems);
         
       timelineItems.forEach((timelineItem, index) => {
         // calc distance to timeline image
@@ -459,6 +477,7 @@ const Timeline = ({ withCTA }) => {
         timelineSVG = 'start'
       
     }
+    console.log('#timelineSVG', timelineSVG)
     return require(`../../images/timeline/${timelineSVG}.svg`);
   }
 
@@ -467,7 +486,7 @@ const Timeline = ({ withCTA }) => {
    let timelineItem = Array.from(document.getElementsByClassName("timelineItem"))
     let images = timelineItem.map((name, id) => {
       return(
-        <div key={id}>
+        <div key={id} className="slideImage">
           {/* <img
             src = {
               getTimelineImage()
@@ -526,7 +545,7 @@ const Timeline = ({ withCTA }) => {
                       ? `At Last— A Real​ IP Operations​ SaaS Solution​`
                       : ` How It Works`}
                   </TitleMedium>
-                  <TextBody color = "white" className = "title_medium">
+                  <TextBody color = "white" className = "title_medium body">
                     {withCTA
                       ? null
                       : `HeliosComplete™ makes it easy to onboard, monitor, execute, and report on all aspects of your IP operations.`}
@@ -544,6 +563,7 @@ const Timeline = ({ withCTA }) => {
                 }
                 {withCTA ? (
                   <>
+                  <TimeLineItemWrapper>
                  <TimelineItem className="timelineItem">
                     <TimelineItemContent>
                       <TimelineItemTitle>All Your Matters</TimelineItemTitle>
@@ -620,76 +640,79 @@ const Timeline = ({ withCTA }) => {
                       </TimelineItemDesc>
                     </TimelineItemContent>
                   </TimelineItem>
+                </TimeLineItemWrapper>
             </>
               ) : (
                 <>
-                  <TimelineItem className = "timelineItem active" >
-                    <TimelineItemContent>
-                      <TimelineItemTitle  temTitle>Onboard ABV</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        We start by importing your portfolio and verifying
-                        data accuracy through online databases and by
-                        human-review by our team of IP specialists.
-                        {/* Your data includes all bibliographic information, priorities,
-                        family relationships, assignments and other key
-                        information. We ensure your users’s access, connect to
-                        your PTO accounts, and setup your centralized
-                        DocketHub™ intake process.​ */}
-                      </TimelineItemDesc>
-                      <StyledLink to="/platform">Explore Features</StyledLink>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent >
-                      <TimelineItemTitle>Monitor</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        With your portfolio , we ensure all information
-                        is up to date and accurate by docketing, cross
-                        checking PTO data, and uploading documents as we
-                        receive them.
-                        {/* Actions and tasks are automated with our
-                        industry leading DocketEngine™ global country law
-                        ruleset. Based on your preferences, we actively
-                        monitor and report on your due dates, filing
-                        deadlines, payment due dates and all incoming/out
-                        correspondences​ */}
-                      </TimelineItemDesc>
-                      <StyledLink to="/platform">Explore Features</StyledLink>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>Execute</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        As events come due, we proceed with your support
-                        services including prosecution responses, foreign
-                        filing, maintenance payments and formalities.
-                        {/* While you work directly with your attorneys and foreign
-                        counsel, we coordinate information sharing to ensure
-                        all information is captured, fully supported by the
-                        HeliosComplete™ platform including task completion,
-                        documents and receipts. */}
-                      </TimelineItemDesc>
-                      <StyledLink to="/platform">Explore Features</StyledLink>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>Report</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        As your operations progress, we provide you docket
-                        reports, reminders, confirmations, filing receipts,
-                        portfolio reports, and financials, all accessible 24x7
-                        through the platform.
-                        {/* And with Microsoft’s Power BI
-                        we’re able to provide advanced operations and
-                        portfolio analytics that help your decision making and
-                        focus resources on your highest value opportunities. */}
-                      </TimelineItemDesc>
-                      <StyledLink to="/platform">Explore Features</StyledLink>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  </>
+                  <TimeLineItemWrapper>
+                    <TimelineItem className = "timelineItem active" >
+                      <TimelineItemContent>
+                        <TimelineItemTitle  temTitle>Onboard ABV</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          We start by importing your portfolio and verifying
+                          data accuracy through online databases and by
+                          human-review by our team of IP specialists.
+                          {/* Your data includes all bibliographic information, priorities,
+                          family relationships, assignments and other key
+                          information. We ensure your users’s access, connect to
+                          your PTO accounts, and setup your centralized
+                          DocketHub™ intake process.​ */}
+                        </TimelineItemDesc>
+                        <StyledLink to="/platform">Explore Features</StyledLink>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent >
+                        <TimelineItemTitle>Monitor</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          With your portfolio , we ensure all information
+                          is up to date and accurate by docketing, cross
+                          checking PTO data, and uploading documents as we
+                          receive them.
+                          {/* Actions and tasks are automated with our
+                          industry leading DocketEngine™ global country law
+                          ruleset. Based on your preferences, we actively
+                          monitor and report on your due dates, filing
+                          deadlines, payment due dates and all incoming/out
+                          correspondences​ */}
+                        </TimelineItemDesc>
+                        <StyledLink to="/platform">Explore Features</StyledLink>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>Execute</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          As events come due, we proceed with your support
+                          services including prosecution responses, foreign
+                          filing, maintenance payments and formalities.
+                          {/* While you work directly with your attorneys and foreign
+                          counsel, we coordinate information sharing to ensure
+                          all information is captured, fully supported by the
+                          HeliosComplete™ platform including task completion,
+                          documents and receipts. */}
+                        </TimelineItemDesc>
+                        <StyledLink to="/platform">Explore Features</StyledLink>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                    <TimelineItem className="timelineItem">
+                      <TimelineItemContent>
+                        <TimelineItemTitle>Report</TimelineItemTitle>
+                        <TimelineItemDesc>
+                          As your operations progress, we provide you docket
+                          reports, reminders, confirmations, filing receipts,
+                          portfolio reports, and financials, all accessible 24x7
+                          through the platform.
+                          {/* And with Microsoft’s Power BI
+                          we’re able to provide advanced operations and
+                          portfolio analytics that help your decision making and
+                          focus resources on your highest value opportunities. */}
+                        </TimelineItemDesc>
+                        <StyledLink to="/platform">Explore Features</StyledLink>
+                      </TimelineItemContent>
+                    </TimelineItem>
+                  </TimeLineItemWrapper>
+                </>
               )}
               </TimelineControl>
             </Col>

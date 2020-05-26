@@ -246,6 +246,12 @@ const GlobalStyleHome =  createGlobalStyle`
       text-align:center
     }
   }
+  .diagramLogo{
+    @media(max-width:991px){
+      width:80px !important;
+      height:80px !important;
+    }
+  }
 `;
 
 const IndexPage = () => {
@@ -293,7 +299,7 @@ const IndexPage = () => {
                       {platform}
                     </DiagramIcon>
                     <DiagramLogo>
-                      <Sun color={Colors.blue} />
+                      <Sun color={Colors.blue} className="diagramLogo"/>
                     </DiagramLogo>
                   </DiagramInner>
                 </BreakdownDiagram>

@@ -10,6 +10,8 @@ const StyledContainer = styled.div`
     maxWidth ? `${maxWidth}px` : `${Size.max}px`};
   width: 100%;
   margin: 0 auto;
+  
+  
 `;
 
 export const Container = ({ children, maxWidth }) => (
@@ -51,6 +53,9 @@ export const TitleLarge = styled.h1`
 export const TitleMedium = styled.h2`
   color: ${({ color }) => color};
   text-align: ${({ align }) => align};
+  @media(max-width:767px){
+    font-size:30px
+  }
 `;
 
 export const TitleSmall = styled.h3`

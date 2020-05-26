@@ -114,9 +114,12 @@ const IntroLogo = styled.div`
 `;
 
 const PricingCardsWrapper = styled.div`
-  margin-top: -420px;
+  margin-top: -300px;
   @media(max-width:991px){
     margin-top: -350px !important;
+  }
+  @media(max-width:767px){
+    margin-top: -500px !important;
   }
 `;
 
@@ -148,10 +151,17 @@ const CardTitle = styled.h3`
 
 const CardBody = styled.div`
   padding: 32px 64px;
-  display: flex;
+  display:flex;
+  height: 31vh;
   flex-direction: column;
   /* align-items: center;
   justify-content: center; */
+  @media(max-width:768px){
+    height:61vh ;
+  }
+  @media(max-width:480px){
+    height:auto ;
+  }
 `;
 
 const CardSubHeader = styled.div`

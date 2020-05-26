@@ -192,7 +192,7 @@ const ServiceTabImg = styled.img`
 `;
 
 const SupportCards = styled.div`
-  padding-bottom: 120px;
+  ${'' /* padding-bottom: 120px; */}
   @media(max-width: 767px) {
     padding-bottom: 0px;
   }
@@ -206,6 +206,7 @@ const SupportCard = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  height:25vh;
 `;
 
 const SupportCardTitle = styled.div``;
@@ -261,7 +262,7 @@ margin-right: 8px;
 `;
 
 const SupportSlider = styled.div`
-  padding-top: 200px;
+  padding-top: 100px;
   @media(max-width: 991px) {
     padding-top: 30px;
   }

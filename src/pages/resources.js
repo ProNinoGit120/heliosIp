@@ -34,11 +34,15 @@ const GlobalStyleResource =  createGlobalStyle`
 
     .titleMedium {
       font-size: 30px;
+    
     }
     .leftBlock_resource{
       width:100%;
+      margin-top:10px;
     }
     .rightBlock_resource{
+      margin-top:10px;
+      text-align:center;
       width:100%;
     }
   }
@@ -220,13 +224,13 @@ const Resources = () => {
           <PeopleItem>
             <Container>
               <Flex align="center" className="flexBox">
-                <Col width="50%" className="leftBlock_resource customBlock">
+                <Col width = "50%" className = "rightBlock_resource customBlock" >
                   <TitleMedium className="titleMedium">
                     Systems Data
                     <br />
                     Technologists
                   </TitleMedium>
-                  <TextBody>
+                  <TextBody >
                     Technology is the cornerstone of our solution approach
                     enabling you to improve how you create, manage and exploit
                     your IP assets. Combining hands-on knowledge of IP operations
@@ -236,7 +240,7 @@ const Resources = () => {
                     of applying technology to IP operations management.​
                   </TextBody>
                 </Col>
-                <Col width="50%" className="rightBlock_resource">
+                <Col width="50%" className="leftBlock_resource">
                   <PeopleImg src={tech_src} />
                   {/* <PeopleImgWrapper>
                   

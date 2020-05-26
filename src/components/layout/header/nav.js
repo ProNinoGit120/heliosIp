@@ -14,7 +14,12 @@ const StyledNav = styled.nav`
     right: 0;
     background: #f16322;
     top: 79px;
-    padding: 20px 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    &.active {
+      max-height: 361px;
+    }
   }
 `;
 
@@ -59,6 +64,7 @@ const NavList = styled.ul`
   width: 100%;
   @media(max-width: 991px) {
     flex-direction: column !important;
+    padding: 20px 0;
   }
 `;
 
@@ -123,7 +129,7 @@ export default () => {
   const breakpoint = 991;
   const windowSize = useWindowSize(); 
   const [toggleNavList, setToggleNavList] = useState(false);
-  
+  const navListClass = (windowSize > breakpoint || toggleNavList ) ? 'active' : '';
   return(
     <>
       <GlobalHeaderStyles />
@@ -134,40 +140,37 @@ export default () => {
         { !toggleNavList && hamburger }
         { toggleNavList && hamburgerClose }
       </button>
-      
-      {
-        (windowSize > breakpoint || toggleNavList) &&
-          <StyledNav>
-            <NavList>
-              <Flex align="center" className="headerFlexBox">
-                <NavLink to="/why">
-                  <NavItem>Why Helios</NavItem>
-                </NavLink>
-                <NavLink to="/platform">
-                  <NavItem>Platform</NavItem>
-                </NavLink>
-                <NavLink to="/services">
-                  <NavItem>Services</NavItem>
-                </NavLink>
 
-                <NavLink to="/pricing">
-                  <NavItem>Pricing</NavItem>
-                </NavLink>
-                <NavLink to="/resources">
-                  <NavItem>Resources</NavItem>
-                </NavLink>
-              </Flex>
-              <Flex align="center" justify="flex-end" className="headerFlexBox">
-                <NavLink to="/resources">
-                  <NavItem>Contact</NavItem>
-                </NavLink>
-                <NavLink to="/">
-                  <NavItem className="contact">Get Started</NavItem>
-                </NavLink>
-              </Flex>
-            </NavList>
-          </StyledNav>    
-        }
+      <StyledNav className={navListClass}>
+        <NavList>
+          <Flex align="center" className="headerFlexBox">
+            <NavLink to="/why">
+              <NavItem>Why Helios</NavItem>
+            </NavLink>
+            <NavLink to="/platform">
+              <NavItem>Platform</NavItem>
+            </NavLink>
+            <NavLink to="/services">
+              <NavItem>Services</NavItem>
+            </NavLink>
+
+            <NavLink to="/pricing">
+              <NavItem>Pricing</NavItem>
+            </NavLink>
+            <NavLink to="/resources">
+              <NavItem>Resources</NavItem>
+            </NavLink>
+          </Flex>
+          <Flex align="center" justify="flex-end" className="headerFlexBox">
+            <NavLink to="/resources">
+              <NavItem>Contact</NavItem>
+            </NavLink>
+            <NavLink to="/">
+              <NavItem className="contact">Get Started</NavItem>
+            </NavLink>
+          </Flex>
+        </NavList>
+      </StyledNav> 
     </>
   );
 };

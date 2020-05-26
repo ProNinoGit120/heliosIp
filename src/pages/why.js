@@ -241,6 +241,9 @@ const DifferenceItem = styled.section`
 
 const DifferenceInner = styled.div`
   /* padding-top: 60px; */
+  @media(max-width:991px){
+    margin:50px 0;
+  }
 `;
 
 const DifferenceImg = styled.img`

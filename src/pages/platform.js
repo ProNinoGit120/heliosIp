@@ -58,7 +58,8 @@ const Partners = styled.section`
     }
   }
   @media(max-width:991px){
-     padding-top:150px
+     padding:150px 0;
+     
   }
 
 `;

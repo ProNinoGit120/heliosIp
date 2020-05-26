@@ -13,11 +13,7 @@ import {
 import women_src from "../../images/ready-women.png";
 
 const StyledReady = styled.section`
-  padding-bottom: 164px;
-  @media(max-width:991px){
     padding-bottom:0;
-  }
-
 `;
 
 const ReadyInner = styled.div`
@@ -32,20 +28,24 @@ const ReadyInner = styled.div`
 
 const ReadyItem = styled.div`
   background: ${({ bg }) => bg};
-  padding: 120px;
+  padding: 106px;
   position: relative;
   @media(max-width:991px){
     padding:60px !important;
+    max-height:254px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
   }
   &.left {
     display: flex;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
+    max-height: 350px;
+    padding:127px !important; 
     @media(max-width:768px){
-      padding:50px;
-      max-height:286px;
-      border-top-left-radius: 0px !important;
-      border-bottom-left-radius: 0px !important;
+      padding:60px  !important;
     }
 
     img {
@@ -53,19 +53,20 @@ const ReadyItem = styled.div`
       top: 0;
       left: 0;
       height: 100%;
+      object-fit: contain;
+      padding-top: 36px;
     }
   }
 
   &.right {
+    max-height: 350px;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
     color: white;
     text-align: center;
+    padding:106px;
     @media(max-width:767px){
-      padding:50px;
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-      margin-top:10px;
+      padding:50px !important;
     }
   }
 `;
@@ -100,9 +101,12 @@ const GlobalStylReady = createGlobalStyle `
     }
   }
   .leftText{
+    padding-left:139px;
     @media(max-width:768px){
+      margin-top:40px;
       margin-left:150px !important;
       text-align:center;
+      line-height:22px;
     }
     ${'' /* @media(max-width:991px){
       margin-left:150px;
@@ -118,6 +122,7 @@ const GlobalStylReady = createGlobalStyle `
       font-size:32px !important;
     }
   }
+  
 `;
 
 const Ready = ({ title }) => {
@@ -125,13 +130,13 @@ const Ready = ({ title }) => {
     <>
     <GlobalStylReady/>
     <StyledReady>
-      <Container maxWidth={1440}>
+      <Container maxWidth={1440} className="container_ready">
         <TitleLarge align="center" className="titleLarge_ready">{title}</TitleLarge>
         <ReadyInner>
           <Flex align="center" justify="space-between" className="flex_ready">
             <Col width="50%" noP className="leftBlock_ready">
               <ReadyItem bg={Colors.gray} className="left ">
-                <Flex align="center" justify="flex-end">
+                <Flex align = "center" justify = "flex-end">
                   <ReadyItemImg src={women_src} />
                   <ReadyItemText className="leftText">
                     <TitleSmall color={Colors.blue}>Questions?</TitleSmall>
