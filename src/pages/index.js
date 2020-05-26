@@ -32,8 +32,8 @@ const ArrowIcon = styled.div`
 `;
 
 const Breakdown = styled.section`
-  padding-top: 300px;
-  padding-bottom: 250px;
+  padding-top: 340px;
+  padding-bottom: 340px;
   position: relative;
   z-index: 1;
   background: ${Colors.gray};

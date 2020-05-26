@@ -22,7 +22,7 @@ const Intro = styled.section`
   padding-bottom: 370px;
   position: relative;
   z-index: -2;
-
+  overflow-x: hidden;
   &:before {
     content: " ";
     display: block;
@@ -67,7 +67,6 @@ const IntroLogo = styled.div`
 
 const StyledTimeline = styled.div`
   margin-top: -370px;
-  margin-bottom: 60px;
 `;
 
 const TimelineControl = styled.div``;

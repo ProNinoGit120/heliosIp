@@ -313,7 +313,7 @@ export default () => {
     <Tabs
       selectedIndex={tabIndex}
       onSelect={index => setTabIndex(index)}
-      forceRenderTabPanel
+      forceRenderTabPanel={true}
     >
       <HeroCard>
         {formSuccess ? (

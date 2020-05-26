@@ -101,7 +101,7 @@ export default ({ bgImg, title, subtitle, description, link, linkText }) => {
           <Flex align="center">
             <Col width="45%">
               <HeroTitle>
-                At Last— A Real​
+                Finally— A Real​
                 <br />
                 IP Operations​ SaaS Solution​
               </HeroTitle>

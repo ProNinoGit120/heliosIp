@@ -14,6 +14,7 @@ import {
   TextBody,
   Sun,
   TitleSmall,
+  ButtonLink,
 } from "../utils/elements";
 import { checkmark, plus, people, filing, money, ids } from "../utils/icons";
 import Ready from "../components/ready";
@@ -112,7 +113,11 @@ const PeopleImg = styled.img`
 // `;
 
 const PeopleItem = styled.div`
-  padding: 120px 0;
+  padding-bottom: 120px;
+
+  &:first-child {
+    padding-top: 120px;
+  }
 `;
 
 const PeopleText = styled.div`
@@ -162,7 +167,7 @@ const Resources = () => {
                   <br />
                   Specialists
                 </TitleMedium>
-                <TextBody>
+                <TextBody mb={16}>
                   Across the full range of IP support activities, our team has
                   the capabilities to work as an extension of your team. Unlike
                   outsourcing, our managed services approach provides committed
@@ -170,6 +175,7 @@ const Resources = () => {
                   develop a close working knowledge of your processes, becoming
                   an integral part of your operations.​
                 </TextBody>
+                <ButtonLink className="white">Explore Careers</ButtonLink>
               </Col>
             </Flex>
           </Container>
@@ -183,15 +189,14 @@ const Resources = () => {
                   <br />
                   Technologists
                 </TitleMedium>
-                <TextBody>
+                <TextBody mb={16}>
                   Technology is the cornerstone of our solution approach
                   enabling you to improve how you create, manage and exploit
                   your IP assets. Combining hands-on knowledge of IP operations
                   with leading edge technology, our development team is driving
-                  innovation in the IP industry. From PTO data integration to
-                  workflow automation and emerging AI/ML, we’re at the forefront
-                  of applying technology to IP operations management.​
+                  innovation in the IP industry.
                 </TextBody>
+                <ButtonLink className="white">Explore Careers</ButtonLink>
               </Col>
               <Col width="50%">
                 <PeopleImg src={tech_src} />
@@ -219,19 +224,20 @@ const Resources = () => {
                   <br />
                   Managers
                 </TitleMedium>
-                <TextBody>
+                <TextBody mb={16}>
                   Process management is critical to ensuring accurate,
                   cost-effective IP operations. Our team brings hands-on process
                   management expertise with SOPs, document support methods, and
                   analysis tools that enable smart resource allocation, time
                   management and financial controls. ​
                 </TextBody>
+                <ButtonLink className="white">Explore Careers</ButtonLink>
               </Col>
             </Flex>
           </Container>
         </PeopleItem>
       </People>
-      <Ready />
+      <Ready title="Talk to an Advisor" />
     </Layout>
   );
 };

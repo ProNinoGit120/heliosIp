@@ -125,7 +125,7 @@ const DifferenceIntro = styled.div`
 const DifferenceItem = styled.section`
   position: relative;
   z-index: 1;
-  
+
   /* &.slant {
     &:before {
       content: " ";
@@ -143,8 +143,8 @@ const DifferenceItem = styled.section`
   } */
   &.slant {
     background: ${Colors.blue};
-    padding-top: 300px;
-    padding-bottom: 250px;
+    padding-top: 340px;
+    padding-bottom: 340px;
     color: white;
   }
 
@@ -160,7 +160,6 @@ const DifferenceItem = styled.section`
   }
 
   &:before {
-    
     bottom: 0;
     right: 0;
     border-left: 100vw solid transparent;

@@ -8,7 +8,7 @@ import logo_src from "../../../images/logo.svg";
 
 const StyledFooter = styled.footer`
   background: ${Colors.orange_gradient};
-  padding: 164px 0;
+  padding: 120px 0;
 `;
 
 const FooterLogo = styled.img`

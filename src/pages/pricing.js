@@ -718,7 +718,7 @@ const Pricing = () => {
           </SupportCards>
         </Container>
       </SupportWrapper>
-      <Ready title="Ready to Start Saving?" />
+      <Ready title="Create Better IP Assets" />
     </Layout>
   );
 };

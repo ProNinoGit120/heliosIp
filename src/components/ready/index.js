@@ -13,7 +13,8 @@ import {
 import women_src from "../../images/ready-women.png";
 
 const StyledReady = styled.section`
-  padding-bottom: 164px;
+  padding-top: 120px;
+  padding-bottom: 225px;
 `;
 
 const ReadyInner = styled.div`

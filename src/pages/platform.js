@@ -14,8 +14,8 @@ import logo5 from "../images/partner-logos/teams.svg";
 import logo6 from "../images/partner-logos/powerbi.svg";
 import Ready from "../components/ready";
 const Partners = styled.section`
-  padding-top: 300px;
-  padding-bottom: 250px;
+  padding-top: 340px;
+  padding-bottom: 340px;
   position: relative;
   z-index: 1;
   background: ${Colors.gray};
@@ -79,7 +79,7 @@ const Platform = () => {
         </TitleLarge>
         <PartnerLogos>{logos}</PartnerLogos>
       </Partners>
-      <Ready />
+      <Ready title="Schedule a Demo" />
     </Layout>
   );
 };
