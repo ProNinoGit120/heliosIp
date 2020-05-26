@@ -3,7 +3,9 @@ import { Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Hero from "../components/hero";
-import styled from "styled-components";
+import styled, {
+  createGlobalStyle
+}  from "styled-components";
 import Colors from "../utils/colors";
 import Ready from "../components/ready";
 import {
@@ -19,7 +21,6 @@ import {
 } from "../utils/elements";
 import { platform, network, arrow, support } from "../utils/icons";
 import Timeline from "../components/timeline";
-import system_src from "../images/system-white.svg";
 
 const ArrowIcon = styled.div`
   margin-left: 8px;
@@ -37,7 +38,7 @@ const Breakdown = styled.section`
   position: relative;
   z-index: 1;
   background: ${Colors.gray};
-
+  overflow-x: hidden;  
   &:after {
     top: 0;
     left: 0;
@@ -46,6 +47,14 @@ const Breakdown = styled.section`
     content: "";
     position: absolute;
     z-index: -1;
+    @media(max-width:991px){
+      border-right: 200vw solid transparent;
+    }
+    @media(max-width:480px){
+      border-right: 200vw solid transparent;
+      border-top: 6.625rem solid #fff;
+
+    }
   }
 
   &:before {
@@ -56,19 +65,37 @@ const Breakdown = styled.section`
     content: "";
     position: absolute;
     z-index: -1;
+    @media(max-width:991px){
+      border-left: 200vw solid transparent;
+    }
+    @media(max-width:480px){
+      border-left: 200vw solid transparent;
+      border-bottom: 6.625rem solid #fff;
+    }
   }
+  @media(max-width:768px){
+      margin-top:-100px;
+      padding-bottom:200px;
+    }
 `;
 
 const BreakdownInner = styled.div`
   /* padding-top: 60px; */
+  
 `;
 
 const BreakdwonDesc = styled.p`
   margin-bottom: 16px;
+  @media(max-width:767px){
+    text-align:center;
+     margin-bottom: 32px;
+     padding: 0 10px;
+  }
 `;
 
 const BreakdownDiagram = styled.div`
   position: relative;
+  
 `;
 
 const DiagramLogo = styled.div`
@@ -94,9 +121,15 @@ const DiagramInner = styled.div`
     transform: translate(-50%, -50%);
     pointer-events: none;
   }
+  @media(max-width:991px){
+    width:305px;
+    height:100%;
+    margin:auto;
+  }
 
   &.diagram-bg-path {
   }
+  
 `;
 
 const DiagramIcon = styled.div`
@@ -142,11 +175,90 @@ const DiagramIcon = styled.div`
     height: auto;
   }
 `;
+const GlobalStyleHome =  createGlobalStyle`
+.breakDown_flex {
+  @media(max-width: 767px) {
+    flex-direction:column !important;
+    margin-top:-120px !important;
+  }
+  ${'' /* @media(max-width: 991px) {
+    flex-direction:row;
+  } */}
+}
+.leftBlock_breakdown{
+  @media(max-width:767px){
+    width:auto ;
+    margin:50px 0 !important;
+  }
+  @media(max-width:991px){
+    margin-bottom:100px;
+  }
+}
+.rightBlock_breakdown{
+  @media(max-width:767px){
+    width:100%;
+    margin:50px 0 !important;
+    text-align:center;
+  }
+  @media(max-width:991px){
+    width:100%;
+    margin-bottom:100px;
+  }
+}
+
+ .diagram-bg{
+   @media(max-width:991px){
+      width:100%;
+    }
+  }
+
+  .top-left {
+    @media(max-width:991px){
+    left: 35px !important;
+    top: 50px !important;
+    }
+  }
+
+  .top-right {
+      @media(max-width:991px){
+        right: 35px !important ;
+        top: 50px !important;
+      }
+  }
+
+  .bottom-left {
+    @media(max-width:991px){
+      left: 35px !important;
+      bottom: 50px !important;
+    }
+  }
+
+  .bottom-right {
+    @media(max-width:991px){
+      right: 35px !important;
+      bottom: 50px !important;
+    }
+  }
+
+  .titleLarge{
+    @media(max-width:767px){
+      font-size:28px;
+      text-align:center
+    }
+  }
+  .diagramLogo{
+    @media(max-width:991px){
+      width:80px !important;
+      height:80px !important;
+    }
+  }
+`;
 
 const IndexPage = () => {
   return (
     <Layout>
-      <SEO title="Home" />
+    <GlobalStyleHome/>
+      <SEO title="Home"/>
       <Hero
         subtitle=""
         description="Increase quality, improve efficiency, reduce costs. Industry leading SaaS platform integrated with expert global IP support services. Docketing, filing, maintenance and portfolio analytics in a monthly subscription.​"
@@ -157,8 +269,8 @@ const IndexPage = () => {
       <Breakdown>
         <BreakdownInner>
           <Container>
-            <Flex align="center" justify="space-between">
-              <Col width="50%">
+            <Flex align="center" justify="space-between" className="breakDown_flex">
+              <Col width="50%" className="leftBlock_breakdown">
                 <BreakdownDiagram>
                   <DiagramInner>
                     <svg
@@ -187,13 +299,13 @@ const IndexPage = () => {
                       {platform}
                     </DiagramIcon>
                     <DiagramLogo>
-                      <Sun color={Colors.blue} />
+                      <Sun color={Colors.blue} className="diagramLogo"/>
                     </DiagramLogo>
                   </DiagramInner>
                 </BreakdownDiagram>
               </Col>
-              <Col width="50%">
-                <TitleLarge color={Colors.blue} align="left">
+              <Col width="50%" className="rightBlock_breakdown">
+                <TitleLarge color={Colors.blue} align="left" className="titleLarge">
                   All Inclusive <br />
                   Monthly Subscription
                   {/* Get the right tools and services for your business and your

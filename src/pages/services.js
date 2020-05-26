@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import Colors from "../utils/colors";
@@ -33,6 +33,42 @@ import reporting_src from "../images/services-reporting.svg";
 
 import Ready from "../components/ready";
 
+const GlobalStylesServices = createGlobalStyle`
+  .flexBox {
+    @media(max-width: 991px) {
+      flex-direction: column !important;
+    }
+  }
+
+  .leftBlock,
+  .centerBlock,
+  .rightBlock {
+    @media(max-width: 991px) {
+      width: 100% !important;
+      margin: 0 0 20px;
+    }
+  }
+
+  .heading {
+    @media(max-width: 767px) {
+      font-size: 34px;
+    }
+  }
+
+  .titleLarge {
+    @media(max-width: 767px) {
+      font-size: 40px;
+    }
+  }
+
+  .titleMedium {
+    @media(max-width: 767px) {
+      font-size: 24px;
+    }
+  }
+  
+`;
+
 const Intro = styled.section`
   overflow-x: hidden;
   /* padding-bottom: 120px; */
@@ -60,10 +96,16 @@ const IntroTop = styled.div`
 const IntroImg = styled.img`
   display: block;
   width: 90%;
+  @media(max-width: 991px) {
+    width: 100%;
+  }
 `;
 
 const IntroInner = styled.div`
   padding: 120px 0 240px 0;
+  @media(max-width: 767px) {
+    padding: 40px 0 70px 0;
+  }
 `;
 
 const IntroDesc = styled(TextBody)`
@@ -144,10 +186,16 @@ const ServiceTabImg = styled.img`
   display: block;
   width: 100%;
   padding-left: 64px;
+  @media(max-width: 767px) {
+    padding: 0 20px;
+  }
 `;
 
 const SupportCards = styled.div`
-  padding-bottom: 120px;
+  ${'' /* padding-bottom: 120px; */}
+  @media(max-width: 767px) {
+    padding-bottom: 0px;
+  }
 `;
 
 const SupportCard = styled.div`
@@ -158,6 +206,7 @@ const SupportCard = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  height:25vh;
 `;
 
 const SupportCardTitle = styled.div``;
@@ -213,12 +262,19 @@ margin-right: 8px;
 `;
 
 const SupportSlider = styled.div`
-  padding-top: 200px;
+  padding-top: 100px;
+  @media(max-width: 991px) {
+    padding-top: 30px;
+  }
 `;
 
 const SupportSlideWrapper = styled.div`
   display: flex;
   padding-bottom: 164px;
+  @media(max-width: 767px) {
+    padding-bottom: 50px;
+    flex-direction: column !important;
+  }
 `;
 
 const SupportSlideLeft = styled.div`
@@ -229,6 +285,11 @@ const SupportSlideLeft = styled.div`
   position: relative;
   z-index: 10;
   margin-top: -64px;
+  @media(max-width: 767px) {
+    margin: 0 0 20px;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
 `;
 
 const SupportSlideContent = styled.div`
@@ -241,12 +302,20 @@ const SupportSlideContent = styled.div`
   border: 1px solid ${Colors.gray};
   margin-left: -64px;
   margin-bottom: -64px;
+  @media(max-width: 767px) {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding: 20px 0;
+  }
 `;
 
 const SupportSlide = styled.div`
   position: relative;
   display: flex;
   padding: 0 32px;
+  @media(max-width: 767px) {
+    flex-direction: column !important;
+  }
 `;
 
 const SlideCardIcon = styled.div`
@@ -297,6 +366,12 @@ const SliderControl = styled.div`
   position: absolute;
   top: -64px;
   right: 32px;
+  @media(max-width: 767px) {
+    right: 0;
+    left: 0;
+    justify-content: center;
+    margin:25px 0;
+  }
 `;
 
 const Control = styled.div`
@@ -323,6 +398,7 @@ const Control = styled.div`
 const Services = () => {
   return (
     <Layout>
+      <GlobalStylesServices />
       <SEO title="Services" />
       <Intro>
         <IntroInner>
@@ -336,12 +412,12 @@ const Services = () => {
             </IntroDesc>
           </IntroTop> */}
           <Container>
-            <Flex align="center">
-              <Col width="50%">
+            <Flex align="center" className="flexBox">
+              <Col width="50%" className="leftBlock">
                 <IntroImg src={patent_src} />
               </Col>
-              <Col width="50%">
-                <TitleLarge>
+              <Col width="50%" className="rightBlock">
+                <TitleLarge className="heading">
                   An on-demand
                   <br />
                   IP team
@@ -360,8 +436,8 @@ const Services = () => {
       </Intro>
       <SupportCards>
         <Container>
-          <Flex>
-            <Col width={`calc(100% / 3)`}>
+          <Flex className="flexBox">
+            <Col width={`calc(100% / 3)`} className="leftBlock">
               <SupportCard>
                 <Flex
                   align="flex-start"
@@ -391,7 +467,7 @@ const Services = () => {
                     actions/tasks​  */}
               </SupportCard>
             </Col>
-            <Col width={`calc(100% / 3)`}>
+            <Col width={`calc(100% / 3)`} className="centerBlock">
               <SupportCard>
                 <Flex
                   align="flex-start"
@@ -409,7 +485,7 @@ const Services = () => {
                 </TextBody>
               </SupportCard>
             </Col>
-            <Col width={`calc(100% / 3)`}>
+            <Col width={`calc(100% / 3)`} className="rightBlock">
               <SupportCard>
                 <Flex
                   align="flex-start"
@@ -432,7 +508,7 @@ const Services = () => {
       </SupportCards>
       <SupportSlider>
         <Container maxWidth={1440}>
-          <TitleLarge mb={120} align="center">
+          <TitleLarge mb={120} align="center" className="titleLarge">
             IP Support Services
           </TitleLarge>
 
@@ -464,12 +540,12 @@ const Services = () => {
                 <Control className="active">{arrow}</Control>
               </SliderControl>
               <SupportSlideContent>
-                <Flex align="flex-start" align="center">
-                  <Col noP width="40%">
+                <Flex align="flex-start" align="center" className="flexBox">
+                  <Col noP width="40%" className="leftBlock">
                     <ServiceTabImg src={patent_src} />
                   </Col>
-                  <Col width="60%">
-                    <TitleMedium>Patent & Trademark Docketing</TitleMedium>
+                  <Col width="60%" className="rightBlock">
+                    <TitleMedium className="titleMedium">Patent & Trademark Docketing</TitleMedium>
                     <TextBody>
                       We manage all incoming and outgoing prosecution activities
                       including PTO, law firm, and foreign associate

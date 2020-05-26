@@ -1,10 +1,37 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Colors from "../../utils/colors";
 import { Container, Col, Flex, ButtonLink } from "../../utils/elements";
 import CalculateExpense from "../cards/calculateExpense";
 // import herobg_src from "../../images/hero-bg.svg";
+
+  const GlobalStylesHero = createGlobalStyle`
+    .heroWrapper {
+      @media(max-width: 480px) { 
+        padding: 40px 0 !important;
+      }
+    }
+    .heroBlock_flex {
+      @media(max-width: 767px) { 
+        flex-direction: column !important;
+      }
+    }
+    .leftBlock_Hero {
+      @media(max-width: 767px) { 
+        width: 100%;
+        margin: 0 0 20px;
+        padding:0px 25px;
+        text-align:center;
+      }
+    }
+    .rightBlock_Hero {
+      @media(max-width: 767px) { 
+        width: 100%;
+        padding:20px;
+      }
+    }
+  `;
 
 const StyledHero = styled.section`
   height: 100%;
@@ -32,10 +59,15 @@ const HeroWrapper = styled.div`
   z-index: 0;
 `;
 
-const HeroTitle = styled.h1``;
+const HeroTitle = styled.h1`
+@media(max-width:767px){
+  font-size:36px;
+}
+`;
 const HeroSubTitle = styled.h3``;
 const HeroDescription = styled.p`
   margin-bottom: 32px;
+  font-size:18px;
 `;
 
 const LinkButton = styled(Link)`
@@ -67,56 +99,29 @@ const ItemIcon = styled.span`
 
 export default ({ bgImg, title, subtitle, description, link, linkText }) => {
   return (
-    <StyledHero>
-      <HeroWrapper>
-        {/* <HeroBG>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            width="100%"
-            height="100%"
-            viewBox="0 0 1366 768"
-          >
-            <title>hero</title>
-            <path
-              d="M255.11,764.82C375.83,530.22,680.53,363.7,1037.35,363.7c115.66,0,225.84,17.5,326.05,49.14"
-              fill="none"
-              strokeWidth="2"
-              stroke="#e0e0e0"
-              id="wire1"
-            ></path>
-            <circle cx="408.98" cy="575.09" r="5.27" fill="#e0e0e0">
-           
-            </circle>
-            <path
-              d="M0,109.08A1815,1815,0,0,1,274,88.53c522.49,0,962,217.8,1090,513.36"
-              fill="none"
-              stroke="#e0e0e0"
-              strokeWidth="2"
-            />
-            <circle cx="508.08" cy="103.81" r="5.27" fill="#e0e0e0"></circle>
-          </svg>
-        </HeroBG> */}
-        <Container>
-          <Flex align="center">
-            <Col width="45%">
-              <HeroTitle>
-                Finally— A Real​
+    <>
+      <GlobalStylesHero />
+      <StyledHero>
+        <HeroWrapper className="heroWrapper">
+          <Container>
+            <Flex align="center" className="heroBlock_flex">
+              <Col width="45%" className="leftBlock_Hero">
+                <HeroTitle> At Last— A Real​
                 <br />
-                IP Operations​ SaaS Solution​
-              </HeroTitle>
+                IP Operations​ SaaS Solution​{title}</HeroTitle>
 
-              <HeroDescription>{description}</HeroDescription>
-              <ButtonLink to={link} className="gray">
-                Learn More
-              </ButtonLink>
-            </Col>
-            <Col width="55%">
-              <CalculateExpense />
-            </Col>
-          </Flex>
-        </Container>
-      </HeroWrapper>
-    </StyledHero>
+                <HeroDescription>{description}</HeroDescription>
+                <ButtonLink to="/" className="gray">
+                  Learn More
+                </ButtonLink>
+              </Col>
+              <Col width="55%" className="rightBlock_Hero">
+                <CalculateExpense />
+              </Col>
+            </Flex>
+          </Container>
+        </HeroWrapper>
+      </StyledHero>
+    </>
   );
 };

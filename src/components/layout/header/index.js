@@ -27,6 +27,9 @@ const HeaderLogo = styled.img`
   margin: -4px 116px 0 0;
   width: 150px;
   vertical-align: middle;
+  @media(max-width:1023.93px){
+    width:95px; 
+  }
 `;
 
 const Header = () => {

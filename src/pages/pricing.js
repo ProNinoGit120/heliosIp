@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled , { createGlobalStyle }from "styled-components";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import Size from "../utils/size";
@@ -29,12 +29,39 @@ import {
 } from "../utils/icons";
 import Ready from "../components/ready";
 
+
+const GlobalStylePriceing = createGlobalStyle `
+  .priceing_flex{
+    @media(max-width:767px){
+      flex-direction:column !important;
+    }
+  }
+  .titleLarge_price{
+    @media(max-width:767px){
+      font-Size:32px !important;
+    }
+  }
+  .leftBlock_price{
+    @media(max-width:767px){
+      width:100%;
+      margin-bottom:25px;
+    }
+  }
+
+  .rightBlock_price{
+    @media(max-width:767px){
+      width:100%;
+    }
+  }
+
+`;
+
 const Intro = styled.section`
   overflow-x: hidden;
   padding-bottom: 400px;
   position: relative;
   z-index: -2;
-
+  
   &:before {
     content: " ";
     display: block;
@@ -47,12 +74,21 @@ const Intro = styled.section`
     transform: rotate(-9.5deg);
     z-index: -1;
     transform-origin: left bottom;
+    @media(max-width:767px){
+      height:60%;
+    }
+  }
+  @media(max-width:767px){
+    padding-bottom: 400px;
   }
 `;
 
 const IntroInner = styled.div`
-  padding: 120px 0;
+  padding-top: 120px;
   text-align: center;
+  @media(max-width:767px){
+    padding-bottom:100px;
+  }
 `;
 
 const IntroDescription = styled.p`
@@ -78,7 +114,13 @@ const IntroLogo = styled.div`
 `;
 
 const PricingCardsWrapper = styled.div`
-  margin-top: -420px;
+  margin-top: -300px;
+  @media(max-width:991px){
+    margin-top: -350px !important;
+  }
+  @media(max-width:767px){
+    margin-top: -500px !important;
+  }
 `;
 
 const PricingCard = styled.div`
@@ -109,10 +151,17 @@ const CardTitle = styled.h3`
 
 const CardBody = styled.div`
   padding: 32px 64px;
-  display: flex;
+  display:flex;
+  height: 31vh;
   flex-direction: column;
   /* align-items: center;
   justify-content: center; */
+  @media(max-width:768px){
+    height:61vh ;
+  }
+  @media(max-width:480px){
+    height:auto ;
+  }
 `;
 
 const CardSubHeader = styled.div`
@@ -183,10 +232,17 @@ const PricingItemIcon = styled.div`
 
 const SupportWrapper = styled.section`
   padding: 225px 0;
+  @media(max-width:767px){
+    padding:150px 0;
+  }
 `;
 
 const SupportIntro = styled.div`
   padding-left: 32px;
+  @media(max-width:767px){
+    padding:0 15px;
+    text-align:center;
+  }
 `;
 
 const SupportCards = styled.div`
@@ -315,6 +371,8 @@ const Pricing = () => {
   };
 
   return (
+    <>
+    <GlobalStylePriceing/>
     <Layout>
       <SEO title="Pricing" />
       <Intro>
@@ -323,8 +381,9 @@ const Pricing = () => {
             <IntroLogo>
               <Sun color="white" />
             </IntroLogo>
-
-            <TitleLarge color="white" align="center">
+            <TitleLarge color = "white"
+            align = "center"
+            className = "titleLarge_price" >
               Choose the plan that’s right for you.
             </TitleLarge>
           </Container>
@@ -332,15 +391,15 @@ const Pricing = () => {
       </Intro>
       <PricingCardsWrapper>
         <Container>
-          <Flex align="flex-start">
-            <Col width="50%">
+          <Flex align="flex-start" className="priceing_flex" >
+            <Col width="50%" className="leftBlock_price">
               <PricingCard>
                 <CardHeader>
                   <CardTitle>SMB Portfolio​</CardTitle>
                 </CardHeader>
 
                 <CardSubHeader>
-                  <Flex direction="column" align="center">
+                  <Flex direction="column" align="center" className="priceing_flex">
                     <Flex align="center" justify="center">
                       <TitleXLarge>$1</TitleXLarge>
                       <TextBody mb={-8} ml={8}>
@@ -379,7 +438,7 @@ const Pricing = () => {
                 </CardFooter>
               </PricingCard>
             </Col>
-            <Col width="50%">
+            <Col width="50%" className="rightBlock_price">
               <PricingCard>
                 <CardHeader>
                   <CardTitle>Global Portfolio</CardTitle>
@@ -439,7 +498,7 @@ const Pricing = () => {
       <SupportWrapper>
         <Container>
           <SupportIntro>
-            <TitleLarge mb={8}>Added Support Services</TitleLarge>
+            <TitleLarge mb={8} className="titleLarge_price">Added Support Services</TitleLarge>
             <TextBody style={{ fontSize: "24px" }} mb={64}>
               Optional transactional support services monitored and executed on
               your instructions​
@@ -720,6 +779,7 @@ const Pricing = () => {
       </SupportWrapper>
       <Ready title="Create Better IP Assets" />
     </Layout>
+    </>
   );
 };
 

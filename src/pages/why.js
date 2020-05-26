@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
+import styled , { createGlobalStyle }from "styled-components";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { play, arrow } from "../utils/icons";
@@ -20,6 +20,41 @@ import {
 } from "../utils/elements";
 import Ready from "../components/ready";
 
+const GlobalStyleWhy = createGlobalStyle `
+  .titleLarge_h1{
+    @media(max-width:991px){
+      font-size:32px;
+    }
+  }
+  .titleMedium_why{
+    @media(max-width:767px){
+      font-size:32px;
+      text-align:center;
+    }
+  }
+
+  .why_flex{
+    @media(max-width:767px){
+      flex-direction:column !important;
+    }
+  }
+
+  .leftBlock_why{
+    @media(max-width: 767px) {
+      width:100%;
+      margin-bottom:15px;
+      text-align:center;
+    } 
+  }
+
+  .rightBlock_why{
+    @media(max-width: 767px) {
+      width:100%;
+      text-align:center;
+    } 
+  }
+`;
+
 const Intro = styled.section`
   overflow: hidden;
   padding-bottom: 400px;
@@ -37,26 +72,41 @@ const Intro = styled.section`
     transform: rotate(-9.5deg);
     z-index: -1;
     transform-origin: left bottom;
+    @media(max-width:991px){
+      height:50%;
+
+    }
   }
 `;
 
 const IntroInner = styled.div`
   padding: 120px 0;
+  @media(max-width:991px){
+    padding: 75px 0;
+  }
 `;
 
 const IntroDesc = styled(TextBody)`
   font-size: 24px;
+  @media(max-width:991px){
+    font-size: 18px;
+  }
 `;
 
 const Video = styled.div`
   margin-top: -490px;
+  @media(max-width:991px){
+    margin-top:-350px;  
+  }
 `;
 
 const VideoWrapper = styled.div`
   padding-top: 32px;
-
   width: 100%;
   /* margin-top: -50px; */
+  @media(max-width:991px){
+    padding:15px;
+  }
 `;
 
 const VideoInner = styled.div`
@@ -97,11 +147,17 @@ const VideoBtn = styled.div`
   opacity: ${({ isPlaying }) => (isPlaying ? `0` : `1`)};
   visibility: ${({ isPlaying }) => (isPlaying ? `hidden` : `visible`)};
   transition: all 0.5s ease;
-
-  & svg {
+  @media(max-width:767px){
+    width:90px;
+    height:90px;
+  }
+  & svg  {
     fill: white;
     width: 48px;
     height: 48px;
+    @media(max-width:991px){
+      margin-left:10px;
+    }
   }
 `;
 
@@ -116,6 +172,10 @@ const VideoSrc = styled.video`
 const Difference = styled.section`
   padding: 120px 0;
   margin-bottom: -120px;
+  @media(max-width:991px){
+    padding:60px 0;
+
+  }
 `;
 
 const DifferenceIntro = styled.div`
@@ -147,9 +207,11 @@ const DifferenceItem = styled.section`
     padding-bottom: 340px;
     color: white;
   }
+  @media(max-width:767px){
+    padding: 150px 0 !important;
+  }
 
   &:after {
-    
     top: 0;
     left: 0;
     border-right: 100vw solid transparent;
@@ -157,6 +219,9 @@ const DifferenceItem = styled.section`
     content: '';
     position: absolute;
     z-index: -1;
+    @media(max-width:767px){
+      border-top: 6.625rem solid #fff;
+    }
   }
 
   &:before {
@@ -167,11 +232,17 @@ const DifferenceItem = styled.section`
     content: '';
     position: absolute;
     z-index: -1;
+     @media(max-width:767px){
+      border-bottom: 6.625rem solid #fff;
+    }
   }
 `;
 
 const DifferenceInner = styled.div`
   /* padding-top: 60px; */
+  @media(max-width:991px){
+    margin:50px 0;
+  }
 `;
 
 const DifferenceImg = styled.img`
@@ -211,11 +282,13 @@ const Why = () => {
   // }
 
   return (
+    <>
+    <GlobalStyleWhy/>
     <Layout>
       <SEO title="Why" />
       <Intro>
         <IntroInner>
-          <TitleLarge align="center" color={Colors.blue}>
+          <TitleLarge align="center" color={Colors.blue} className="titleLarge_h1">
             Level Up Your IP Operations
           </TitleLarge>
           <IntroDesc align="center" mb={16} large>
@@ -268,12 +341,12 @@ const Why = () => {
         <DifferenceItem>
           <DifferenceInner>
             <Container>
-              <Flex align="center" justify="space-between">
-                <Col width="50%">
+              <Flex align="center" justify="space-between" className="why_flex">
+                <Col width="50%" className="leftBlock_why">
                   <DifferenceImg src={platform_src} />
                 </Col>
-                <Col width="50%">
-                  <TitleMedium color={Colors.blue} align="left">
+                <Col width="50%" className="rightBlock_why">
+                  <TitleMedium color={Colors.blue} align="left" className="titleMedium_why">
                     Leading Platform
                   </TitleMedium>
                   <DifferenceDesc>
@@ -296,9 +369,9 @@ const Why = () => {
         <DifferenceItem className="slant">
           <DifferenceInner>
             <Container>
-              <Flex align="center" justify="space-between">
-                <Col width="50%">
-                  <TitleMedium color="white" align="left">
+              <Flex align="center" justify="space-between" className="why_flex">
+                <Col width="50%" className="leftBlock_why">
+                  <TitleMedium color="white" align="left" className="titleMedium_why">
                     Support Services
                   </TitleMedium>
                   <DifferenceDesc>
@@ -314,7 +387,7 @@ const Why = () => {
                     <ArrowIcon color="white">{arrow}</ArrowIcon>
                   </ButtonLink>
                 </Col>
-                <Col width="50%">
+                <Col width="50%" className="rightBlock_why">
                   <DifferenceImg src={services_src} />
                 </Col>
               </Flex>
@@ -324,12 +397,12 @@ const Why = () => {
         <DifferenceItem>
           <DifferenceInner>
             <Container>
-              <Flex align="center" justify="space-between">
-                <Col width="50%">
+              <Flex align="center" justify="space-between" className="why_flex">
+                <Col width="50%" className="leftBlock_why">
                   <DifferenceImg src={network_src} />
                 </Col>
-                <Col width="50%">
-                  <TitleMedium color={Colors.blue} align="left">
+                <Col width="50%" className="rightBlock_why">
+                  <TitleMedium color={Colors.blue} align="left" className="titleMedium_why">
                     Global Network
                   </TitleMedium>
                   <DifferenceDesc>
@@ -354,9 +427,9 @@ const Why = () => {
         <DifferenceItem className="slant">
           <DifferenceInner>
             <Container>
-              <Flex align="center" justify="space-between">
-                <Col width="50%">
-                  <TitleMedium color="white" align="left">
+              <Flex align="center" justify="space-between" className="why_flex">
+                <Col width="50%" className="leftBlock_why">
+                  <TitleMedium color="white" align="left" className="titleMedium_why">
                     Flexible Budget
                   </TitleMedium>
                   <DifferenceDesc>
@@ -372,7 +445,7 @@ const Why = () => {
                     <ArrowIcon color="white">{arrow}</ArrowIcon>
                   </ButtonLink>
                 </Col>
-                <Col width="50%">
+                <Col width="50%" className="rightBlock_why">
                   <DifferenceImg src={budget_src} />
                 </Col>
               </Flex>
@@ -382,6 +455,7 @@ const Why = () => {
       </Difference>
       <Ready title="Get Tangible Results" />
     </Layout>
+    </>
   );
 };
 

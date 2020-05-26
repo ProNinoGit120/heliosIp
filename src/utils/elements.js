@@ -10,14 +10,17 @@ const StyledContainer = styled.div`
     maxWidth ? `${maxWidth}px` : `${Size.max}px`};
   width: 100%;
   margin: 0 auto;
+  
+  
 `;
 
 export const Container = ({ children, maxWidth }) => (
   <StyledContainer maxWidth={maxWidth}>{children}</StyledContainer>
 );
 
-export const Flex = ({ children, align, justify, direction, responsive }) => (
+export const Flex = ({ children, align, justify, direction, responsive, className }) => (
   <div
+    className={className}
     style={{
       width: "100%",
       display: "flex",
@@ -42,11 +45,17 @@ export const TitleLarge = styled.h1`
   color: ${({ color }) => color};
   text-align: ${({ align }) => align};
   margin-bottom: ${({ mb }) => mb}px;
+   @media(max-width:767px){
+      margin-bottom:32px;
+    }
 `;
 
 export const TitleMedium = styled.h2`
   color: ${({ color }) => color};
   text-align: ${({ align }) => align};
+  @media(max-width:767px){
+    font-size:30px
+  }
 `;
 
 export const TitleSmall = styled.h3`
@@ -73,6 +82,9 @@ const StyledCol = styled.div`
   &.flex {
     display: flex;
   }
+  ${'' /* @media(max-width:480px){
+    width: 100%;
+  } */}
 `;
 
 export const Col = ({ children, width, noP, className }) => (
@@ -161,6 +173,10 @@ export const StyledForm = styled.form`
 export const StyledInputWrapper = styled.div`
   width: 100%;
   padding: ${({ padding }) => padding};
+  @media(max-width:767px){
+     padding: ${({ padding }) => padding};
+
+  }
 `;
 export const StyledLabel = styled.label`
   display: flex;
@@ -226,6 +242,9 @@ const PlayIcon = styled.div`
   svg {
     width: 100%;
     fill: ${({ color }) => color};
+  @media(max-width:480px){
+    width:35px !important; 
+  }
   }
 `;
 

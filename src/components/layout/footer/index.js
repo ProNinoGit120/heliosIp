@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled ,{ createGlobalStyle }from "styled-components";
 import Colors from "../../../utils/colors";
 import { twitter, linkedin } from "../../../utils/icons";
 import { Container, Flex, Col } from "../../../utils/elements";
@@ -8,25 +8,43 @@ import logo_src from "../../../images/logo.svg";
 
 const StyledFooter = styled.footer`
   background: ${Colors.orange_gradient};
-  padding: 120px 0;
+  padding-top:126px;
+  padding-bottom:50px;
+  @media(max-width:991px){
+    padding:100px 10px !important;
+  }
 `;
 
 const FooterLogo = styled.img`
   margin-bottom: 2px;
   margin-top: -12px;
   width: 150px;
+  @media(max-width: 767px) {
+    width: 100px;
+  }
 `;
 
 const FooterListTitle = styled.h3`
   color: white;
+  @media(max-width:991px){
+    font-size:20px
+  }
+  @media(max-width:480px){
+    font-size:20px
+  }
 `;
 
-const FooterList = styled.ul``;
+const FooterList = styled.ul`
+  @media(max-width:480px){
+    font-size:18px;
+  }
+`;
 
 const FooterListItem = styled.li`
   padding-bottom: 6px;
   color: white;
 `;
+
 
 const StyledLink = styled(Link)`
   font-family: "Roboto", sans-serif;
@@ -40,6 +58,30 @@ const SocialItem = styled.a`
   margin-right: 16px;
 `;
 
+const GlobalStylFooter = createGlobalStyle `
+  .footer_flex {
+    @media(max-width:767px){
+      width:100% !important;
+      flex-direction:column !important;
+      display: block !important;
+    }
+  }
+  .footer_container{
+    padding-top:126px !important;
+  }
+
+  .Block_footer{
+    @media(max-width:767px){
+      width: 50% !important;
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 0 20px;
+      padding-left:40px;
+
+    }
+  }
+ 
+`;
 const Footer = () => {
   const getDate = () => {
     const d = new Date();
@@ -48,10 +90,12 @@ const Footer = () => {
   };
 
   return (
+    <>
+    <GlobalStylFooter/>
     <StyledFooter>
-      <Container>
-        <Flex>
-          <Col width="20%">
+      <Container className="footer_container">
+        <Flex className="footer_flex">
+          <Col width = "20%" className ="Block_footer">
             <FooterList>
               <FooterLogo src={logo_src} />
 
@@ -82,7 +126,7 @@ const Footer = () => {
               </FooterListItem>
             </FooterList>
           </Col>
-          <Col width="20%">
+          <Col width="20%" className="Block_footer">
             <FooterListTitle>Platform</FooterListTitle>
             <FooterList>
               <FooterListItem>
@@ -99,7 +143,7 @@ const Footer = () => {
               </FooterListItem> */}
             </FooterList>
           </Col>
-          <Col width="20%">
+          <Col width="20%" className="Block_footer" >
             <FooterListTitle>Services</FooterListTitle>
             <FooterList>
               <FooterListItem>
@@ -119,7 +163,7 @@ const Footer = () => {
               </FooterListItem> */}
             </FooterList>
           </Col>
-          <Col width="20%">
+          <Col width="20%" className="Block_footer">
             <FooterListTitle>Resources</FooterListTitle>
             <FooterList>
               <FooterListItem>
@@ -134,7 +178,7 @@ const Footer = () => {
               </FooterListItem>
             </FooterList>
           </Col>
-          <Col width="20%">
+          <Col width="20%" className="Block_footer">
             <FooterListTitle>Get Started</FooterListTitle>
             <FooterList>
               <FooterListItem>
@@ -148,6 +192,7 @@ const Footer = () => {
         </Flex>
       </Container>
     </StyledFooter>
+    </>
   );
 };
 

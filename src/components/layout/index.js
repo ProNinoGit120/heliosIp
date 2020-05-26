@@ -12,6 +12,8 @@ import styled, { createGlobalStyle } from "styled-components";
 import Colors from "../../utils/colors";
 import Header from "./header";
 import Footer from "./footer";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -78,10 +80,27 @@ const GlobalStyles = createGlobalStyle`
     
   }
 
+  @media(max-width: 767px) { 
+    .flexBox {
+      flex-direction: column !important;  
+      align-items: flex-start !important;
+    }
+
+    .leftBlock,
+    .rightBlock {
+        width: 100%;
+        margin: 0 0 20px;
+        padding:0px 25px;
+      }
+    }
+  }
 `;
 
 const Main = styled.main`
   display: block;
+  @media(max-width:767px){
+    overflow-x:hidden;
+  }
 `;
 
 const Layout = ({ children }) => {

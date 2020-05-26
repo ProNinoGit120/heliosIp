@@ -23,9 +23,14 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-hook-form": "^5.7.2",
+<<<<<<< HEAD
     "react-phone-number-input": "^3.0.22",
+=======
+    "react-slick": "^0.26.1",
+>>>>>>> f2190e2334bf14a086d5d217e367d71d75a0a655
     "react-tabs": "^3.1.0",
     "react-typography": "^0.16.19",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.0.1",
     "styled-system": "^5.1.5",
     "typography": "^0.16.19"
