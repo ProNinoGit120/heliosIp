@@ -8,7 +8,8 @@ import Size from "../../../utils/size";
 import useWindowSize from "../useWindowSize";
 const StyledNav = styled.nav`
   width: 100%;
-  @media(max-width: 991px) {
+  @media (max-width: 991px) {
+    border-top: 1px solid rgba(255, 255, 255, 0.33);
     position: absolute;
     left: 0;
     right: 0;
@@ -16,38 +17,47 @@ const StyledNav = styled.nav`
     top: 79px;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out;
+    transition: max-height 0.2s ease;
     &.active {
       max-height: 361px;
     }
   }
 `;
 
+const StyledHamburger = styled.button`
+  display: none;
+  position: absolute;
+  right: 32px;
+  background: ${Colors.orange};
+  border: 1px solid rgba(255, 255, 255, 0.33);
+  border-radius: 6px;
+  outline: 0;
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 991px) {
+    display: flex;
+  }
+`;
+
 const GlobalHeaderStyles = createGlobalStyle`
-  .navbar-toggler {
+  /* .navbar-toggler {
     display: none;
     position: absolute;
     right: 32px;
-    background: #ff5745;
+    background: ${Colors.orange};
     border-radius: 0;
     padding: 0;
     width: 36px;
     height: 36px;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
     justify-content: center;
     @media(max-width: 991px) {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
       display: flex;
     }
-  }
+  } */
 
   .headerFlexBox {
     @media(max-width: 991px) {
@@ -62,7 +72,7 @@ const NavList = styled.ul`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  @media(max-width: 991px) {
+  @media (max-width: 991px) {
     flex-direction: column !important;
     padding: 20px 0;
   }
@@ -119,7 +129,7 @@ const NavItem = styled.li`
 
 const NavLink = styled(Link)`
   display: block;
-  @media(max-width: 991px) {
+  @media (max-width: 991px) {
     width: 100%;
   }
 `;
@@ -127,19 +137,19 @@ const NavLink = styled(Link)`
 export default () => {
   const width = window.innerWidth;
   const breakpoint = 991;
-  const windowSize = useWindowSize(); 
+  const windowSize = useWindowSize();
   const [toggleNavList, setToggleNavList] = useState(false);
-  const navListClass = (windowSize > breakpoint || toggleNavList ) ? 'active' : '';
-  return(
+  const navListClass = windowSize > breakpoint || toggleNavList ? "active" : "";
+  return (
     <>
       <GlobalHeaderStyles />
-      <button 
+      <StyledHamburger
         className="navbar-toggler"
         onClick={() => setToggleNavList(!toggleNavList)}
       >
-        { !toggleNavList && hamburger }
-        { toggleNavList && hamburgerClose }
-      </button>
+        {!toggleNavList && hamburger}
+        {toggleNavList && hamburgerClose}
+      </StyledHamburger>
 
       <StyledNav className={navListClass}>
         <NavList>
@@ -170,8 +180,7 @@ export default () => {
             </NavLink>
           </Flex>
         </NavList>
-      </StyledNav> 
+      </StyledNav>
     </>
   );
 };
-

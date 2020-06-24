@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
   background: ${Colors.orange_gradient};
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.33);
   height: 80px;
 `;
 
@@ -27,8 +27,8 @@ const HeaderLogo = styled.img`
   margin: -4px 116px 0 0;
   width: 150px;
   vertical-align: middle;
-  @media(max-width:1023.93px){
-    width:95px; 
+  @media (max-width: 1023.93px) {
+    width: 140px;
   }
 `;
 

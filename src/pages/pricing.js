@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled , { createGlobalStyle }from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import Size from "../utils/size";
@@ -29,8 +29,7 @@ import {
 } from "../utils/icons";
 import Ready from "../components/ready";
 
-
-const GlobalStylePriceing = createGlobalStyle `
+const GlobalStylePriceing = createGlobalStyle`
   .priceing_flex{
     @media(max-width:767px){
       flex-direction:column !important;
@@ -61,7 +60,7 @@ const Intro = styled.section`
   padding-bottom: 400px;
   position: relative;
   z-index: -2;
-  
+
   &:before {
     content: " ";
     display: block;
@@ -74,11 +73,11 @@ const Intro = styled.section`
     transform: rotate(-9.5deg);
     z-index: -1;
     transform-origin: left bottom;
-    @media(max-width:767px){
-      height:60%;
+    @media (max-width: 767px) {
+      height: 60%;
     }
   }
-  @media(max-width:767px){
+  @media (max-width: 767px) {
     padding-bottom: 400px;
   }
 `;
@@ -86,8 +85,8 @@ const Intro = styled.section`
 const IntroInner = styled.div`
   padding-top: 120px;
   text-align: center;
-  @media(max-width:767px){
-    padding-bottom:100px;
+  @media (max-width: 767px) {
+    padding-bottom: 100px;
   }
 `;
 
@@ -115,10 +114,10 @@ const IntroLogo = styled.div`
 
 const PricingCardsWrapper = styled.div`
   margin-top: -300px;
-  @media(max-width:991px){
+  @media (max-width: 991px) {
     margin-top: -350px !important;
   }
-  @media(max-width:767px){
+  @media (max-width: 767px) {
     margin-top: -500px !important;
   }
 `;
@@ -151,16 +150,16 @@ const CardTitle = styled.h3`
 
 const CardBody = styled.div`
   padding: 32px 64px;
-  display:flex;
-  height: 31vh;
+  display: flex;
+  /* height: 31vh; */
   flex-direction: column;
   /* align-items: center;
   justify-content: center; */
-  @media(max-width:768px){
-    height:61vh ;
+  @media (max-width: 768px) {
+    /* height: 61vh; */
   }
-  @media(max-width:480px){
-    height:auto ;
+  @media (max-width: 480px) {
+    height: auto;
   }
 `;
 
@@ -232,16 +231,16 @@ const PricingItemIcon = styled.div`
 
 const SupportWrapper = styled.section`
   padding: 225px 0;
-  @media(max-width:767px){
-    padding:150px 0;
+  @media (max-width: 767px) {
+    padding: 150px 0;
   }
 `;
 
 const SupportIntro = styled.div`
   padding-left: 32px;
-  @media(max-width:767px){
-    padding:0 15px;
-    text-align:center;
+  @media (max-width: 767px) {
+    padding: 0 15px;
+    text-align: center;
   }
 `;
 
@@ -372,413 +371,424 @@ const Pricing = () => {
 
   return (
     <>
-    <GlobalStylePriceing/>
-    <Layout>
-      <SEO title="Pricing" />
-      <Intro>
-        <IntroInner>
+      <GlobalStylePriceing />
+      <Layout>
+        <SEO title="Pricing" />
+        <Intro>
+          <IntroInner>
+            <Container>
+              <IntroLogo>
+                <Sun color="white" />
+              </IntroLogo>
+              <TitleLarge
+                color="white"
+                align="center"
+                className="titleLarge_price"
+              >
+                Choose the plan that’s right for you.
+              </TitleLarge>
+            </Container>
+          </IntroInner>
+        </Intro>
+        <PricingCardsWrapper>
           <Container>
-            <IntroLogo>
-              <Sun color="white" />
-            </IntroLogo>
-            <TitleLarge color = "white"
-            align = "center"
-            className = "titleLarge_price" >
-              Choose the plan that’s right for you.
-            </TitleLarge>
-          </Container>
-        </IntroInner>
-      </Intro>
-      <PricingCardsWrapper>
-        <Container>
-          <Flex align="flex-start" className="priceing_flex" >
-            <Col width="50%" className="leftBlock_price">
-              <PricingCard>
-                <CardHeader>
-                  <CardTitle>SMB Portfolio​</CardTitle>
-                </CardHeader>
+            <Flex align="flex-start" className="priceing_flex">
+              <Col width="50%" className="leftBlock_price">
+                <PricingCard>
+                  <CardHeader>
+                    <CardTitle>SMB Portfolio​</CardTitle>
+                  </CardHeader>
 
-                <CardSubHeader>
-                  <Flex direction="column" align="center" className="priceing_flex">
-                    <Flex align="center" justify="center">
-                      <TitleXLarge>$1</TitleXLarge>
-                      <TextBody mb={-8} ml={8}>
-                        Per Month <br /> Per Pending Record
-                      </TextBody>
+                  <CardSubHeader>
+                    <Flex
+                      direction="column"
+                      align="center"
+                      className="priceing_flex"
+                    >
+                      <Flex align="center" justify="center">
+                        <TitleXLarge>$1</TitleXLarge>
+                        <TextBody mb={-8} ml={8}>
+                          Per Month <br /> Per Pending Record
+                        </TextBody>
+                      </Flex>
+                      <TextBody>+ $500/Month Platform Fee</TextBody>
                     </Flex>
-                    <TextBody>+ $500/Month Platform Fee</TextBody>
+                  </CardSubHeader>
+                  <CardBody>
+                    <PricingList>
+                      <PricingItem>
+                        <PricingItemIcon>{checkmark}</PricingItemIcon>
+                        HeliosComplete™ Portal
+                      </PricingItem>
+                      <PricingItem>
+                        <PricingItemIcon>{checkmark}</PricingItemIcon>
+                        Patents & Trademarks Modules
+                      </PricingItem>
+                      <PricingItem>
+                        <PricingItemIcon>{checkmark}</PricingItemIcon>
+                        Core Docketing
+                      </PricingItem>
+                      <PricingItem>
+                        <PricingItemIcon>{checkmark}</PricingItemIcon>
+                        U.S. Annuities & Renewals
+                      </PricingItem>
+                      <PricingItem>
+                        <PricingItemIcon>{checkmark}</PricingItemIcon>
+                        Monitoring & Reminders
+                      </PricingItem>
+                    </PricingList>
+                  </CardBody>
+                  <CardFooter>
+                    <CardButton>Get Started</CardButton>
+                  </CardFooter>
+                </PricingCard>
+              </Col>
+              <Col width="50%" className="rightBlock_price">
+                <PricingCard>
+                  <CardHeader>
+                    <CardTitle>Global Portfolio</CardTitle>
+                  </CardHeader>
+
+                  <CardSubHeader>
+                    <Flex direction="column" align="center">
+                      <Flex align="center" justify="center">
+                        <TitleXLarge>$2</TitleXLarge>
+                        <TextBody mb={-8} ml={8}>
+                          Per Month <br /> Per Pending Record
+                        </TextBody>
+                      </Flex>
+                      <TextBody>+ $1500/Month Platform Fee</TextBody>
+                    </Flex>
+                  </CardSubHeader>
+                  <CardBody>
+                    <PricingList>
+                      <PricingItem className="orange">
+                        <PricingItemIcon>{checkmark}</PricingItemIcon>
+                        Includes All Value Features
+                      </PricingItem>
+                      <PricingItem>
+                        <PricingItemIcon>{plus}</PricingItemIcon>
+                        HeliosComplete™ Enterprise
+                      </PricingItem>
+                      <PricingItem>
+                        <PricingItemIcon>{plus}</PricingItemIcon>
+                        Full Suite of IP Modules​
+                      </PricingItem>
+                      <PricingItem>
+                        <PricingItemIcon>{plus}</PricingItemIcon>
+                        Electronic PTO Data Integration​
+                      </PricingItem>
+                      <PricingItem>
+                        <PricingItemIcon>{plus}</PricingItemIcon>
+                        Global DocketEngine™ Ruleset​
+                      </PricingItem>
+                      <PricingItem>
+                        <PricingItemIcon>{plus}</PricingItemIcon>
+                        Microsoft® 365 Integration
+                      </PricingItem>
+                      <PricingItem>
+                        <PricingItemIcon>{plus}</PricingItemIcon>
+                        Power BI Dashboards​
+                      </PricingItem>
+                    </PricingList>
+                  </CardBody>
+                  <CardFooter>
+                    <CardButton>Get Started</CardButton>
+                  </CardFooter>
+                </PricingCard>
+              </Col>
+            </Flex>
+          </Container>
+        </PricingCardsWrapper>
+        <SupportWrapper>
+          <Container>
+            <SupportIntro>
+              <TitleLarge mb={8} className="titleLarge_price">
+                Added Support Services
+              </TitleLarge>
+              <TextBody style={{ fontSize: "24px" }} mb={64}>
+                Optional transactional support services monitored and executed
+                on your instructions​
+              </TextBody>
+            </SupportIntro>
+            <SupportCards>
+              <SupportCard>
+                <SupportCardFace className="front">
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{patent}</SupportIcon>
+                    <SupportInfo
+                      onClick={e => {
+                        handleCardOpen(e);
+                      }}
+                    >
+                      i
+                    </SupportInfo>
                   </Flex>
-                </CardSubHeader>
-                <CardBody>
-                  <PricingList>
+                  <Flex direction="column" justify="space-between">
+                    <TitleSmall mb={12}>Patent Filing </TitleSmall>
+
+                    <TextBody mb={16}>
+                      U.S. and Foreign patent, design and utility model filings
+                      ​
+                    </TextBody>
+
+                    <TextBody color={`rgba(0,0,0,.33)`}>
+                      Starting at <strong>$475</strong> per filing
+                    </TextBody>
+                  </Flex>
+                </SupportCardFace>
+                <SupportCardFace className="back">
+                  <Flex justify="space-between" align="flex-start">
+                    <TitleSmall mb={8}>More Info</TitleSmall>
+
+                    <SupportInfoClose
+                      onClick={e => {
+                        handleCardClose(e);
+                      }}
+                    >
+                      {close}
+                    </SupportInfoClose>
+                  </Flex>
+                  <SupportList>
+                    <SupportItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      HeliosComplete™ Portal
+                    </SupportItem>
                     <PricingItem>
                       <PricingItemIcon>{checkmark}</PricingItemIcon>
                       HeliosComplete™ Portal
                     </PricingItem>
                     <PricingItem>
                       <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      Patents & Trademarks Modules
+                      HeliosComplete™ Portal
                     </PricingItem>
                     <PricingItem>
                       <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      Core Docketing
+                      HeliosComplete™ Portal
                     </PricingItem>
-                    <PricingItem>
-                      <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      U.S. Annuities & Renewals
-                    </PricingItem>
-                    <PricingItem>
-                      <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      Monitoring & Reminders
-                    </PricingItem>
-                  </PricingList>
-                </CardBody>
-                <CardFooter>
-                  <CardButton>Get Started</CardButton>
-                </CardFooter>
-              </PricingCard>
-            </Col>
-            <Col width="50%" className="rightBlock_price">
-              <PricingCard>
-                <CardHeader>
-                  <CardTitle>Global Portfolio</CardTitle>
-                </CardHeader>
-
-                <CardSubHeader>
-                  <Flex direction="column" align="center">
-                    <Flex align="center" justify="center">
-                      <TitleXLarge>$2</TitleXLarge>
-                      <TextBody mb={-8} ml={8}>
-                        Per Month <br /> Per Pending Record
-                      </TextBody>
-                    </Flex>
-                    <TextBody>+ $1500/Month Platform Fee</TextBody>
+                  </SupportList>
+                </SupportCardFace>
+              </SupportCard>
+              <SupportCard>
+                <SupportCardFace className="front">
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{trademark}</SupportIcon>
+                    <SupportInfo
+                      onClick={e => {
+                        handleCardOpen(e);
+                      }}
+                    >
+                      i
+                    </SupportInfo>
                   </Flex>
-                </CardSubHeader>
-                <CardBody>
-                  <PricingList>
-                    <PricingItem className="orange">
-                      <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      Includes All Value Features
-                    </PricingItem>
-                    <PricingItem>
-                      <PricingItemIcon>{plus}</PricingItemIcon>
-                      HeliosComplete™ Enterprise
-                    </PricingItem>
-                    <PricingItem>
-                      <PricingItemIcon>{plus}</PricingItemIcon>
-                      Full Suite of IP Modules​
-                    </PricingItem>
-                    <PricingItem>
-                      <PricingItemIcon>{plus}</PricingItemIcon>
-                      Electronic PTO Data Integration​
-                    </PricingItem>
-                    <PricingItem>
-                      <PricingItemIcon>{plus}</PricingItemIcon>
-                      Global DocketEngine™ Ruleset​
-                    </PricingItem>
-                    <PricingItem>
-                      <PricingItemIcon>{plus}</PricingItemIcon>
-                      Microsoft® 365 Integration
-                    </PricingItem>
-                    <PricingItem>
-                      <PricingItemIcon>{plus}</PricingItemIcon>
-                      Power BI Dashboards​
-                    </PricingItem>
-                  </PricingList>
-                </CardBody>
-                <CardFooter>
-                  <CardButton>Get Started</CardButton>
-                </CardFooter>
-              </PricingCard>
-            </Col>
-          </Flex>
-        </Container>
-      </PricingCardsWrapper>
-      <SupportWrapper>
-        <Container>
-          <SupportIntro>
-            <TitleLarge mb={8} className="titleLarge_price">Added Support Services</TitleLarge>
-            <TextBody style={{ fontSize: "24px" }} mb={64}>
-              Optional transactional support services monitored and executed on
-              your instructions​
-            </TextBody>
-          </SupportIntro>
-          <SupportCards>
-            <SupportCard>
-              <SupportCardFace className="front">
-                <Flex align="flex-start" justify="space-between">
-                  <SupportIcon>{patent}</SupportIcon>
-                  <SupportInfo
-                    onClick={e => {
-                      handleCardOpen(e);
-                    }}
-                  >
-                    i
-                  </SupportInfo>
-                </Flex>
-                <Flex direction="column" justify="space-between">
-                  <TitleSmall mb={12}>Patent Filing </TitleSmall>
+                  <TitleSmall mb={12}>Trademark Filing​</TitleSmall>
 
                   <TextBody mb={16}>
-                    U.S. and Foreign patent, design and utility model filings ​
+                    U.S. and Foreign trademark and industrial design filings
                   </TextBody>
 
                   <TextBody color={`rgba(0,0,0,.33)`}>
-                    Starting at <strong>$475</strong> per filing
+                    Starting at <strong>$575</strong> per filing
                   </TextBody>
-                </Flex>
-              </SupportCardFace>
-              <SupportCardFace className="back">
-                <Flex justify="space-between" align="flex-start">
-                  <TitleSmall mb={8}>More Info</TitleSmall>
+                </SupportCardFace>
+                <SupportCardFace className="back">
+                  <Flex justify="space-between" align="flex-start">
+                    <TitleSmall mb={8}>More Info</TitleSmall>
 
-                  <SupportInfoClose
-                    onClick={e => {
-                      handleCardClose(e);
-                    }}
-                  >
-                    {close}
-                  </SupportInfoClose>
-                </Flex>
-                <SupportList>
-                  <SupportItem>
-                    <PricingItemIcon>{checkmark}</PricingItemIcon>
-                    HeliosComplete™ Portal
-                  </SupportItem>
-                  <PricingItem>
-                    <PricingItemIcon>{checkmark}</PricingItemIcon>
-                    HeliosComplete™ Portal
-                  </PricingItem>
-                  <PricingItem>
-                    <PricingItemIcon>{checkmark}</PricingItemIcon>
-                    HeliosComplete™ Portal
-                  </PricingItem>
-                  <PricingItem>
-                    <PricingItemIcon>{checkmark}</PricingItemIcon>
-                    HeliosComplete™ Portal
-                  </PricingItem>
-                </SupportList>
-              </SupportCardFace>
-            </SupportCard>
-            <SupportCard>
-              <SupportCardFace className="front">
-                <Flex align="flex-start" justify="space-between">
-                  <SupportIcon>{trademark}</SupportIcon>
-                  <SupportInfo
-                    onClick={e => {
-                      handleCardOpen(e);
-                    }}
-                  >
-                    i
-                  </SupportInfo>
-                </Flex>
-                <TitleSmall mb={12}>Trademark Filing​</TitleSmall>
+                    <SupportInfoClose
+                      onClick={e => {
+                        handleCardClose(e);
+                      }}
+                    >
+                      {close}
+                    </SupportInfoClose>
+                  </Flex>
+                  <TextBody>
+                    For trademark applications (national, WIPO, EUIPO) manage
+                    all steps in the filing process including: preparation of
+                    trademark application; POA; prepare statement of use;
+                    prepare drawings and specimens; organize electronic filing
+                    package; upload to filing system; docket non-substantive
+                    office actions
+                  </TextBody>
+                </SupportCardFace>
+              </SupportCard>
+              <SupportCard>
+                <SupportCardFace className="front">
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{calendar}</SupportIcon>
+                    <SupportInfo
+                      onClick={e => {
+                        handleCardOpen(e);
+                      }}
+                    >
+                      i
+                    </SupportInfo>
+                  </Flex>
+                  <TitleSmall mb={12}>Office Actions​​</TitleSmall>
 
-                <TextBody mb={16}>
-                  U.S. and Foreign trademark and industrial design filings
-                </TextBody>
+                  <TextBody mb={16}>
+                    Monitor, manage and file U.S. and foreign office action
+                    responses​ ​​
+                  </TextBody>
 
-                <TextBody color={`rgba(0,0,0,.33)`}>
-                  Starting at <strong>$575</strong> per filing
-                </TextBody>
-              </SupportCardFace>
-              <SupportCardFace className="back">
-                <Flex justify="space-between" align="flex-start">
-                  <TitleSmall mb={8}>More Info</TitleSmall>
+                  <TextBody color={`rgba(0,0,0,.33)`}>
+                    Starting at <strong>$75</strong> per response
+                  </TextBody>
+                </SupportCardFace>
+                <SupportCardFace className="back">
+                  <Flex justify="space-between" align="flex-start">
+                    <TitleSmall mb={8}>More Info</TitleSmall>
 
-                  <SupportInfoClose
-                    onClick={e => {
-                      handleCardClose(e);
-                    }}
-                  >
-                    {close}
-                  </SupportInfoClose>
-                </Flex>
-                <TextBody>
-                  For trademark applications (national, WIPO, EUIPO) manage all
-                  steps in the filing process including: preparation of
-                  trademark application; POA; prepare statement of use; prepare
-                  drawings and specimens; organize electronic filing package;
-                  upload to filing system; docket non-substantive office actions
-                </TextBody>
-              </SupportCardFace>
-            </SupportCard>
-            <SupportCard>
-              <SupportCardFace className="front">
-                <Flex align="flex-start" justify="space-between">
-                  <SupportIcon>{calendar}</SupportIcon>
-                  <SupportInfo
-                    onClick={e => {
-                      handleCardOpen(e);
-                    }}
-                  >
-                    i
-                  </SupportInfo>
-                </Flex>
-                <TitleSmall mb={12}>Office Actions​​</TitleSmall>
+                    <SupportInfoClose
+                      onClick={e => {
+                        handleCardClose(e);
+                      }}
+                    >
+                      {close}
+                    </SupportInfoClose>
+                  </Flex>
+                  <TextBody>
+                    For patents, trademarks and designs, manage office action
+                    responses including: receive and coordinate U.S. / foreign
+                    counsel reporting; monitor and coordinate response due
+                    dates; manage U.S. counsel / foreign associate instructions
+                  </TextBody>
+                </SupportCardFace>
+              </SupportCard>
+              <SupportCard>
+                <SupportCardFace className="front">
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{money}</SupportIcon>
+                    <SupportInfo
+                      onClick={e => {
+                        handleCardOpen(e);
+                      }}
+                    >
+                      i
+                    </SupportInfo>
+                  </Flex>
+                  <TitleSmall mb={12}>Renewals​​​</TitleSmall>
 
-                <TextBody mb={16}>
-                  Monitor, manage and file U.S. and foreign office action
-                  responses​ ​​
-                </TextBody>
+                  <TextBody mb={16}>
+                    Pay U.S. and foreign renewals for patents, trademarks and
+                    designs​ ​​
+                  </TextBody>
 
-                <TextBody color={`rgba(0,0,0,.33)`}>
-                  Starting at <strong>$75</strong> per response
-                </TextBody>
-              </SupportCardFace>
-              <SupportCardFace className="back">
-                <Flex justify="space-between" align="flex-start">
-                  <TitleSmall mb={8}>More Info</TitleSmall>
+                  <TextBody color={`rgba(0,0,0,.33)`}>
+                    Starting at <strong>$35</strong> per renewal
+                  </TextBody>
+                </SupportCardFace>
+                <SupportCardFace className="back">
+                  <Flex justify="space-between" align="flex-start">
+                    <TitleSmall mb={8}>More Info</TitleSmall>
 
-                  <SupportInfoClose
-                    onClick={e => {
-                      handleCardClose(e);
-                    }}
-                  >
-                    {close}
-                  </SupportInfoClose>
-                </Flex>
-                <TextBody>
-                  For patents, trademarks and designs, manage office action
-                  responses including: receive and coordinate U.S. / foreign
-                  counsel reporting; monitor and coordinate response due dates;
-                  manage U.S. counsel / foreign associate instructions
-                </TextBody>
-              </SupportCardFace>
-            </SupportCard>
-            <SupportCard>
-              <SupportCardFace className="front">
-                <Flex align="flex-start" justify="space-between">
-                  <SupportIcon>{money}</SupportIcon>
-                  <SupportInfo
-                    onClick={e => {
-                      handleCardOpen(e);
-                    }}
-                  >
-                    i
-                  </SupportInfo>
-                </Flex>
-                <TitleSmall mb={12}>Renewals​​​</TitleSmall>
+                    <SupportInfoClose
+                      onClick={e => {
+                        handleCardClose(e);
+                      }}
+                    >
+                      {close}
+                    </SupportInfoClose>
+                  </Flex>
+                  <TextBody>
+                    For patent, trademark and design renewals, manage all steps
+                    in the fee payment process including: monitor and coordinate
+                    due dates; manage foreign associate instructions; pay and
+                    invoice official fees and agent fees
+                  </TextBody>
+                </SupportCardFace>
+              </SupportCard>
+              <SupportCard>
+                <SupportCardFace className="front">
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{ids}</SupportIcon>
+                    <SupportInfo
+                      onClick={e => {
+                        handleCardOpen(e);
+                      }}
+                    >
+                      i
+                    </SupportInfo>
+                  </Flex>
+                  <TitleSmall mb={12}>IDS Filing​</TitleSmall>
 
-                <TextBody mb={16}>
-                  Pay U.S. and foreign renewals for patents, trademarks and
-                  designs​ ​​
-                </TextBody>
+                  <TextBody mb={16}>
+                    Track, prepare and file IDS including reference storage​ ​
+                    ​​
+                  </TextBody>
 
-                <TextBody color={`rgba(0,0,0,.33)`}>
-                  Starting at <strong>$35</strong> per renewal
-                </TextBody>
-              </SupportCardFace>
-              <SupportCardFace className="back">
-                <Flex justify="space-between" align="flex-start">
-                  <TitleSmall mb={8}>More Info</TitleSmall>
+                  <TextBody color={`rgba(0,0,0,.33)`}>
+                    Starting at <strong>$95</strong> per filing
+                  </TextBody>
+                </SupportCardFace>
+                <SupportCardFace className="back">
+                  <Flex justify="space-between" align="flex-start">
+                    <TitleSmall mb={8}>More Info</TitleSmall>
 
-                  <SupportInfoClose
-                    onClick={e => {
-                      handleCardClose(e);
-                    }}
-                  >
-                    {close}
-                  </SupportInfoClose>
-                </Flex>
-                <TextBody>
-                  For patent, trademark and design renewals, manage all steps in
-                  the fee payment process including: monitor and coordinate due
-                  dates; manage foreign associate instructions; pay and invoice
-                  official fees and agent fees
-                </TextBody>
-              </SupportCardFace>
-            </SupportCard>
-            <SupportCard>
-              <SupportCardFace className="front">
-                <Flex align="flex-start" justify="space-between">
-                  <SupportIcon>{ids}</SupportIcon>
-                  <SupportInfo
-                    onClick={e => {
-                      handleCardOpen(e);
-                    }}
-                  >
-                    i
-                  </SupportInfo>
-                </Flex>
-                <TitleSmall mb={12}>IDS Filing​</TitleSmall>
+                    <SupportInfoClose
+                      onClick={e => {
+                        handleCardClose(e);
+                      }}
+                    >
+                      {close}
+                    </SupportInfoClose>
+                  </Flex>
+                  <TextBody>
+                    Prepare and file Information Disclosure Statement (form
+                    SB08); collect and organize citations included reference
+                    materials; download and archive publicly available foreign
+                    patents; import NPLs; create cross-family reference reports
+                  </TextBody>
+                </SupportCardFace>
+              </SupportCard>
+              <SupportCard>
+                <SupportCardFace className="front">
+                  <Flex align="flex-start" justify="space-between">
+                    <SupportIcon>{formal}</SupportIcon>
+                    <SupportInfo
+                      onClick={e => {
+                        handleCardOpen(e);
+                      }}
+                    >
+                      i
+                    </SupportInfo>
+                  </Flex>
+                  <TitleSmall mb={12}>Formalities</TitleSmall>
 
-                <TextBody mb={16}>
-                  Track, prepare and file IDS including reference storage​ ​ ​​
-                </TextBody>
+                  <TextBody mb={16}>
+                    Prepare and file assignments, POAs, and other formalities
+                  </TextBody>
 
-                <TextBody color={`rgba(0,0,0,.33)`}>
-                  Starting at <strong>$95</strong> per filing
-                </TextBody>
-              </SupportCardFace>
-              <SupportCardFace className="back">
-                <Flex justify="space-between" align="flex-start">
-                  <TitleSmall mb={8}>More Info</TitleSmall>
+                  <TextBody color={`rgba(0,0,0,.33)`}>
+                    Starting at <strong>$125</strong> per filing
+                  </TextBody>
+                </SupportCardFace>
+                <SupportCardFace className="back">
+                  <Flex justify="space-between" align="flex-start">
+                    <TitleSmall mb={8}>More Info</TitleSmall>
 
-                  <SupportInfoClose
-                    onClick={e => {
-                      handleCardClose(e);
-                    }}
-                  >
-                    {close}
-                  </SupportInfoClose>
-                </Flex>
-                <TextBody>
-                  Prepare and file Information Disclosure Statement (form SB08);
-                  collect and organize citations included reference materials;
-                  download and archive publicly available foreign patents;
-                  import NPLs; create cross-family reference reports
-                </TextBody>
-              </SupportCardFace>
-            </SupportCard>
-            <SupportCard>
-              <SupportCardFace className="front">
-                <Flex align="flex-start" justify="space-between">
-                  <SupportIcon>{formal}</SupportIcon>
-                  <SupportInfo
-                    onClick={e => {
-                      handleCardOpen(e);
-                    }}
-                  >
-                    i
-                  </SupportInfo>
-                </Flex>
-                <TitleSmall mb={12}>Formalities</TitleSmall>
-
-                <TextBody mb={16}>
-                  Prepare and file assignments, POAs, and other formalities
-                </TextBody>
-
-                <TextBody color={`rgba(0,0,0,.33)`}>
-                  Starting at <strong>$125</strong> per filing
-                </TextBody>
-              </SupportCardFace>
-              <SupportCardFace className="back">
-                <Flex justify="space-between" align="flex-start">
-                  <TitleSmall mb={8}>More Info</TitleSmall>
-
-                  <SupportInfoClose
-                    onClick={e => {
-                      handleCardClose(e);
-                    }}
-                  >
-                    {close}
-                  </SupportInfoClose>
-                </Flex>
-                <TextBody>
-                  For patent, trademark and design renewals, manage all steps in
-                  the fee payment process including: monitor and coordinate due
-                  dates; manage foreign associate instructions; pay and invoice
-                  official fees and agent fees
-                </TextBody>
-              </SupportCardFace>
-            </SupportCard>
-          </SupportCards>
-        </Container>
-      </SupportWrapper>
-      <Ready title="Create Better IP Assets" />
-    </Layout>
+                    <SupportInfoClose
+                      onClick={e => {
+                        handleCardClose(e);
+                      }}
+                    >
+                      {close}
+                    </SupportInfoClose>
+                  </Flex>
+                  <TextBody>
+                    For patent, trademark and design renewals, manage all steps
+                    in the fee payment process including: monitor and coordinate
+                    due dates; manage foreign associate instructions; pay and
+                    invoice official fees and agent fees
+                  </TextBody>
+                </SupportCardFace>
+              </SupportCard>
+            </SupportCards>
+          </Container>
+        </SupportWrapper>
+        <Ready title="Create Better IP Assets" />
+      </Layout>
     </>
   );
 };

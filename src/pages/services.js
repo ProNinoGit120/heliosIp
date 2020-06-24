@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { Link } from "gatsby";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import Colors from "../utils/colors";
@@ -26,12 +27,14 @@ import {
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import services_src from "../images/services.svg";
 import patent_src from "../images/services-patent.svg";
+import global_src from "../images/services-global.svg";
 import ids_src from "../images/services-ids.svg";
 import filing_src from "../images/services-filing.svg";
 import annuties_src from "../images/services-annuties.svg";
 import reporting_src from "../images/services-reporting.svg";
 
 import Ready from "../components/ready";
+import Slider from "react-slick";
 
 const GlobalStylesServices = createGlobalStyle`
   .flexBox {
@@ -73,20 +76,6 @@ const Intro = styled.section`
   overflow-x: hidden;
   /* padding-bottom: 120px; */
   position: relative;
-
-  &:before {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150%;
-    height: 100%;
-    background: ${Colors.gray};
-    transform: rotate(-9.5deg);
-    z-index: -1;
-    transform-origin: left bottom;
-  }
 `;
 
 const IntroTop = styled.div`
@@ -95,15 +84,23 @@ const IntroTop = styled.div`
 
 const IntroImg = styled.img`
   display: block;
-  width: 90%;
-  @media(max-width: 991px) {
+  width: 40%;
+  @media (max-width: 991px) {
     width: 100%;
   }
 `;
 
+const IntroContentWrapper = styled.div`
+  width: 100%;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
 const IntroInner = styled.div`
-  padding: 120px 0 240px 0;
-  @media(max-width: 767px) {
+  padding: 120px 0 120px 0;
+  @media (max-width: 767px) {
     padding: 40px 0 70px 0;
   }
 `;
@@ -112,6 +109,8 @@ const IntroDesc = styled(TextBody)`
   font-size: 24px;
   margin: 0 auto;
   padding-bottom: 16px;
+  text-align: center;
+  max-width: 800px;
 `;
 
 const ServiceTabs = styled.section`
@@ -186,27 +185,67 @@ const ServiceTabImg = styled.img`
   display: block;
   width: 100%;
   padding-left: 64px;
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     padding: 0 20px;
   }
 `;
 
 const SupportCards = styled.div`
-  ${'' /* padding-bottom: 120px; */}
-  @media(max-width: 767px) {
+  ${"" /* padding-bottom: 120px; */}
+  padding-top: 60px;
+  @media (max-width: 767px) {
+    padding-top: 0;
     padding-bottom: 0px;
   }
 `;
 
 const SupportCard = styled.div`
-  border: 1px solid ${Colors.gray};
-  padding: 32px;
+  background: ${Colors.gray};
+  border: 1px solid white;
+  padding: 64px 32px;
   border-radius: 12px;
   box-shadow: 41px 41px 82px #d9d9d9, -41px -41px 82px #ffffff;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height:25vh;
+  /* &:nth-child(1) {
+    margin-top: 112px;
+  } */
+  &.first {
+    margin-top: 112px;
+  }
+
+  &.second {
+    margin-top: 56px;
+  }
+`;
+
+const SupportNotification = styled.div`
+  margin-bottom: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 999px;
+  padding: 4px 16px;
+  color: ${Colors.blue};
+  position: relative;
+
+  @media (max-width: 1200px) {
+    font-size: 14px;
+  }
+`;
+
+const LearnMoreBtn = styled(Link)`
+  color: ${Colors.orange};
+  padding-top: 16px;
+`;
+
+const SupportCardImg = styled.img`
+  display: block;
+  width: 100%;
+  min-height: 300px;
+  max-height: 300px;
 `;
 
 const SupportCardTitle = styled.div``;
@@ -263,15 +302,32 @@ margin-right: 8px;
 
 const SupportSlider = styled.div`
   padding-top: 100px;
-  @media(max-width: 991px) {
+  padding-bottom: 120px;
+  @media (max-width: 991px) {
     padding-top: 30px;
+  }
+  overflow-x: hidden;
+
+  &:before {
+    content: " ";
+    overflow-x: hidden;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 100%;
+    background: ${Colors.gray};
+    transform: rotate(-9.5deg);
+    z-index: -1;
+    transform-origin: left bottom;
   }
 `;
 
 const SupportSlideWrapper = styled.div`
   display: flex;
   padding-bottom: 164px;
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     padding-bottom: 50px;
     flex-direction: column !important;
   }
@@ -285,7 +341,7 @@ const SupportSlideLeft = styled.div`
   position: relative;
   z-index: 10;
   margin-top: -64px;
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     margin: 0 0 20px;
     flex-direction: column !important;
     width: 100% !important;
@@ -302,7 +358,7 @@ const SupportSlideContent = styled.div`
   border: 1px solid ${Colors.gray};
   margin-left: -64px;
   margin-bottom: -64px;
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     margin-left: 0;
     margin-bottom: 0;
     padding: 20px 0;
@@ -313,7 +369,7 @@ const SupportSlide = styled.div`
   position: relative;
   display: flex;
   padding: 0 32px;
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     flex-direction: column !important;
   }
 `;
@@ -366,11 +422,11 @@ const SliderControl = styled.div`
   position: absolute;
   top: -64px;
   right: 32px;
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     right: 0;
     left: 0;
     justify-content: center;
-    margin:25px 0;
+    margin: 25px 0;
   }
 `;
 
@@ -395,7 +451,33 @@ const Control = styled.div`
   }
 `;
 
+// const settings = {
+//   dots: true,
+//   infinite: true,
+//   speed: 1500,
+//   slidesToShow: 1,
+//   slidesToScroll: 1,
+//   autoplay: true,
+//   autoplaySpeed: 4000,
+//   arrows: false,
+//   afterChange: current => {
+//     console.log("current", current);
+//     let timelineItem = Array.from(
+//       document.getElementsByClassName("timelineItem")
+//     );
+//     timelineItem.forEach((timelineItem, index) => {
+//       timelineItem.classList.remove("active");
+//       if (current === index) {
+//         timelineItem.classList.add("active");
+//       }
+//     });
+//     setTimelineActiveIndex(current);
+//   },
+// };
+
 const Services = () => {
+  // const windowSize = useWindowSize();
+
   return (
     <Layout>
       <GlobalStylesServices />
@@ -411,101 +493,131 @@ const Services = () => {
               specialists.
             </IntroDesc>
           </IntroTop> */}
-          <Container>
-            <Flex align="center" className="flexBox">
-              <Col width="50%" className="leftBlock">
-                <IntroImg src={patent_src} />
-              </Col>
-              <Col width="50%" className="rightBlock">
-                <TitleLarge className="heading">
-                  An on-demand
-                  <br />
-                  IP team
+          <Container maxWidth={1440}>
+            <Flex
+              align="center"
+              justify="center"
+              direction="column"
+              className="flexBox"
+            >
+              {/* <IntroImg src={patent_src} /> */}
+              <IntroContentWrapper>
+                <TitleLarge className="heading" align="center">
+                  An on-demand IP team
                 </TitleLarge>
                 <IntroDesc mb={16}>
-                  Get dedicated support from our team of paralegals and IP
-                  specialists.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Id donec ultrices tincidunt arcu non.
                 </IntroDesc>
-                <ButtonLink className="gray" to="/">
+                {/* <ButtonLink className="gray" to="/">
                   Get Started
-                </ButtonLink>
-              </Col>
+                </ButtonLink> */}
+              </IntroContentWrapper>
             </Flex>
-          </Container>
-        </IntroInner>
-      </Intro>
-      <SupportCards>
-        <Container>
-          <Flex className="flexBox">
-            <Col width={`calc(100% / 3)`} className="leftBlock">
-              <SupportCard>
-                <Flex
-                  align="flex-start"
-                  justify="center"
-                  align="center"
-                  direction="column"
-                >
-                  <TitleXLarge mb={16}>+ 80%</TitleXLarge>
-                  <TitleSmall mb={12}>Improve Productivity​</TitleSmall>
-                </Flex>
 
-                {/* <PricingList className="card">
+            <SupportCards>
+              <Container maxWidth={1440}>
+                <Flex className="flexBox">
+                  <Col width={`calc(100% / 3)`} className="leftBlock">
+                    <SupportCard className="first">
+                      <Flex
+                        align="flex-start"
+                        justify="center"
+                        align="flex-start"
+                        direction="column"
+                      >
+                        {/* <TitleXLarge mb={16}>+ 80%</TitleXLarge> */}
+                        <SupportCardImg src={filing_src} />
+                        <SupportNotification>
+                          Included with SMB Plan
+                        </SupportNotification>
+                        <TitleSmall mb={12} align="left">
+                          Improve Productivity​
+                        </TitleSmall>
+                      </Flex>
+
+                      {/* <PricingList className="card">
                     <PricingItem>
                       <PricingItemIcon>{checkmark}</PricingItemIcon>
                       HeliosComplete™ Portal
                     </PricingItem>
                   </PricingList> */}
 
-                <TextBody mb={16}>
-                  For U.S. applications, manage all steps in the filing process
-                  including: preparation of ADS;
-                </TextBody>
-                {/* POA and inventor
+                      <TextBody mb={16}>
+                        For U.S. applications, manage all steps in the filing
+                        process including: preparation of ADS;
+                      </TextBody>
+                      <LearnMoreBtn>Learn More</LearnMoreBtn>
+                      {/* POA and inventor
                     declarations; assignments; organize electronic filing
                     package; upload to EFS system; pay and invoice official
                     fees; save documents and confirmation receipts; docket all
                     actions/tasks​  */}
-              </SupportCard>
-            </Col>
-            <Col width={`calc(100% / 3)`} className="centerBlock">
-              <SupportCard>
-                <Flex
-                  align="flex-start"
-                  justify="center"
-                  align="center"
-                  direction="column"
-                >
-                  <TitleXLarge mb={16}>- $750</TitleXLarge>
-                  <TitleSmall mb={12}>Reduce Matter Cost</TitleSmall>
-                </Flex>
+                    </SupportCard>
+                  </Col>
+                  <Col width={`calc(100% / 3)`} className="centerBlock">
+                    <SupportCard className="second">
+                      <Flex
+                        align="flex-start"
+                        justify="center"
+                        align="flex-start"
+                        direction="column"
+                      >
+                        <SupportCardImg src={annuties_src} />
+                        <SupportNotification>
+                          Included with Enterprise Plan
+                        </SupportNotification>
+                        {/* <TitleXLarge mb={16}>- $750</TitleXLarge> */}
+                        <TitleSmall mb={12} align="left">
+                          Reduce Matter Cost
+                        </TitleSmall>
+                      </Flex>
 
-                <TextBody mb={16}>
-                  For U.S. applications, manage all steps in the filing process
-                  including: preparation of ADS;
-                </TextBody>
-              </SupportCard>
-            </Col>
-            <Col width={`calc(100% / 3)`} className="rightBlock">
-              <SupportCard>
-                <Flex
-                  align="flex-start"
-                  justify="center"
-                  align="center"
-                  direction="column"
-                >
-                  <TitleXLarge mb={16}>+ 30%</TitleXLarge>
-                  <TitleSmall mb={16}>Increased Filings</TitleSmall>
-                </Flex>
+                      <TextBody mb={16}>
+                        For U.S. applications, manage all steps in the filing
+                        process including: preparation of ADS;
+                      </TextBody>
+                      <LearnMoreBtn>Learn More</LearnMoreBtn>
+                    </SupportCard>
+                  </Col>
+                  <Col width={`calc(100% / 3)`} className="rightBlock">
+                    <SupportCard>
+                      <Flex
+                        align="flex-start"
+                        justify="center"
+                        align="flex-start"
+                        direction="column"
+                      >
+                        {/* <TitleXLarge mb={16}>+ 30%</TitleXLarge> */}
+                        <SupportCardImg src={reporting_src} />
+                        <SupportNotification>
+                          Included with SMB Plan
+                        </SupportNotification>
+                        <TitleSmall mb={16} align="left">
+                          Increased Filings
+                        </TitleSmall>
+                      </Flex>
 
-                <TextBody mb={16}>
-                  For U.S. applications, manage all steps in the filing process
-                  including: preparation of ADS;
-                </TextBody>
-              </SupportCard>
-            </Col>
-          </Flex>
-        </Container>
-      </SupportCards>
+                      <TextBody mb={16}>
+                        For U.S. applications, manage all steps in the filing
+                        process including: preparation of ADS;
+                      </TextBody>
+                      <LearnMoreBtn>Learn More</LearnMoreBtn>
+                    </SupportCard>
+                  </Col>
+                </Flex>
+              </Container>
+            </SupportCards>
+          </Container>
+        </IntroInner>
+      </Intro>
+      {/* {windowSize < 991 ? (
+                  <>
+                    <Slider {...settings}>{images}</Slider>
+                  </>
+                ) : null} */}
+
       <SupportSlider>
         <Container maxWidth={1440}>
           <TitleLarge mb={120} align="center" className="titleLarge">
@@ -545,7 +657,9 @@ const Services = () => {
                     <ServiceTabImg src={patent_src} />
                   </Col>
                   <Col width="60%" className="rightBlock">
-                    <TitleMedium className="titleMedium">Patent & Trademark Docketing</TitleMedium>
+                    <TitleMedium className="titleMedium">
+                      Patent & Trademark Docketing
+                    </TitleMedium>
                     <TextBody>
                       We manage all incoming and outgoing prosecution activities
                       including PTO, law firm, and foreign associate

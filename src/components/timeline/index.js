@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
-import useWindowSize from '../layout/useWindowSize';
-import styled, {
-  createGlobalStyle
-} from "styled-components";
+import useWindowSize from "../layout/useWindowSize";
+import styled, { createGlobalStyle } from "styled-components";
 import Colors from "../../utils/colors";
 import {
   Container,
@@ -19,7 +17,12 @@ import {
   WatchVideo,
 } from "../../utils/elements";
 import { platform, network, sun, arrow, support } from "../../utils/icons";
-import { TIMELINE_ONBOARD, TIMELINE_MONITOR, TIMELINE_EXECUTE, TIMELINE_REPORT} from '../../constants';
+import {
+  TIMELINE_ONBOARD,
+  TIMELINE_MONITOR,
+  TIMELINE_EXECUTE,
+  TIMELINE_REPORT,
+} from "../../constants";
 import Slider from "react-slick";
 import { findDOMNode } from "react-dom";
 
@@ -40,14 +43,14 @@ const Intro = styled.section`
     transform: rotate(-9.5deg);
     z-index: -1;
     transform-origin: left bottom;
-    
-  @media(max-width: 767px){
-      height: 60%;  
-      margin-bottom:15px;
+
+    @media (max-width: 767px) {
+      height: 60%;
+      margin-bottom: 15px;
     }
   }
 `;
- const GlobalStyleTimeline = createGlobalStyle`
+const GlobalStyleTimeline = createGlobalStyle`
     @media(max-width: 991px) {
       .slideImage img {
         width: 90%;
@@ -114,6 +117,8 @@ const Intro = styled.section`
       @media(max-width:767px){
           color:black !important;
           font-size:18px !important;
+          
+          
         }
     }
     .titleLarge_timeline{
@@ -147,6 +152,7 @@ const Intro = styled.section`
       @media(max-width:767px){
         color:black !important;
         padding:0 10px !important;
+       
       }
     }
 
@@ -163,8 +169,8 @@ const Intro = styled.section`
 const IntroInner = styled.div`
   padding: 120px 0;
   text-align: center;
-  @media(max-width:767px){
-    padding:60px 0;
+  @media (max-width: 767px) {
+    padding: 60px 0;
   }
 `;
 
@@ -193,9 +199,8 @@ const IntroLogo = styled.div`
 const StyledTimeline = styled.div`
   margin-top: -370px;
   margin-bottom: 60px;
-  @media(max-width:767px){
-    margin-top:-250px;
-    
+  @media (max-width: 767px) {
+    margin-top: -250px;
   }
 `;
 
@@ -204,17 +209,15 @@ const TimelineControl = styled.div``;
 const TimelineIntro = styled.div`
   min-height: 370px;
   margin-bottom: 64px;
-  @media(max-width:480px){
-    margin-top:15px !important;
-    
+  @media (max-width: 480px) {
+    margin-top: 15px !important;
   }
-  @media(max-width:991px){
+  @media (max-width: 991px) {
     min-height: 150px;
     margin-bottom: 25px;
-    text-align:center;
-    min-height:auto;
+    text-align: center;
+    min-height: auto;
   }
-  
 `;
 
 const TimelineDesc = styled.p`
@@ -228,7 +231,7 @@ const TimelineImg = styled.img`
 
 const TimeLineItemWrapper = styled.div`
   position: relative;
-  @media(max-width: 991px) {
+  @media (max-width: 991px) {
     padding: 50px 0 20px;
   }
 `;
@@ -377,7 +380,6 @@ const Timeline = ({ withCTA }) => {
     };
   });
 
-
   const settings = {
     dots: true,
     infinite: true,
@@ -386,59 +388,64 @@ const Timeline = ({ withCTA }) => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
-    arrows:false,
-    afterChange: (current) =>{
-      console.log('current', current);
-      let timelineItem = Array.from(document.getElementsByClassName("timelineItem"))
-      timelineItem.forEach((timelineItem, index) =>{
+    arrows: false,
+    afterChange: current => {
+      console.log("current", current);
+      let timelineItem = Array.from(
+        document.getElementsByClassName("timelineItem")
+      );
+      timelineItem.forEach((timelineItem, index) => {
         timelineItem.classList.remove("active");
         if (current === index) {
           timelineItem.classList.add("active");
         }
-      })
+      });
       setTimelineActiveIndex(current);
-     
-    }
+    },
   };
-
 
   const onScroll = () => {
     // calc position y of timeline image
     const timelineImageElement = document.getElementsByClassName(
       "timelineImg"
     )[0];
-    if (windowSize > 991){
+    if (windowSize > 991) {
       const timelineImageBoundingRect = timelineImageElement.getBoundingClientRect();
       const timelineImagePosY =
         (timelineImageBoundingRect.top + timelineImageBoundingRect.bottom) / 2;
-      const timelineImageHeight = Math.abs(timelineImageBoundingRect.top - timelineImageBoundingRect.bottom);
+      const timelineImageHeight = Math.abs(
+        timelineImageBoundingRect.top - timelineImageBoundingRect.bottom
+      );
       // get nearest timeline item index
       let nearestIndex = 0,
         nearestDistance = -1;
-        const timelineItems = Array.from(
-          document.getElementsByClassName("timelineItem")
-        );
-        console.log(timelineItems);
-        
+      const timelineItems = Array.from(
+        document.getElementsByClassName("timelineItem")
+      );
+      console.log(timelineItems);
+
       timelineItems.forEach((timelineItem, index) => {
         // calc distance to timeline image
         const timelineItemBoundingRect = timelineItem.getBoundingClientRect();
-        const timelineItemPosY =  timelineItemBoundingRect.top;
+        const timelineItemPosY = timelineItemBoundingRect.top;
         const distance = Math.abs(timelineItemPosY - timelineImagePosY);
         if (nearestDistance < 0 || distance < nearestDistance) {
           nearestDistance = distance;
           nearestIndex = index;
         }
       });
-  
+
       // display start image
       if (
-        (timelineActiveIndex < 0 && nearestDistance > timelineImageHeight / 3) ||
-        (timelineActiveIndex === 0 && timelineItems[0].getBoundingClientRect().top - timelineImagePosY > timelineImageHeight / 3)
+        (timelineActiveIndex < 0 &&
+          nearestDistance > timelineImageHeight / 3) ||
+        (timelineActiveIndex === 0 &&
+          timelineItems[0].getBoundingClientRect().top - timelineImagePosY >
+            timelineImageHeight / 3)
       ) {
         nearestIndex = -1;
       }
-  
+
       // update active status if nearest one was changed
       if (timelineActiveIndex !== nearestIndex) {
         timelineItems.forEach((timelineItem, index) => {
@@ -449,62 +456,62 @@ const Timeline = ({ withCTA }) => {
             timelineItem.classList.remove("active");
           }
         });
-  
+
         // update active index
         setTimelineActiveIndex(nearestIndex);
       }
     }
-
   };
 
   const getTimelineImage = () => {
-    let timelineSVG = '';
-    switch(timelineActiveIndex) {
+    let timelineSVG = "";
+    switch (timelineActiveIndex) {
       case TIMELINE_ONBOARD:
-        timelineSVG = 'oboard';
+        timelineSVG = "oboard";
         break;
       case TIMELINE_MONITOR:
-        timelineSVG = 'monitor';
+        timelineSVG = "monitor";
         break;
       case TIMELINE_EXECUTE:
-        timelineSVG = 'execute';
+        timelineSVG = "execute";
         break;
       case TIMELINE_REPORT:
-        timelineSVG = 'report';
+        timelineSVG = "report";
         break;
       default:
-        timelineSVG = 'start'
-      
+        timelineSVG = "start";
     }
-    console.log('#timelineSVG', timelineSVG)
+    console.log("#timelineSVG", timelineSVG);
     return require(`../../images/timeline/${timelineSVG}.svg`);
-  }
+  };
 
   // slider images
   // let names = ['execute', 'monitor', 'oboard', 'report'];
-   let timelineItem = Array.from(document.getElementsByClassName("timelineItem"))
-    let images = timelineItem.map((name, id) => {
-      return(
-        <div key={id} className="slideImage">
-          {/* <img
+  let timelineItem = Array.from(
+    document.getElementsByClassName("timelineItem")
+  );
+  let images = timelineItem.map((name, id) => {
+    return (
+      <div key={id} className="slideImage">
+        {/* <img
             src = {
               getTimelineImage()
             }
             alt = ""
             className="img-responsive" /> */}
-                <TimelineImg
-                  className="timelineImg"
-                  src={getTimelineImage()}
-                  alt="helios system image"
-                  className="img-responsive"
-                />
-        </div>
-      )
-    });
+        <TimelineImg
+          className="timelineImg"
+          src={getTimelineImage()}
+          alt="helios system image"
+          className="img-responsive"
+        />
+      </div>
+    );
+  });
 
   return (
     <>
-     <GlobalStyleTimeline />
+      <GlobalStyleTimeline />
       <Intro>
         <IntroInner>
           <Container>
@@ -517,13 +524,21 @@ const Timeline = ({ withCTA }) => {
             )}
 
             {withCTA ? (
-              <TitleLarge color="white" align="center" classaName="titleLarge_timeline">
+              <TitleLarge
+                color="white"
+                align="center"
+                classaName="titleLarge_timeline"
+              >
                 All in One
                 <br />
                 IP Operations Platform
               </TitleLarge>
             ) : (
-              <TitleLarge color="white" align="center" className="titleLarge_timeline">
+              <TitleLarge
+                color="white"
+                align="center"
+                className="titleLarge_timeline"
+              >
                 A Brighter Way to Manage IP
               </TitleLarge>
             )}
@@ -539,192 +554,202 @@ const Timeline = ({ withCTA }) => {
             <Col width="40%" className="leftBlock_timeline">
               <TimelineControl>
                 <TimelineIntro>
-                  <TitleMedium color="white" className="title_medium" >
+                  <TitleMedium color="white" className="title_medium">
                     {withCTA
                       ? `At Last— A Real​ IP Operations​ SaaS Solution​`
                       : ` How It Works`}
                   </TitleMedium>
-                  <TextBody color = "white" className = "title_medium body">
+                  <TextBody color="white" className="title_medium body">
                     {withCTA
                       ? null
                       : `HeliosComplete™ makes it easy to onboard, monitor, execute, and report on all aspects of your IP operations.`}
                   </TextBody>
                 </TimelineIntro>
-          {/* Image slider for mobile */}
-                {
-                  windowSize < 991 ? 
-                    <>
-                      <Slider {...settings}>
-                        {images}
-                      </Slider>
-                    </>
-                      : null
-                }
+                {/* Image slider for mobile */}
+                {windowSize < 991 ? (
+                  <>
+                    <Slider {...settings}>{images}</Slider>
+                  </>
+                ) : null}
                 {withCTA ? (
                   <>
-                  <TimeLineItemWrapper>
-                 <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>All Your Matters</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        Patents, Trademarks & Designs, with full bibliographic
-                        information plus priorities, family tree, references,
-                        inventors, assignments, contacts, and categories
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>DocketHub™ </TimelineItemTitle>
-                      <TimelineItemDesc>
-                        Centralized Intake for all PTO, law firm, and foreign
-                        associate correspondences, with electronic interfaces
-                        to ensure accuracy and timeliness of data transfer​
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>DocketEngine™</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        The Industry’s most advanced global docketing rules
-                        covering 275 jurisdictions, 4,000 rules and 80,000
-                        outcomes, with integration to PTO prosecution data​
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>Renewal Payments</TimelineItemTitle>
-                      <TimelineItemDesc>
-                        Manage maintenance fees and renewals process with
-                        budgeting and workflow automation that works
-                        seamlessly with Helios IP support services​
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>
-                        Application Filing
-                      </TimelineItemTitle>
-                      <TimelineItemDesc>
-                        U.S. and Foreign Filing to monitor due dates, track
-                        instructions and manage filing process with cost
-                        forecasting, workflow automation and document
-                        management ​
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>
-                        Document Management
-                      </TimelineItemTitle>
-                      <TimelineItemDesc>
-                        All documents stored in a centralized repository
-                        powered by Microsoft Sharepoint™ with sharing,
-                        collaboration automation and archive storage ​
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                  <TimelineItem className="timelineItem">
-                    <TimelineItemContent>
-                      <TimelineItemTitle>
-                        Business Intelligence
-                      </TimelineItemTitle>
-                      <TimelineItemDesc>
-                        Gain Deep Insights with Intuitive Reports and
-                        Beautiful Analytics
-                      </TimelineItemDesc>
-                    </TimelineItemContent>
-                  </TimelineItem>
-                </TimeLineItemWrapper>
-            </>
-              ) : (
-                <>
-                  <TimeLineItemWrapper>
-                    <TimelineItem className = "timelineItem active" >
-                      <TimelineItemContent>
-                        <TimelineItemTitle  temTitle>Onboard ABV</TimelineItemTitle>
-                        <TimelineItemDesc>
-                          We start by importing your portfolio and verifying
-                          data accuracy through online databases and by
-                          human-review by our team of IP specialists.
-                          {/* Your data includes all bibliographic information, priorities,
+                    <TimeLineItemWrapper>
+                      <TimelineItem className="timelineItem">
+                        <TimelineItemContent>
+                          <TimelineItemTitle>
+                            All Your Matters
+                          </TimelineItemTitle>
+                          <TimelineItemDesc>
+                            Patents, Trademarks & Designs, with full
+                            bibliographic information plus priorities, family
+                            tree, references, inventors, assignments, contacts,
+                            and categories
+                          </TimelineItemDesc>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                      <TimelineItem className="timelineItem">
+                        <TimelineItemContent>
+                          <TimelineItemTitle>DocketHub™ </TimelineItemTitle>
+                          <TimelineItemDesc>
+                            Centralized Intake for all PTO, law firm, and
+                            foreign associate correspondences, with electronic
+                            interfaces to ensure accuracy and timeliness of data
+                            transfer​
+                          </TimelineItemDesc>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                      <TimelineItem className="timelineItem">
+                        <TimelineItemContent>
+                          <TimelineItemTitle>DocketEngine™</TimelineItemTitle>
+                          <TimelineItemDesc>
+                            The Industry’s most advanced global docketing rules
+                            covering 275 jurisdictions, 4,000 rules and 80,000
+                            outcomes, with integration to PTO prosecution data​
+                          </TimelineItemDesc>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                      <TimelineItem className="timelineItem">
+                        <TimelineItemContent>
+                          <TimelineItemTitle>
+                            Renewal Payments
+                          </TimelineItemTitle>
+                          <TimelineItemDesc>
+                            Manage maintenance fees and renewals process with
+                            budgeting and workflow automation that works
+                            seamlessly with Helios IP support services​
+                          </TimelineItemDesc>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                      <TimelineItem className="timelineItem">
+                        <TimelineItemContent>
+                          <TimelineItemTitle>
+                            Application Filing
+                          </TimelineItemTitle>
+                          <TimelineItemDesc>
+                            U.S. and Foreign Filing to monitor due dates, track
+                            instructions and manage filing process with cost
+                            forecasting, workflow automation and document
+                            management ​
+                          </TimelineItemDesc>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                      <TimelineItem className="timelineItem">
+                        <TimelineItemContent>
+                          <TimelineItemTitle>
+                            Document Management
+                          </TimelineItemTitle>
+                          <TimelineItemDesc>
+                            All documents stored in a centralized repository
+                            powered by Microsoft Sharepoint™ with sharing,
+                            collaboration automation and archive storage ​
+                          </TimelineItemDesc>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                      <TimelineItem className="timelineItem">
+                        <TimelineItemContent>
+                          <TimelineItemTitle>
+                            Business Intelligence
+                          </TimelineItemTitle>
+                          <TimelineItemDesc>
+                            Gain Deep Insights with Intuitive Reports and
+                            Beautiful Analytics
+                          </TimelineItemDesc>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                    </TimeLineItemWrapper>
+                  </>
+                ) : (
+                  <>
+                    <TimeLineItemWrapper>
+                      <TimelineItem className="timelineItem active">
+                        <TimelineItemContent>
+                          <TimelineItemTitle temTitle>
+                            Onboard ABV
+                          </TimelineItemTitle>
+                          <TimelineItemDesc>
+                            We start by importing your portfolio and verifying
+                            data accuracy through online databases and by
+                            human-review by our team of IP specialists.
+                            {/* Your data includes all bibliographic information, priorities,
                           family relationships, assignments and other key
                           information. We ensure your users’s access, connect to
                           your PTO accounts, and setup your centralized
                           DocketHub™ intake process.​ */}
-                        </TimelineItemDesc>
-                        <StyledLink to="/platform">Explore Features</StyledLink>
-                      </TimelineItemContent>
-                    </TimelineItem>
-                    <TimelineItem className="timelineItem">
-                      <TimelineItemContent >
-                        <TimelineItemTitle>Monitor</TimelineItemTitle>
-                        <TimelineItemDesc>
-                          With your portfolio , we ensure all information
-                          is up to date and accurate by docketing, cross
-                          checking PTO data, and uploading documents as we
-                          receive them.
-                          {/* Actions and tasks are automated with our
+                          </TimelineItemDesc>
+                          <StyledLink to="/platform">
+                            Explore Features
+                          </StyledLink>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                      <TimelineItem className="timelineItem">
+                        <TimelineItemContent>
+                          <TimelineItemTitle>Monitor</TimelineItemTitle>
+                          <TimelineItemDesc>
+                            With your portfolio , we ensure all information is
+                            up to date and accurate by docketing, cross checking
+                            PTO data, and uploading documents as we receive
+                            them.
+                            {/* Actions and tasks are automated with our
                           industry leading DocketEngine™ global country law
                           ruleset. Based on your preferences, we actively
                           monitor and report on your due dates, filing
                           deadlines, payment due dates and all incoming/out
                           correspondences​ */}
-                        </TimelineItemDesc>
-                        <StyledLink to="/platform">Explore Features</StyledLink>
-                      </TimelineItemContent>
-                    </TimelineItem>
-                    <TimelineItem className="timelineItem">
-                      <TimelineItemContent>
-                        <TimelineItemTitle>Execute</TimelineItemTitle>
-                        <TimelineItemDesc>
-                          As events come due, we proceed with your support
-                          services including prosecution responses, foreign
-                          filing, maintenance payments and formalities.
-                          {/* While you work directly with your attorneys and foreign
+                          </TimelineItemDesc>
+                          <StyledLink to="/platform">
+                            Explore Features
+                          </StyledLink>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                      <TimelineItem className="timelineItem">
+                        <TimelineItemContent>
+                          <TimelineItemTitle>Execute</TimelineItemTitle>
+                          <TimelineItemDesc>
+                            As events come due, we proceed with your support
+                            services including prosecution responses, foreign
+                            filing, maintenance payments and formalities.
+                            {/* While you work directly with your attorneys and foreign
                           counsel, we coordinate information sharing to ensure
                           all information is captured, fully supported by the
                           HeliosComplete™ platform including task completion,
                           documents and receipts. */}
-                        </TimelineItemDesc>
-                        <StyledLink to="/platform">Explore Features</StyledLink>
-                      </TimelineItemContent>
-                    </TimelineItem>
-                    <TimelineItem className="timelineItem">
-                      <TimelineItemContent>
-                        <TimelineItemTitle>Report</TimelineItemTitle>
-                        <TimelineItemDesc>
-                          As your operations progress, we provide you docket
-                          reports, reminders, confirmations, filing receipts,
-                          portfolio reports, and financials, all accessible 24x7
-                          through the platform.
-                          {/* And with Microsoft’s Power BI
+                          </TimelineItemDesc>
+                          <StyledLink to="/platform">
+                            Explore Features
+                          </StyledLink>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                      <TimelineItem className="timelineItem">
+                        <TimelineItemContent>
+                          <TimelineItemTitle>Report</TimelineItemTitle>
+                          <TimelineItemDesc>
+                            As your operations progress, we provide you docket
+                            reports, reminders, confirmations, filing receipts,
+                            portfolio reports, and financials, all accessible
+                            24x7 through the platform.
+                            {/* And with Microsoft’s Power BI
                           we’re able to provide advanced operations and
                           portfolio analytics that help your decision making and
                           focus resources on your highest value opportunities. */}
-                        </TimelineItemDesc>
-                        <StyledLink to="/platform">Explore Features</StyledLink>
-                      </TimelineItemContent>
-                    </TimelineItem>
-                  </TimeLineItemWrapper>
-                </>
-              )}
+                          </TimelineItemDesc>
+                          <StyledLink to="/platform">
+                            Explore Features
+                          </StyledLink>
+                        </TimelineItemContent>
+                      </TimelineItem>
+                    </TimeLineItemWrapper>
+                  </>
+                )}
               </TimelineControl>
             </Col>
             <Col width="60%" className="rightBlock_timeline">
-            { 
-              windowSize > 991 ?
+              {windowSize > 991 ? (
                 <TimelineImg
                   className="timelineImg"
                   src={getTimelineImage()}
                   alt="helios system image"
                 />
-                : null
-            }   
+              ) : null}
             </Col>
           </Flex>
         </Container>

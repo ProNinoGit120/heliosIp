@@ -24,7 +24,7 @@ import paralegals_src from "../images/resources-paralegals.png";
 import tech_src from "../images/resources-tech.png";
 import op_src from "../images/resources-operations.png";
 
-const GlobalStyleResource =  createGlobalStyle`
+const GlobalStyleResource = createGlobalStyle`
   @media(max-width: 767px) {
     .titleLarge {
       font-size: 34px;
@@ -58,11 +58,11 @@ const Intro = styled.section`
   padding-bottom: 300px;
   position: relative;
 
-  @media(max-width: 991px) {
+  @media (max-width: 991px) {
     padding: 0 15px 100px;
   }
 
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     padding: 0 15px 50px;
   }
   &:before {
@@ -84,7 +84,7 @@ const Intro = styled.section`
 
 const IntroInner = styled.div`
   padding: 120px 0;
-  @media(max-width: 991px) {
+  @media (max-width: 991px) {
     padding: 70px 0;
   }
 `;
@@ -117,7 +117,7 @@ const IntroBreak = styled.div`
 const People = styled.section`
   margin-top: -340px;
   padding-bottom: 120px;
-  @media(max-width: 991px) { 
+  @media (max-width: 991px) {
     padding-bottom: 0;
   }
 `;
@@ -155,16 +155,9 @@ const PeopleImg = styled.img`
 // `;
 
 const PeopleItem = styled.div`
-<<<<<<< HEAD
-  padding-bottom: 120px;
-
-  &:first-child {
-    padding-top: 120px;
-=======
-  padding: 120px 0;
-  @media(max-width: 991px) {
+  padding-top: 120px;
+  @media (max-width: 991px) {
     padding: 20px 0;
->>>>>>> f2190e2334bf14a086d5d217e367d71d75a0a655
   }
 `;
 
@@ -180,114 +173,6 @@ const PeopleText = styled.div`
 const Resources = () => {
   return (
     <Layout>
-<<<<<<< HEAD
-      <SEO title="Resources" />
-      <Intro>
-        <IntroInner>
-          <TitleLarge align="center" color="white">
-            We Are a Team of
-            <br />
-            Expert IP Professionals
-          </TitleLarge>
-          <IntroDesc align="center" mb={16}>
-            Trusted support resources with the knowledge and experience to
-            plug-in to your IP operations without missing a beat. Our staff have
-            worked at large firms, boutique firms, large IP companies and
-            startups. We understand what it takes to meet your needs across the
-            range of IP activities.​
-          </IntroDesc>
-        </IntroInner>
-      </Intro>
-      <IntroBreak></IntroBreak>
-      <People>
-        <PeopleItem>
-          <Container>
-            <Flex align="center">
-              <Col width="50%">
-                {/* <PeopleImgWrapper>
-                 
-                  <PeopleIcon>{people}</PeopleIcon>
-                </PeopleImgWrapper> */}
-                <PeopleImg src={paralegals_src} />
-              </Col>
-              <Col width="50%">
-                <TitleMedium>
-                  Paralegal and IP
-                  <br />
-                  Specialists
-                </TitleMedium>
-                <TextBody mb={16}>
-                  Across the full range of IP support activities, our team has
-                  the capabilities to work as an extension of your team. Unlike
-                  outsourcing, our managed services approach provides committed
-                  resources assigned to work with you on a day-to-day basis. We
-                  develop a close working knowledge of your processes, becoming
-                  an integral part of your operations.​
-                </TextBody>
-                <ButtonLink className="white">Explore Careers</ButtonLink>
-              </Col>
-            </Flex>
-          </Container>
-        </PeopleItem>
-        <PeopleItem>
-          <Container>
-            <Flex align="center">
-              <Col width="50%">
-                <TitleMedium>
-                  Systems Data
-                  <br />
-                  Technologists
-                </TitleMedium>
-                <TextBody mb={16}>
-                  Technology is the cornerstone of our solution approach
-                  enabling you to improve how you create, manage and exploit
-                  your IP assets. Combining hands-on knowledge of IP operations
-                  with leading edge technology, our development team is driving
-                  innovation in the IP industry.
-                </TextBody>
-                <ButtonLink className="white">Explore Careers</ButtonLink>
-              </Col>
-              <Col width="50%">
-                <PeopleImg src={tech_src} />
-                {/* <PeopleImgWrapper>
-                 
-                  <PeopleIcon>{people}</PeopleIcon>
-                </PeopleImgWrapper> */}
-              </Col>
-            </Flex>
-          </Container>
-        </PeopleItem>
-        <PeopleItem>
-          <Container>
-            <Flex align="center">
-              <Col width="50%">
-                <PeopleImg src={op_src} />
-                {/* <PeopleImgWrapper>
-                 
-                  <PeopleIcon>{people}</PeopleIcon>
-                </PeopleImgWrapper> */}
-              </Col>
-              <Col width="50%">
-                <TitleMedium>
-                  IP Operations
-                  <br />
-                  Managers
-                </TitleMedium>
-                <TextBody mb={16}>
-                  Process management is critical to ensuring accurate,
-                  cost-effective IP operations. Our team brings hands-on process
-                  management expertise with SOPs, document support methods, and
-                  analysis tools that enable smart resource allocation, time
-                  management and financial controls. ​
-                </TextBody>
-                <ButtonLink className="white">Explore Careers</ButtonLink>
-              </Col>
-            </Flex>
-          </Container>
-        </PeopleItem>
-      </People>
-      <Ready title="Talk to an Advisor" />
-=======
       <GlobalStyleResource />
       <ContentWrapper>
         <SEO title="Resources" />
@@ -300,10 +185,10 @@ const Resources = () => {
             </TitleLarge>
             <IntroDesc align="center" mb={16}>
               Trusted support resources with the knowledge and experience to
-              plug-in to your IP operations without missing a beat. Our staff have
-              worked at large firms, boutique firms, large IP companies and
-              startups. We understand what it takes to meet your needs across the
-              range of IP activities.​
+              plug-in to your IP operations without missing a beat. Our staff
+              have worked at large firms, boutique firms, large IP companies and
+              startups. We understand what it takes to meet your needs across
+              the range of IP activities.​
             </IntroDesc>
           </IntroInner>
         </Intro>
@@ -325,14 +210,16 @@ const Resources = () => {
                     <br />
                     Specialists
                   </TitleMedium>
-                  <TextBody>
+                  <TextBody mb={32}>
                     Across the full range of IP support activities, our team has
-                    the capabilities to work as an extension of your team. Unlike
-                    outsourcing, our managed services approach provides committed
-                    resources assigned to work with you on a day-to-day basis. We
-                    develop a close working knowledge of your processes, becoming
-                    an integral part of your operations.​
+                    the capabilities to work as an extension of your team.
+                    Unlike outsourcing, our managed services approach provides
+                    committed resources assigned to work with you on a
+                    day-to-day basis. We develop a close working knowledge of
+                    your processes, becoming an integral part of your
+                    operations.​
                   </TextBody>
+                  <ButtonLink className="white">Explore Careers</ButtonLink>
                 </Col>
               </Flex>
             </Container>
@@ -340,21 +227,23 @@ const Resources = () => {
           <PeopleItem>
             <Container>
               <Flex align="center" className="flexBox">
-                <Col width = "50%" className = "rightBlock_resource customBlock" >
+                <Col width="50%" className="rightBlock_resource customBlock">
                   <TitleMedium className="titleMedium">
                     Systems Data
                     <br />
                     Technologists
                   </TitleMedium>
-                  <TextBody >
+                  <TextBody mb={32}>
                     Technology is the cornerstone of our solution approach
                     enabling you to improve how you create, manage and exploit
-                    your IP assets. Combining hands-on knowledge of IP operations
-                    with leading edge technology, our development team is driving
-                    innovation in the IP industry. From PTO data integration to
-                    workflow automation and emerging AI/ML, we’re at the forefront
-                    of applying technology to IP operations management.​
+                    your IP assets. Combining hands-on knowledge of IP
+                    operations with leading edge technology, our development
+                    team is driving innovation in the IP industry. From PTO data
+                    integration to workflow automation and emerging AI/ML, we’re
+                    at the forefront of applying technology to IP operations
+                    management.​
                   </TextBody>
+                  <ButtonLink className="white">Explore Careers</ButtonLink>
                 </Col>
                 <Col width="50%" className="leftBlock_resource">
                   <PeopleImg src={tech_src} />
@@ -369,8 +258,7 @@ const Resources = () => {
           <PeopleItem>
             <Container>
               <Flex align="center" className="flexBox">
-                <Col Col width = "50%"
-                className = "leftBlock_resource" >
+                <Col Col width="50%" className="leftBlock_resource">
                   <PeopleImg src={op_src} />
                   {/* <PeopleImgWrapper>
                   
@@ -383,13 +271,14 @@ const Resources = () => {
                     <br />
                     Managers
                   </TitleMedium>
-                  <TextBody>
+                  <TextBody mb={32}>
                     Process management is critical to ensuring accurate,
-                    cost-effective IP operations. Our team brings hands-on process
-                    management expertise with SOPs, document support methods, and
-                    analysis tools that enable smart resource allocation, time
-                    management and financial controls. ​
+                    cost-effective IP operations. Our team brings hands-on
+                    process management expertise with SOPs, document support
+                    methods, and analysis tools that enable smart resource
+                    allocation, time management and financial controls. ​
                   </TextBody>
+                  <ButtonLink className="white">Explore Careers</ButtonLink>
                 </Col>
               </Flex>
             </Container>
@@ -397,7 +286,6 @@ const Resources = () => {
         </People>
         <Ready />
       </ContentWrapper>
->>>>>>> f2190e2334bf14a086d5d217e367d71d75a0a655
     </Layout>
   );
 };
