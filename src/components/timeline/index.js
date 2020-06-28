@@ -491,24 +491,27 @@ const Timeline = ({ withCTA }) => {
     typeof document !== `undefined`
       ? Array.from(document.getElementsByClassName("timelineItem"))
       : null;
-  let images = timelineItem.map((name, id) => {
-    return (
-      <div key={id} className="slideImage">
-        {/* <img
+  let images =
+    timelineItem !== null
+      ? timelineItem.map((name, id) => {
+          return (
+            <div key={id} className="slideImage">
+              {/* <img
             src = {
               getTimelineImage()
             }
             alt = ""
             className="img-responsive" /> */}
-        <TimelineImg
-          className="timelineImg"
-          src={getTimelineImage()}
-          alt="helios system image"
-          className="img-responsive"
-        />
-      </div>
-    );
-  });
+              <TimelineImg
+                className="timelineImg"
+                src={getTimelineImage()}
+                alt="helios system image"
+                className="img-responsive"
+              />
+            </div>
+          );
+        })
+      : null;
 
   return (
     <>
