@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import SEO from "../components/seo";
+import Modal from "react-modal";
 import Layout from "../components/layout";
 import Size from "../utils/size";
 import Colors from "../utils/colors";
@@ -10,7 +11,6 @@ import {
   Col,
   TitleXLarge,
   TitleLarge,
-  TitleMedium,
   TextBody,
   Sun,
   TitleSmall,
@@ -18,7 +18,6 @@ import {
 import {
   checkmark,
   plus,
-  filing,
   money,
   ids,
   close,
@@ -27,7 +26,23 @@ import {
   calendar,
   formal,
 } from "../utils/icons";
+import CalculateExpense from "../components/cards/calculateExpense";
 import Ready from "../components/ready";
+import FormModal from "../components/modal";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    width: "30%",
+    padding: "0px",
+    border: "0px",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
 const GlobalStylePriceing = createGlobalStyle`
   .priceing_flex{
@@ -348,6 +363,7 @@ const SupportItem = styled(PricingItem)`
 
 const Pricing = () => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   // useEffect(() => {
 
@@ -367,6 +383,14 @@ const Pricing = () => {
     // console.log(
     //   e.target.parentNode.parentNode.parentNode.classList.toggle("isFlipped")
     // );
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -439,7 +463,13 @@ const Pricing = () => {
                     </PricingList>
                   </CardBody>
                   <CardFooter>
-                    <CardButton>Get Started</CardButton>
+                    <CardButton
+                      onClick={() => {
+                        openModal();
+                      }}
+                    >
+                      Get Started
+                    </CardButton>
                   </CardFooter>
                 </PricingCard>
               </Col>
@@ -493,7 +523,13 @@ const Pricing = () => {
                     </PricingList>
                   </CardBody>
                   <CardFooter>
-                    <CardButton>Get Started</CardButton>
+                    <CardButton
+                      onClick={() => {
+                        openModal();
+                      }}
+                    >
+                      Get Started
+                    </CardButton>
                   </CardFooter>
                 </PricingCard>
               </Col>
@@ -539,7 +575,7 @@ const Pricing = () => {
                 </SupportCardFace>
                 <SupportCardFace className="back">
                   <Flex justify="space-between" align="flex-start">
-                    <TitleSmall mb={8}>More Info</TitleSmall>
+                    <TitleSmall mb={8} />
 
                     <SupportInfoClose
                       onClick={e => {
@@ -550,21 +586,21 @@ const Pricing = () => {
                     </SupportInfoClose>
                   </Flex>
                   <SupportList>
-                    <SupportItem>
-                      <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      HeliosComplete™ Portal
-                    </SupportItem>
                     <PricingItem>
                       <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      HeliosComplete™ Portal
+                      U.S. filing
                     </PricingItem>
                     <PricingItem>
                       <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      HeliosComplete™ Portal
+                      Priority filing
                     </PricingItem>
                     <PricingItem>
                       <PricingItemIcon>{checkmark}</PricingItemIcon>
-                      HeliosComplete™ Portal
+                      EP validations
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      PCT national phase
                     </PricingItem>
                   </SupportList>
                 </SupportCardFace>
@@ -593,7 +629,7 @@ const Pricing = () => {
                 </SupportCardFace>
                 <SupportCardFace className="back">
                   <Flex justify="space-between" align="flex-start">
-                    <TitleSmall mb={8}>More Info</TitleSmall>
+                    <TitleSmall mb={8} />
 
                     <SupportInfoClose
                       onClick={e => {
@@ -603,14 +639,24 @@ const Pricing = () => {
                       {close}
                     </SupportInfoClose>
                   </Flex>
-                  <TextBody>
-                    For trademark applications (national, WIPO, EUIPO) manage
-                    all steps in the filing process including: preparation of
-                    trademark application; POA; prepare statement of use;
-                    prepare drawings and specimens; organize electronic filing
-                    package; upload to filing system; docket non-substantive
-                    office actions
-                  </TextBody>
+                  <SupportList>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      U.S. filing
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      National registration
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      EU marks
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Mardrid filing
+                    </PricingItem>
+                  </SupportList>
                 </SupportCardFace>
               </SupportCard>
               <SupportCard>
@@ -638,7 +684,7 @@ const Pricing = () => {
                 </SupportCardFace>
                 <SupportCardFace className="back">
                   <Flex justify="space-between" align="flex-start">
-                    <TitleSmall mb={8}>More Info</TitleSmall>
+                    <TitleSmall mb={8} />
 
                     <SupportInfoClose
                       onClick={e => {
@@ -648,12 +694,24 @@ const Pricing = () => {
                       {close}
                     </SupportInfoClose>
                   </Flex>
-                  <TextBody>
-                    For patents, trademarks and designs, manage office action
-                    responses including: receive and coordinate U.S. / foreign
-                    counsel reporting; monitor and coordinate response due
-                    dates; manage U.S. counsel / foreign associate instructions
-                  </TextBody>
+                  <SupportList>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Central intake
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Review and docket
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Reminders
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Response filing
+                    </PricingItem>
+                  </SupportList>
                 </SupportCardFace>
               </SupportCard>
               <SupportCard>
@@ -681,7 +739,7 @@ const Pricing = () => {
                 </SupportCardFace>
                 <SupportCardFace className="back">
                   <Flex justify="space-between" align="flex-start">
-                    <TitleSmall mb={8}>More Info</TitleSmall>
+                    <TitleSmall mb={8} />
 
                     <SupportInfoClose
                       onClick={e => {
@@ -691,12 +749,24 @@ const Pricing = () => {
                       {close}
                     </SupportInfoClose>
                   </Flex>
-                  <TextBody>
-                    For patent, trademark and design renewals, manage all steps
-                    in the fee payment process including: monitor and coordinate
-                    due dates; manage foreign associate instructions; pay and
-                    invoice official fees and agent fees
-                  </TextBody>
+                  <SupportList>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Due date monitoring
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Online instructions
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Global agent network
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Payment reporting
+                    </PricingItem>
+                  </SupportList>
                 </SupportCardFace>
               </SupportCard>
               <SupportCard>
@@ -724,7 +794,7 @@ const Pricing = () => {
                 </SupportCardFace>
                 <SupportCardFace className="back">
                   <Flex justify="space-between" align="flex-start">
-                    <TitleSmall mb={8}>More Info</TitleSmall>
+                    <TitleSmall mb={8} />
 
                     <SupportInfoClose
                       onClick={e => {
@@ -734,12 +804,24 @@ const Pricing = () => {
                       {close}
                     </SupportInfoClose>
                   </Flex>
-                  <TextBody>
-                    Prepare and file Information Disclosure Statement (form
-                    SB08); collect and organize citations included reference
-                    materials; download and archive publicly available foreign
-                    patents; import NPLs; create cross-family reference reports
-                  </TextBody>
+                  <SupportList>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Reference library
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Cross citation reports
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      SB08 filing
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Due date monitoring
+                    </PricingItem>
+                  </SupportList>
                 </SupportCardFace>
               </SupportCard>
               <SupportCard>
@@ -766,7 +848,7 @@ const Pricing = () => {
                 </SupportCardFace>
                 <SupportCardFace className="back">
                   <Flex justify="space-between" align="flex-start">
-                    <TitleSmall mb={8}>More Info</TitleSmall>
+                    <TitleSmall mb={8} />
 
                     <SupportInfoClose
                       onClick={e => {
@@ -776,19 +858,45 @@ const Pricing = () => {
                       {close}
                     </SupportInfoClose>
                   </Flex>
-                  <TextBody>
-                    For patent, trademark and design renewals, manage all steps
-                    in the fee payment process including: monitor and coordinate
-                    due dates; manage foreign associate instructions; pay and
-                    invoice official fees and agent fees
-                  </TextBody>
+                  <SupportList>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Assignments
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      POAs / Legalizations
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Change of ownership
+                    </PricingItem>
+                    <PricingItem>
+                      <PricingItemIcon>{checkmark}</PricingItemIcon>
+                      Electronic documents
+                    </PricingItem>
+                  </SupportList>
                 </SupportCardFace>
               </SupportCard>
             </SupportCards>
           </Container>
         </SupportWrapper>
-        <Ready title="Create Better IP Assets" />
+        <Ready title="Ready to Start Saving?" />
       </Layout>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        ariaHideApp={false}
+        style={customStyles}
+      >
+        <Container>
+          {/* <Flex align="center" className="heroBlock_flex"> */}
+          {/* <Col width="55%" className="rightBlock_Hero"> */}
+          <CalculateExpense />
+          {/* </Col> */}
+          {/* </Flex> */}
+        </Container>
+      </Modal>
     </>
   );
 };
