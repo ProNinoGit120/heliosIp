@@ -487,11 +487,10 @@ const Timeline = ({ withCTA }) => {
 
   // slider images
   // let names = ['execute', 'monitor', 'oboard', 'report'];
-  let timelineItem = Array.from(
+  let timelineItem =
     typeof document !== `undefined`
-      ? document.getElementsByClassName("timelineItem")
-      : null
-  );
+      ? Array.from(document.getElementsByClassName("timelineItem"))
+      : null;
   let images = timelineItem.map((name, id) => {
     return (
       <div key={id} className="slideImage">
