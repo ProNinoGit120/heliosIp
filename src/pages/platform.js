@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { createGlobalStyle}from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import Timeline from "../components/timeline";
@@ -14,7 +14,7 @@ import logo5 from "../images/partner-logos/teams.svg";
 import logo6 from "../images/partner-logos/powerbi.svg";
 import Ready from "../components/ready";
 
-const GlobalStylePlatform = createGlobalStyle `
+const GlobalStylePlatform = createGlobalStyle`
   .titleLarge_h1{
     @media(max-width:991px){
       font-size:28px;
@@ -23,7 +23,6 @@ const GlobalStylePlatform = createGlobalStyle `
   }
 
 `;
-
 
 const Partners = styled.section`
   padding-top: 340px;
@@ -40,7 +39,7 @@ const Partners = styled.section`
     content: "";
     position: absolute;
     z-index: -1;
-    @media(max-width:991px){
+    @media (max-width: 991px) {
       border-top: 6.625rem solid #fff;
     }
   }
@@ -53,15 +52,13 @@ const Partners = styled.section`
     content: "";
     position: absolute;
     z-index: -1;
-    @media(max-width:991px){
+    @media (max-width: 991px) {
       border-bottom: 6.625rem solid #fff;
     }
   }
-  @media(max-width:991px){
-     padding:150px 0;
-     
+  @media (max-width: 991px) {
+    padding: 150px 0;
   }
-
 `;
 
 const PartnersInner = styled.div`
@@ -72,8 +69,8 @@ const PartnerLogos = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media(max-width:991px){
-    width:100%;
+  @media (max-width: 991px) {
+    width: 100%;
   }
 `;
 
@@ -82,8 +79,8 @@ const MicroLogo = styled.img`
   display: block;
   width: 400px;
   margin-bottom: 32px;
-  @media(max-width:991px){
-    width:45%;
+  @media (max-width: 991px) {
+    width: 45%;
   }
 `;
 
@@ -91,31 +88,33 @@ const PartnerLogo = styled.img`
   display: block;
   max-width: 100px;
   margin: 0 16px;
-   @media(max-width:991px){
+  @media (max-width: 991px) {
     margin: 0 3px;
-    max-width:50px;
+    max-width: 50px;
   }
 `;
 
 const Platform = () => {
   const logos_src = [logo1, logo2, logo3, logo4, logo5, logo6];
 
-  const logos = logos_src.map((logo ,id) =><PartnerLogo key= {id} src={logo} />);
+  const logos = logos_src.map((logo, id) => (
+    <PartnerLogo key={id} src={logo} />
+  ));
   return (
     <>
-    <GlobalStylePlatform/>
-    <Layout>
-      <SEO title="Platform" />
-      <Timeline withCTA />
-      <Partners>
-        <MicroLogo src={microsoft_src} />
-        <TitleLarge align="center" mb={32} className="titleLarge_h1">
-          A Microsoft Development Partner
-        </TitleLarge>
-        <PartnerLogos>{logos}</PartnerLogos>
-      </Partners>
-      <Ready title="Schedule a Demo" />
-    </Layout>
+      <GlobalStylePlatform />
+      <Layout>
+        <SEO title="Platform" />
+        <Timeline withCTA />
+        <Partners>
+          <MicroLogo src={microsoft_src} />
+          <TitleLarge align="center" mb={32} className="titleLarge_h1">
+            A Microsoft Development Partner
+          </TitleLarge>
+          <PartnerLogos>{logos}</PartnerLogos>
+        </Partners>
+        <Ready title="Schedule a Demo" />
+      </Layout>
     </>
   );
 };

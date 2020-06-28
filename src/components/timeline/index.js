@@ -487,27 +487,31 @@ const Timeline = ({ withCTA }) => {
 
   // slider images
   // let names = ['execute', 'monitor', 'oboard', 'report'];
-  let timelineItem = Array.from(
-    document.getElementsByClassName("timelineItem")
-  );
-  let images = timelineItem.map((name, id) => {
-    return (
-      <div key={id} className="slideImage">
-        {/* <img
+  let timelineItem =
+    typeof document !== `undefined`
+      ? Array.from(document.getElementsByClassName("timelineItem"))
+      : null;
+  let images =
+    timelineItem !== null
+      ? timelineItem.map((name, id) => {
+          return (
+            <div key={id} className="slideImage">
+              {/* <img
             src = {
               getTimelineImage()
             }
             alt = ""
             className="img-responsive" /> */}
-        <TimelineImg
-          className="timelineImg"
-          src={getTimelineImage()}
-          alt="helios system image"
-          className="img-responsive"
-        />
-      </div>
-    );
-  });
+              <TimelineImg
+                className="timelineImg"
+                src={getTimelineImage()}
+                alt="helios system image"
+                className="img-responsive"
+              />
+            </div>
+          );
+        })
+      : null;
 
   return (
     <>
@@ -664,31 +668,35 @@ const Timeline = ({ withCTA }) => {
                       <TimelineItem className="timelineItem active">
                         <TimelineItemContent>
                           <TimelineItemTitle temTitle>
-                            Onboard ABV
+                            Onboard
                           </TimelineItemTitle>
                           <TimelineItemDesc>
                             We start by importing your portfolio and verifying
-                            data accuracy through online databases and by
-                            human-review by our team of IP specialists.
+                            data accuracy through online databases and
+                            human-review by our team of IP specialists. All your
+                            information is accurate and complete including
+                            bibliographic fields, family relationships,
+                            priorities, assignments, due dates and maintenance
+                            fees.
                             {/* Your data includes all bibliographic information, priorities,
                           family relationships, assignments and other key
                           information. We ensure your users’s access, connect to
                           your PTO accounts, and setup your centralized
                           DocketHub™ intake process.​ */}
                           </TimelineItemDesc>
-                          <StyledLink to="/platform">
-                            Explore Features
-                          </StyledLink>
                         </TimelineItemContent>
                       </TimelineItem>
                       <TimelineItem className="timelineItem">
                         <TimelineItemContent>
                           <TimelineItemTitle>Monitor</TimelineItemTitle>
                           <TimelineItemDesc>
-                            With your portfolio , we ensure all information is
-                            up to date and accurate by docketing, cross checking
-                            PTO data, and uploading documents as we receive
-                            them.
+                            With your portfolio loaded, we ensure your
+                            information remains up to date and that you have
+                            continuous visibility into the portfolio. We
+                            maintain the docket, cross checking PTO data, and
+                            uploading documents as we receive them. And we
+                            provide you notifications of upcoming due dates so
+                            you can instruct required activities.
                             {/* Actions and tasks are automated with our
                           industry leading DocketEngine™ global country law
                           ruleset. Based on your preferences, we actively
@@ -696,27 +704,25 @@ const Timeline = ({ withCTA }) => {
                           deadlines, payment due dates and all incoming/out
                           correspondences​ */}
                           </TimelineItemDesc>
-                          <StyledLink to="/platform">
-                            Explore Features
-                          </StyledLink>
                         </TimelineItemContent>
                       </TimelineItem>
                       <TimelineItem className="timelineItem">
                         <TimelineItemContent>
                           <TimelineItemTitle>Execute</TimelineItemTitle>
                           <TimelineItemDesc>
-                            As events come due, we proceed with your support
-                            services including prosecution responses, foreign
-                            filing, maintenance payments and formalities.
+                            Based on your instructions, we proceed with your
+                            support services including prosecution responses,
+                            foreign filing, maintenance payments and
+                            formalities. We coordinate all activities between
+                            the client, U.S. counsel and foreign associates,
+                            ensuring visibility and information sharing in a
+                            centralized process.
                             {/* While you work directly with your attorneys and foreign
                           counsel, we coordinate information sharing to ensure
                           all information is captured, fully supported by the
                           HeliosComplete™ platform including task completion,
                           documents and receipts. */}
                           </TimelineItemDesc>
-                          <StyledLink to="/platform">
-                            Explore Features
-                          </StyledLink>
                         </TimelineItemContent>
                       </TimelineItem>
                       <TimelineItem className="timelineItem">
@@ -732,9 +738,6 @@ const Timeline = ({ withCTA }) => {
                           portfolio analytics that help your decision making and
                           focus resources on your highest value opportunities. */}
                           </TimelineItemDesc>
-                          <StyledLink to="/platform">
-                            Explore Features
-                          </StyledLink>
                         </TimelineItemContent>
                       </TimelineItem>
                     </TimeLineItemWrapper>

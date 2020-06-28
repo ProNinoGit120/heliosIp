@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { Link } from "gatsby";
+import Modal from "react-modal";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import Colors from "../utils/colors";
@@ -32,26 +33,25 @@ import ids_src from "../images/services-ids.svg";
 import filing_src from "../images/services-filing.svg";
 import annuties_src from "../images/services-annuties.svg";
 import reporting_src from "../images/services-reporting.svg";
-
+import CalculateExpense from "../components/cards/calculateExpense";
 import Ready from "../components/ready";
 import Slider from "react-slick";
 
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    width: "30%",
+    padding: "0px",
+    border: "0px",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
 const GlobalStylesServices = createGlobalStyle`
-  .flexBox {
-    @media(max-width: 991px) {
-      flex-direction: column !important;
-    }
-  }
-
-  .leftBlock,
-  .centerBlock,
-  .rightBlock {
-    @media(max-width: 991px) {
-      width: 100% !important;
-      margin: 0 0 20px;
-    }
-  }
-
   .heading {
     @media(max-width: 767px) {
       font-size: 34px;
@@ -69,13 +69,36 @@ const GlobalStylesServices = createGlobalStyle`
       font-size: 24px;
     }
   }
-  
 `;
 
 const Intro = styled.section`
   overflow-x: hidden;
   /* padding-bottom: 120px; */
   position: relative;
+
+  &:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 100%;
+    background: ${Colors.gray};
+    transform: rotate(-9.5deg);
+    z-index: -1;
+    transform-origin: left bottom;
+  }
+`;
+
+const HeroButton = styled.button`
+  background: ${Colors.gray};
+  padding: 8px 16px;
+  box-shadow: rgb(231, 231, 231) 10px 10px 16px,
+    rgb(251, 251, 251) -10px -10px 16px;
+  color: ${Colors.blue};
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
 `;
 
 const IntroTop = styled.div`
@@ -84,7 +107,7 @@ const IntroTop = styled.div`
 
 const IntroImg = styled.img`
   display: block;
-  width: 40%;
+  width: 100%;
   @media (max-width: 991px) {
     width: 100%;
   }
@@ -99,7 +122,7 @@ const IntroContentWrapper = styled.div`
 `;
 
 const IntroInner = styled.div`
-  padding: 120px 0 120px 0;
+  padding: 140px 0 250px 0;
   @media (max-width: 767px) {
     padding: 40px 0 70px 0;
   }
@@ -109,8 +132,6 @@ const IntroDesc = styled(TextBody)`
   font-size: 24px;
   margin: 0 auto;
   padding-bottom: 16px;
-  text-align: center;
-  max-width: 800px;
 `;
 
 const ServiceTabs = styled.section`
@@ -122,7 +143,7 @@ const ServiceTablist = styled(TabList)`
   display: flex;
   position: relative;
   width: 100%;
-  margin-bottom: 120px;
+  margin-bottom: 75px;
   &:before {
     z-index: -2;
     background-color: #e0e0e0;
@@ -193,6 +214,7 @@ const ServiceTabImg = styled.img`
 const SupportCards = styled.div`
   ${"" /* padding-bottom: 120px; */}
   padding-top: 60px;
+  margin-bottom: 200px;
   @media (max-width: 767px) {
     padding-top: 0;
     padding-bottom: 0px;
@@ -277,6 +299,7 @@ const SupportIcon = styled.div`
 const SlideCardList = styled.ul``;
 
 const SlideCardItem = styled.li`
+  margin-top: 10px;
   color: white;
   display: flex;
   align-items: center;
@@ -340,7 +363,7 @@ const SupportSlideLeft = styled.div`
   width: 33%;
   position: relative;
   z-index: 10;
-  margin-top: -64px;
+  margin-top: 64px;
   @media (max-width: 767px) {
     margin: 0 0 20px;
     flex-direction: column !important;
@@ -477,204 +500,131 @@ const Control = styled.div`
 
 const Services = () => {
   // const windowSize = useWindowSize();
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <Layout>
-      <GlobalStylesServices />
       <SEO title="Services" />
       <Intro>
         <IntroInner>
-          {/* <IntroTop>
-            <TitleLarge align="center" color={Colors.blue}>
-              Create Better IP Assets
-            </TitleLarge>
-            <IntroDesc align="center" mb={16}>
-              Get dedicated support from our team of paralegals and IP
-              specialists.
-            </IntroDesc>
-          </IntroTop> */}
-          <Container maxWidth={1440}>
-            <Flex
-              align="center"
-              justify="center"
-              direction="column"
-              className="flexBox"
-            >
-              {/* <IntroImg src={patent_src} /> */}
-              <IntroContentWrapper>
-                <TitleLarge className="heading" align="center">
-                  An on-demand IP team
+          <Container>
+            {/* <IntroTop>
+              <TitleLarge align="center" color={Colors.blue}>
+                Create Better IP Assets
+              </TitleLarge>
+              <IntroDesc align="center" mb={16}>
+                Get dedicated support from our team of paralegals and IP
+                specialists.
+              </IntroDesc>
+            </IntroTop> */}
+            <Flex align="center">
+              {/* <Flex className="flexHero" align="center"> */}
+              <Col className="heroImg">
+                <IntroImg src={global_src} />
+              </Col>
+              <Col className="heroImg">
+                <TitleLarge>
+                  Your on-demand IP
+                  <br />
+                  Operations Team
                 </TitleLarge>
                 <IntroDesc mb={16}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Id donec ultrices tincidunt arcu non.
+                  Dedicated support from our team of paralegals and IP
+                  specialists.
                 </IntroDesc>
-                {/* <ButtonLink className="gray" to="/">
+                <HeroButton
+                  onClick={() => {
+                    openModal();
+                  }}
+                >
                   Get Started
-                </ButtonLink> */}
-              </IntroContentWrapper>
+                </HeroButton>
+              </Col>
             </Flex>
+          </Container>
+        </IntroInner>
+      </Intro>
+      <SupportCards>
+        <Container maxWidth="1440">
+          <Flex className="flexCol">
+            <Col className="leftBlock">
+              <SupportCard>
+                <Flex
+                  align="flex-start"
+                  justify="center"
+                  align="center"
+                  direction="column"
+                >
+                  <TitleXLarge mb={16}>+ 80%</TitleXLarge>
+                  <TitleSmall mb={12}>Improve Productivity​</TitleSmall>
+                </Flex>
 
-            <SupportCards>
-              <Container maxWidth={1440}>
-                <Flex className="flexBox">
-                  <Col width={`calc(100% / 3)`} className="leftBlock">
-                    <SupportCard className="first">
-                      <Flex
-                        align="flex-start"
-                        justify="center"
-                        align="flex-start"
-                        direction="column"
-                      >
-                        {/* <TitleXLarge mb={16}>+ 80%</TitleXLarge> */}
-                        <SupportCardImg src={filing_src} />
-                        <SupportNotification>
-                          Included with SMB Plan
-                        </SupportNotification>
-                        <TitleSmall mb={12} align="left">
-                          Improve Productivity​
-                        </TitleSmall>
-                      </Flex>
-
-                      {/* <PricingList className="card">
+                {/* <PricingList className="card">
                     <PricingItem>
                       <PricingItemIcon>{checkmark}</PricingItemIcon>
                       HeliosComplete™ Portal
                     </PricingItem>
                   </PricingList> */}
 
-                      <TextBody mb={16}>
-                        For U.S. applications, manage all steps in the filing
-                        process including: preparation of ADS;
-                      </TextBody>
-                      <LearnMoreBtn>Learn More</LearnMoreBtn>
-                      {/* POA and inventor
+                <TextBody mb={16}>
+                  For U.S. applications, manage all steps in the filing process
+                  including: preparation of ADS;
+                </TextBody>
+                {/* POA and inventor
                     declarations; assignments; organize electronic filing
                     package; upload to EFS system; pay and invoice official
                     fees; save documents and confirmation receipts; docket all
                     actions/tasks​  */}
-                    </SupportCard>
-                  </Col>
-                  <Col width={`calc(100% / 3)`} className="centerBlock">
-                    <SupportCard className="second">
-                      <Flex
-                        align="flex-start"
-                        justify="center"
-                        align="flex-start"
-                        direction="column"
-                      >
-                        <SupportCardImg src={annuties_src} />
-                        <SupportNotification>
-                          Included with Enterprise Plan
-                        </SupportNotification>
-                        {/* <TitleXLarge mb={16}>- $750</TitleXLarge> */}
-                        <TitleSmall mb={12} align="left">
-                          Reduce Matter Cost
-                        </TitleSmall>
-                      </Flex>
-
-                      <TextBody mb={16}>
-                        For U.S. applications, manage all steps in the filing
-                        process including: preparation of ADS;
-                      </TextBody>
-                      <LearnMoreBtn>Learn More</LearnMoreBtn>
-                    </SupportCard>
-                  </Col>
-                  <Col width={`calc(100% / 3)`} className="rightBlock">
-                    <SupportCard>
-                      <Flex
-                        align="flex-start"
-                        justify="center"
-                        align="flex-start"
-                        direction="column"
-                      >
-                        {/* <TitleXLarge mb={16}>+ 30%</TitleXLarge> */}
-                        <SupportCardImg src={reporting_src} />
-                        <SupportNotification>
-                          Included with SMB Plan
-                        </SupportNotification>
-                        <TitleSmall mb={16} align="left">
-                          Increased Filings
-                        </TitleSmall>
-                      </Flex>
-
-                      <TextBody mb={16}>
-                        For U.S. applications, manage all steps in the filing
-                        process including: preparation of ADS;
-                      </TextBody>
-                      <LearnMoreBtn>Learn More</LearnMoreBtn>
-                    </SupportCard>
-                  </Col>
+              </SupportCard>
+            </Col>
+            <Col className="centerBlock">
+              <SupportCard>
+                <Flex
+                  align="flex-start"
+                  justify="center"
+                  align="center"
+                  direction="column"
+                >
+                  <TitleXLarge mb={16}>- $750</TitleXLarge>
+                  <TitleSmall mb={12}>Reduce Matter Cost</TitleSmall>
                 </Flex>
-              </Container>
-            </SupportCards>
-          </Container>
-        </IntroInner>
-      </Intro>
-      {/* {windowSize < 991 ? (
-                  <>
-                    <Slider {...settings}>{images}</Slider>
-                  </>
-                ) : null} */}
 
-      <SupportSlider>
-        <Container maxWidth={1440}>
-          <TitleLarge mb={120} align="center" className="titleLarge">
-            IP Support Services
-          </TitleLarge>
-
-          <SupportSlideWrapper>
-            <SupportSlide>
-              <SupportSlideLeft>
-                <SlideCardIcon>{calendar}</SlideCardIcon>
-                <TitleSmall color="white">Patent & Trademark</TitleSmall>
-                <SlideCardList>
-                  <SlideCardItem>
-                    <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
-                    HeliosComplete™ Portal
-                  </SlideCardItem>
-                  <SlideCardItem>
-                    <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
-                    HeliosComplete™ Portal
-                  </SlideCardItem>
-                  <SlideCardItem>
-                    <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
-                    HeliosComplete™ Portal
-                  </SlideCardItem>
-                </SlideCardList>
-
-                {/* <CardButton>Get Started</CardButton> */}
-              </SupportSlideLeft>
-
-              <SliderControl>
-                <Control>{arrow}</Control>
-                <Control className="active">{arrow}</Control>
-              </SliderControl>
-              <SupportSlideContent>
-                <Flex align="flex-start" align="center" className="flexBox">
-                  <Col noP width="40%" className="leftBlock">
-                    <ServiceTabImg src={patent_src} />
-                  </Col>
-                  <Col width="60%" className="rightBlock">
-                    <TitleMedium className="titleMedium">
-                      Patent & Trademark Docketing
-                    </TitleMedium>
-                    <TextBody>
-                      We manage all incoming and outgoing prosecution activities
-                      including PTO, law firm, and foreign associate
-                      correspondences. Information is fully validated and
-                      checked against official records and our proprietary
-                      DocketEngine™ global prosecution procedures.
-                    </TextBody>
-                  </Col>
+                <TextBody mb={16}>
+                  For U.S. applications, manage all steps in the filing process
+                  including: preparation of ADS;
+                </TextBody>
+              </SupportCard>
+            </Col>
+            <Col className="rightBlock">
+              <SupportCard>
+                <Flex
+                  align="flex-start"
+                  justify="center"
+                  align="center"
+                  direction="column"
+                >
+                  <TitleXLarge mb={16}>+ 30%</TitleXLarge>
+                  <TitleSmall mb={16}>Increased Filings</TitleSmall>
                 </Flex>
-              </SupportSlideContent>
-            </SupportSlide>
-          </SupportSlideWrapper>
+
+                <TextBody mb={16}>
+                  For U.S. applications, manage all steps in the filing process
+                  including: preparation of ADS;
+                </TextBody>
+              </SupportCard>
+            </Col>
+          </Flex>
         </Container>
-      </SupportSlider>
-      {/* <ServiceTabs>
+      </SupportCards>
+      <ServiceTabs>
         <Container>
           <Tabs>
             <ServiceTablist>
@@ -709,105 +659,304 @@ const Services = () => {
             </ServiceTablist>
 
             <TabPanel>
-              <Flex align="flex-start">
-                <Col width="50%">
-                  <TitleMedium>Patent & Trademark Docketing</TitleMedium>
-                  <TextBody>
-                    We manage all incoming and outgoing prosecution activities
-                    including PTO, law firm, and foreign associate
-                    correspondences. Information is fully validated and checked
-                    against official records and our proprietary DocketEngine™
-                    global prosecution procedures. We provide full docketing, or
-                    augment your internal resources to improve resource
-                    utilization and productivity.
-                  </TextBody>
-                </Col>
-                <Col width="50%">
-                  <ServiceTabImg src={patent_src} />
-                </Col>
-              </Flex>
+              <SupportSlideWrapper>
+                <SupportSlide>
+                  <SupportSlideLeft>
+                    <SlideCardList>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        New matter setup
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Global ruleset
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Due date reminders
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Electronic PTO data
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Document storage
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Docket reports
+                      </SlideCardItem>
+                    </SlideCardList>
+
+                    {/* <CardButton>Get Started</CardButton> */}
+                  </SupportSlideLeft>
+
+                  {/* <SliderControl>
+                    <Control>{arrow}</Control>
+                    <Control className="active">{arrow}</Control>
+                  </SliderControl> */}
+                  <SupportSlideContent>
+                    <Flex align="flex-start" align="center" className="flexBox">
+                      <Col noP width="40%" className="leftBlock">
+                        <ServiceTabImg src={patent_src} />
+                      </Col>
+                      <Col width="60%" className="rightBlock">
+                        <TitleMedium className="titleMedium">
+                          Patent & Trademark Docketing
+                        </TitleMedium>
+                        <TextBody>
+                          We manage all incoming and outgoing prosecution
+                          activities including PTO, law firm, and foreign
+                          associate correspondences. Information is fully
+                          validated and checked against official records and our
+                          proprietary DocketEngine™ global prosecution
+                          procedures.
+                        </TextBody>
+                      </Col>
+                    </Flex>
+                  </SupportSlideContent>
+                </SupportSlide>
+              </SupportSlideWrapper>
             </TabPanel>
             <TabPanel>
-              <Flex align="flex-start">
-                <Col width="50%">
-                  <TitleMedium>Information Disclosure Statements</TitleMedium>
-                  <TextBody>
-                    We provide complete end-to-end IDS management from tracking
-                    new prior art across the family, to completing and filing
-                    IDS and disclosure forms. A complete turnkey solution
-                    including access to our IDS system platform, IDS expert
-                    staff, and a fixed rate subscription program.
-                  </TextBody>
-                </Col>
-                <Col width="50%">
-                  <ServiceTabImg src={ids_src} />
-                </Col>
-              </Flex>
+              <SupportSlideWrapper>
+                <SupportSlide>
+                  <SupportSlideLeft>
+                    <SlideCardList>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Reference library
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Cross-family report
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Electronic SB08 form
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Foreign citation review
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Due date tracking
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Document storage
+                      </SlideCardItem>
+                    </SlideCardList>
+                  </SupportSlideLeft>
+                  <SupportSlideContent>
+                    <Flex align="flex-start" align="center" className="flexBox">
+                      <Col noP width="40%" className="leftBlock">
+                        <ServiceTabImg src={ids_src} />
+                      </Col>
+                      <Col width="60%" className="rightBlock">
+                        <TitleMedium className="titleMedium">
+                          Information Disclosure Statements
+                        </TitleMedium>
+                        <TextBody>
+                          We provide complete end-to-end IDS management from
+                          tracking new prior art across the family, to
+                          completing and filing IDS and disclosure forms. A
+                          complete turnkey solution including access to our IDS
+                          system platform, IDS expert staff, and a fixed rate
+                          subscription program.
+                        </TextBody>
+                      </Col>
+                    </Flex>
+                  </SupportSlideContent>
+                </SupportSlide>
+              </SupportSlideWrapper>
             </TabPanel>
 
             <TabPanel>
-              <Flex align="flex-start">
-                <Col width="50%">
-                  <TitleMedium>
-                    Foreign Filing, EP Validations and National Stage Entry
-                  </TitleMedium>
-                  <TextBody>
-                    Helios streamlines the global filing process from strategy
-                    through execution. We manage your agent network and ensure
-                    that all filing requirements are met with expert knowledge
-                    of each country’s procedures. Clients have full control and
-                    transparency into the process linked directly to their
-                    docketing system.
-                  </TextBody>
-                </Col>
-                <Col width="50%">
-                  <ServiceTabImg src={filing_src} />
-                </Col>
-              </Flex>
+              <SupportSlideWrapper>
+                <SupportSlide>
+                  <SupportSlideLeft>
+                    <SlideCardList>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Due data tracking
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Provisional filings
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Foreign filing
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        ADS and formalities
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Global agent network
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Document storage
+                      </SlideCardItem>
+                    </SlideCardList>
+                  </SupportSlideLeft>
+                  <SupportSlideContent>
+                    <Flex align="flex-start" align="center" className="flexBox">
+                      <Col noP width="40%" className="leftBlock">
+                        <ServiceTabImg src={filing_src} />
+                      </Col>
+                      <Col width="60%" className="rightBlock">
+                        <TitleMedium className="titleMedium">
+                          Application Filing
+                        </TitleMedium>
+                        <TextBody>
+                          For U.S. and foreign filing, including provisionals,
+                          priority, EP validations and PCT national phase entry,
+                          we streamline the filing process from strategy through
+                          execution. We prepare all filing documents to ensure
+                          requirements are met with expert knowledge of filing
+                          procedures. The Helios IP Network provides preferred
+                          foreign associates, with full control and transparency
+                          into the process.
+                        </TextBody>
+                      </Col>
+                    </Flex>
+                  </SupportSlideContent>
+                </SupportSlide>
+              </SupportSlideWrapper>
             </TabPanel>
             <TabPanel>
-              <Flex align="flex-start">
-                <Col width="50%">
-                  <TitleMedium>
-                    Patent Annuities and Trademark Renewals
-                  </TitleMedium>
-                  <TextBody>
-                    Helios annuities and renewals service enable clients to
-                    eliminate the risk and complexity of their maintenance
-                    decisions, while minimizing the cost. We have developed a
-                    unique direct-pay process that avoids unnecessary
-                    intermediary handling and currency fees, and time consuming
-                    foreign agent and POA formalities. Clients pay a fixed
-                    monthly service fee with no conversion markups.
-                  </TextBody>
-                </Col>
-                <Col width="50%">
-                  <ServiceTabImg src={annuties_src} />
-                </Col>
-              </Flex>
+              <SupportSlideWrapper>
+                <SupportSlide>
+                  <SupportSlideLeft>
+                    <SlideCardList>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Calculate due dates
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Low cost fees
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Monitor instructions
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Global agent network
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Budget reporting
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Electronic receipts
+                      </SlideCardItem>
+                    </SlideCardList>
+                  </SupportSlideLeft>
+                  <SupportSlideContent>
+                    <Flex align="flex-start" align="center" className="flexBox">
+                      <Col noP width="40%" className="leftBlock">
+                        <ServiceTabImg src={annuties_src} />
+                      </Col>
+                      <Col width="60%" className="rightBlock">
+                        <TitleMedium className="titleMedium">
+                          Annuities & Renewals
+                        </TitleMedium>
+                        <TextBody>
+                          Helios annuities and renewals service enable clients
+                          to eliminate the risk and complexity of their
+                          maintenance decisions, while minimizing the cost. We
+                          have developed a unique direct-pay process that avoids
+                          unnecessary intermediary handling and currency fees,
+                          and time consuming foreign agent and POA formalities.
+                        </TextBody>
+                      </Col>
+                    </Flex>
+                  </SupportSlideContent>
+                </SupportSlide>
+              </SupportSlideWrapper>
             </TabPanel>
 
             <TabPanel>
-              <Flex align="flex-start">
-                <Col width="50%">
-                  <TitleMedium>Reporting and Portfolio Analysis</TitleMedium>
-                  <TextBody>
-                    Helios IP business intelligence services provide clients the
-                    reporting and analysis they need to understand their
-                    portfolio and support decision-making. Using advanced BI
-                    tools we work with both internal and external data to build
-                    comprehensive analytics
-                  </TextBody>
-                </Col>
-                <Col width="50%">
-                  <ServiceTabImg src={reporting_src} />
-                </Col>
-              </Flex>
+              <SupportSlideWrapper>
+                <SupportSlide>
+                  <SupportSlideLeft>
+                    <SlideCardList>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Graphical dashboards
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Portfolio analytics
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Prosecution metrics
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Financial spend
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Automated delivery
+                      </SlideCardItem>
+                      <SlideCardItem>
+                        <SlideCardItemIcon>{checkmark}</SlideCardItemIcon>
+                        Excel / Power BI
+                      </SlideCardItem>
+                    </SlideCardList>
+                  </SupportSlideLeft>
+                  <SupportSlideContent>
+                    <Flex align="flex-start" align="center" className="flexBox">
+                      <Col noP width="40%" className="leftBlock">
+                        <ServiceTabImg src={reporting_src} />
+                      </Col>
+                      <Col width="60%" className="rightBlock">
+                        <TitleMedium className="titleMedium">
+                          Reporting
+                        </TitleMedium>
+                        <TextBody>
+                          Helios IP business intelligence services provide
+                          clients the reporting and analysis they need to
+                          understand their portfolio and support
+                          decision-making. Using advanced BI tools we work with
+                          both internal and external data to build comprehensive
+                          analytics.
+                        </TextBody>
+                      </Col>
+                    </Flex>
+                  </SupportSlideContent>
+                </SupportSlide>
+              </SupportSlideWrapper>
             </TabPanel>
           </Tabs>
         </Container>
-      </ServiceTabs> */}
+      </ServiceTabs>
       {/* <Ready title="Ready to Get Support?" /> */}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        ariaHideApp={false}
+        style={customStyles}
+      >
+        <Container>
+          {/* <Flex align="center" className="heroBlock_flex"> */}
+          {/* <Col width="55%" className="rightBlock_Hero"> */}
+          <CalculateExpense />
+          {/* </Col> */}
+          {/* </Flex> */}
+        </Container>
+      </Modal>
     </Layout>
   );
 };
