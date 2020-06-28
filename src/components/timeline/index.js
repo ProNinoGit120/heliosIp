@@ -368,7 +368,7 @@ const StyledLink = styled(Link)`
 
 const Timeline = ({ withCTA }) => {
   const [timelineActiveIndex, setTimelineActiveIndex] = useState(-1);
-  const windowSize = typeof window !== "undefined" ? useWindowSize() : 1000;
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
@@ -488,7 +488,9 @@ const Timeline = ({ withCTA }) => {
   // slider images
   // let names = ['execute', 'monitor', 'oboard', 'report'];
   let timelineItem = Array.from(
-    document.getElementsByClassName("timelineItem")
+    typeof document !== `undefined`
+      ? document.getElementsByClassName("timelineItem")
+      : null
   );
   let images = timelineItem.map((name, id) => {
     return (
