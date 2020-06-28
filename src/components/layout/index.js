@@ -80,26 +80,69 @@ const GlobalStyles = createGlobalStyle`
     
   }
 
+  @media(min-width: 1030px) { 
+    .flexHero {
+      flex-wrap: wrap;
+    }
+    .heroImg {
+      width: 50%;
+    }
+  }
+
+  @media(max-width: 1030px) and (min-width: 700px) { 
+    .flexCol {
+      flex-wrap: wrap;
+    }
+
+    .heroImg {
+      diaply: flex;
+      flex-direction: row;
+      flex-basis: 70%;
+      margin: 15px 1%;
+      padding: 0px 25px;
+    }
+
+    .leftBlock,
+    .centerBlock,
+    .rightBlock {
+        diaply: flex;
+        flex-direction: row;
+        flex-basis: 48%;
+        margin: 15px 1%;
+        padding: 0px 25px;
+      }
+    }
+  }
+
+  @media(max-width: 699px) { 
+    .flexCol {
+      flex-direction: column !important;  
+      align-items: center !important;
+      margin-top: 70px;
+    }
+
+    .leftBlock,
+    .centerBlock,
+    .rightBlock {
+        width: 100%;
+        margin: 15px 20px;
+        padding: 0px 25px;
+      }
+    }
+  }
+
   @media(max-width: 767px) { 
     .flexBox {
       flex-direction: column !important;  
       align-items: flex-start !important;
-    }
-
-    .leftBlock,
-    .rightBlock {
-        width: 100%;
-        margin: 0 0 20px;
-        padding:0px 25px;
-      }
     }
   }
 `;
 
 const Main = styled.main`
   display: block;
-  @media(max-width:767px){
-    overflow-x:hidden;
+  @media (max-width: 767px) {
+    overflow-x: hidden;
   }
 `;
 

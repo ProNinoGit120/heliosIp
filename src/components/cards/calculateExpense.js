@@ -28,7 +28,6 @@ const HeroCard = styled.div`
   border-radius: ${Size.radius * 2}px;
   border: 1px solid white;
   position: relative;
-
 `;
 
 const CardHeader = styled.div`
@@ -56,7 +55,7 @@ const CardBody = styled(TabPanel)`
   &.react-tabs__tab-panel--selected {
     display: flex;
   }
-  @media(max-width:767px){
+  @media (max-width: 767px) {
     padding: 20px 10px;
   }
 `;
@@ -95,10 +94,7 @@ const CardButton = styled.button`
           }
           cursor: pointer;
     `}
-          
-
-
-
+        
   /* &:hover {
     box-shadow: 10px 10px 10px white, -10, -10, 10px ${Colors.text};
   } */
