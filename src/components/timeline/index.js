@@ -368,7 +368,7 @@ const StyledLink = styled(Link)`
 
 const Timeline = ({ withCTA }) => {
   const [timelineActiveIndex, setTimelineActiveIndex] = useState(-1);
-  const windowSize = useWindowSize();
+  const windowSize = typeof window !== "undefined" ? useWindowSize() : 1000;
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
