@@ -135,7 +135,6 @@ const NavLink = styled(Link)`
 `;
 
 export default () => {
-  const width = window.innerWidth;
   const breakpoint = 991;
   const windowSize = typeof window !== "undefined" ? useWindowSize() : 1000;
   const [toggleNavList, setToggleNavList] = useState(false);
