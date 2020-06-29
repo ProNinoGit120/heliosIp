@@ -917,7 +917,7 @@ const Services = () => {
                     </SlideCardList>
                   </SupportSlideLeft>
                   <SupportSlideContent>
-                    <Flex align="flex-start" align="center" className="flexBox">
+                    <Flex align="flex-start" align="end" className="flexBox">
                       <Col noP width="40%" className="leftBlock">
                         <ServiceTabImg src={reporting_src} />
                       </Col>
