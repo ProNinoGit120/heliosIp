@@ -266,8 +266,6 @@ export default () => {
       system: system,
     };
 
-    console.log(encode({ "form-name": "calculateExpense", ...formData }));
-
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -325,7 +323,7 @@ export default () => {
         <CardHeader>
           <CardTitle>
             {formSuccess
-              ? `Sucess, Check Your Email`
+              ? `Thank You - We'll Be in Touch with You Shortly`
               : formError
               ? `Something Happened, Try Again`
               : `Get Back to Being a Lawyer`}

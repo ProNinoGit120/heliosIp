@@ -827,7 +827,7 @@ const Pricing = () => {
               <SupportCard>
                 <SupportCardFace className="front">
                   <Flex align="flex-start" justify="space-between">
-                    <SupportIcon>{formal}</SupportIcon>
+                    <SupportIcon>{formal} </SupportIcon>
                     <SupportInfo
                       onClick={e => {
                         handleCardOpen(e);

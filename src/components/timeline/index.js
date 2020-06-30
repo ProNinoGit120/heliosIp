@@ -390,7 +390,6 @@ const Timeline = ({ withCTA }) => {
     autoplaySpeed: 4000,
     arrows: false,
     afterChange: current => {
-      console.log("current", current);
       let timelineItem = Array.from(
         document.getElementsByClassName("timelineItem")
       );
@@ -422,7 +421,6 @@ const Timeline = ({ withCTA }) => {
       const timelineItems = Array.from(
         document.getElementsByClassName("timelineItem")
       );
-      console.log(timelineItems);
 
       timelineItems.forEach((timelineItem, index) => {
         // calc distance to timeline image
@@ -467,21 +465,20 @@ const Timeline = ({ withCTA }) => {
     let timelineSVG = "";
     switch (timelineActiveIndex) {
       case TIMELINE_ONBOARD:
-        timelineSVG = "oboard";
+        timelineSVG = "1onboard";
         break;
       case TIMELINE_MONITOR:
-        timelineSVG = "monitor";
+        timelineSVG = "2monitor";
         break;
       case TIMELINE_EXECUTE:
-        timelineSVG = "execute";
+        timelineSVG = "3execute";
         break;
       case TIMELINE_REPORT:
-        timelineSVG = "report";
+        timelineSVG = "4report";
         break;
       default:
         timelineSVG = "start";
     }
-    console.log("#timelineSVG", timelineSVG);
     return require(`../../images/timeline/${timelineSVG}.svg`);
   };
 

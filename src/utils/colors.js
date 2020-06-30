@@ -1,5 +1,6 @@
 export default {
   orange: "#F16322",
+  white: "#FeFeFe",
   lightOrange: "#fd854e",
   orange_gradient:
     "linear-gradient(35deg, #f16322 0%, #fd854e 55%, #f16322 100%)",

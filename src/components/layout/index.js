@@ -85,7 +85,8 @@ const GlobalStyles = createGlobalStyle`
       flex-wrap: wrap;
     }
     .heroImg {
-      width: 50%;
+      width: 80%;
+      text-align: center;
     }
   }
 
@@ -95,11 +96,8 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .heroImg {
-      diaply: flex;
-      flex-direction: row;
-      flex-basis: 70%;
-      margin: 15px 1%;
-      padding: 0px 25px;
+      width: 85%;
+      text-align: center;
     }
 
     .leftBlock,
@@ -115,6 +113,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   @media(max-width: 699px) { 
+    .heroImg {
+      width: 90%;
+      text-align: center;
+    }
     .flexCol {
       flex-direction: column !important;  
       align-items: center !important;
