@@ -91,6 +91,18 @@ const Intro = styled.section`
   }
 `;
 
+export const HeroTitle = styled.h1`
+  font-size: 42px;
+  font-weight: 300;
+  color: ${({ color }) => color};
+  text-align: ${({ align }) => align};
+  margin-bottom: ${({ mb }) => mb}px;
+  @media (max-width: 767px) {
+    font-size: 36px;
+    margin-bottom: 32px;
+  }
+`;
+
 const HeroButton = styled.button`
   background: ${Colors.gray};
   padding: 8px 16px;
@@ -122,14 +134,15 @@ const IntroContentWrapper = styled.div`
 `;
 
 const IntroInner = styled.div`
-  padding: 140px 0 250px 0;
+  padding: 70px 0 100px 0;
   @media (max-width: 767px) {
     padding: 40px 0 70px 0;
   }
 `;
 
 const IntroDesc = styled(TextBody)`
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: 300;
   margin: 0 auto;
   padding-bottom: 16px;
 `;
@@ -213,7 +226,7 @@ const ServiceTabImg = styled.img`
 
 const SupportCards = styled.div`
   ${"" /* padding-bottom: 120px; */}
-  padding-top: 60px;
+  padding-top: 50px;
   margin-bottom: 200px;
   @media (max-width: 767px) {
     padding-top: 0;
@@ -222,7 +235,7 @@ const SupportCards = styled.div`
 `;
 
 const SupportCard = styled.div`
-  background: ${Colors.gray};
+  background: ${Colors.white};
   border: 1px solid white;
   padding: 64px 32px;
   border-radius: 12px;
@@ -525,17 +538,10 @@ const Services = () => {
                 specialists.
               </IntroDesc>
             </IntroTop> */}
-            <Flex align="center">
+            <Flex align="center" direction="column">
               {/* <Flex className="flexHero" align="center"> */}
               <Col className="heroImg">
-                <IntroImg src={global_src} />
-              </Col>
-              <Col className="heroImg">
-                <TitleLarge>
-                  Your on-demand IP
-                  <br />
-                  Operations Team
-                </TitleLarge>
+                <HeroTitle>Your on-demand IP Operations Team</HeroTitle>
                 <IntroDesc mb={16}>
                   Dedicated support from our team of paralegals and IP
                   specialists.
@@ -547,6 +553,9 @@ const Services = () => {
                 >
                   Get Started
                 </HeroButton>
+              </Col>
+              <Col className="heroImg">
+                <IntroImg src={global_src} />
               </Col>
             </Flex>
           </Container>
@@ -917,7 +926,7 @@ const Services = () => {
                     </SlideCardList>
                   </SupportSlideLeft>
                   <SupportSlideContent>
-                    <Flex align="flex-start" align="center" className="flexBox">
+                    <Flex align="flex-start" align="end" className="flexBox">
                       <Col noP width="40%" className="leftBlock">
                         <ServiceTabImg src={reporting_src} />
                       </Col>
