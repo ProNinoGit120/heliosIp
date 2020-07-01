@@ -347,6 +347,7 @@ const SupportIcon = styled.div`
 // `;
 
 const SupportInfoClose = styled(SupportInfo)`
+  width: 36px;
   & svg {
     width: 18px;
     & path {

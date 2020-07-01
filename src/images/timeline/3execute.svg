@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="954px" height="678px" viewBox="0 0 954 678" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="783.56px" height="484.21px" viewBox="0 0 783.56 484.21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
     <title>9</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <style>
-            @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i");
+            @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,400i,700,700i");
         </style>
         <linearGradient x1="50%" y1="-28.5070585%" x2="50%" y2="114.061036%" id="linearGradient-1">
             <stop stop-color="#FFFFFF" offset="0%"></stop>
@@ -76,9 +76,9 @@
         <polygon id="path-41" points="0 0.000777106849 17.7553184 0.000777106849 17.7553184 17.7533946 0 17.7533946"></polygon>
     </defs>
     <g id="9" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-        <g id="Group-8" transform="translate(86.000000, 64.500000)">
+        <g id="Group-8" transform="translate(1, 1)">
             <path d="M49.0931323,135.214638 L732.469535,135.214638 L732.469535,468.011499 C732.469535,476.407961 724.736465,483.214638 715.197241,483.214638 L66.3654262,483.214638 C56.8262017,483.214638 49.0931323,476.407961 49.0931323,468.011499 L49.0931323,135.214638 Z" id="Shape" fill="rgb(255, 193, 152)" opacity="0.5"></path>
-            <path d="M-5.68434189e-14,60.2146377 L781.562667,60.2146377 L781.562667,440.82714 C781.562667,450.42999 772.718524,458.214638 761.808722,458.214638 L19.7539453,458.214638 C8.84414257,458.214638 -5.68434189e-14,450.42999 -5.68434189e-14,440.82714 L-5.68434189e-14,60.2146377 Z" id="Shape" stroke="#FFC198" strokeWidth="2" fill="url(#linearGradient-1)"></path>
+            <path d="M-5.68434189e-14,60.2146377 L781.562667,60.2146377 L781.562667,440.82714 C781.562667,450.42999 772.718524,458.214638 761.808722,458.214638 L19.7539453,458.214638 C8.84414257,458.214638 -5.68434189e-14,450.42999 -5.68434189e-14,440.82714 L-5.68434189e-14,60.2146377 Z" id="Shape" stroke="#ffddc8" strokeWidth="2" fill="url(#linearGradient-1)"></path>
             <g id="Group-7" transform="translate(28.281333, 89.608883)">
                 <g id="Group-2" transform="translate(0.414312, 1.026149)">
                     <g id="Group-6">
@@ -153,7 +153,7 @@
                 </g>
                 <rect id="Rectangle" fill="#FFFFFF" x="47.1329787" y="0.917265661" width="677" height="327" rx="15"></rect>
                 <path d="M61.7186665,0.891117154 L708.718667,0.891117154 C717.002938,0.891117154 723.718667,7.60684591 723.718667,15.8911172 L723.718667,52.8911172 L723.718667,52.8911172 L46.7186665,52.8911172 L46.7186665,15.8911172 C46.7186665,7.60684591 53.4343953,0.891117154 61.7186665,0.891117154 Z" id="Rectangle" fill="#F7811C"></path>
-                <text id="Filling-Project" font-family="Roboto" font-size="18" font-weight="bold" letter-spacing="0.5" fill="#FFFFFF">
+                <text id="Filling-Project" font-family="Montserrat" font-size="18" font-weight="bold" letter-spacing="0.5" fill="#FFFFFF">
                     <tspan x="66.7186665" y="33.8911172">Filling Project</tspan>
                 </text>
                 <g id="Group-6" transform="translate(76.718667, 72.891117)">
@@ -924,7 +924,7 @@
                     </g>
                 </g>
             </g>
-            <path d="M19.7539453,4.97379915e-14 L761.808722,4.97379915e-14 C772.718524,4.97379915e-14 781.562667,8.86522109 781.562667,19.8010255 L781.562667,60.6088828 L1.13686838e-13,60.6088828 L1.13686838e-13,19.8010255 C1.13686838e-13,8.86522109 8.84414257,4.97379915e-14 19.7539453,4.97379915e-14 Z" id="Shape" stroke="#FFC198" strokeWidth="2" fill="#FFFFFF"></path>
+            <path d="M19.7539453,4.97379915e-14 L761.808722,4.97379915e-14 C772.718524,4.97379915e-14 781.562667,8.86522109 781.562667,19.8010255 L781.562667,60.6088828 L1.13686838e-13,60.6088828 L1.13686838e-13,19.8010255 C1.13686838e-13,8.86522109 8.84414257,4.97379915e-14 19.7539453,4.97379915e-14 Z" id="Shape" stroke="#ffddc8" strokeWidth="2" fill="#FFFFFF"></path>
             <g id="Group-13" transform="translate(569.381108, 15.304441)">
                 <g id="Group-12" transform="translate(50.833333, 0.000000)">
                     <polygon id="Shape" points="-5.15143483e-14 0 29.8382144 0 29.8382144 29.8382144 -5.15143483e-14 29.8382144"></polygon>

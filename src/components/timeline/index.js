@@ -408,6 +408,7 @@ const Timeline = ({ withCTA }) => {
     const timelineImageElement = document.getElementsByClassName(
       "timelineImg"
     )[0];
+    console.log("--->", timelineImageElement);
     if (windowSize > 991) {
       const timelineImageBoundingRect = timelineImageElement.getBoundingClientRect();
       const timelineImagePosY =
@@ -465,16 +466,16 @@ const Timeline = ({ withCTA }) => {
     let timelineSVG = "";
     switch (timelineActiveIndex) {
       case TIMELINE_ONBOARD:
-        timelineSVG = "1onboard";
+        timelineSVG = "11onboard";
         break;
       case TIMELINE_MONITOR:
-        timelineSVG = "2monitor";
+        timelineSVG = "22monitor";
         break;
       case TIMELINE_EXECUTE:
-        timelineSVG = "3execute";
+        timelineSVG = "33execute";
         break;
       case TIMELINE_REPORT:
-        timelineSVG = "4report";
+        timelineSVG = "44report";
         break;
       default:
         timelineSVG = "start";
@@ -502,7 +503,6 @@ const Timeline = ({ withCTA }) => {
               <TimelineImg
                 className="timelineImg"
                 src={getTimelineImage()}
-                alt="helios system image"
                 className="img-responsive"
               />
             </div>
@@ -746,8 +746,8 @@ const Timeline = ({ withCTA }) => {
               {windowSize > 991 ? (
                 <TimelineImg
                   className="timelineImg"
+                  type=""
                   src={getTimelineImage()}
-                  alt="helios system image"
                 />
               ) : null}
             </Col>

@@ -47,6 +47,14 @@ export default function HTML(props) {
           id="___gatsby"
           dangerouslySetInnerHTML={{
             __html: `
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-62310318-2"></script>
+                <script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'UA-62310318-2');
+                </script>
                 <script type="text/javascript">
                   var $zoho = $zoho || {};
                   $zoho.salesiq = $zoho.salesiq || { widgetcode: "1579fbd82eca9de9319ab1e3e5b245158f741e52e1f6d72caadf827bde1eda82", values: {}, ready: function () { } };
@@ -70,15 +78,14 @@ export default function HTML(props) {
                     var x = document.getElementsByTagName('script')[0];
                     x.parentNode.insertBefore(s, x);
                   })();
-
-                  // (function(d, s, id) {
-                  //   var js, tjs = d.getElementsByTagName(s)[0];
-                  //   if (d.getElementById(id)) return;
-                  //   js = d.createElement(s); js.id = id;
-                  //   js.src = "https://app.termly.io/embed-policy.min.js";
-                  //   tjs.parentNode.insertBefore(js, tjs);
-                  // }(document, 'script', 'termly-jssdk'));
                 </script>
+                <script type="text/javascript">(function(d, s, id) {
+                  var js, tjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "https://app.termly.io/embed-policy.min.js";
+                  tjs.parentNode.insertBefore(js, tjs);
+                }(document, 'script', 'termly-jssdk'));</script>
                 `,
           }}
         />

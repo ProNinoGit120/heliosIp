@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="954px" height="678px" viewBox="0 0 954 678" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="783.56px" height="484.21px" viewBox="0 0 783.56 484.21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
     <title>5</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <style>
-            @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i");
+            @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,400i,700,700i");
         </style>
         <linearGradient x1="50%" y1="-28.5070585%" x2="50%" y2="114.061036%" id="linearGradient-1">
             <stop stop-color="#FFFFFF" offset="0%"></stop>
@@ -65,9 +65,9 @@
         <path d="M4.03605736,15.1974122 C4.66916439,15.1974122 5.13736031,14.9367768 5.44064512,14.415506 C5.66431767,14.0288179 5.77615394,13.5568309 5.77615394,12.9995451 C5.77615394,12.7796636 5.74961652,12.5484089 5.69654168,12.3057811 C5.64346684,12.0631532 5.54395151,11.8375852 5.3979957,11.6290768 C5.21602481,11.3712848 4.97813579,11.1940527 4.68432863,11.0973807 C4.5118354,11.0405148 4.29574497,11.0101863 4.03605736,11.0063952 L4.03605736,11.0063952 L2.23056498,11.0063952 L2.23056498,15.1974122 L4.03605736,15.1974122 Z M3.88820601,14.4695286 L3.08071021,14.4695286 L3.08071021,11.7342788 L3.88820601,11.7342788 C4.28626732,11.7342788 4.55211541,11.8484845 4.68575028,12.0768958 C4.81938515,12.3053072 4.88620258,12.63276 4.88620258,13.0592543 C4.88620258,13.3682257 4.84165763,13.6345476 4.75256771,13.8582202 C4.58955213,14.2657591 4.30143156,14.4695286 3.88820601,14.4695286 L3.88820601,14.4695286 Z" id="path-20"></path>
     </defs>
     <g id="5" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-        <g id="Group-8" transform="translate(86.000000, 64.500000)">
+        <g id="Group-8" transform="translate(1, 1)">
             <path d="M49.0931323,135.214638 L732.469535,135.214638 L732.469535,468.011499 C732.469535,476.407961 724.736465,483.214638 715.197241,483.214638 L66.3654262,483.214638 C56.8262017,483.214638 49.0931323,476.407961 49.0931323,468.011499 L49.0931323,135.214638 Z" id="Shape" fill="rgb(255, 193, 152)" opacity="0.5"></path>
-            <path d="M-5.68434189e-14,60.2146377 L781.562667,60.2146377 L781.562667,440.82714 C781.562667,450.42999 772.718524,458.214638 761.808722,458.214638 L19.7539453,458.214638 C8.84414257,458.214638 -5.68434189e-14,450.42999 -5.68434189e-14,440.82714 L-5.68434189e-14,60.2146377 Z" id="Shape" stroke="#FFC198" strokeWidth="2" fill="url(#linearGradient-1)"></path>
+            <path d="M-5.68434189e-14,60.2146377 L781.562667,60.2146377 L781.562667,440.82714 C781.562667,450.42999 772.718524,458.214638 761.808722,458.214638 L19.7539453,458.214638 C8.84414257,458.214638 -5.68434189e-14,450.42999 -5.68434189e-14,440.82714 L-5.68434189e-14,60.2146377 Z" id="Shape" stroke="#ffddc8" strokeWidth="1.8" fill="url(#linearGradient-1)"></path>
             <g id="Group-7" transform="translate(28.281333, 89.608883)">
                 <g id="Group-2" transform="translate(0.414312, 1.026149)">
                     <g id="Group-6">
@@ -142,7 +142,7 @@
                 </g>
                 <rect id="Rectangle" fill="#FFFFFF" x="47.1329787" y="0.917265661" width="677" height="327" rx="15"></rect>
                 <path d="M61.7186665,0.891117154 L708.718667,0.891117154 C717.002938,0.891117154 723.718667,7.60684591 723.718667,15.8911172 L723.718667,52.8911172 L723.718667,52.8911172 L46.7186665,52.8911172 L46.7186665,15.8911172 C46.7186665,7.60684591 53.4343953,0.891117154 61.7186665,0.891117154 Z" id="Rectangle" fill="#F7811C"></path>
-                <text id="Docket-Task-Timeline" font-family="Roboto" font-size="18" font-weight="bold" letter-spacing="0.5" fill="#FFFFFF">
+                <text id="Docket-Task-Timeline" font-family="Montserrat" font-size="18" font-weight="bold" letter-spacing="0.5" fill="#FFFFFF">
                     <tspan x="66.7186665" y="33.8911172">Docket Task Timeline</tspan>
                 </text>
                 <g id="Group-35" transform="translate(67.000000, 83.000000)">
@@ -153,30 +153,30 @@
                     <polygon id="Shape" fill="#F7811C" points="21 211.155022 183.5 211.155022 183.5 188 21 188"></polygon>
                     <polygon id="Shape" fill="#FFC198" points="351 61.040393 513.5 61.040393 513.5 38 351 38"></polygon>
                     <polygon id="Shape" fill="#F7811C" points="0 136.155022 252.5 136.155022 252.5 113 0 113"></polygon>
-                    <text id="CTFR" font-family="Roboto" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
+                    <text id="CTFR" font-family="Montserrat" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
                         <tspan x="170" y="93">CTFR</tspan>
                     </text>
-                    <text id="CNTF" font-family="Roboto" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
+                    <text id="CNTF" font-family="Montserrat" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
                         <tspan x="79" y="206">CNTF</tspan>
                     </text>
-                    <text id="PET.DEC.TC" font-family="Roboto" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
+                    <text id="PET.DEC.TC" font-family="Montserrat" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
                         <tspan x="76" y="131">PET.DEC.TC</tspan>
                     </text>
-                    <text id="A…" font-family="Roboto" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
+                    <text id="A…" font-family="Montserrat" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
                         <tspan x="124" y="168">A…</tspan>
                     </text>
-                    <text id="REX" font-family="Roboto" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
+                    <text id="REX" font-family="Montserrat" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
                         <tspan x="348" y="93">REX</tspan>
                     </text>
-                    <text id="NOA" font-family="Roboto" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
+                    <text id="NOA" font-family="Montserrat" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
                         <tspan x="414" y="56">NOA</tspan>
                     </text>
-                    <text id="IIFW" font-family="Roboto" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
+                    <text id="IIFW" font-family="Montserrat" font-size="17.5" font-weight="bold" letter-spacing="0.486111119" fill="#FFFFFF">
                         <tspan x="533" y="18">IIFW</tspan>
                     </text>
                 </g>
             </g>
-            <path d="M19.7539453,4.97379915e-14 L761.808722,4.97379915e-14 C772.718524,4.97379915e-14 781.562667,8.86522109 781.562667,19.8010255 L781.562667,60.6088828 L1.13686838e-13,60.6088828 L1.13686838e-13,19.8010255 C1.13686838e-13,8.86522109 8.84414257,4.97379915e-14 19.7539453,4.97379915e-14 Z" id="Shape" stroke="#FFC198" strokeWidth="2" fill="#FFFFFF"></path>
+            <path d="M19.7539453,4.97379915e-14 L761.808722,4.97379915e-14 C772.718524,4.97379915e-14 781.562667,8.86522109 781.562667,19.8010255 L781.562667,60.6088828 L1.13686838e-13,60.6088828 L1.13686838e-13,19.8010255 C1.13686838e-13,8.86522109 8.84414257,4.97379915e-14 19.7539453,4.97379915e-14 Z" id="Shape" stroke="#ffddc8" strokeWidth="2" fill="#FFFFFF"></path>
             <g id="Group-13" transform="translate(569.381108, 15.304441)">
                 <g id="Group-12" transform="translate(50.833333, 0.000000)">
                     <polygon id="Shape" points="-5.15143483e-14 0 29.8382144 0 29.8382144 29.8382144 -5.15143483e-14 29.8382144"></polygon>

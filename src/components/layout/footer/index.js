@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "gatsby";
+import Modal from "react-modal";
 import styled, { createGlobalStyle } from "styled-components";
 import Colors from "../../../utils/colors";
 import { twitter, linkedin } from "../../../utils/icons";
@@ -79,9 +80,32 @@ const GlobalStylFooter = createGlobalStyle`
 
     }
   }
- 
 `;
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    width: "30%",
+    padding: "0px",
+    border: "0px",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
 const Footer = () => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   const getDate = () => {
     const d = new Date();
     const y = d.getFullYear();
@@ -97,7 +121,11 @@ const Footer = () => {
             <Col width="20%" className="Block_footer">
               <FooterList>
                 <FooterLogo src={logo_src} />
-
+                <div
+                  name="termly-embed"
+                  data-id="598f7ac7-e7ad-45db-9a96-23beae5b6dfd"
+                  data-type="iframe"
+                ></div>
                 <FooterListItem>© {getDate()} IPM Solutions</FooterListItem>
                 {/* <FooterListItem>
                 Built by{" "}
@@ -174,7 +202,9 @@ const Footer = () => {
 
                 <FooterListItem>
                   <SocialItem
-                    href="https://app.termly.io/document/privacy-policy/1d6bf76e-f5fb-48c5-b4ca-a80758e74120"
+                    onClick={() => {
+                      openModal();
+                    }}
                     noFollow
                   >
                     Privacy
@@ -204,6 +234,24 @@ const Footer = () => {
           </Flex>
         </Container>
       </StyledFooter>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        ariaHideApp={false}
+        style={customStyles}
+      >
+        <Container>
+          {/* <Flex align="center" className="heroBlock_flex"> */}
+          {/* <Col width="55%" className="rightBlock_Hero"> */}
+          <div
+            name="termly-embed"
+            data-id="598f7ac7-e7ad-45db-9a96-23beae5b6dfd"
+            data-type="iframe"
+          ></div>
+          {/* </Col> */}
+          {/* </Flex> */}
+        </Container>
+      </Modal>
     </>
   );
 };

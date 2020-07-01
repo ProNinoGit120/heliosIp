@@ -92,8 +92,6 @@ const Intro = styled.section`
 `;
 
 export const HeroTitle = styled.h1`
-  font-size: 42px;
-  font-weight: 300;
   color: ${({ color }) => color};
   text-align: ${({ align }) => align};
   margin-bottom: ${({ mb }) => mb}px;
@@ -141,8 +139,7 @@ const IntroInner = styled.div`
 `;
 
 const IntroDesc = styled(TextBody)`
-  font-size: 22px;
-  font-weight: 300;
+  font-size: 24px;
   margin: 0 auto;
   padding-bottom: 16px;
 `;
