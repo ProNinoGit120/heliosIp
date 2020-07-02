@@ -22,6 +22,9 @@ import {
   TIMELINE_MONITOR,
   TIMELINE_EXECUTE,
   TIMELINE_REPORT,
+  TIMELINE_FILLING,
+  TIMELINE_DOCUMENT,
+  TIMELINE_BUSINESS,
 } from "../../constants";
 import Slider from "react-slick";
 import { findDOMNode } from "react-dom";
@@ -464,6 +467,35 @@ const Timeline = ({ withCTA }) => {
 
   const getTimelineImage = () => {
     let timelineSVG = "";
+    if (withCTA) {
+      switch (timelineActiveIndex) {
+        case TIMELINE_ONBOARD:
+          timelineSVG = "platform-1";
+          break;
+        case TIMELINE_MONITOR:
+          timelineSVG = "platform-2";
+          break;
+        case TIMELINE_EXECUTE:
+          timelineSVG = "platform-3";
+          break;
+        case TIMELINE_REPORT:
+          timelineSVG = "platform-4";
+          break;
+        case TIMELINE_FILLING:
+          timelineSVG = "platform-5";
+          break;
+        case TIMELINE_DOCUMENT:
+          timelineSVG = "platform-6";
+          break;
+        case TIMELINE_BUSINESS:
+          timelineSVG = "platform-7";
+          break;
+
+        default:
+          timelineSVG = "start";
+      }
+      return require(`../../images/timeline/${timelineSVG}.svg`);
+    }
     switch (timelineActiveIndex) {
       case TIMELINE_ONBOARD:
         timelineSVG = "11onboard";
@@ -557,7 +589,7 @@ const Timeline = ({ withCTA }) => {
                 <TimelineIntro>
                   <TitleMedium color="white" className="title_medium">
                     {withCTA
-                      ? `At Last— A Real​ IP Operations​ SaaS Solution​`
+                      ? `Don't Settle for Expensive IP Software that Over-Promises and Under-Delivers`
                       : ` How It Works`}
                   </TitleMedium>
                   <TextBody color="white" className="title_medium body">
@@ -652,8 +684,10 @@ const Timeline = ({ withCTA }) => {
                             Business Intelligence
                           </TimelineItemTitle>
                           <TimelineItemDesc>
-                            Gain Deep Insights with Intuitive Reports and
-                            Beautiful Analytics
+                            Gain deep insights with intuitive reports and
+                            beautiful analytics that bring together portfolio
+                            data, resource information and financials, powered
+                            by Power BI
                           </TimelineItemDesc>
                         </TimelineItemContent>
                       </TimelineItem>

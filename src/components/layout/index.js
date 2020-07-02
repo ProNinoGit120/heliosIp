@@ -85,7 +85,7 @@ const GlobalStyles = createGlobalStyle`
       flex-wrap: wrap;
     }
     .heroImg {
-      width: 80%;
+      width: 100%;
       text-align: center;
     }
   }
@@ -96,7 +96,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .heroImg {
-      width: 85%;
+      width: 100%;
       text-align: center;
     }
 
@@ -114,7 +114,7 @@ const GlobalStyles = createGlobalStyle`
 
   @media(max-width: 699px) { 
     .heroImg {
-      width: 90%;
+      width: 100%;
       text-align: center;
     }
     .flexCol {

@@ -130,7 +130,7 @@ const GlobalStylReady = createGlobalStyle`
   
 `;
 
-const Ready = ({ title }) => {
+const Ready = ({ title, person = women_src, width }) => {
   return (
     <>
       <GlobalStylReady />
@@ -144,7 +144,7 @@ const Ready = ({ title }) => {
               <Col width="50%" noP className="leftBlock_ready">
                 <ReadyItem bg={Colors.gray} className="left ">
                   <Flex align="center" justify="flex-end">
-                    <ReadyItemImg src={women_src} />
+                    <ReadyItemImg width={width} src={person} />
                     <ReadyItemText className="leftText">
                       <TitleSmall color={Colors.blue}>Questions?</TitleSmall>
                       <ReadyItemDesc>

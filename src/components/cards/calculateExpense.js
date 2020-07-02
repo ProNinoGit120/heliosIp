@@ -322,11 +322,15 @@ export default () => {
 
         <CardHeader>
           <CardTitle>
-            {formSuccess
-              ? `Thank You - We'll Be in Touch with You Shortly`
-              : formError
-              ? `Something Happened, Try Again`
-              : `Get Back to Being a Lawyer`}
+            {formSuccess ? (
+              <>
+                Thank You! <br /> We'll Be in Touch with You Shortly
+              </>
+            ) : formError ? (
+              `Something Happened, Try Again`
+            ) : (
+              `Get Back to Being a Lawyer`
+            )}
           </CardTitle>
         </CardHeader>
         <StyledForm

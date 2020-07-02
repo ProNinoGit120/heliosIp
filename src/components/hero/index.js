@@ -6,7 +6,7 @@ import { Container, Col, Flex, ButtonLink } from "../../utils/elements";
 import CalculateExpense from "../cards/calculateExpense";
 // import herobg_src from "../../images/hero-bg.svg";
 
-  const GlobalStylesHero = createGlobalStyle`
+const GlobalStylesHero = createGlobalStyle`
     .heroWrapper {
       @media(max-width: 480px) { 
         padding: 40px 0 !important;
@@ -60,14 +60,14 @@ const HeroWrapper = styled.div`
 `;
 
 const HeroTitle = styled.h1`
-@media(max-width:767px){
-  font-size:36px;
-}
+  @media (max-width: 767px) {
+    font-size: 36px;
+  }
 `;
 const HeroSubTitle = styled.h3``;
 const HeroDescription = styled.p`
   margin-bottom: 32px;
-  font-size:18px;
+  font-size: 18px;
 `;
 
 const LinkButton = styled(Link)`
@@ -106,9 +106,12 @@ export default ({ bgImg, title, subtitle, description, link, linkText }) => {
           <Container>
             <Flex align="center" className="heroBlock_flex">
               <Col width="45%" className="leftBlock_Hero">
-                <HeroTitle> At Last— A Real​
-                <br />
-                IP Operations​ SaaS Solution​{title}</HeroTitle>
+                <HeroTitle>
+                  {" "}
+                  At Last— A Real​
+                  <br />
+                  IP Operations​ SaaS Solution​{title}
+                </HeroTitle>
 
                 <HeroDescription>{description}</HeroDescription>
                 <ButtonLink to="/" className="gray">
