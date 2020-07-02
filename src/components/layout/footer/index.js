@@ -121,11 +121,6 @@ const Footer = () => {
             <Col width="20%" className="Block_footer">
               <FooterList>
                 <FooterLogo src={logo_src} />
-                <div
-                  name="termly-embed"
-                  data-id="598f7ac7-e7ad-45db-9a96-23beae5b6dfd"
-                  data-type="iframe"
-                ></div>
                 <FooterListItem>© {getDate()} IPM Solutions</FooterListItem>
                 {/* <FooterListItem>
                 Built by{" "}
@@ -240,17 +235,15 @@ const Footer = () => {
         ariaHideApp={false}
         style={customStyles}
       >
-        <Container>
-          {/* <Flex align="center" className="heroBlock_flex"> */}
-          {/* <Col width="55%" className="rightBlock_Hero"> */}
-          <div
-            name="termly-embed"
-            data-id="598f7ac7-e7ad-45db-9a96-23beae5b6dfd"
-            data-type="iframe"
-          ></div>
-          {/* </Col> */}
-          {/* </Flex> */}
-        </Container>
+        {/* <Flex align="center" className="heroBlock_flex"> */}
+        {/* <Col width="55%" className="rightBlock_Hero"> */}
+        <div
+          name="termly-embed"
+          data-id="598f7ac7-e7ad-45db-9a96-23beae5b6dfd"
+          data-type="iframe"
+        ></div>
+        {/* </Col> */}
+        {/* </Flex> */}
       </Modal>
     </>
   );

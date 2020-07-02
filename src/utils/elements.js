@@ -261,16 +261,4 @@ const VideoCTA = styled.p`
   margin-left: 8px;
 `;
 
-export const WatchVideo = ({ color }) => (
-  <Flex justify="center">
-    <PlayIcon color={color}>{play}</PlayIcon>
-    <VideoCTA
-      color={color}
-      // onClick={() => {
-      //   setPlaying(true);
-      // }}
-    >
-      Watch Video
-    </VideoCTA>
-  </Flex>
-);
+export const WatchVideo = ({ color }) => <Flex justify="center"></Flex>;

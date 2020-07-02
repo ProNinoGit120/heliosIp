@@ -26,6 +26,7 @@ import {
   arrow,
 } from "../utils/icons";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import person_src from "../images/persons/person-4.png";
 import services_src from "../images/services.svg";
 import patent_src from "../images/services-patent.svg";
 import global_src from "../images/services-global.svg";
@@ -132,7 +133,7 @@ const IntroContentWrapper = styled.div`
 `;
 
 const IntroInner = styled.div`
-  padding: 70px 0 100px 0;
+  padding: 70px 0 150px 0;
   @media (max-width: 767px) {
     padding: 40px 0 70px 0;
   }
@@ -538,18 +539,11 @@ const Services = () => {
             <Flex align="center" direction="column">
               {/* <Flex className="flexHero" align="center"> */}
               <Col className="heroImg">
-                <HeroTitle>Your on-demand IP Operations Team</HeroTitle>
+                <HeroTitle>Your On-demand IP Operations Team</HeroTitle>
                 <IntroDesc mb={16}>
                   Dedicated support from our team of paralegals and IP
                   specialists.
                 </IntroDesc>
-                <HeroButton
-                  onClick={() => {
-                    openModal();
-                  }}
-                >
-                  Get Started
-                </HeroButton>
               </Col>
               <Col className="heroImg">
                 <IntroImg src={global_src} />
@@ -569,7 +563,7 @@ const Services = () => {
                   align="center"
                   direction="column"
                 >
-                  <TitleXLarge mb={16}>+ 80%</TitleXLarge>
+                  <TitleXLarge mb={16}>+ 40%</TitleXLarge>
                   <TitleSmall mb={12}>Improve Productivity​</TitleSmall>
                 </Flex>
 
@@ -581,8 +575,8 @@ const Services = () => {
                   </PricingList> */}
 
                 <TextBody mb={16}>
-                  For U.S. applications, manage all steps in the filing process
-                  including: preparation of ADS;
+                  Our support allows your team to focus on their value-added
+                  work
                 </TextBody>
                 {/* POA and inventor
                     declarations; assignments; organize electronic filing
@@ -604,8 +598,8 @@ const Services = () => {
                 </Flex>
 
                 <TextBody mb={16}>
-                  For U.S. applications, manage all steps in the filing process
-                  including: preparation of ADS;
+                  Less billable time and better rates helps reduce spend and
+                  improve budgets
                 </TextBody>
               </SupportCard>
             </Col>
@@ -622,8 +616,8 @@ const Services = () => {
                 </Flex>
 
                 <TextBody mb={16}>
-                  For U.S. applications, manage all steps in the filing process
-                  including: preparation of ADS;
+                  Improved efficiency reduces turn around time and enables more
+                  filings
                 </TextBody>
               </SupportCard>
             </Col>
@@ -948,7 +942,7 @@ const Services = () => {
           </Tabs>
         </Container>
       </ServiceTabs>
-      {/* <Ready title="Ready to Get Support?" /> */}
+      <Ready title="Ready to Get Support?" person={person_src} width={320} />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
