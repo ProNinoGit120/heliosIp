@@ -343,6 +343,7 @@ export default () => {
           data-netlify-honeypot="bot-field"
         >
           <input type="hidden" name="form-name" value="calculateExpense1" />
+          <input type="hidden" name="bot-field" />
           <p hidden>{honeypotInput}</p>
           <CardBody>
             <Flex justify="space-around">
