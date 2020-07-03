@@ -85,7 +85,7 @@ const GlobalStyles = createGlobalStyle`
       flex-wrap: wrap;
     }
     .heroImg {
-      width: 100%;
+      width: 80%;
       text-align: center;
     }
   }
@@ -96,7 +96,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .heroImg {
-      width: 100%;
+      width: 85%;
       text-align: center;
     }
 
@@ -148,7 +148,7 @@ const Main = styled.main`
   }
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, page }) => {
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
   //     site {
@@ -162,7 +162,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyles />
-      <Header />
+      <Header page={page} />
       <Main>{children}</Main>
       <Footer />
     </>
