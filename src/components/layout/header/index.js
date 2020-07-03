@@ -32,7 +32,7 @@ const HeaderLogo = styled.img`
   }
 `;
 
-const Header = () => {
+const Header = ({page}) => {
   return (
     <StyledHeader>
       <Container maxWidth={1440}>
@@ -41,7 +41,7 @@ const Header = () => {
             <Link to="/">
               <HeaderLogo src={logo_src} alt="Helios Logo" />
             </Link>
-            <Nav />
+            <Nav page={page} />
           </Flex>
         </HeaderInner>
       </Container>

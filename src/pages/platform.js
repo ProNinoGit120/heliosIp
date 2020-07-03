@@ -103,7 +103,7 @@ const Platform = () => {
   return (
     <>
       <GlobalStylePlatform />
-      <Layout>
+      <Layout page="platform">
         <SEO title="Platform" />
         <Timeline withCTA />
         <Partners>

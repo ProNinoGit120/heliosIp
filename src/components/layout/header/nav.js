@@ -1,11 +1,36 @@
 import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import Modal from "react-modal";
 import { Link } from "gatsby";
 import { hamburger, hamburgerClose } from "../../../utils/icons";
-import { Flex } from "../../../utils/elements";
+import { Flex, Container } from "../../../utils/elements";
 import Colors from "../../../utils/colors";
 import Size from "../../../utils/size";
 import useWindowSize from "../useWindowSize";
+import ContactModal from "../../cards/contactModal";
+
+const customStyles = {
+  overlay: {
+    zIndex: "51",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  content: {
+    top: "auto",
+    left: "auto",
+    right: "auto",
+    bottom: "auto",
+    width: "32%",
+    padding: "0px",
+    border: "0px",
+    marginRight: "-50%",
+    maxHeight: "95%",
+    // transform: "translate(-50%, -50%)",
+  },
+};
+
 const StyledNav = styled.nav`
   width: 100%;
   @media (max-width: 991px) {
@@ -134,11 +159,26 @@ const NavLink = styled(Link)`
   }
 `;
 
-export default () => {
+export default ({page}) => {
   const breakpoint = 991;
   const windowSize = typeof window !== "undefined" ? useWindowSize() : 1000;
+
   const [toggleNavList, setToggleNavList] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [navPos, setNavPos] = useState(0);
+
   const navListClass = windowSize > breakpoint || toggleNavList ? "active" : "";
+
+  const onPress = (pos) => {
+    setNavPos(pos);
+  };
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <GlobalHeaderStyles />
@@ -154,25 +194,44 @@ export default () => {
         <NavList>
           <Flex align="center" className="headerFlexBox">
             <NavLink to="/why">
-              <NavItem>Why Helios</NavItem>
+              <NavItem
+                className={page === "why" ? "contact" : ""}
+                onClick={() => onPress(1)}
+              >
+                Why Helios
+              </NavItem>
             </NavLink>
-            <NavLink to="/platform">
-              <NavItem>Platform</NavItem>
+            <NavLink onClick={() => onPress(2)} to="/platform">
+              <NavItem className={page === "platform" ? "contact" : ""}>
+                Platform
+              </NavItem>
             </NavLink>
-            <NavLink to="/services">
-              <NavItem>Services</NavItem>
+            <NavLink onClick={() => onPress(3)} to="/services">
+              <NavItem className={page === "services" ? "contact" : ""}>
+                Services
+              </NavItem>
             </NavLink>
 
-            <NavLink to="/pricing">
-              <NavItem>Pricing</NavItem>
+            <NavLink onClick={() => onPress(4)} to="/pricing">
+              <NavItem className={page === "pricing" ? "contact" : ""}>
+                Pricing
+              </NavItem>
             </NavLink>
-            <NavLink to="/resources">
-              <NavItem>Resources</NavItem>
+            <NavLink onClick={() => onPress(5)} to="/resources">
+              <NavItem className={page === "resources" ? "contact" : ""}>
+                Resources
+              </NavItem>
             </NavLink>
           </Flex>
           <Flex align="center" justify="flex-end" className="headerFlexBox">
-            <NavLink to="/resources">
-              <NavItem>Contact</NavItem>
+            <NavLink to={`/${page}`}>
+              <NavItem
+                onClick={() => {
+                  openModal();
+                }}
+              >
+                Contact
+              </NavItem>
             </NavLink>
             <NavLink to="/">
               <NavItem className="contact">Get Started</NavItem>
@@ -180,6 +239,22 @@ export default () => {
           </Flex>
         </NavList>
       </StyledNav>
+      <div>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          ariaHideApp={false}
+          style={customStyles}
+        >
+          <Container>
+            {/* <Flex align="center" className="heroBlock_flex"> */}
+            {/* <Col width="55%" className="rightBlock_Hero"> */}
+            <ContactModal />
+            {/* </Col> */}
+            {/* </Flex> */}
+          </Container>
+        </Modal>
+      </div>
     </>
   );
 };

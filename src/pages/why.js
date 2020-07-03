@@ -23,6 +23,10 @@ import {
 import Ready from "../components/ready";
 
 const GlobalStyleWhy = createGlobalStyle`
+  .titleLarge_padding{
+    padding: 130px 0 50px 0; 
+  }
+
   .titleLarge_h1{
     @media(max-width:991px){
       font-size:32px;
@@ -283,7 +287,7 @@ const Why = () => {
   return (
     <>
       <GlobalStyleWhy />
-      <Layout>
+      <Layout page="why">
         <SEO title="Why" />
         <Intro>
           <IntroInner>
@@ -341,6 +345,15 @@ const Why = () => {
         </DifferenceIntro> */}
           <DifferenceItem>
             <DifferenceInner>
+              <TitleLarge
+                align="center"
+                color={Colors.blue}
+                className="titleLarge_h1 titleLarge_padding"
+              >
+                Get the Right Tools and Services for
+                <br />
+                Your Business and Your Team
+              </TitleLarge>
               <Container>
                 <Flex
                   align="center"
@@ -393,13 +406,15 @@ const Why = () => {
                       Support Services
                     </TitleMedium>
                     <DifferenceDesc>
-                      Manage all your information in the industry’s most
-                      complete IP system. Full lifecycle management for patents,
-                      trademarks and designs, with global country rules,
-                      document management, advanced analytics, and PTO
-                      integration. Built on the Microsoft® platform, with
-                      enterprise-class performance and integrated to O365,
-                      Outlook, Sharepoint and Teams.​
+                      Your monthly subscription includes core support services,
+                      either as your primary docket or shadow second source.
+                      Also includes daily task monitoring, reporting and
+                      maintenance fee payments. With added support services for
+                      extended docketing, prosecution, foreign filing, and
+                      global maintenance, that seamlessly integrates with your
+                      IP system. Efficient, cost-effective and easy to use
+                      support services that augment your current team’s
+                      activities.
                     </DifferenceDesc>
                     <ButtonLink className="blue" to="/services">
                       Services

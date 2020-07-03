@@ -522,7 +522,7 @@ const Services = () => {
   };
 
   return (
-    <Layout>
+    <Layout page="services">
       <SEO title="Services" />
       <Intro>
         <IntroInner>
@@ -540,10 +540,6 @@ const Services = () => {
               {/* <Flex className="flexHero" align="center"> */}
               <Col className="heroImg">
                 <HeroTitle>Your On-demand IP Operations Team</HeroTitle>
-                <IntroDesc mb={16}>
-                  Dedicated support from our team of paralegals and IP
-                  specialists.
-                </IntroDesc>
               </Col>
               <Col className="heroImg">
                 <IntroImg src={global_src} />
