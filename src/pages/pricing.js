@@ -397,7 +397,7 @@ const Pricing = () => {
   return (
     <>
       <GlobalStylePriceing />
-      <Layout>
+      <Layout page="pricing">
         <SEO title="Pricing" />
         <Intro>
           <IntroInner>

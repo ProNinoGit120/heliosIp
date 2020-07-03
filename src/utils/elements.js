@@ -217,6 +217,21 @@ export const StyledInput = styled.input`
       hasError ? `${Colors.orange}` : `${Colors.text}`};
   }
 `;
+export const StyledTextArea = styled.textarea`
+  display: flex;
+  border-radius: ${Size.radius}px;
+  width: 100%;
+  outline: 0;
+  height: 160px;
+  border: 1px solid;
+  border-color: ${({ hasError }) =>
+    hasError ? `${Colors.orange}` : `${Colors.border}`};
+  padding: 0 16px;
+  &:focus {
+    border-color: ${({ hasError }) =>
+      hasError ? `${Colors.orange}` : `${Colors.text}`};
+  }
+`;
 export const StyledSelect = styled.select`
   border-radius: ${Size.radius}px;
   width: 100%;
@@ -235,7 +250,7 @@ export const StyledSelect = styled.select`
       hasError ? `${Colors.orange}` : `${Colors.text}`};
   }
 `;
-export const StyledTextArea = styled.textarea``;
+// export const StyledTextArea = styled.textarea``;
 export const StyledFormButton = styled.button``;
 
 export const Sun = styled(sun)`

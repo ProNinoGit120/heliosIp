@@ -172,7 +172,7 @@ const PeopleText = styled.div`
 
 const Resources = () => {
   return (
-    <Layout>
+    <Layout page="resources">
       <GlobalStyleResource />
       <ContentWrapper>
         <SEO title="Resources" />

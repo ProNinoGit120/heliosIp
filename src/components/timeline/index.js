@@ -411,7 +411,6 @@ const Timeline = ({ withCTA }) => {
     const timelineImageElement = document.getElementsByClassName(
       "timelineImg"
     )[0];
-    console.log("--->", timelineImageElement);
     if (windowSize > 991) {
       const timelineImageBoundingRect = timelineImageElement.getBoundingClientRect();
       const timelineImagePosY =

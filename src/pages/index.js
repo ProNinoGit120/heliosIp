@@ -250,7 +250,7 @@ const GlobalStyleHome = createGlobalStyle`
 
 const IndexPage = () => {
   return (
-    <Layout>
+    <Layout page="">
       <GlobalStyleHome />
       <SEO title="Home" />
       <Hero
