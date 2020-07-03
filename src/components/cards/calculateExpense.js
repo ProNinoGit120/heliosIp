@@ -344,7 +344,7 @@ export default () => {
         >
           <input type="hidden" name="form-name" value="calculateExpense1" />
           <input type="hidden" name="bot-field" />
-          <p hidden>{honeypotInput}</p>
+          {/* <p hidden>{honeypotInput}</p> */}
           <CardBody>
             <Flex justify="space-around">
               <StyledInputWrapper padding="0 16px 0 0">
