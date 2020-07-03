@@ -313,8 +313,122 @@ export default () => {
   //   }
   // };
 
-  return (<form name="Contact-Sales" method="POST" data-netlify="true">
-    <input type="text" name="username" />
-    <button type="submit"> Send </button>
-  </form>);
+  return (
+    <Tabs
+      selectedIndex={tabIndex}
+      onSelect={index => setTabIndex(index)}
+      forceRenderTabPanel={true}
+    >
+      <HeroCard>
+        {formSuccess ? (
+          <SuccessIcon>{checkmark}</SuccessIcon>
+        ) : formError ? (
+          <ErrorIcon>{close}</ErrorIcon>
+        ) : null}
+
+        <CardHeader>
+          <CardTitle>
+            {formSuccess ? (
+              <>
+                Thank You! <br /> We'll Be in Touch with You Shortly
+              </>
+            ) : formError ? (
+              `Something Happened, Try Again`
+            ) : (
+              `Contact Us`
+            )}
+          </CardTitle>
+        </CardHeader>
+        <StyledForm
+          name="contact"
+          method="post"
+          onSubmit={e => {
+            handleSubmit(e);
+          }}
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden>{honeypotInput}</p>
+          <CardBody>
+            <Flex justify="space-around">
+              <StyledInputWrapper padding="0 16px 0 0">
+                <StyledLabel htmlFor="firstName" hasError={firstNameError}>
+                  {firstNameInput}
+                </StyledLabel>
+              </StyledInputWrapper>
+              <StyledInputWrapper padding="0 0 0 16px">
+                <StyledLabel htmlFor="lastName" hasError={lastNameError}>
+                  {lastNameInput}
+                </StyledLabel>
+              </StyledInputWrapper>
+            </Flex>
+            <StyledInputWrapper padding="16px 0 0 0">
+              <StyledLabel htmlFor="organization" hasError={orgError}>
+                {organizationInput}
+              </StyledLabel>
+            </StyledInputWrapper>
+            <StyledInputWrapper padding="16px 0 0 0">
+              <StyledLabel htmlFor="email" hasError={emailError}>
+                {emailInput}
+              </StyledLabel>
+            </StyledInputWrapper>
+
+            <StyledInputWrapper padding="16px 0 0 0">
+              <StyledLabel htmlFor="phone" hasError={phoneError}>
+                <StyledPhoneInput
+                  name="phone"
+                  id="phone"
+                  value={phoneValue}
+                  onChange={e => {
+                    setPhoneValue(e);
+                    setPhoneError(!isPossiblePhoneNumber(e));
+                    return e;
+                  }}
+                  onBlur={() =>
+                    setPhoneError(!isPossiblePhoneNumber(phoneValue))
+                  }
+                  placeholder="Phone"
+                  hasError={phoneError}
+                />
+              </StyledLabel>
+            </StyledInputWrapper>
+            <StyledInputWrapper padding="16px 0 0 0">
+              <StyledLabel htmlFor="department" hasError={departmentError}>
+                {departmentSelect}
+              </StyledLabel>
+            </StyledInputWrapper>
+
+            <StyledInputWrapper padding="16px 0 16px 0">
+              <StyledLabel htmlFor="message" hasError={messageError}>
+                {messageInput}
+              </StyledLabel>
+            </StyledInputWrapper>
+
+            <CardButton
+              disabled={
+                !firstName ||
+                firstNameError ||
+                !lastName ||
+                lastNameError ||
+                !organization ||
+                orgError ||
+                !email ||
+                emailError ||
+                !phoneValue ||
+                phoneError ||
+                !department ||
+                departmentError ||
+                !message ||
+                messageError
+              }
+              type="submit"
+            >
+              Send
+            </CardButton>
+          </CardBody>
+        </StyledForm>
+      </HeroCard>
+    </Tabs>
+  );
 };
