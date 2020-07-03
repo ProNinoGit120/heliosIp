@@ -56,19 +56,7 @@ export default function HTML(props) {
 
                   gtag('config', 'UA-62310318-2');
                 </script>
-                <script type="text/javascript">
-                  var $zoho = $zoho || {};
-                  $zoho.salesiq = $zoho.salesiq || { widgetcode: "1579fbd82eca9de9319ab1e3e5b245158f741e52e1f6d72caadf827bde1eda82", values: {}, ready: function () { } };
-                  var d = document; 
-                  s = d.createElement("script"); 
-                  s.type = "text/javascript"; 
-                  s.id = "zsiqscript"; 
-                  s.defer = true;
-                  s.src = "https://salesiq.zoho.com/widget"; 
-                  t = d.getElementsByTagName("script")[0]; 
-                  t.parentNode.insertBefore(s, t); 
-                  d.write("<div id='zsiqwidget'></div>");
-                  
+                <script type="text/javascript">                  
                   (function () {
                     var s = document.createElement('script');
                     s.type = 'text/javascript';
@@ -78,6 +66,18 @@ export default function HTML(props) {
                     s.setAttribute("data-name", "termly-embed-banner");
                     var x = document.getElementsByTagName('script')[0];
                     x.parentNode.insertBefore(s, x);
+
+                    var $zoho = $zoho || {};
+                    $zoho.salesiq = $zoho.salesiq || { widgetcode: "1579fbd82eca9de9319ab1e3e5b245158f741e52e1f6d72caadf827bde1eda82", values: {}, ready: function () { } };
+                    var d = document; 
+                    s = d.createElement("script"); 
+                    s.type = "text/javascript"; 
+                    s.id = "zsiqscript"; 
+                    s.defer = true;
+                    s.src = "https://salesiq.zoho.com/widget"; 
+                    t = d.getElementsByTagName("script")[0]; 
+                    t.parentNode.insertBefore(s, t); 
+                    d.write("<div id='zsiqwidget'></div>");
                   })();
                 </script>
                 <script type="text/javascript">(function(d, s, id) {

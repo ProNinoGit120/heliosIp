@@ -269,7 +269,7 @@ export default () => {
       organization: organization,
       email: email,
       phone: phoneValue,
-      department: practice,
+      department: department,
       message: message,
     };
 
@@ -292,7 +292,6 @@ export default () => {
     clearOrganization();
     clearEmail();
     setPhoneValue("");
-    clearPractice();
     clearMessage();
     clearDepartment();
   };
