@@ -113,7 +113,7 @@ const Platform = () => {
           </TitleLarge>
           <PartnerLogos>{logos}</PartnerLogos>
         </Partners>
-        <Ready title="Schedule a Demo" />
+        <Ready title="Ready to Get Started?" />
       </Layout>
     </>
   );

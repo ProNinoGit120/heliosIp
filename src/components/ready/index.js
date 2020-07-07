@@ -1,11 +1,10 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 import Colors from "../../utils/colors";
 import {
   Container,
   Flex,
   Col,
-  Button,
   ButtonLink,
   TitleLarge,
   TitleSmall,
@@ -20,6 +19,34 @@ const ReadyInner = styled.div`
   padding-top: 32px;
   @media (max-width: 991px) {
     padding-top: 0px !important;
+  }
+`;
+
+const StyledButton = css`
+  cursor: pointer;
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 300ms ease;
+  font-size: inherit;
+  color: white;
+`;
+
+const StyledLink = styled.a`
+  ${StyledButton};
+
+  &.blue:hover {
+    box-shadow: 5px 5px 5px #000025, -5px -5px 5px #000043;
+  }
+
+  &.blue {
+    background: ${Colors.blue};
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 5px 5px 5px #00002c, -5px -5px 5px #000039;
   }
 `;
 
@@ -127,7 +154,7 @@ const GlobalStylReady = createGlobalStyle`
       font-size:32px !important;
     }
   }
-  
+
 `;
 
 const Ready = ({ title, person = women_src, width }) => {
@@ -146,7 +173,6 @@ const Ready = ({ title, person = women_src, width }) => {
                   <Flex align="center" justify="flex-end">
                     <ReadyItemImg width={width} src={person} />
                     <ReadyItemText className="leftText">
-                      <TitleSmall color={Colors.blue}>Questions?</TitleSmall>
                       <ReadyItemDesc>
                         Ask us anything, or schedule a call.
                       </ReadyItemDesc>
@@ -165,9 +191,13 @@ const Ready = ({ title, person = women_src, width }) => {
                       <ReadyItemDesc>
                         Schedule a demo of the platform.
                       </ReadyItemDesc>
-                      <ButtonLink className="blue" to="/">
+                      <StyledLink
+                        className="blue"
+                        href="https://calendly.com/helioscomplete-demo"
+                        target="_blank"
+                      >
                         Sign up
-                      </ButtonLink>
+                      </StyledLink>
                     </ReadyItemText>
                   </Flex>
                 </ReadyItem>

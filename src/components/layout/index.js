@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     width: 100%;
     height: 100%;
-  
+
   }
 
   body {
@@ -35,7 +35,7 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     padding-top: 80px;
     color: ${Colors.text};
-  
+
   }
 
   h1,h2,h3,h4 {
@@ -77,20 +77,20 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
     text-decoration: none;
     font-family: "Montserrat", sans-serif;
-    
+
   }
 
-  @media(min-width: 1030px) { 
+  @media(min-width: 1030px) {
     .flexHero {
       flex-wrap: wrap;
     }
     .heroImg {
-      width: 80%;
+      width: 87%;
       text-align: center;
     }
   }
 
-  @media(max-width: 1030px) and (min-width: 700px) { 
+  @media(max-width: 1030px) and (min-width: 700px) {
     .flexCol {
       flex-wrap: wrap;
     }
@@ -112,13 +112,13 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  @media(max-width: 699px) { 
+  @media(max-width: 699px) {
     .heroImg {
       width: 100%;
       text-align: center;
     }
     .flexCol {
-      flex-direction: column !important;  
+      flex-direction: column !important;
       align-items: center !important;
       margin-top: 70px;
     }
@@ -133,9 +133,9 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  @media(max-width: 767px) { 
+  @media(max-width: 767px) {
     .flexBox {
-      flex-direction: column !important;  
+      flex-direction: column !important;
       align-items: flex-start !important;
     }
   }

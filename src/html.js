@@ -1,10 +1,20 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
 
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
       <head>
+        <Helmet>
+          <script>
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WM7BPCL');`}
+          </script>
+        </Helmet>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta
@@ -14,6 +24,14 @@ export default function HTML(props) {
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WM7BPCL"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         {props.preBodyComponents}
 
         {/* <div
@@ -56,7 +74,7 @@ export default function HTML(props) {
 
                   gtag('config', 'UA-62310318-2');
                 </script>
-                <script type="text/javascript">                  
+                <script type="text/javascript">
                   (function () {
                     var s = document.createElement('script');
                     s.type = 'text/javascript';
@@ -69,14 +87,14 @@ export default function HTML(props) {
 
                     var $zoho = $zoho || {};
                     $zoho.salesiq = $zoho.salesiq || { widgetcode: "1579fbd82eca9de9319ab1e3e5b245158f741e52e1f6d72caadf827bde1eda82", values: {}, ready: function () { } };
-                    var d = document; 
-                    s = d.createElement("script"); 
-                    s.type = "text/javascript"; 
-                    s.id = "zsiqscript"; 
+                    var d = document;
+                    s = d.createElement("script");
+                    s.type = "text/javascript";
+                    s.id = "zsiqscript";
                     s.defer = true;
-                    s.src = "https://salesiq.zoho.com/widget"; 
-                    t = d.getElementsByTagName("script")[0]; 
-                    t.parentNode.insertBefore(s, t); 
+                    s.src = "https://salesiq.zoho.com/widget";
+                    t = d.getElementsByTagName("script")[0];
+                    t.parentNode.insertBefore(s, t);
                     d.write("<div id='zsiqwidget'></div>");
                   })();
                 </script>

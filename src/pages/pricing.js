@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import SEO from "../components/seo";
 import Modal from "react-modal";
+import SEO from "../components/seo";
 import Layout from "../components/layout";
 import Size from "../utils/size";
 import Colors from "../utils/colors";
@@ -347,7 +347,6 @@ const SupportIcon = styled.div`
 // `;
 
 const SupportInfoClose = styled(SupportInfo)`
-  width: 36px;
   & svg {
     width: 18px;
     & path {
@@ -387,6 +386,7 @@ const Pricing = () => {
   };
 
   const openModal = () => {
+    console.log("---");
     setIsOpen(true);
   };
 
@@ -397,7 +397,7 @@ const Pricing = () => {
   return (
     <>
       <GlobalStylePriceing />
-      <Layout page="pricing">
+      <Layout>
         <SEO title="Pricing" />
         <Intro>
           <IntroInner>
@@ -828,7 +828,7 @@ const Pricing = () => {
               <SupportCard>
                 <SupportCardFace className="front">
                   <Flex align="flex-start" justify="space-between">
-                    <SupportIcon>{formal} </SupportIcon>
+                    <SupportIcon>{formal}</SupportIcon>
                     <SupportInfo
                       onClick={e => {
                         handleCardOpen(e);
