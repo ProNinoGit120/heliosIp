@@ -255,7 +255,7 @@ const IndexPage = () => {
       <SEO title="Home" />
       <Hero
         subtitle=""
-        description="Increase quality, improve efficiency, reduce costs. Industry leading SaaS platform integrated with expert global IP support services. Docketing, filing, maintenance and portfolio analytics in a monthly subscription.​"
+        description="Increase quality, improve efficiency, reduce costs. Industry leading SaaS platform integrated with expert global IP support services. Docketing, filing, maintenance and portfolio analytics in a monthly subscription."
         link="/why"
         linkText="Learn More"
       />
@@ -311,13 +311,13 @@ const IndexPage = () => {
                   All Inclusive <br />
                   Monthly Subscription
                   {/* Get the right tools and services for your business and your
-                  team.​ */}
+                  team. */}
                 </TitleLarge>
                 <BreakdwonDesc>
                   Whether supporting your existing IP team, or introducing new
                   systems and support services, HeliosComplete™ offers a
                   flexible approach to augment and improve your current
-                  operations.​
+                  operations.
                 </BreakdwonDesc>
                 <ButtonLink className="gray" to="/pricing">
                   Pricing
@@ -328,7 +328,7 @@ const IndexPage = () => {
           </Container>
         </BreakdownInner>
       </Breakdown>
-      <Ready title="Ready?" />
+      <Ready title="Ready to Get Started?" />
     </Layout>
   );
 };

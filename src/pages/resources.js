@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import person_src from "../images/persons/person-3.png";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import Size from "../utils/size";
@@ -35,7 +36,7 @@ const GlobalStyleResource = createGlobalStyle`
 
     .titleMedium {
       font-size: 30px;
-    
+
     }
     .leftBlock_resource{
       width:100%;
@@ -116,7 +117,7 @@ const IntroBreak = styled.div`
 
 const People = styled.section`
   margin-top: -340px;
-  padding-bottom: 120px;
+  padding-bottom: 200px;
   @media (max-width: 991px) {
     padding-bottom: 0;
   }
@@ -188,7 +189,7 @@ const Resources = () => {
               plug-in to your IP operations without missing a beat. Our staff
               have worked at large firms, boutique firms, large IP companies and
               startups. We understand what it takes to meet your needs across
-              the range of IP activities.​
+              the range of IP activities.
             </IntroDesc>
           </IntroInner>
         </Intro>
@@ -199,7 +200,7 @@ const Resources = () => {
               <Flex align="center" className="flexBox">
                 <Col width="50%" className="leftBlock_resource">
                   {/* <PeopleImgWrapper>
-                  
+
                     <PeopleIcon>{people}</PeopleIcon>
                   </PeopleImgWrapper> */}
                   <PeopleImg src={paralegals_src} />
@@ -217,9 +218,8 @@ const Resources = () => {
                     committed resources assigned to work with you on a
                     day-to-day basis. We develop a close working knowledge of
                     your processes, becoming an integral part of your
-                    operations.​
+                    operations.
                   </TextBody>
-                  <ButtonLink className="white">Explore Careers</ButtonLink>
                 </Col>
               </Flex>
             </Container>
@@ -241,14 +241,13 @@ const Resources = () => {
                     team is driving innovation in the IP industry. From PTO data
                     integration to workflow automation and emerging AI/ML, we’re
                     at the forefront of applying technology to IP operations
-                    management.​
+                    management.
                   </TextBody>
-                  <ButtonLink className="white">Explore Careers</ButtonLink>
                 </Col>
                 <Col width="50%" className="leftBlock_resource">
                   <PeopleImg src={tech_src} />
                   {/* <PeopleImgWrapper>
-                  
+
                     <PeopleIcon>{people}</PeopleIcon>
                   </PeopleImgWrapper> */}
                 </Col>
@@ -261,7 +260,7 @@ const Resources = () => {
                 <Col Col width="50%" className="leftBlock_resource">
                   <PeopleImg src={op_src} />
                   {/* <PeopleImgWrapper>
-                  
+
                     <PeopleIcon>{people}</PeopleIcon>
                   </PeopleImgWrapper> */}
                 </Col>
@@ -276,15 +275,14 @@ const Resources = () => {
                     cost-effective IP operations. Our team brings hands-on
                     process management expertise with SOPs, document support
                     methods, and analysis tools that enable smart resource
-                    allocation, time management and financial controls. ​
+                    allocation, time management and financial controls. 
                   </TextBody>
-                  <ButtonLink className="white">Explore Careers</ButtonLink>
                 </Col>
               </Flex>
             </Container>
           </PeopleItem>
         </People>
-        <Ready />
+        <Ready person={person_src} title="Ready to Get Started?" width={320} />
       </ContentWrapper>
     </Layout>
   );

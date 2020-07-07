@@ -5,6 +5,7 @@ import EmbedVideo from "../components/video";
 import SEO from "../components/seo";
 import { play, arrow } from "../utils/icons";
 import Colors from "../utils/colors";
+import person_src from "../images/persons/person-1.png";
 import platform_src from "../images/platform.svg";
 import services_src from "../images/services.svg";
 import network_src from "../images/network.svg";
@@ -24,7 +25,7 @@ import Ready from "../components/ready";
 
 const GlobalStyleWhy = createGlobalStyle`
   .titleLarge_padding{
-    padding: 130px 0 50px 0; 
+    padding: 130px 0 50px 0;
   }
 
   .titleLarge_h1{
@@ -50,14 +51,14 @@ const GlobalStyleWhy = createGlobalStyle`
       width:100%;
       margin-bottom:15px;
       text-align:center;
-    } 
+    }
   }
 
   .rightBlock_why{
     @media(max-width: 767px) {
       width:100%;
       text-align:center;
-    } 
+    }
   }
 `;
 
@@ -378,7 +379,7 @@ const Why = () => {
                       document management, advanced analytics, and PTO
                       integration. Built on the Microsoft® platform, with
                       enterprise-class performance and integrated to O365,
-                      Outlook, Sharepoint and Teams.​
+                      Outlook, Sharepoint and Teams.
                     </DifferenceDesc>
                     <ButtonLink className="white" to="/platform">
                       Platform
@@ -455,7 +456,7 @@ const Why = () => {
                       associates, while Helios coordinates docketing, documents,
                       office actions, POA’s and other support activities. Helios
                       also manages foreign associate invoicing to ensure
-                      financial accuracy and accountability.​
+                      financial accuracy and accountability.
                     </DifferenceDesc>
                     <ButtonLink className="white" to="/">
                       Network
@@ -488,7 +489,7 @@ const Why = () => {
                       operational budget. Our base platform subscription
                       provides a cost-effective foundation on which to build the
                       support activities you need today, with the flexibility to
-                      adapt as your requirements change. ​
+                      adapt as your requirements change.
                     </DifferenceDesc>
                     <ButtonLink className="blue" to="/pricing">
                       Pricing
@@ -503,7 +504,7 @@ const Why = () => {
             </DifferenceInner>
           </DifferenceItem>
         </Difference>
-        <Ready title="Get Tangible Results" />
+        <Ready person={person_src} title="Ready to Get Started?" width={280} />
       </Layout>
     </>
   );

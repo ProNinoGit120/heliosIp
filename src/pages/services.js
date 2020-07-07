@@ -540,6 +540,10 @@ const Services = () => {
               {/* <Flex className="flexHero" align="center"> */}
               <Col className="heroImg">
                 <HeroTitle>Your On-demand IP Operations Team</HeroTitle>
+                <IntroDesc mb={16}>
+                  Dedicated support from our team of paralegals and IP
+                  specialists.
+                </IntroDesc>
               </Col>
               <Col className="heroImg">
                 <IntroImg src={global_src} />
@@ -560,7 +564,7 @@ const Services = () => {
                   direction="column"
                 >
                   <TitleXLarge mb={16}>+ 40%</TitleXLarge>
-                  <TitleSmall mb={12}>Improve Productivity​</TitleSmall>
+                  <TitleSmall mb={12}>Improve Productivity</TitleSmall>
                 </Flex>
 
                 {/* <PricingList className="card">
@@ -578,7 +582,7 @@ const Services = () => {
                     declarations; assignments; organize electronic filing
                     package; upload to EFS system; pay and invoice official
                     fees; save documents and confirmation receipts; docket all
-                    actions/tasks​  */}
+                    actions/tasks  */}
               </SupportCard>
             </Col>
             <Col className="centerBlock">
@@ -938,7 +942,7 @@ const Services = () => {
           </Tabs>
         </Container>
       </ServiceTabs>
-      <Ready title="Ready to Get Support?" person={person_src} width={320} />
+      <Ready title="Ready to Get Started?" person={person_src} width={320} />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
