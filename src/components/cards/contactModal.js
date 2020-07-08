@@ -242,9 +242,8 @@ export default () => {
     clearDepartment,
     departmentError,
   ] = useSelect({
-    placeholder: "Current Docketing System",
+    placeholder: "Client Support",
     options: [
-      "Client Support",
       "Sales",
       "Accounts",
       "Human Resources",
@@ -279,7 +278,7 @@ export default () => {
       body: encode({ "form-name": "contact", ...formData }),
     })
       .then(res => {
-        console.log('------', res);
+        console.log("------", res);
         setFormSuccess(true);
         setTabIndex(0);
       })

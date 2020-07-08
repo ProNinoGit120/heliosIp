@@ -83,6 +83,16 @@ const Intro = styled.section`
   }
 `;
 
+export const HeroTitle = styled.h1`
+  color: ${({ color }) => color};
+  text-align: ${({ align }) => align};
+  margin-bottom: ${({ mb }) => mb}px;
+  @media (max-width: 767px) {
+    font-size: 36px;
+    margin-bottom: 32px;
+  }
+`;
+
 const IntroInner = styled.div`
   padding: 120px 0;
   @media (max-width: 991px) {
@@ -197,6 +207,9 @@ const Resources = () => {
         <People>
           <PeopleItem>
             <Container>
+              <HeroTitle align="center" mb="120">
+                We Work As An Extension of Your Team
+              </HeroTitle>
               <Flex align="center" className="flexBox">
                 <Col width="50%" className="leftBlock_resource">
                   {/* <PeopleImgWrapper>
@@ -275,7 +288,7 @@ const Resources = () => {
                     cost-effective IP operations. Our team brings hands-on
                     process management expertise with SOPs, document support
                     methods, and analysis tools that enable smart resource
-                    allocation, time management and financial controls. 
+                    allocation, time management and financial controls.
                   </TextBody>
                 </Col>
               </Flex>

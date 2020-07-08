@@ -173,6 +173,9 @@ const Ready = ({ title, person = women_src, width }) => {
                   <Flex align="center" justify="flex-end">
                     <ReadyItemImg width={width} src={person} />
                     <ReadyItemText className="leftText">
+                      <TitleSmall color={Colors.blue}>
+                        We're Here to Help!
+                      </TitleSmall>
                       <ReadyItemDesc>
                         Ask us anything, or schedule a call.
                       </ReadyItemDesc>

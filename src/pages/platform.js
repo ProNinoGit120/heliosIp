@@ -84,10 +84,17 @@ const MicroLogo = styled.img`
   }
 `;
 
+const ItemDesc = styled.p`
+  padding-bottom: 16px;
+  @media (max-width: 767px) {
+    text-align: center;
+  }
+`;
+
 const PartnerLogo = styled.img`
   display: block;
   max-width: 100px;
-  margin: 0 16px;
+  margin: 0 20px;
   @media (max-width: 991px) {
     margin: 0 3px;
     max-width: 50px;
@@ -107,10 +114,10 @@ const Platform = () => {
         <SEO title="Platform" />
         <Timeline withCTA />
         <Partners>
-          <MicroLogo src={microsoft_src} />
-          <TitleLarge align="center" mb={32} className="titleLarge_h1">
-            A Microsoft Development Partner
+          <TitleLarge align="center" mb={32}>
+            Built on the Most Advanced Technology Stack
           </TitleLarge>
+          <MicroLogo src={microsoft_src} />
           <PartnerLogos>{logos}</PartnerLogos>
         </Partners>
         <Ready title="Ready to Get Started?" />
