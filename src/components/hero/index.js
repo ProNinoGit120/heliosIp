@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "gatsby";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 import Colors from "../../utils/colors";
 import { Container, Col, Flex, ButtonLink } from "../../utils/elements";
 import CalculateExpense from "../cards/calculateExpense";
@@ -33,12 +33,44 @@ const GlobalStylesHero = createGlobalStyle`
     }
   `;
 
+const StyledElement = css`
+  cursor: pointer;
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 300ms ease;
+  font-size: inherit;
+  color: white;
+`;
+
+const StyledButton = styled.button`
+  ${StyledElement};
+
+  &.gray {
+    background: ${Colors.gray};
+    color: ${Colors.blue};
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 10px 10px 16px #e7e7e7, -10px -10px 16px #fbfbfb;
+  }
+
+  &.gray:hover {
+    /* box-shadow: 10px 10px 16px #b2b2b2, -10px -10px 16px #ffffff; */
+    box-shadow: 10px 10px 10px #d9d9d9, -10px -10px 10px #fbfbfb;
+  }
+`;
+
 const StyledHero = styled.section`
   height: 100%;
   background: ${Colors.gray};
   border-bottom: 1px solid white;
   width: 100%;
 `;
+
+const NextSection = styled.section``;
 
 const HeroBG = styled.div`
   position: absolute;
@@ -98,6 +130,14 @@ const ItemIcon = styled.span`
 `;
 
 export default ({ bgImg, title, subtitle, description, link, linkText }) => {
+  const refMore = useRef();
+
+  const onClickMore = () => {
+    const { current } = refMore;
+
+    current.scrollIntoView();
+  };
+
   return (
     <>
       <GlobalStylesHero />
@@ -114,9 +154,9 @@ export default ({ bgImg, title, subtitle, description, link, linkText }) => {
                 </HeroTitle>
 
                 <HeroDescription>{description}</HeroDescription>
-                <ButtonLink to="/" className="gray">
+                <StyledButton onClick={() => onClickMore()} className="gray">
                   Learn More
-                </ButtonLink>
+                </StyledButton>
               </Col>
               <Col width="55%" className="rightBlock_Hero">
                 <CalculateExpense />
@@ -125,6 +165,7 @@ export default ({ bgImg, title, subtitle, description, link, linkText }) => {
           </Container>
         </HeroWrapper>
       </StyledHero>
+      <NextSection ref={refMore}></NextSection>
     </>
   );
 };
