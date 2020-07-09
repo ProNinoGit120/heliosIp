@@ -889,11 +889,11 @@ const Pricing = () => {
         onRequestClose={closeModal}
         ariaHideApp={false}
         style={customStyles}
-      >
+      > 
         <Container>
           {/* <Flex align="center" className="heroBlock_flex"> */}
           {/* <Col width="55%" className="rightBlock_Hero"> */}
-          <CalculateExpense />
+          <CalculateExpense showIcon={false} />
           {/* </Col> */}
           {/* </Flex> */}
         </Container>

@@ -181,7 +181,7 @@ const StyledPhoneInput = styled(PhoneInput)`
   }
 `;
 
-export default () => {
+export default ({showIcon = true}) => {
   const [tabIndex, setTabIndex] = useState(0);
   const [formSuccess, setFormSuccess] = useState(false);
   const [formError, setFormError] = useState(false);
@@ -314,11 +314,11 @@ export default () => {
       forceRenderTabPanel={true}
     >
       <HeroCard>
-        {formSuccess ? (
+        {showIcon && (formSuccess ? (
           <SuccessIcon>{checkmark}</SuccessIcon>
         ) : formError ? (
           <ErrorIcon>{close}</ErrorIcon>
-        ) : null}
+        ) : null)}
 
         <CardHeader>
           <CardTitle>

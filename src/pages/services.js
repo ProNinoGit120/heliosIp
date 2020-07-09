@@ -513,10 +513,6 @@ const Services = () => {
   // const windowSize = useWindowSize();
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
   const closeModal = () => {
     setIsOpen(false);
   };
