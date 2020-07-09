@@ -221,7 +221,6 @@ const DifferenceItem = styled.section`
     left: 0;
     border-right: 100vw solid transparent;
     border-top: 15.625rem solid #fff;
-    content: '';
     position: absolute;
     z-index: -1;
     @media(max-width:767px){
