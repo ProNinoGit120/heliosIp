@@ -11,8 +11,6 @@ import {
   ButtonLink,
   StyledForm,
   StyledInput,
-  StyledInputWrapper,
-  StyledLabel,
 } from "../../utils/elements";
 import useInput from "../../hooks/useInput";
 import useTextArea from "../../hooks/useTextArea";
@@ -186,79 +184,19 @@ export default () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [formSuccess, setFormSuccess] = useState(false);
   const [formError, setFormError] = useState(false);
-  const [firstName, firstNameInput, clearFirstName, firstNameError] = useInput({
-    type: "text",
-    placeholder: "First Name",
-    id: "firstName",
-  });
-  const [lastName, lastNameInput, clearLastName, lastNameError] = useInput({
-    type: "text",
-    placeholder: "Last Name",
-    id: "lastName",
-  });
-  const [
-    organization,
-    organizationInput,
-    clearOrganization,
-    orgError,
-  ] = useInput({
-    type: "text",
-    placeholder: "Organization",
-    id: "organization",
-  });
-  const [email, emailInput, clearEmail, emailError] = useInput({
-    type: "email",
-    placeholder: "Email Address",
-    id: "email",
-  });
-  const [message, messageInput, clearMessage, messageError] = useTextArea({
-    placeholder: "Message",
-    id: "message",
-  });
-  // const [phone, phoneInput, clearPhone, phoneError] = useInput({
-  //   type: "tel",
-  //   placeholder: "Phone Number",
-  //   id: "phone",
-  // });
-  const [practice, practiceSelect, clearPractice, practiceError] = useSelect({
-    placeholder: "Practice Type",
-    options: ["Law Firm", "Corporate"],
-    id: "practice",
-  });
-  const [patents, patentsInput, clearPatents, patentError] = useInput({
-    type: "number",
-    placeholder: "Number of Pending Records",
-    id: "patents",
-  });
-  const [team, teamInput, clearTeam, teamError] = useInput({
-    type: "number",
-    placeholder: "Number of Users",
-    id: "team",
-  });
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+
 
   const [
     department,
-    departmentSelect,
-    clearDepartment,
-    departmentError,
-  ] = useSelect({
-    placeholder: "Client Support",
-    options: [
-      "Sales",
-      "Accounts",
-      "Human Resources",
-      "Patents Team",
-      "Trademarks Team",
-      "Management Team",
-    ],
-    id: "department",
-  });
-
-  const { honeypot, honeypotInput } = useInput({
-    placeholder: "First Name",
-    type: "text",
-    id: "bot-field",
-  });
+    setDepartment
+  ] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -271,6 +209,8 @@ export default () => {
       department: department,
       message: message,
     };
+
+    console.log('----------', formData);
 
     fetch("/", {
       method: "POST",
@@ -286,13 +226,6 @@ export default () => {
         setTabIndex(0);
       });
 
-    clearFirstName();
-    clearLastName();
-    clearOrganization();
-    clearEmail();
-    setPhoneValue("");
-    clearMessage();
-    clearDepartment();
   };
 
   const [phoneValue, setPhoneValue] = useState("");
@@ -331,7 +264,7 @@ export default () => {
             )}
           </CardTitle>
         </CardHeader>
-        <StyledForm
+        <form
           name="contact"
           method="post"
           onSubmit={e => {
@@ -343,32 +276,56 @@ export default () => {
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="bot-field" />
           <CardBody>
-            <Flex justify="space-around">
-              <StyledInputWrapper padding="0 16px 0 0">
-                <StyledLabel htmlFor="firstName" hasError={firstNameError}>
-                  {firstNameInput}
-                </StyledLabel>
-              </StyledInputWrapper>
-              <StyledInputWrapper padding="0 0 0 16px">
-                <StyledLabel htmlFor="lastName" hasError={lastNameError}>
-                  {lastNameInput}
-                </StyledLabel>
-              </StyledInputWrapper>
-            </Flex>
-            <StyledInputWrapper padding="16px 0 0 0">
-              <StyledLabel htmlFor="organization" hasError={orgError}>
-                {organizationInput}
-              </StyledLabel>
-            </StyledInputWrapper>
-            <StyledInputWrapper padding="16px 0 0 0">
-              <StyledLabel htmlFor="email" hasError={emailError}>
-                {emailInput}
-              </StyledLabel>
-            </StyledInputWrapper>
+            <div justify="space-around">
+              <div padding="0 16px 0 0">
+                <label htmlFor="firstName">
+                  <input
+                    type="text"
+                    name="firstName"
+                    onChange={e => {
+                      setFirstName(e.target.value);
+                    }}
+                  />
+                </label>
+              </div>
+              <div padding="0 0 0 16px">
+                <label htmlFor="lastName">
+                  <input
+                    type="text"
+                    name="setLastName"
+                    onChange={e => {
+                      setLastName(e.target.value);
+                    }}
+                  />
+                </label>
+              </div>
+            </div>
+            <div padding="16px 0 0 0">
+              <label htmlFor="organization">
+                <input
+                  type="text"
+                  name="organization"
+                  onChange={e => {
+                    setOrganization(e.target.value);
+                  }}
+                />
+              </label>
+            </div>
+            <div padding="16px 0 0 0">
+              <label htmlFor="email">
+                <input
+                  type="email"
+                  name="email"
+                  onChange={e => {
+                    setEmail(e.target.value);
+                  }}
+                />
+              </label>
+            </div>
 
-            <StyledInputWrapper padding="16px 0 0 0">
-              <StyledLabel htmlFor="phone" hasError={phoneError}>
-                <StyledPhoneInput
+            <div padding="16px 0 0 0">
+              <label htmlFor="phone">
+                <PhoneInput
                   name="phone"
                   id="phone"
                   value={phoneValue}
@@ -383,43 +340,39 @@ export default () => {
                   placeholder="Phone"
                   hasError={phoneError}
                 />
-              </StyledLabel>
-            </StyledInputWrapper>
-            <StyledInputWrapper padding="16px 0 0 0">
-              <StyledLabel htmlFor="department" hasError={departmentError}>
-                {departmentSelect}
-              </StyledLabel>
-            </StyledInputWrapper>
+              </label>
+            </div>
+            <div padding="16px 0 0 0">
+              <label htmlFor="department">
+                <select
+                  name="department"
+                  id="department"
+                  onChange={e => {
+                    setDepartment(e.target.value);
+                  }}
+                >
+                  <option value="Sales">Sales</option>
+                  <option value="Accounts">Accounts</option>
+                  <option value="Human Resources">Human Resources</option>
+                  <option value="Trademarks Team">Trademarks Team</option>
+                </select>
+              </label>
+            </div>
 
-            <StyledInputWrapper padding="16px 0 16px 0">
-              <StyledLabel htmlFor="message" hasError={messageError}>
-                {messageInput}
-              </StyledLabel>
-            </StyledInputWrapper>
+            <div padding="16px 0 16px 0">
+              <label htmlFor="message">
+                <textarea
+                  name="message"
+                  onChange={e => {
+                    setMessage(e.target.value);
+                  }}
+                />
+              </label>
+            </div>
 
-            <CardButton
-              disabled={
-                !firstName ||
-                firstNameError ||
-                !lastName ||
-                lastNameError ||
-                !organization ||
-                orgError ||
-                !email ||
-                emailError ||
-                !phoneValue ||
-                phoneError ||
-                !department ||
-                departmentError ||
-                !message ||
-                messageError
-              }
-              type="submit"
-            >
-              Send
-            </CardButton>
+            <button type="submit">Send</button>
           </CardBody>
-        </StyledForm>
+        </form>
       </HeroCard>
     </Tabs>
   );
