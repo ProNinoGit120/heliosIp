@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-modal";
 import styled, { createGlobalStyle, css } from "styled-components";
 import Colors from "../../utils/colors";
 import {
@@ -9,7 +10,29 @@ import {
   TitleLarge,
   TitleSmall,
 } from "../../utils/elements";
+import CalculateExpense from "../cards/calculateExpense";
 import women_src from "../../images/ready-women.png";
+
+const customStyles = {
+  overlay: {
+    zIndex: "51",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    width: "30%",
+    padding: "0px",
+    border: "0px",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
 const StyledReady = styled.section`
   /* padding-bottom: 0; */
@@ -47,6 +70,18 @@ const StyledLink = styled.a`
     background: ${Colors.blue};
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 5px 5px 5px #00002c, -5px -5px 5px #000039;
+  }
+
+  &.gray {
+    background: ${Colors.gray};
+    color: ${Colors.blue};
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 10px 10px 16px #e7e7e7, -10px -10px 16px #fbfbfb;
+  }
+
+  &.gray:hover {
+    /* box-shadow: 10px 10px 16px #b2b2b2, -10px -10px 16px #ffffff; */
+    box-shadow: 10px 10px 10px #d9d9d9, -10px -10px 10px #fbfbfb;
   }
 `;
 
@@ -158,6 +193,15 @@ const GlobalStylReady = createGlobalStyle`
 `;
 
 const Ready = ({ title, person = women_src, width }) => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   return (
     <>
       <GlobalStylReady />
@@ -179,9 +223,14 @@ const Ready = ({ title, person = women_src, width }) => {
                       <ReadyItemDesc>
                         Ask us anything, or schedule a call.
                       </ReadyItemDesc>
-                      <ButtonLink className="gray" to="/">
+                      <StyledLink
+                        className="gray"
+                        onClick={() => {
+                          openModal();
+                        }}
+                      >
                         Lets talk
-                      </ButtonLink>
+                      </StyledLink>
                     </ReadyItemText>
                   </Flex>
                 </ReadyItem>
@@ -209,6 +258,14 @@ const Ready = ({ title, person = women_src, width }) => {
           </ReadyInner>
         </Container>
       </StyledReady>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        ariaHideApp={false}
+        style={customStyles}
+      >
+        <CalculateExpense showIcon={false} />
+      </Modal>
     </>
   );
 };
