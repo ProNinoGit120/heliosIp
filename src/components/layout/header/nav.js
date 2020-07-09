@@ -8,6 +8,7 @@ import Colors from "../../../utils/colors";
 import Size from "../../../utils/size";
 import useWindowSize from "../useWindowSize";
 import ContactModal from "../../cards/contactModal";
+import { arrow } from "../../../utils/icons";
 
 const customStyles = {
   overlay: {
@@ -30,6 +31,16 @@ const customStyles = {
     // transform: "translate(-50%, -50%)",
   },
 };
+
+const ArrowIcon = styled.div`
+  margin: 0 20px 0 4px;
+  display: flex;
+  align-items: center;
+  & svg {
+    width: 24px;
+    fill: ${({ color }) => (color ? `${color}` : `${Colors.blue}`)};
+  }
+`;
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -68,6 +79,24 @@ const StyledHamburger = styled.button`
 `;
 
 const GlobalHeaderStyles = createGlobalStyle`
+  .dropdown {
+    overflow: hidden;
+  }
+  .dropdown-content:after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: -8px;
+    left: 115px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #ffffff;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
   /* .navbar-toggler {
     display: none;
     position: absolute;
@@ -101,6 +130,27 @@ const NavList = styled.ul`
     flex-direction: column !important;
     padding: 20px 0;
   }
+`;
+
+const SubItems = styled.div`
+  display: none;
+  position: absolute;
+  margin-top: 2px;
+  margin-left: -55px;
+  padding: 20px 12px;
+  background-color: #ffffff;
+  min-width: 240px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+`;
+
+const SubItem = styled.a`
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+  text-align: left;
 `;
 
 const NavItem = styled.li`
@@ -149,7 +199,6 @@ const NavItem = styled.li`
       margin-right: 12px;
     }
   }
-
 `;
 
 const NavLink = styled(Link)`
@@ -165,12 +214,12 @@ export default ({page}) => {
 
   const [toggleNavList, setToggleNavList] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [navPos, setNavPos] = useState(0);
+  const [onHover, setOnHover] = useState(0);
 
   const navListClass = windowSize > breakpoint || toggleNavList ? "active" : "";
 
   const onPress = (pos) => {
-    setNavPos(pos);
+    setOnHover(pos);
   };
   const openModal = () => {
     setIsOpen(true);
@@ -221,6 +270,23 @@ export default ({page}) => {
               <NavItem className={page === "resources" ? "contact" : ""}>
                 Resources
               </NavItem>
+            </NavLink>
+            <NavLink
+              className={onHover === "6" ? "contact dropdown" : "dropdown"}
+              onClick={() => onPress(6)}
+            >
+              <NavItem>Company</NavItem>
+              <SubItems className="dropdown-content">
+                <SubItem>
+                  <ArrowIcon> {arrow} </ArrowIcon> List 1
+                </SubItem>
+                <SubItem>
+                  <ArrowIcon> {arrow} </ArrowIcon> List 2
+                </SubItem>
+                <SubItem>
+                  <ArrowIcon> {arrow} </ArrowIcon> List 3
+                </SubItem>
+              </SubItems>
             </NavLink>
           </Flex>
           <Flex align="center" justify="flex-end" className="headerFlexBox">

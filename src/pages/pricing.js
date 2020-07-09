@@ -386,7 +386,6 @@ const Pricing = () => {
   };
 
   const openModal = () => {
-    console.log("---");
     setIsOpen(true);
   };
 
