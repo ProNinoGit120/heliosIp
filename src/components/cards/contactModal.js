@@ -20,16 +20,24 @@ export default class Contact extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-    console.log('data-->', form);
+    
+    const formData = {
+      name: this.state.name,
+      email: this.state.email,
+      message: this.state.message,
+    };
+
+    console.log("data-->", formData);
+
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state,
+        "form-name": "Contact",
+        ...formData
       }),
     })
-      .then(() => console.log('success------>'))
+      .then(() => console.log("success------>"))
       .catch(error => alert(error));
   };
 
@@ -38,7 +46,7 @@ export default class Contact extends React.Component {
       <div>
         <h1>Contact</h1>
         <form
-          name="contact"
+          name="Contact"
           method="post"
           action="/thanks/"
           data-netlify="true"
@@ -46,7 +54,7 @@ export default class Contact extends React.Component {
           onSubmit={this.handleSubmit}
         >
           {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="form-name" value="Contact" />
           <p hidden>
             <label>
               Don’t fill this out:{" "}

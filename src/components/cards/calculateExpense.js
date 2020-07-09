@@ -269,7 +269,7 @@ export default ({showIcon = true}) => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "calculateExpense1", ...formData }),
+      body: encode({ "form-name": "calculateExpense", ...formData }),
     })
       .then(res => {
         setFormSuccess(true);
@@ -334,7 +334,7 @@ export default ({showIcon = true}) => {
           </CardTitle>
         </CardHeader>
         <StyledForm
-          name="calculateExpense1"
+          name="calculateExpense"
           method="post"
           onSubmit={e => {
             handleSubmit(e);
@@ -342,7 +342,7 @@ export default ({showIcon = true}) => {
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
-          <input type="hidden" name="form-name" value="calculateExpense1" />
+          <input type="hidden" name="form-name" value="calculateExpense" />
           <input type="hidden" name="bot-field" />
           {/* <p hidden>{honeypotInput}</p> */}
           <CardBody>
