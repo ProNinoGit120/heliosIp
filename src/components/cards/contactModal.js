@@ -275,103 +275,101 @@ export default () => {
         >
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="bot-field" />
-          <CardBody>
-            <div justify="space-around">
-              <div padding="0 16px 0 0">
-                <label htmlFor="firstName">
-                  <input
-                    type="text"
-                    name="firstName"
-                    onChange={e => {
-                      setFirstName(e.target.value);
-                    }}
-                  />
-                </label>
-              </div>
-              <div padding="0 0 0 16px">
-                <label htmlFor="lastName">
-                  <input
-                    type="text"
-                    name="setLastName"
-                    onChange={e => {
-                      setLastName(e.target.value);
-                    }}
-                  />
-                </label>
-              </div>
-            </div>
-            <div padding="16px 0 0 0">
-              <label htmlFor="organization">
+          <div justify="space-around">
+            <div padding="0 16px 0 0">
+              <label htmlFor="firstName">
                 <input
                   type="text"
-                  name="organization"
+                  name="firstName"
                   onChange={e => {
-                    setOrganization(e.target.value);
+                    setFirstName(e.target.value);
                   }}
                 />
               </label>
             </div>
-            <div padding="16px 0 0 0">
-              <label htmlFor="email">
+            <div padding="0 0 0 16px">
+              <label htmlFor="lastName">
                 <input
-                  type="email"
-                  name="email"
+                  type="text"
+                  name="setLastName"
                   onChange={e => {
-                    setEmail(e.target.value);
+                    setLastName(e.target.value);
                   }}
                 />
               </label>
             </div>
+          </div>
+          <div padding="16px 0 0 0">
+            <label htmlFor="organization">
+              <input
+                type="text"
+                name="organization"
+                onChange={e => {
+                  setOrganization(e.target.value);
+                }}
+              />
+            </label>
+          </div>
+          <div padding="16px 0 0 0">
+            <label htmlFor="email">
+              <input
+                type="email"
+                name="email"
+                onChange={e => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </label>
+          </div>
 
-            <div padding="16px 0 0 0">
-              <label htmlFor="phone">
-                <PhoneInput
-                  name="phone"
-                  id="phone"
-                  value={phoneValue}
-                  onChange={e => {
-                    setPhoneValue(e);
-                    setPhoneError(!isPossiblePhoneNumber(e));
-                    return e;
-                  }}
-                  onBlur={() =>
-                    setPhoneError(!isPossiblePhoneNumber(phoneValue))
-                  }
-                  placeholder="Phone"
-                  hasError={phoneError}
-                />
-              </label>
-            </div>
-            <div padding="16px 0 0 0">
-              <label htmlFor="department">
-                <select
-                  name="department"
-                  id="department"
-                  onChange={e => {
-                    setDepartment(e.target.value);
-                  }}
-                >
-                  <option value="Sales">Sales</option>
-                  <option value="Accounts">Accounts</option>
-                  <option value="Human Resources">Human Resources</option>
-                  <option value="Trademarks Team">Trademarks Team</option>
-                </select>
-              </label>
-            </div>
+          <div padding="16px 0 0 0">
+            <label htmlFor="phone">
+              <PhoneInput
+                name="phone"
+                id="phone"
+                value={phoneValue}
+                onChange={e => {
+                  setPhoneValue(e);
+                  setPhoneError(!isPossiblePhoneNumber(e));
+                  return e;
+                }}
+                onBlur={() =>
+                  setPhoneError(!isPossiblePhoneNumber(phoneValue))
+                }
+                placeholder="Phone"
+                hasError={phoneError}
+              />
+            </label>
+          </div>
+          <div padding="16px 0 0 0">
+            <label htmlFor="department">
+              <select
+                name="department"
+                id="department"
+                onChange={e => {
+                  setDepartment(e.target.value);
+                }}
+              >
+                <option value="Sales">Sales</option>
+                <option value="Accounts">Accounts</option>
+                <option value="Human Resources">Human Resources</option>
+                <option value="Trademarks Team">Trademarks Team</option>
+              </select>
+            </label>
+          </div>
 
-            <div padding="16px 0 16px 0">
-              <label htmlFor="message">
-                <textarea
-                  name="message"
-                  onChange={e => {
-                    setMessage(e.target.value);
-                  }}
-                />
-              </label>
-            </div>
+          <div padding="16px 0 16px 0">
+            <label htmlFor="message">
+              <textarea
+                name="message"
+                onChange={e => {
+                  setMessage(e.target.value);
+                }}
+              />
+            </label>
+          </div>
 
-            <button type="submit">Send</button>
-          </CardBody>
+          <button type="submit">Send</button>
         </form>
       </HeroCard>
     </Tabs>
