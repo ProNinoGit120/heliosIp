@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
 import Modal from "react-modal";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 import Colors from "../../../utils/colors";
 import { twitter, linkedin } from "../../../utils/icons";
 import { Container, Flex, Col } from "../../../utils/elements";
+import CalculateExpense from "../../cards/calculateExpense";
 import logo_src from "../../../images/logo.svg";
 
 const StyledFooter = styled.footer`
@@ -46,6 +47,36 @@ const FooterListItem = styled.li`
   color: white;
 `;
 
+const StyledItem = css`
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  border-radius: 6px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 300ms ease;
+  font-size: inherit;
+  color: white;
+`;
+
+const StyledButton = styled.a`
+  font-family: "Roboto", sans-serif;
+  color: white;
+  ${StyledItem};
+
+  &.blue:hover {
+    box-shadow: 5px 5px 5px #000025, -5px -5px 5px #000043;
+  }
+
+  &.blue {
+    background: ${Colors.blue};
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 5px 5px 5px #00002c, -5px -5px 5px #000039;
+  }
+`;
+
 const StyledLink = styled(Link)`
   font-family: "Roboto", sans-serif;
   color: white;
@@ -83,6 +114,13 @@ const GlobalStylFooter = createGlobalStyle`
 `;
 
 const customStyles = {
+  overlay: {
+    zIndex: "51",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   content: {
     top: "50%",
     left: "50%",
@@ -219,10 +257,21 @@ const Footer = () => {
               <FooterListTitle>Get Started</FooterListTitle>
               <FooterList>
                 <FooterListItem>
-                  <StyledLink to="/">Sign up</StyledLink>
+                  <StyledButton
+                    onClick={() => {
+                      openModal();
+                    }}
+                  >
+                    Sign up
+                  </StyledButton>
                 </FooterListItem>
                 <FooterListItem>
-                  <StyledLink to="/">Talk to Advisor</StyledLink>
+                  <StyledButton
+                    target="_blank"
+                    href="https://calendly.com/helioscomplete-demo"
+                  >
+                    Talk to Advisor{" "}
+                  </StyledButton>
                 </FooterListItem>
               </FooterList>
             </Col>
@@ -237,11 +286,7 @@ const Footer = () => {
       >
         {/* <Flex align="center" className="heroBlock_flex"> */}
         {/* <Col width="55%" className="rightBlock_Hero"> */}
-        <div
-          name="termly-embed"
-          data-id="598f7ac7-e7ad-45db-9a96-23beae5b6dfd"
-          data-type="iframe"
-        ></div>
+        <CalculateExpense showIcon={false} />
         {/* </Col> */}
         {/* </Flex> */}
       </Modal>

@@ -278,7 +278,6 @@ export default () => {
       body: encode({ "form-name": "contact", ...formData }),
     })
       .then(res => {
-        console.log("------", res);
         setFormSuccess(true);
         setTabIndex(0);
       })
@@ -319,12 +318,6 @@ export default () => {
       forceRenderTabPanel={true}
     >
       <HeroCard>
-        {formSuccess ? (
-          <SuccessIcon>{checkmark}</SuccessIcon>
-        ) : formError ? (
-          <ErrorIcon>{close}</ErrorIcon>
-        ) : null}
-
         <CardHeader>
           <CardTitle>
             {formSuccess ? (
